@@ -1,0 +1,7 @@
+@import "custom-variables";
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "custom-styles/index";
+
+button:focus, input:focus, .btn-group > *, a:focus, textarea:focus, select:focus {
+  box-shadow: none !important;
+}
