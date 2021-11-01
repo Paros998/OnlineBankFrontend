@@ -1,0 +1,32 @@
+$primary: #CE1010;
+$success: #5CB85C;
+$info: #5BC0DE;
+$secondary: #9A9A9A;
+$light: #F7F7F7;
+$warning: #F0AD4E;
+$danger: #D9534F;
+$dark: #292B2C;
+
+$primary-dark: #930000;
+$primary-light: #FAC9C9;
+$secondary-light: #D6D6D6;
+$secondary-dark: #474747;
+
+$theme-colors: () !default;
+
+$custom-theme-colors: (
+        "primary": $primary,
+        "success": $success,
+        "info": $info,
+        "secondary": $secondary,
+        "light": $light,
+        "warning": $warning,
+        "danger": $danger,
+        "dark": $dark,
+        "primary-dark": $primary-dark,
+        "primary-light": $primary-light,
+        "secondary-light": $secondary-light,
+        "secondary-dark": $secondary-dark,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
