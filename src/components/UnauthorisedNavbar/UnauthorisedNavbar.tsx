@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo.png';
 const UnauthorisedNavbar = () => (
   <Navbar bg="primary-dark" className='sticky-top'>
     <Container>
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/client/home">
         <img
           alt=""
           src={logo}

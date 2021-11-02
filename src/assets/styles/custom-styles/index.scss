@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "src/assets/styles/custom-variables";
+@import '~react-datepicker/dist/react-datepicker.min.css';
+.all-sides-0{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.top-left-0{
+  top: 0;
+  left: 0;
+}
+.bg-light-blue{
+  background-color: $light-blue;
+}
+.obj-fit-cover{
+  object-fit: cover;
+}
+
+//Fonts
+
+.font-poppins{
+  font-family: "Poppins", serif;
+}
+
+.font-size-2rm{
+  font-size: 2rem;
+}
+
+.font-color-light{
+  color:$light;
+}
+
+.font-weight-bold{
+  font-weight: bold;
+}
+
+.font-weight-extra-bold{
+  font-weight: bolder;
+}
+
+.font-weight-extra-normal{
+  font-weight: 500;
+}
+
+.font-italic{
+  font-style: italic;
+}
+
+//Depth
+.z-1000{
+  z-index: 1000;
+}
+.bg-video{
+  z-index: -1;
+}
+
+.mh-50px{
+  max-height: 50px;
+}
+.mw-200px{
+  max-width: 200px;
+}
+.w-250px{
+  width: 250px;
+}
+
+//Cards
+.rounded-card-10{
+  border-radius: 10px;
+}
+//Buttons
+.btn-primary-hover:hover{
+  background-color: $primary-dark;
+}
+//Select Options
+.select-hover option{
+  border-radius: 10px;
+}
+.select-hover option:checked{
+  background-color: $primary-light;
+}
+.select-establishment{
+  background-image: url('house.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  text-align: left;
+}
+.select-hour{
+  background-image: url('clock.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  text-align: left;
+}
+.select-date{
+  background-image: url('calendar.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  text-align: left;
+  height: 40px;
+}
+//DatePicker
+.react-datepicker {
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  border-radius: 4px;
+}
+
+.react-datepickerheader {
+  background-color: white;
+  border-bottom: 1px solid $secondary;
+}
+
+.react-datepickerday-names {
+  display: none;
+}
+
+.react-datepickertoday-button {
+  background-color: white;
+  font-weight: normal;
+  border-top: 1px solid $secondary;
+  color: $primary-light;
+}
+
+.react-datepickerday--today {
+  font-weight: normal;
+  background-color: white;
+}
+
+.react-datepickerday:hover {
+  border-radius: 0;
+  background-color: $light;
+}
+
+.react-datepickerday--selected,
+.react-datepickerday--keyboard-selected,
+.react-datepickerday--selected:hover,
+.react-datepicker__day--keyboard-selected:hover {
+  border-radius: 0;
+  background-color: $primary-light;
+  color: #fff;
+}
+
+
+//Scrollbar
+::-webkit-scrollbar{
+  height: 8px;
+  width: 10px;
+  background-color: $primary;
+}
+::-webkit-scrollbar-track{
+  height: 8px;
+  width: 10px;
+  background-color: $primary;
+}
+::-webkit-scrollbar-thumb{
+  background-color: $dark;
+  border-radius: 8px
+}
+

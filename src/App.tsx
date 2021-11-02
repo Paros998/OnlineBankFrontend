@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import Client from "./client/Client";
 import { initAxios } from "./utils/initAxios";
 import NotFound404 from "./components/NotFound404/NotFound404";

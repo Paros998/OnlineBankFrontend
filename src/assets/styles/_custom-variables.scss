@@ -6,6 +6,7 @@ $light: #F7F7F7;
 $warning: #F0AD4E;
 $danger: #D9534F;
 $dark: #292B2C;
+$light-blue: #003da2;
 
 $primary-dark: #930000;
 $primary-light: #FAC9C9;
@@ -30,3 +31,4 @@ $custom-theme-colors: (
 );
 
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
+

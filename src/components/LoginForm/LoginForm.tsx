@@ -12,7 +12,7 @@ interface LoginFormProps extends HTMLAttributes<any> {
 const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
   return (
     <div {...props}>
-      <Card style={{ width: '22rem' }}>
+      <Card style={{ width: '22rem' }} className='border-1 border-primary rounded-card-10'>
         <Card.Body>
           <Form>
             <Card.Title>
@@ -38,6 +38,14 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                 />
               </div>
 
+              <Button
+                variant='secondary'
+                className='float-start mt-4 mb-3'
+                type='button'
+                href='/client/home'
+              >
+                Wstecz
+              </Button>
               <Button
                 className='float-end mt-4 mb-3'
                 type='submit'
