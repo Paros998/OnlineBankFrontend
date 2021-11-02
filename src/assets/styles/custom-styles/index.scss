@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "src/assets/styles/custom-variables";
 @import '~react-datepicker/dist/react-datepicker.min.css';
+
 .all-sides-0{
   top: 0;
   left: 0;
@@ -117,38 +118,34 @@
   border-radius: 4px;
 }
 
-.react-datepickerheader {
+.react-datepicker__header {
   background-color: white;
   border-bottom: 1px solid $secondary;
 }
 
-.react-datepickerday-names {
-  display: none;
-}
-
-.react-datepickertoday-button {
+.react-datepicker__today-button {
   background-color: white;
   font-weight: normal;
   border-top: 1px solid $secondary;
   color: $primary-light;
 }
 
-.react-datepickerday--today {
+.react-datepicker__day--today {
   font-weight: normal;
   background-color: white;
 }
 
-.react-datepickerday:hover {
+.react-datepicker__day:hover {
   border-radius: 0;
   background-color: $light;
 }
 
-.react-datepickerday--selected,
-.react-datepickerday--keyboard-selected,
-.react-datepickerday--selected:hover,
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--selected:hover,
 .react-datepicker__day--keyboard-selected:hover {
   border-radius: 0;
-  background-color: $primary-light;
+  background-color: $primary;
   color: #fff;
 }
 
