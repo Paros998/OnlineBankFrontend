@@ -2,7 +2,6 @@ import React from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import Client from "./client/Client";
 import { initAxios } from "./utils/initAxios";
-import NotFound404 from "./components/NotFound404/NotFound404";
 
 initAxios();
 
@@ -15,10 +14,9 @@ function App() {
           component={Client}
         />
 
-        <Route
-          path='*'
-          component={NotFound404}
-        />
+        <Route path='*'>
+          <Redirect to='/client/home' />
+        </Route>
       </Switch>
     </Router>
   );
