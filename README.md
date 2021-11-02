@@ -1,5 +1,9 @@
 # This Frontend Banking App is hosted on heroku on url:
-## https://pip-frontend-server.herokuapp.com/
+## For clients: https://pip-frontend-server.herokuapp.com/client/home
+
+# OR
+
+## For employees: https://pip-frontend-server.herokuapp.com/employee/login
 
 # Getting Started with Create React App
 
