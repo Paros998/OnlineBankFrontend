@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, FormikValues } from 'formik';
 import { Image } from "react-bootstrap";
 import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
@@ -7,10 +7,11 @@ import bgLogin2 from '../../../../assets/images/bg-login2.jpg';
 import LoginForm from "../../../../components/LoginForm/LoginForm";
 import { LoginFormikValues } from "../../../../interfaces/LoginFormikValues";
 import Footer from "../../../../components/Footer/Footer";
+import LoginHelpOffCanvas from "../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
 
 const formikValues: LoginFormikValues = {
   login: '',
-  password: ''
+  password: '',
 };
 
 const handleSubmit = (values: FormikValues) => {
@@ -18,7 +19,8 @@ const handleSubmit = (values: FormikValues) => {
 }
 
 const Login = () => {
-
+  const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
+  const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
   return (
     <>
       <UnauthorisedNavbar/>
@@ -38,11 +40,19 @@ const Login = () => {
           initialValues={formikValues}
           onSubmit={handleSubmit}
         >
-          <LoginForm className='d-flex h-75 justify-content-center align-items-center'/>
+          <LoginForm
+            className='d-flex h-75 justify-content-center align-items-center'
+            handleHelpCanvas={handleHelpCanvas}
+          />
         </Formik>
       </div>
 
       <Footer/>
+
+      <LoginHelpOffCanvas
+        showHelpCanvas={showHelpCanvas}
+        handleHelpCanvas={handleHelpCanvas}
+      />
     </>
   );
 };
