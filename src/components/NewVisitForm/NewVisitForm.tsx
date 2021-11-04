@@ -4,6 +4,8 @@ import {Form} from "formik";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../Inputs/SelectInput/SelectInput";
 import DateInput from "../Inputs/DateInput/DateInput";
+import {HouseFill,Clock} from "react-bootstrap-icons";
+//TODO add key-values to dictionary on backend server
 
 const establishmentOptions = [
   {value: 'Kielce', key: 1},
@@ -41,14 +43,15 @@ const NewVisitForm = ({...props}) => {
             </Card.Title>
 
             <Card.Text className='p-2'>
-              <div className='bg-primary rounded p-3'>
+              <section className='bg-primary rounded p-3'>
                 <SelectInput
                   name='establishment'
                   label='Placówka'
                   labelClassName='text-white'
                   options={establishmentOptions}
                   placeholder='Wybierz Placówkę'
-                  className='select-establishment btn'
+                  className='custom-select btn'
+                  iconComponent={<HouseFill/>}
                 />
 
                 <DateInput
@@ -63,20 +66,21 @@ const NewVisitForm = ({...props}) => {
                   labelClassName='text-white'
                   options={visitTimeOptions}
                   placeholder='Wybierz Godzinę'
-                  className='select-hour btn'
+                  className='custom-select btn'
+                  iconComponent={<Clock/>}
                 />
 
-              </div>
-              <div className='vstack mx-auto col-md-5'>
+              </section>
+              <section className='vstack mx-auto col-md-5'>
                 <Button
                   className='mt-3 '
                   type='submit'
                 >
                   Wyślij
                 </Button>
-              </div>
+              </section>
                 <hr className='text-primary-dark w-100 '/>
-              <div className='vstack mx-auto col-md-5'>
+              <section className='vstack mx-auto col-md-5'>
                 <Button
                   variant='secondary'
                   className='mb-1'
@@ -85,7 +89,7 @@ const NewVisitForm = ({...props}) => {
                 >
                   Wstecz
                 </Button>
-              </div>
+              </section>
             </Card.Text>
           </Form>
         </Card.Body>
