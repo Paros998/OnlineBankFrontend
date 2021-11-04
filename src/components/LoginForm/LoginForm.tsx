@@ -24,7 +24,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
             <Card.Text className='p-2'>
               <div className='bg-primary rounded p-3'>
                 <TextInput
-                  name='login'
+                  name='username'
                   label='Login'
                   labelClassName='text-white'
                 />

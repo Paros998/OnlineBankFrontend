@@ -1,13 +1,15 @@
-import { Form, Formik } from 'formik';
-import React, { FC } from 'react';
+import {Form, Formik} from 'formik';
+import React, {FC} from 'react';
 import axios from "axios";
-import { Button, Offcanvas } from "react-bootstrap";
+import {Button, Offcanvas} from "react-bootstrap";
 import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
 import TextInput from "../../Inputs/TextInput/TextInput";
+
 
 interface RemindLoginOrPasswordOffCanvasProps {
   showRemindLoginCanvas: boolean;
   handleRemindLoginCanvas: (isShown: boolean) => void;
+  handleHelpCanvas: (isShown: boolean) => void;
   header: string;
   requestUrl: string;
 }
@@ -16,25 +18,19 @@ interface RemindLoginOrPasswordFormikValues {
   email: string;
 }
 
-const RemindLoginOrPasswordOffCanvas: FC<RemindLoginOrPasswordOffCanvasProps> = ({
-                                                                                   showRemindLoginCanvas,
-                                                                                   requestUrl,
-                                                                                   header,
-                                                                                   handleRemindLoginCanvas
-                                                                                 }) => {
-  const handleSubmit = async ({ email }: RemindLoginOrPasswordFormikValues) => {
-    const auth = {
-      username: 'shanodis',
-      password: 'Uro1a*wci(tpJI;S"tWV0&Cw9'
-    };
-
+const RemindLoginOrPasswordOffCanvas:
+  FC<RemindLoginOrPasswordOffCanvasProps> = ({
+                                               showRemindLoginCanvas,
+                                               handleHelpCanvas,
+                                               requestUrl,
+                                               header,
+                                               handleRemindLoginCanvas
+                                             }) => {
+  const handleSubmit = async ({email}: RemindLoginOrPasswordFormikValues) => {
     try {
-      await axios.get(`users/${email}/login`, {
-        headers: {
-
-        },
-        auth
-      });
+      await axios.patch(`users/${requestUrl}`, email);
+      handleRemindLoginCanvas(false)
+      handleHelpCanvas(false)
     } catch (e) {
       console.error(e);
     }
@@ -55,10 +51,10 @@ const RemindLoginOrPasswordOffCanvas: FC<RemindLoginOrPasswordOffCanvasProps> = 
           </Offcanvas.Title>
         </Offcanvas.Header>
       </div>
-
+      {/*TODO add spinner component for loadings and waitings*/}
       <Offcanvas.Body>
         <Formik<RemindLoginOrPasswordFormikValues>
-          initialValues={{ email: '' }}
+          initialValues={{email: ''}}
           onSubmit={handleSubmit}
         >
           <Form className='h-100 d-flex text-center flex-column justify-content-between'>

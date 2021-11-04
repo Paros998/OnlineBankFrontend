@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import TextWithDiamond from "../../../../components/TextWithDiamond/TextWithDiamond";
 import {BsArrowRight} from "react-icons/all";
@@ -21,8 +22,10 @@ const NewClient = () => {
 
       <BsArrowRight size='80'  className='text-primary w-75'/>
 
-      <Button variant='primary' size={"lg"} href='/client/new-visit' className='rounded-pill mh-50px w-250px btn-primary-hover' >
-        Wizyta Czeka
+      <Button variant='primary'  size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover' >
+        <Link to={'/client/new-visit'} className='text-decoration-none font-color-light'>
+          Wizyta Czeka
+        </Link>
       </Button>
     </div>
   );

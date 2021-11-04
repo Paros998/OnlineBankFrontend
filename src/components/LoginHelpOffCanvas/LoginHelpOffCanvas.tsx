@@ -39,7 +39,7 @@ const LoginHelpOffCanvas: FC<LoginHelpOffCanvasProps> = ({ handleHelpCanvas, sho
             className='w-50'
             onClick={() => handleRemindPasswordCanvas(true)}
           >
-            Przypomnij hasło
+            Resetuj hasło
           </Button>
 
           <h5 className='mt-5'>Nie pamiętam loginu</h5>
@@ -64,16 +64,18 @@ const LoginHelpOffCanvas: FC<LoginHelpOffCanvasProps> = ({ handleHelpCanvas, sho
 
       <RemindLoginOrPasswordOffCanvas
         showRemindLoginCanvas={showRemindLoginCanvas}
+        handleHelpCanvas={handleHelpCanvas}
         handleRemindLoginCanvas={handleRemindLoginCanvas}
-        requestUrl='dupa'
+        requestUrl='login'
         header='Przypomnij login'
       />
 
       <RemindLoginOrPasswordOffCanvas
         showRemindLoginCanvas={showRemindPasswordCanvas}
+        handleHelpCanvas={handleHelpCanvas}
         handleRemindLoginCanvas={handleRemindPasswordCanvas}
-        requestUrl='dupa'
-        header='Przypomnij hasło'
+        requestUrl='password'
+        header='Resetuj hasło'
       />
     </Offcanvas>
   );

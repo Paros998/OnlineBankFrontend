@@ -7,6 +7,7 @@ import bankHomeVideo from "../../../../assets/videos/bankHomePage.mp4";
 import NewClient from "./NewClient";
 import BackgroundVideo from "./BackgroundVideo";
 import Footer from "../../../../components/Footer/Footer";
+import {Link} from "react-router-dom";
 const HomePage = () => {
   return (
     <><BackgroundVideo src={bankHomeVideo} loop={true} autoPlay={true} colorClass={"bg-light-blue"}/>
@@ -19,8 +20,10 @@ const HomePage = () => {
             Witaj w Przyszłości w naszym Banku
           </div>
 
-          <Button variant='primary' size={"lg"} href='/client/login' className='rounded-pill mh-50 btn-primary-hover'>
-            Logowanie
+          <Button variant='primary' size={"lg"} className='rounded-pill mh-50 btn-primary-hover'>
+            <Link to={'/client/login'} className='text-decoration-none font-color-light'>
+              Logowanie
+            </Link>
           </Button>
         </div>
 

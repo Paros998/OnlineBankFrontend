@@ -6,19 +6,42 @@ import Footer from "../../../../components/Footer/Footer";
 import {NewVisitFormikValues} from "../../../../interfaces/NewVisitFormikValues";
 import {Formik} from "formik";
 import NewVisitForm from "../../../../components/NewVisitForm/NewVisitForm";
-
-const handleSubmit = (values: NewVisitFormikValues) => {
-  console.log(values)
-}
+import axios from "axios";
+import {useHistory} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const formikValues: NewVisitFormikValues = {
   establishment: "",
   visitDate: new Date(),
-  visitTime: ""
-
+  visitTime: '',
+  isActive: true
 };
 
+const sendValues = {
+  establishment: "",
+  visitDate: '',
+  visitTime: '',
+  isActive: true
+}
+
 const NewVisit = () => {
+  const history = useHistory();
+  const handleSubmit = async (values: NewVisitFormikValues) => {
+    sendValues.visitDate = values.visitDate.toDateString();
+    sendValues.visitTime = values.visitTime;
+    sendValues.isActive = values.isActive;
+    sendValues.establishment = values.establishment;
+    try{
+      const response = await axios.post(`/visits`,sendValues);
+      if(response.status === 200){
+        toast.success("👍 Success");
+        history.push("/client/home");
+      }
+    }catch (e: any){
+      toast.error(`👎 ${e.response.data.message}`);
+    }
+  }
+
   return (
     <>
       <UnauthorisedNavbar/>
@@ -41,7 +64,6 @@ const NewVisit = () => {
             className='d-flex h-75 justify-content-center align-items-center'
           />
         </Formik>
-
 
       </div>
 

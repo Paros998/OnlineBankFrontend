@@ -6,7 +6,7 @@ export const useCurrentUser = () => {
   // TODO create fetch current user
   const fetchUser = useCallback(async () => {
     try {
-      const { data } = await axios.get(``)
+      const { data } = await axios.get(`/login`)
     } catch (e) {
       console.error(e);
     }
