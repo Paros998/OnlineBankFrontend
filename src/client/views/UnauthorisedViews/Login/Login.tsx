@@ -1,5 +1,5 @@
-import React, {FC, useState} from 'react';
-import { Formik, FormikValues } from 'formik';
+import React, { useState} from 'react';
+import { Formik } from 'formik';
 import { Image } from "react-bootstrap";
 import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import bgLogin1 from '../../../../assets/images/bg-happy.jpeg';
@@ -11,6 +11,8 @@ import LoginHelpOffCanvas from "../../../../components/LoginHelpOffCanvas/LoginH
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
+import jwtDecode from "jwt-decode";
+import {User} from "../../../../interfaces/User";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -36,9 +38,22 @@ const Login = () => {
           'Content-Type': 'application/x-www-form-urlencoded',
         }
       });
+
       if(response.status === 200){
-        toast.success("👍 Success");
-        history.push("/client/home");
+        const token = response.headers["authorization"];
+
+        const user: User = jwtDecode(token);
+
+        let role = user.authorities[0].authority;
+        if(role === "ROLE_CLIENT"){
+          toast.success("👍 Success");
+          history.push("/client/logged/home");
+          localStorage.setItem("JWT_USER_TOKEN",token);
+        }
+        else{
+          toast.info(`👀 Redirecting to the right login site!`);
+          history.push('/employee/login');
+        }
       }
     } catch (e:any) {
       toast.error(`👎 ${e.response.data.message}`);

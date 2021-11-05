@@ -1,10 +1,12 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
-import {Form} from "formik";
+import {Form, useFormikContext} from "formik";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../Inputs/SelectInput/SelectInput";
 import DateInput from "../Inputs/DateInput/DateInput";
 import {HouseFill,Clock} from "react-bootstrap-icons";
+import {NewVisitFormikValues} from "../../interfaces/NewVisitFormikValues";
+import {Link} from "react-router-dom";
 //TODO add key-values to dictionary on backend server
 
 const establishmentOptions = [
@@ -31,6 +33,7 @@ const visitTimeOptions = [
 ]
 
 const NewVisitForm = ({...props}) => {
+  const {setFieldValue} = useFormikContext<NewVisitFormikValues>();
   return (
     <div {...props}>
       <Card style={{width: '22rem'}} className='border-1 border-primary rounded-card-10'>
@@ -51,13 +54,16 @@ const NewVisitForm = ({...props}) => {
                   options={establishmentOptions}
                   placeholder='Wybierz Placówkę'
                   className='custom-select btn'
-                  iconComponent={<HouseFill/>}
+                  iconClass='select-establishment'
                 />
 
                 <DateInput
-                  name={'visitDate'}
-                  label={'Data'}
+                  name='visitDate'
+                  label='Data'
                   labelClassName='text-white'
+                  onChange={(date: Date) => {
+                    setFieldValue("visitDate",date);
+                  }}
                 />
 
                 <SelectInput
@@ -67,7 +73,7 @@ const NewVisitForm = ({...props}) => {
                   options={visitTimeOptions}
                   placeholder='Wybierz Godzinę'
                   className='custom-select btn'
-                  iconComponent={<Clock/>}
+                  iconClass='select-hour'
                 />
 
               </section>
@@ -80,15 +86,17 @@ const NewVisitForm = ({...props}) => {
                 </Button>
               </section>
                 <hr className='text-primary-dark w-100 '/>
-              <section className='vstack mx-auto col-md-5'>
-                <Button
-                  variant='secondary'
-                  className='mb-1'
-                  type='button'
-                  href='/client/home'
-                >
-                  Wstecz
-                </Button>
+              <section className='vstack mx-auto col-md-3'>
+                <Link to='/client/home'>
+                  <Button
+                    variant='secondary'
+                    className='mb-1'
+                    type='button'
+
+                  >
+                    Wstecz
+                  </Button>
+                </Link>
               </section>
             </Card.Text>
           </Form>

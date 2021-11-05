@@ -23,11 +23,13 @@ const sendValues = {
   visitTime: '',
   isActive: true
 }
-
+//TODO add momentum support and recode the post request
 const NewVisit = () => {
   const history = useHistory();
   const handleSubmit = async (values: NewVisitFormikValues) => {
-    sendValues.visitDate = values.visitDate.toDateString();
+    sendValues.visitDate = `${values.visitDate.getFullYear()}-${values.visitDate.getMonth()+1}-${values.visitDate.getDate()}`;
+    console.log(values.visitDate)
+    console.log(sendValues);
     sendValues.visitTime = values.visitTime;
     sendValues.isActive = values.isActive;
     sendValues.establishment = values.establishment;

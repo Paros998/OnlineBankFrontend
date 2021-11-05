@@ -1,8 +1,9 @@
-import React, {FC, useState} from 'react';
-import {Form, FormControlProps} from "react-bootstrap";
-import ReactDatePicker from "react-datepicker";
+import React, {FC} from 'react';
+import {Form} from "react-bootstrap";
+import ReactDatePicker, {ReactDatePickerProps} from "react-datepicker";
+import {useField} from "formik";
 
-interface DateInputProps extends FormControlProps {
+interface DateInputProps extends ReactDatePickerProps {
   label?: string;
   labelClassName?: string;
   name: string;
@@ -10,12 +11,12 @@ interface DateInputProps extends FormControlProps {
 }
 
 const DateInput: FC<DateInputProps> = ({ label, containerClass, labelClassName,...props}) => {
-const [value,setValue] = useState(new Date());
+const [field] = useField(props.name);
   return (
     <Form.Group className={containerClass}>
       <Form.Label className={labelClassName}>{label}</Form.Label>
 
-      <ReactDatePicker className='select-date w-100 btn ' minDate={new Date()} onChange={((date:Date) => setValue(date))} selected={value}/>
+      <ReactDatePicker className='select-date w-100 btn select ' selected={new Date(field.value)} {...props} />
 
     </Form.Group>
   );

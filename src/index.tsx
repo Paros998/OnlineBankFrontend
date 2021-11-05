@@ -7,7 +7,7 @@ import {ToastContainer} from "react-toastify";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <App />
     <ToastContainer
       position="bottom-right"
       autoClose={5000}
