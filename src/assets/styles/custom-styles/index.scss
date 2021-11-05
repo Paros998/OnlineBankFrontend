@@ -82,6 +82,14 @@
   background-color: $primary-dark;
 }
 //Select Options
+.select {
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  text-align: left;
+}
 .select-hover option{
   border-radius: 10px;
 }
@@ -90,27 +98,20 @@
 }
 .select-establishment{
   background-image: url('house.png');
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #FFFFFF;
-  -webkit-appearance: none;
-  text-align: left;
+
 }
 .select-hour{
   background-image: url('clock.png');
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #FFFFFF;
-  -webkit-appearance: none;
-  text-align: left;
+
 }
 .select-date{
   background-image: url('calendar.png');
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: contain;
+
+  height: 40px;
+}
+
+.custom-select{
+  background-image: none;
   background-color: #FFFFFF;
   -webkit-appearance: none;
   text-align: left;

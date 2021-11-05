@@ -4,6 +4,7 @@ import { ArrowRight } from 'react-bootstrap-icons';
 import { Form } from "formik";
 import TextInput from "../Inputs/TextInput/TextInput";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
+import {Link} from "react-router-dom";
 
 interface LoginFormProps extends HTMLAttributes<any> {
   handleHelpCanvas: (isShown: boolean) => void;
@@ -26,6 +27,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                 <TextInput
                   name='username'
                   label='Login'
+                  placeholder='Wpisz login'
                   labelClassName='text-white'
                 />
 
@@ -33,19 +35,21 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                   name='password'
                   type='password'
                   label='Hasło'
+                  placeholder='Wprowadź hasło'
                   labelClassName='text-white'
                   containerClass='mt-4 mb-3'
                 />
               </div>
 
-              <Button
-                variant='secondary'
-                className='float-start mt-4 mb-3'
-                type='button'
-                href='/client/home'
-              >
-                Wstecz
-              </Button>
+              <Link to='/client/home'>
+                <Button
+                  variant='secondary'
+                  className='float-start mt-4 mb-3'
+                  type='button'
+                >
+                  Wstecz
+                </Button>
+              </Link>
               <Button
                 className='float-end mt-4 mb-3'
                 type='submit'
