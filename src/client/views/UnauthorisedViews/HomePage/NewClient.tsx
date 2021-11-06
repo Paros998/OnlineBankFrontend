@@ -1,12 +1,10 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import TextWithDiamond from "../../../../components/TextWithDiamond/TextWithDiamond";
 import {BsArrowRight} from "react-icons/all";
-import { useHistory } from "react-router";
 
 const NewClient = () => {
-  const history = useHistory();
-  const redirectToNewVisit = () => history.push('/client/new-visit')
   return (
     <div className='justify-content-between mt-5 d-flex align-items-center mb-5'>
       <div className='rounded-card-10 bg-light border border-primary text-dark w-auto h-50 p-2 '>
@@ -24,13 +22,10 @@ const NewClient = () => {
 
       <BsArrowRight size='80'  className='text-primary w-75'/>
 
-      <Button
-        variant='primary'
-        onClick={redirectToNewVisit}
-        size="lg"
-        className='rounded-pill mh-50px w-250px btn-primary-hover'
-      >
-        Wizyta Czeka
+      <Button variant='primary'  size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover' >
+        <Link to={'/client/new-visit'} className='text-decoration-none font-color-light'>
+          Wizyta Czeka
+        </Link>
       </Button>
     </div>
   );

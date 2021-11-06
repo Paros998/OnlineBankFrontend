@@ -4,6 +4,7 @@ import { ArrowRight } from 'react-bootstrap-icons';
 import { Form } from "formik";
 import TextInput from "../Inputs/TextInput/TextInput";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
+import {Link} from "react-router-dom";
 
 interface LoginFormProps extends HTMLAttributes<any> {
   handleHelpCanvas: (isShown: boolean) => void;
@@ -21,11 +22,12 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
               </TextWithDiamond>
             </Card.Title>
 
-            <div className='p-2'>
+            <Card.Text className='p-2'>
               <div className='bg-primary rounded p-3'>
                 <TextInput
-                  name='login'
+                  name='username'
                   label='Login'
+                  placeholder='Wpisz login'
                   labelClassName='text-white'
                 />
 
@@ -33,19 +35,27 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                   name='password'
                   type='password'
                   label='Hasło'
+                  placeholder='Wprowadź hasło'
                   labelClassName='text-white'
                   containerClass='mt-4 mb-3'
                 />
               </div>
 
-              <div className='text-center'>
+              <Link to='/client/home'>
                 <Button
-                  className='mt-4 mb-3 w-50'
-                  type='submit'
+                  variant='secondary'
+                  className='float-start mt-4 mb-3'
+                  type='button'
                 >
-                  Zaloguj
+                  Wstecz
                 </Button>
-              </div>
+              </Link>
+              <Button
+                className='float-end mt-4 mb-3'
+                type='submit'
+              >
+                Zaloguj
+              </Button>
 
               <hr className='text-primary-dark w-100'/>
 
@@ -63,7 +73,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                   Pomoc
                 </Button>
               </div>
-            </div>
+            </Card.Text>
           </Form>
         </Card.Body>
       </Card>

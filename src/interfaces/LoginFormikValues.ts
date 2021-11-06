@@ -1,4 +1,4 @@
 export interface LoginFormikValues {
-  login: string;
+  username: string;
   password: string;
 }

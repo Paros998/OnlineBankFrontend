@@ -1,9 +1,13 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
-import {Form} from "formik";
+import {Form, useFormikContext} from "formik";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../Inputs/SelectInput/SelectInput";
 import DateInput from "../Inputs/DateInput/DateInput";
+import {HouseFill,Clock} from "react-bootstrap-icons";
+import {NewVisitFormikValues} from "../../interfaces/NewVisitFormikValues";
+import {Link} from "react-router-dom";
+//TODO add key-values to dictionary on backend server
 
 const establishmentOptions = [
   {value: 'Kielce', key: 1},
@@ -29,6 +33,7 @@ const visitTimeOptions = [
 ]
 
 const NewVisitForm = ({...props}) => {
+  const {setFieldValue} = useFormikContext<NewVisitFormikValues>();
   return (
     <div {...props}>
       <Card style={{width: '22rem'}} className='border-1 border-primary rounded-card-10'>
@@ -41,20 +46,24 @@ const NewVisitForm = ({...props}) => {
             </Card.Title>
 
             <Card.Text className='p-2'>
-              <div className='bg-primary rounded p-3'>
+              <section className='bg-primary rounded p-3'>
                 <SelectInput
                   name='establishment'
                   label='Placówka'
                   labelClassName='text-white'
                   options={establishmentOptions}
                   placeholder='Wybierz Placówkę'
-                  className='select-establishment btn'
+                  className='custom-select btn'
+                  iconClass='select-establishment'
                 />
 
                 <DateInput
-                  name={'visitDate'}
-                  label={'Data'}
+                  name='visitDate'
+                  label='Data'
                   labelClassName='text-white'
+                  onChange={(date: Date) => {
+                    setFieldValue("visitDate",date);
+                  }}
                 />
 
                 <SelectInput
@@ -63,18 +72,32 @@ const NewVisitForm = ({...props}) => {
                   labelClassName='text-white'
                   options={visitTimeOptions}
                   placeholder='Wybierz Godzinę'
-                  className='select-hour btn'
+                  className='custom-select btn'
+                  iconClass='select-hour'
                 />
 
-              </div>
-              <div className='vstack mx-auto col-md-5'>
+              </section>
+              <section className='vstack mx-auto col-md-5'>
                 <Button
                   className='mt-3 '
                   type='submit'
                 >
                   Wyślij
                 </Button>
-              </div>
+              </section>
+                <hr className='text-primary-dark w-100 '/>
+              <section className='vstack mx-auto col-md-3'>
+                <Link to='/client/home'>
+                  <Button
+                    variant='secondary'
+                    className='mb-1'
+                    type='button'
+
+                  >
+                    Wstecz
+                  </Button>
+                </Link>
+              </section>
             </Card.Text>
           </Form>
         </Card.Body>

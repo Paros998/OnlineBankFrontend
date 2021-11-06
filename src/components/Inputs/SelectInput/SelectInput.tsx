@@ -12,23 +12,24 @@ interface SelectInputProps extends FormSelectProps {
   containerClass?: string;
   options: option[];
   placeholder: string;
+  iconClass: string;
 }
 
-const SelectInput: FC<SelectInputProps> = ({ label, containerClass, labelClassName, ...props }) => {
+const SelectInput: FC<SelectInputProps> = ({ label, containerClass, labelClassName,iconClass, ...props }) => {
   const [ field ] = useField(props.name);
   return (
     <Form.Group className={containerClass}>
       <Form.Label className={labelClassName}>{label}</Form.Label>
-
-      <Form.Select {...field} {...props} bsPrefix='form-select select-hover'>
-        <option>{props.placeholder}</option>
-        {
-          props.options.map( (item) => {
-            return <option key={item.key} value={item.value}>{item.value}</option>
-          })
-        }
-
-      </Form.Select>
+      <InputGroup>
+        <Form.Select {...field} {...props} bsPrefix='form-select select btn' className={iconClass}>
+          <option >{props.placeholder}  </option>
+          {
+            props.options.map( (item) => {
+              return <option key={item.key} value={item.value}>{item.value}</option>
+            })
+          }
+        </Form.Select>
+      </InputGroup>
 
       <ErrorMessage name={field.name}>
         {(errorMessage) => (
