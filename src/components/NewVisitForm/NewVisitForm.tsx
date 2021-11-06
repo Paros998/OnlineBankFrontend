@@ -75,17 +75,6 @@ const NewVisitForm = ({...props}) => {
                   Wyślij
                 </Button>
               </div>
-                <hr className='text-primary-dark w-100 '/>
-              <div className='vstack mx-auto col-md-5'>
-                <Button
-                  variant='secondary'
-                  className='mb-1'
-                  type='button'
-                  href='/client/home'
-                >
-                  Wstecz
-                </Button>
-              </div>
             </Card.Text>
           </Form>
         </Card.Body>

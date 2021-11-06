@@ -7,7 +7,10 @@ import bankHomeVideo from "../../../../assets/videos/bankHomePage.mp4";
 import NewClient from "./NewClient";
 import BackgroundVideo from "./BackgroundVideo";
 import Footer from "../../../../components/Footer/Footer";
+import { useHistory } from "react-router";
 const HomePage = () => {
+  const history = useHistory();
+  const redirectToLogin = () => history.push('/client/login');
   return (
     <><BackgroundVideo src={bankHomeVideo} loop={true} autoPlay={true} colorClass={"bg-light-blue"}/>
       <div className='container p-2 mt-3 z-1000 font-poppins font-color-light '>
@@ -19,7 +22,12 @@ const HomePage = () => {
             Witaj w Przyszłości w naszym Banku
           </div>
 
-          <Button variant='primary' size={"lg"} href='/client/login' className='rounded-pill mh-50 btn-primary-hover'>
+          <Button
+            onClick={redirectToLogin}
+            variant='primary'
+            size="lg"
+            className='rounded-pill mh-50 btn-primary-hover'
+          >
             Logowanie
           </Button>
         </div>

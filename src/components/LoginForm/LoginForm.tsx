@@ -21,7 +21,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
               </TextWithDiamond>
             </Card.Title>
 
-            <Card.Text className='p-2'>
+            <div className='p-2'>
               <div className='bg-primary rounded p-3'>
                 <TextInput
                   name='login'
@@ -38,20 +38,14 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                 />
               </div>
 
-              <Button
-                variant='secondary'
-                className='float-start mt-4 mb-3'
-                type='button'
-                href='/client/home'
-              >
-                Wstecz
-              </Button>
-              <Button
-                className='float-end mt-4 mb-3'
-                type='submit'
-              >
-                Zaloguj
-              </Button>
+              <div className='text-center'>
+                <Button
+                  className='mt-4 mb-3 w-50'
+                  type='submit'
+                >
+                  Zaloguj
+                </Button>
+              </div>
 
               <hr className='text-primary-dark w-100'/>
 
@@ -69,7 +63,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                   Pomoc
                 </Button>
               </div>
-            </Card.Text>
+            </div>
           </Form>
         </Card.Body>
       </Card>
