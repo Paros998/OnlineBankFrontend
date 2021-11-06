@@ -13,6 +13,7 @@ import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
 import jwtDecode from "jwt-decode";
 import {User} from "../../../../interfaces/User";
+import { appendUrlSearchParams } from "../../../../utils/appendUrlSearchParams";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -21,42 +22,33 @@ const formikValues: LoginFormikValues = {
 
 const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
-
   const history = useHistory();
 
   const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
 
   const handleSubmit = async (values: LoginFormikValues) => {
-
-    const loginParams = new URLSearchParams();
-    loginParams.append('username',`${values.username}`);
-    loginParams.append('password',`${values.password}`);
-
+    const loginParams = appendUrlSearchParams(values);
     try {
-      const response = await axios.post(`/login`,loginParams,{
-        headers:{
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      });
+      const response = await axios.post(`/login`, loginParams);
 
-      if(response.status === 200){
+      if (response.status === 200) {
         const token = response.headers["authorization"];
-
         const user: User = jwtDecode(token);
+        const role = user.authorities[0].authority;
 
-        let role = user.authorities[0].authority;
-        if(role === "ROLE_CLIENT"){
+        if (role === "ROLE_CLIENT") {
           toast.success("👍 Success");
+          axios.defaults.headers.common['Authorization'] = token;
+          localStorage.setItem("JWT_USER_TOKEN", token);
           history.push("/client/logged/home");
-          localStorage.setItem("JWT_USER_TOKEN",token);
-        }
-        else{
+        } else {
           toast.info(`👀 Redirecting to the right login site!`);
+          // TODO add function to reload user context
           history.push('/employee/login');
         }
       }
-    } catch (e:any) {
-      toast.error(`👎 ${e.response.data.message}`);
+    } catch (e: any) {
+      toast.error(`👎 ${e?.response?.data?.message}`);
     }
   }
 
