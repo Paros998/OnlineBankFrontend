@@ -20,13 +20,13 @@ const NewClient = () => {
         </div>
       </div>
 
-      <BsArrowRight size='80'  className='text-primary w-75'/>
+      <BsArrowRight size='80' className='text-primary w-75'/>
 
-      <Button variant='primary'  size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover' >
-        <Link to={'/client/new-visit'} className='text-decoration-none font-color-light'>
+      <Link to={'/client/new-visit'} className='text-decoration-none font-color-light'>
+        <Button variant='primary' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
           Wizyta Czeka
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </div>
   );
 };

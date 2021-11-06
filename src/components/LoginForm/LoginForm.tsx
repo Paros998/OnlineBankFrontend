@@ -4,7 +4,7 @@ import { ArrowRight } from 'react-bootstrap-icons';
 import { Form } from "formik";
 import TextInput from "../Inputs/TextInput/TextInput";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
-import {Link} from "react-router-dom";
+
 
 interface LoginFormProps extends HTMLAttributes<any> {
   handleHelpCanvas: (isShown: boolean) => void;
@@ -41,21 +41,14 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                 />
               </div>
 
-              <Link to='/client/home'>
+              <div className='vstack mx-auto col-md-5'>
                 <Button
-                  variant='secondary'
-                  className='float-start mt-4 mb-3'
-                  type='button'
+                  className='mt-3 '
+                  type='submit'
                 >
-                  Wstecz
+                  Wyślij
                 </Button>
-              </Link>
-              <Button
-                className='float-end mt-4 mb-3'
-                type='submit'
-              >
-                Zaloguj
-              </Button>
+              </div>
 
               <hr className='text-primary-dark w-100'/>
 
