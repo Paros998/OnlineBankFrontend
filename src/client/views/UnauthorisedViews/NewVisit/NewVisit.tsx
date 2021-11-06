@@ -28,19 +28,25 @@ const NewVisit = () => {
   const history = useHistory();
   const handleSubmit = async (values: NewVisitFormikValues) => {
     sendValues.visitDate = `${values.visitDate.getFullYear()}-${values.visitDate.getMonth()+1}-${values.visitDate.getDate()}`;
-    console.log(values.visitDate)
-    console.log(sendValues);
     sendValues.visitTime = values.visitTime;
     sendValues.isActive = values.isActive;
     sendValues.establishment = values.establishment;
-    try{
-      const response = await axios.post(`/visits`,sendValues);
-      if(response.status === 200){
-        toast.success("👍 Success");
-        history.push("/client/home");
+
+    if(sendValues.establishment === ''){
+      toast.info("Wartość w wyborze Placówki jest niepoprawna 🔒");
+    }
+    else if(sendValues.visitTime === ''){
+      toast.info("Wartość w wyborze Godziny jest niepoprawna 🔒");
+    }else{
+      try{
+        const response = await axios.post(`/visits`,sendValues);
+        if(response.status === 200){
+          toast.success("Wizyta została utworzona\nDziękujemy 👍");
+          history.push("/client/home");
+        }
+      }catch (e: any){
+        toast.error(`👎 ${e.response.data.message}`);
       }
-    }catch (e: any){
-      toast.error(`👎 ${e.response.data.message}`);
     }
   }
 

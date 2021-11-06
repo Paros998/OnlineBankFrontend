@@ -4,9 +4,7 @@ import {Form, useFormikContext} from "formik";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../Inputs/SelectInput/SelectInput";
 import DateInput from "../Inputs/DateInput/DateInput";
-import {HouseFill,Clock} from "react-bootstrap-icons";
 import {NewVisitFormikValues} from "../../interfaces/NewVisitFormikValues";
-import {Link} from "react-router-dom";
 //TODO add key-values to dictionary on backend server
 
 const establishmentOptions = [
@@ -77,27 +75,18 @@ const NewVisitForm = ({...props}) => {
                 />
 
               </section>
-              <section className='vstack mx-auto col-md-5'>
+
+              <hr className='text-primary-dark w-100 '/>
+
+              <div className='vstack mx-auto col-md-5'>
                 <Button
-                  className='mt-3 '
+                  className=''
                   type='submit'
                 >
                   Wyślij
                 </Button>
-              </section>
-                <hr className='text-primary-dark w-100 '/>
-              <section className='vstack mx-auto col-md-3'>
-                <Link to='/client/home'>
-                  <Button
-                    variant='secondary'
-                    className='mb-1'
-                    type='button'
+              </div>
 
-                  >
-                    Wstecz
-                  </Button>
-                </Link>
-              </section>
             </Card.Text>
           </Form>
         </Card.Body>
