@@ -1,10 +1,9 @@
 import React from 'react';
+import UnauthorizedViews from "./views/UnauthorizedViews/UnauthorizedViews";
 
 const Employee = () => {
   return (
-    <div>
-
-    </div>
+    <UnauthorizedViews/>
   );
 };
 
