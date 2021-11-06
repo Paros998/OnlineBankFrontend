@@ -8,23 +8,24 @@ import NewClient from "./NewClient";
 import BackgroundVideo from "./BackgroundVideo";
 import Footer from "../../../../components/Footer/Footer";
 import {Link} from "react-router-dom";
+
 const HomePage = () => {
   return (
     <><BackgroundVideo src={bankHomeVideo} loop={true} autoPlay={true} colorClass={"bg-light-blue"}/>
       <div className='container p-2 mt-3 z-1000 font-poppins font-color-light '>
 
-        <div className='d-flex align-items-center justify-content-between me-4'>
+        <div className='d-flex align-items-center justify-content-between '>
           <img src={bankLogo} alt='BankLogo' className='img-fluid'/>
 
           <div className='fw-bold fs-1 '>
             Witaj w Przyszłości w naszym Banku
           </div>
 
-          <Button variant='primary' size={"lg"} className='rounded-pill mh-50 btn-primary-hover'>
-            <Link to={'/client/login'} className='text-decoration-none font-color-light'>
+          <Link to={'/client/login'} className='text-decoration-none font-color-light'>
+            <Button variant='primary' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
               Logowanie
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
 
         <div className='d-flex justify-content-between mt-5 font-weight-extra-normal fs-3 fst-italic p-1 '>
