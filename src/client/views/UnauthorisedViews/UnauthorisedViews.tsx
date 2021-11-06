@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Login from "./Login/Login";
+import NotFound404 from "../../../components/NotFound404/NotFound404";
 import HomePage from "./HomePage/HomePage";
 import NewVisit from "./NewVisit/NewVisit";
 import Home from "../AuthorisedViews/Home/Home";
@@ -11,6 +12,7 @@ const UnauthorisedViews = () => {
     <Router>
       <Switch>
         <Route
+          exact
           path='/client/home'
           component={HomePage}
         />
@@ -30,9 +32,7 @@ const UnauthorisedViews = () => {
           component={Home}
         />
 
-        <Route path='*'>
-          <Redirect to='/client/home' />
-        </Route>
+        <Route path='/client/*' component={NotFound404}/>
       </Switch>
     </Router>
   );
