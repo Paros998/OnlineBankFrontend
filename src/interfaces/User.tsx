@@ -1,11 +1,10 @@
-import {Runtime} from "inspector";
-
 export interface User {
-  sub:string,
+  sub: string;
   authorities: {
-    key:number,
-    authority:string
-  }[],
-  iat: number,
-  exp: number
+    key: number;
+    authority: string;
+  }[];
+  iat: number;
+  exp: number;
+  userId: number;
 }

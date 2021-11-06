@@ -12,6 +12,7 @@ const UnauthorisedViews = () => {
     <Router>
       <Switch>
         <Route
+          exact
           path='/client/home'
           component={HomePage}
         />
@@ -31,9 +32,7 @@ const UnauthorisedViews = () => {
           component={Home}
         />
 
-        <Route path='*'>
-          <Redirect to='/client/home' />
-        </Route>
+        <Route path='/client/*' component={NotFound404}/>
       </Switch>
     </Router>
   );

@@ -1,7 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 
-import NotFound404 from "../../../components/NotFound404/NotFound404";
 import LoggedHomePage from "./Home/LoggedHomePage";
 
 const AuthorisedViews = () => {
@@ -9,12 +8,8 @@ const AuthorisedViews = () => {
     <Router>
       <Switch>
         <Route
-          path='/client/logged/home'
+          path='/client/home'
           component={LoggedHomePage}
-        />
-        <Route
-          path='*'
-          component={NotFound404}
         />
       </Switch>
     </Router>
