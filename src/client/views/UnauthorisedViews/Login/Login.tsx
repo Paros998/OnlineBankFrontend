@@ -14,6 +14,8 @@ import {toast} from "react-toastify";
 import jwtDecode from "jwt-decode";
 import {User} from "../../../../interfaces/User";
 import { appendUrlSearchParams } from "../../../../utils/appendUrlSearchParams";
+import { Roles } from "../../../../enums/Roles";
+import { useCurrentUser } from "../../../../contexts/CurrentClientContext";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -23,6 +25,7 @@ const formikValues: LoginFormikValues = {
 const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
   const history = useHistory();
+  const { fetchUser } = useCurrentUser();
 
   const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
 
@@ -34,16 +37,19 @@ const Login = () => {
       if (response.status === 200) {
         const token = response.headers["authorization"];
         const user: User = jwtDecode(token);
+
+        const userId = user.userId;
         const role = user.authorities[0].authority;
 
-        if (role === "ROLE_CLIENT") {
+        if (role === Roles.RoleClient) {
           toast.success("👍 Success");
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
-          history.push("/client/logged/home");
+          await fetchUser({ userId, role });
+          history.push('/');
+          window.location.reload();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
-          // TODO add function to reload user context
           history.push('/employee/login');
         }
       }
