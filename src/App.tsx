@@ -15,7 +15,7 @@ function App() {
         />
 
         <Route path='*'>
-          <Redirect to='/client/home' />
+          <Redirect to='/client' />
         </Route>
       </Switch>
     </Router>
