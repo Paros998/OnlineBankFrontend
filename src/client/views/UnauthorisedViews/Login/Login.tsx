@@ -2,8 +2,8 @@ import React, { useState} from 'react';
 import { Formik } from 'formik';
 import { Image } from "react-bootstrap";
 import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
-import bgLogin1 from '../../../../assets/images/bg-happy.jpeg';
-import bgLogin2 from '../../../../assets/images/bg-login1.jpg';
+import bgLogin2 from '../../../../assets/images/bg-client-login2.jpg';
+import bgLogin1 from '../../../../assets/images/bg-client-login1.jpeg';
 import LoginForm from "../../../../components/LoginForm/LoginForm";
 import { LoginFormikValues } from "../../../../interfaces/LoginFormikValues";
 import Footer from "../../../../components/Footer/Footer";
@@ -54,13 +54,15 @@ const Login = () => {
         }
       }
     } catch (e: any) {
-      toast.error(`👎 ${e?.response?.data?.message}`);
+      toast.error(`👎 Nie udało się zalogować \n${e?.response?.data?.message}`);
     }
   }
 
   return (
     <>
-      <UnauthorisedNavbar/>
+      <UnauthorisedNavbar
+        type='client'
+      />
       <div className='position-relative vh-100'>
         <Image
           src={bgLogin1}
@@ -79,6 +81,7 @@ const Login = () => {
           <LoginForm
             className='d-flex h-75 justify-content-center align-items-center'
             handleHelpCanvas={handleHelpCanvas}
+            type='client'
           />
         </Formik>
       </div>
@@ -88,6 +91,7 @@ const Login = () => {
       <LoginHelpOffCanvas
         showHelpCanvas={showHelpCanvas}
         handleHelpCanvas={handleHelpCanvas}
+        type='client'
       />
     </>
   );

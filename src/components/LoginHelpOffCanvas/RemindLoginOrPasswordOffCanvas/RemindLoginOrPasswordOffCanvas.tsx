@@ -12,6 +12,7 @@ interface RemindLoginOrPasswordOffCanvasProps {
   handleHelpCanvas: (isShown: boolean) => void;
   header: string;
   requestUrl: string;
+  type:string;
 }
 
 interface RemindLoginOrPasswordFormikValues {
@@ -24,7 +25,8 @@ const RemindLoginOrPasswordOffCanvas:
                                                handleHelpCanvas,
                                                requestUrl,
                                                header,
-                                               handleRemindLoginCanvas
+                                               handleRemindLoginCanvas,
+                                               type
                                              }) => {
   const handleSubmit = async ({email}: RemindLoginOrPasswordFormikValues) => {
     try {
@@ -42,17 +44,20 @@ const RemindLoginOrPasswordOffCanvas:
       onHide={() => handleRemindLoginCanvas(false)}
       backdropClassName='opacity-0'
     >
-      <div className='d-flex justify-content-center'>
+      <div className={`d-flex justify-content-center ${type === 'employee' ? 'bg-dark text-white' : 'bg-light'} `}>
         <Offcanvas.Header>
           <Offcanvas.Title>
-            <TextWithDiamond>
+            <TextWithDiamond
+            headerFontSize='fs-4'
+            >
               {header}
             </TextWithDiamond>
           </Offcanvas.Title>
         </Offcanvas.Header>
       </div>
-      {/*TODO add spinner component for loadings and waitings*/}
-      <Offcanvas.Body>
+
+      <Offcanvas.Body className={`d-flex text-center flex-column justify-content-between 
+        ${type === 'employee' ? 'bg-dark text-white' : 'bg-light'}`}>
         <Formik<RemindLoginOrPasswordFormikValues>
           initialValues={{email: ''}}
           onSubmit={handleSubmit}
@@ -64,12 +69,14 @@ const RemindLoginOrPasswordOffCanvas:
               <TextInput
                 name='email'
                 label='Podaj adres e-mail'
+                labelClassName='fs-5'
+                className={`fs-5 ${type === 'employee' ? 'bg-dark text-white border-light ' : 'bg-light border-dark'}`}
               />
             </section>
 
             <section>
               <Button
-                className='w-50'
+                className='w-50 fs-5'
                 type='submit'
               >
                 Wyslij
@@ -78,7 +85,7 @@ const RemindLoginOrPasswordOffCanvas:
               <hr className='text-primary w-100'/>
 
               <Button
-                className='w-50'
+                className='w-50 fs-5'
                 onClick={() => handleRemindLoginCanvas(false)}
               >
                 Wstecz

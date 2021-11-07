@@ -52,7 +52,9 @@ const NewVisit = () => {
 
   return (
     <>
-      <UnauthorisedNavbar/>
+      <UnauthorisedNavbar
+        type='client'
+      />
       <div className='position-relative vh-100'>
         <Image
           src={bgHappy1}

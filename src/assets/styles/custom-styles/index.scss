@@ -3,6 +3,10 @@
 @import '~react-datepicker/dist/react-datepicker.min.css';
 @import '~react-toastify/dist/ReactToastify.css';
 
+hr:not([size]){
+  height: 2px;
+}
+
 .all-sides-0{
   top: 0;
   left: 0;
@@ -19,6 +23,21 @@
 }
 .obj-fit-cover{
   object-fit: cover;
+}
+
+//navs
+
+.bx-shadow-black{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.61);
+}
+
+//backgrounds
+
+.bg-employee-login{
+  background-image: url("../../images/bg-employee-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 //Fonts

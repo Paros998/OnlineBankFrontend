@@ -17,6 +17,12 @@ function App() {
           </CurrentUserProvider>
         </Route>
 
+        <Route path='/employee/login'>
+          <CurrentUserProvider>
+            <Employee/>
+          </CurrentUserProvider>
+        </Route>
+
         <Route path='*'>
           <Redirect to='/client/home'/>
         </Route>

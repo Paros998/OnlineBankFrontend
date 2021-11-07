@@ -7,7 +7,7 @@ type FooterProps = {
 
 const Footer = (props: FooterProps) => {
   return (
-    <footer className={`bg-secondary ${props.positionClass}`}>
+    <footer className={`bg-dark ${props.positionClass}`}>
       <Container className='w-100 text-white'>
         ©2021 Future Bank sp. z o.o.
       </Container>
