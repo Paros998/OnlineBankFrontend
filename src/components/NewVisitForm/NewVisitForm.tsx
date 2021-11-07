@@ -34,11 +34,13 @@ const NewVisitForm = ({...props}) => {
   const {setFieldValue} = useFormikContext<NewVisitFormikValues>();
   return (
     <div {...props}>
-      <Card style={{width: '22rem'}} className='border-1 border-primary rounded-card-10'>
+      <Card style={{width: '22rem'}} className='rounded-card-10'>
         <Card.Body>
           <Form>
             <Card.Title>
-              <TextWithDiamond>
+              <TextWithDiamond
+              headerFontSize='fs-5'
+              >
                 <h5>Umawianie Wizyty</h5>
               </TextWithDiamond>
             </Card.Title>

@@ -9,7 +9,9 @@ const NewClient = () => {
     <div className='justify-content-between mt-5 d-flex align-items-center mb-5'>
       <div className='rounded-card-10 bg-light border border-primary text-dark w-auto h-50 p-2 '>
         <div className='align-middle '>
-          <TextWithDiamond>
+          <TextWithDiamond
+          headerFontSize='fs-5'
+          >
             <span className='fs-5 '>
               Nie jesteś klientem naszego banku?
             </span>

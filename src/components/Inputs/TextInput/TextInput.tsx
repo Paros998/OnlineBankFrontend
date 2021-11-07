@@ -15,7 +15,7 @@ const TextInput: FC<TextInputProps> = ({ label, containerClass, labelClassName, 
     <Form.Group className={containerClass}>
       <Form.Label className={labelClassName}>{label}</Form.Label>
 
-      <Form.Control {...field} {...props}/>
+      <Form.Control {...field} {...props} />
 
       <ErrorMessage name={field.name}>
         {(errorMessage) => (

@@ -9,27 +9,31 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 
 interface LoginFormProps extends HTMLAttributes<any> {
   handleHelpCanvas: (isShown: boolean) => void;
+  type: string;
 }
 
-const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
+const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
   return (
     <div {...props}>
-      <Card style={{ width: '22rem' }} className='border-1 border-primary rounded-card-10'>
+      <Card style={{ width: '22rem' }} className={`rounded-card-10 ${type === 'employee' ? 'bg-dark text-white' : 'bg-light text-dark'}`}>
         <Card.Body>
-          <Card.Title>
-            <TextWithDiamond>
-              <h5>Logowanie</h5>
-            </TextWithDiamond>
-          </Card.Title>
+            <Card.Title>
+              <TextWithDiamond
+              headerFontSize='fs-5'
+              >
+                <h5>Logowanie</h5>
+              </TextWithDiamond>
+            </Card.Title>
 
 
           <Form className='p-2'>
-            <div className='bg-primary rounded p-3'>
+            <div className='bg-primary rounded-card-10 p-3'>
               <TextInput
                 name='username'
                 label='Login'
                 placeholder='Wpisz login'
                 labelClassName='text-white'
+                className='text-dark '
               />
 
               <TextInput
@@ -39,31 +43,35 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas, ...props }) => {
                 placeholder='Wprowadź hasło'
                 labelClassName='text-white'
                 containerClass='mt-4 mb-3'
+                className='text-dark '
               />
             </div>
 
             <div className='vstack mx-auto col-md-5'>
-              <SubmitButton className='mt-3 '>
-                Wyślij
+              <SubmitButton className='mt-3 rounded-pill fs-5'>
+                Zaloguj
               </SubmitButton>
             </div>
 
             <hr className='text-primary-dark w-100'/>
 
-            <div className='d-flex justify-content-between align-items-baseline'>
-              <TextWithDiamond>
+              <div className='d-flex justify-content-between align-items-baseline'>
+                <TextWithDiamond
+                headerFontSize='fs-6'
+                >
                   <span className='text-wrap'>
                     Problem z logowaniem <ArrowRight/>
                   </span>
               </TextWithDiamond>
 
-              <Button
-                className='float-end'
-                onClick={() => handleHelpCanvas(true)}
-              >
-                Pomoc
-              </Button>
-            </div>
+                <Button
+                  className='float-end rounded-pill fs-5'
+                  onClick={() => handleHelpCanvas(true)}
+                >
+                  Pomoc
+                </Button>
+              </div>
+
           </Form>
         </Card.Body>
       </Card>

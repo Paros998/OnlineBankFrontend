@@ -8,6 +8,7 @@ import NewClient from "./NewClient";
 import BackgroundVideo from "./BackgroundVideo";
 import Footer from "../../../../components/Footer/Footer";
 import {Link} from "react-router-dom";
+import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 
 const HomePage = () => {
   return (
@@ -55,6 +56,13 @@ const HomePage = () => {
         </div>
 
         <NewClient/>
+        <div className='w-100 d-flex justify-content-center'>
+          <Link to={'/home'} className='text-decoration-none font-color-light'>
+            <Button variant='dark' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
+              Powrót
+            </Button>
+          </Link>
+        </div>
       </div>
       <Footer positionClass={'fixed-bottom'}/>
     </>

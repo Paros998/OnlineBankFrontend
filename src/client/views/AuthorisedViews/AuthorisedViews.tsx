@@ -7,7 +7,9 @@ import AuthorisedNavbar from "../../../components/AuthorisedNavbar/AuthorisedNav
 const AuthorisedViews = () => {
   return (
     <>
-      <AuthorisedNavbar/>
+      <AuthorisedNavbar
+        type='client'
+      />
       <Router>
         <Switch>
           <Route

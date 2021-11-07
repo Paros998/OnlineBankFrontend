@@ -3,21 +3,33 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import Client from "./client/Client";
 import { initAxios } from "./utils/initAxios";
 import CurrentUserProvider from "./contexts/CurrentClientContext";
+import Employee from "./employee/Employee";
+import RoleRouting from "./home/RoleRouting";
 
 initAxios();
-
+//TODO better routing
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/client/home'>
+        <Route path='/home'>
+          <RoleRouting/>
+        </Route>
+
+        <Route path='/client'>
           <CurrentUserProvider>
             <Client/>
           </CurrentUserProvider>
         </Route>
 
+        <Route path='/employee'>
+          <CurrentUserProvider>
+            <Employee/>
+          </CurrentUserProvider>
+        </Route>
+
         <Route path='*'>
-          <Redirect to='/client/home'/>
+          <Redirect to='/home'/>
         </Route>
       </Switch>
     </Router>
