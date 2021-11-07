@@ -46,11 +46,11 @@ const Login = () => {
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
           await fetchUser({ userId, role });
-          history.push('/');
+          history.push('/client/home');
           window.location.reload();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
-          history.push('/employee/login');
+          history.push('/employee');
         }
       }
     } catch (e: any) {

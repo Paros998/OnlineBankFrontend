@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import Footer from "../../../../components/Footer/Footer";
 import LoginHelpOffCanvas from "../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 import {LoginFormikValues} from "../../../../interfaces/LoginFormikValues";
 import LoginForm from "../../../../components/LoginForm/LoginForm";
@@ -14,6 +14,7 @@ import {User} from "../../../../interfaces/User";
 import jwtDecode from "jwt-decode";
 import {Roles} from "../../../../enums/Roles";
 import {toast} from "react-toastify";
+import {Button} from "react-bootstrap";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -45,11 +46,11 @@ const Login = () => {
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
           await fetchUser({ userId, role });
-          history.push('/');
+          history.push('/employee/home');
           window.location.reload();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
-          history.push('/client/login');
+          history.push('/client');
         }
       }
     } catch (e: any) {
@@ -73,6 +74,13 @@ const Login = () => {
             type='employee'
           />
         </Formik>
+        <div className='w-100 d-flex justify-content-center'>
+          <Link to={'/home'} className='text-decoration-none font-color-light'>
+            <Button variant='dark' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
+              Powrót
+            </Button>
+          </Link>
+        </div>
       </div>
 
       <Footer />

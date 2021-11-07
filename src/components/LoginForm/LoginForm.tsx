@@ -32,7 +32,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
                   label='Login'
                   placeholder='Wpisz login'
                   labelClassName='text-white'
-                  className='text-dark text-center'
+                  className='text-dark '
                 />
 
                 <TextInput
@@ -42,7 +42,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
                   placeholder='Wprowadź hasło'
                   labelClassName='text-white'
                   containerClass='mt-4 mb-3 '
-                  className='text-dark text-center'
+                  className='text-dark '
                 />
               </div>
 

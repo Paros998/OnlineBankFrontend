@@ -78,6 +78,9 @@ hr:not([size]){
 .z-1000{
   z-index: 1000;
 }
+.z-2000{
+  z-index: 2000;
+}
 .bg-video{
   z-index: -1;
 }
@@ -208,3 +211,12 @@ hr:not([size]){
   border-radius: 8px;
 }
 
+//margins
+
+.me-125{
+  margin-right: 125px;
+}
+
+.ml-125{
+  margin-left: 125px;
+}
