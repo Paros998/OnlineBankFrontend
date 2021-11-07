@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import { useCurrentUser } from "../../contexts/CurrentClientContext";
 
 type AuthorisedNavbarProps = {
   type?: string;
@@ -9,6 +10,7 @@ type AuthorisedNavbarProps = {
 
 const AuthorisedNavbar = (props: AuthorisedNavbarProps) => {
   // TODO delete sandbox path when user context will be created
+  const { handleLogout } = useCurrentUser();
   return (
     <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-black z-1000'>
       <Container className='pt-1 pb-1'>
@@ -37,6 +39,7 @@ const AuthorisedNavbar = (props: AuthorisedNavbarProps) => {
                     variant='light'
                     type='button'
                     className='text-primary btn-outline-dark rounded-pill'
+                    onClick={handleLogout}
                   >
                     Wyloguj
                   </Button>
@@ -44,8 +47,10 @@ const AuthorisedNavbar = (props: AuthorisedNavbarProps) => {
 
                 : <Nav.Link as={Link} to='/client/login' className='me-2'>
                   <Button
-                    variant='outline-light'
+                    variant='light'
                     type='button'
+                    className='text-primary btn-outline-dark rounded-pill'
+                    onClick={handleLogout}
                   >
                     Wyloguj
                   </Button>

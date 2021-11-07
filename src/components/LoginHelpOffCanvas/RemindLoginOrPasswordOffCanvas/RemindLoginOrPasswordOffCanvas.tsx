@@ -1,9 +1,10 @@
-import {Form, Formik} from 'formik';
-import React, {FC} from 'react';
+import { Form, Formik } from 'formik';
+import React, { FC } from 'react';
 import axios from "axios";
-import {Button, Offcanvas} from "react-bootstrap";
+import { Button, Offcanvas } from "react-bootstrap";
 import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
 import TextInput from "../../Inputs/TextInput/TextInput";
+import SubmitButton from "../../SubmitButton/SubmitButton";
 
 
 interface RemindLoginOrPasswordOffCanvasProps {
@@ -74,15 +75,12 @@ const RemindLoginOrPasswordOffCanvas:
               />
             </section>
 
-            <section>
-              <Button
-                className='w-50 fs-5'
-                type='submit'
-              >
-                Wyslij
-              </Button>
+              <section>
+                <SubmitButton className='w-50 fs-5'>
+                  Wyslij
+                </SubmitButton>
 
-              <hr className='text-primary w-100'/>
+                <hr className='text-primary w-100'/>
 
               <Button
                 className='w-50 fs-5'

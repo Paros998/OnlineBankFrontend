@@ -37,17 +37,14 @@ const Login = () => {
       if (response.status === 200) {
         const token = response.headers["authorization"];
         const user: User = jwtDecode(token);
-
-        const userId = user.userId;
         const role = user.authorities[0].authority;
 
         if (role === Roles.RoleClient) {
           toast.success("👍 Success");
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
-          await fetchUser({ userId, role });
           history.push('/client/home');
-          window.location.reload();
+          await fetchUser();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
           history.push('/employee');

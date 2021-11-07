@@ -4,6 +4,7 @@ import { ArrowRight } from 'react-bootstrap-icons';
 import { Form } from "formik";
 import TextInput from "../Inputs/TextInput/TextInput";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 
 interface LoginFormProps extends HTMLAttributes<any> {
@@ -16,7 +17,6 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
     <div {...props}>
       <Card style={{ width: '22rem' }} className={`rounded-card-10 ${type === 'employee' ? 'bg-dark text-white' : 'bg-light text-dark'}`}>
         <Card.Body>
-          <Form>
             <Card.Title>
               <TextWithDiamond
               headerFontSize='fs-5'
@@ -25,37 +25,35 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
               </TextWithDiamond>
             </Card.Title>
 
-            <Card.Text className='p-2'>
-              <div className='bg-primary rounded-card-10 p-3'>
-                <TextInput
-                  name='username'
-                  label='Login'
-                  placeholder='Wpisz login'
-                  labelClassName='text-white'
-                  className='text-dark '
-                />
 
-                <TextInput
-                  name='password'
-                  type='password'
-                  label='Hasło'
-                  placeholder='Wprowadź hasło'
-                  labelClassName='text-white'
-                  containerClass='mt-4 mb-3 '
-                  className='text-dark '
-                />
-              </div>
+          <Form className='p-2'>
+            <div className='bg-primary rounded-card-10 p-3'>
+              <TextInput
+                name='username'
+                label='Login'
+                placeholder='Wpisz login'
+                labelClassName='text-white'
+                className='text-dark '
+              />
 
-              <div className='vstack mx-auto col-md-5'>
-                <Button
-                  className='mt-3 rounded-pill fs-5'
-                  type='submit'
-                >
-                  Zaloguj
-                </Button>
-              </div>
+              <TextInput
+                name='password'
+                type='password'
+                label='Hasło'
+                placeholder='Wprowadź hasło'
+                labelClassName='text-white'
+                containerClass='mt-4 mb-3'
+                className='text-dark '
+              />
+            </div>
 
-              <hr className='text-primary-dark w-100'/>
+            <div className='vstack mx-auto col-md-5'>
+              <SubmitButton className='mt-3 rounded-pill fs-5'>
+                Zaloguj
+              </SubmitButton>
+            </div>
+
+            <hr className='text-primary-dark w-100'/>
 
               <div className='d-flex justify-content-between align-items-baseline'>
                 <TextWithDiamond
@@ -64,7 +62,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
                   <span className='text-wrap'>
                     Problem z logowaniem <ArrowRight/>
                   </span>
-                </TextWithDiamond>
+              </TextWithDiamond>
 
                 <Button
                   className='float-end rounded-pill fs-5'
@@ -73,7 +71,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
                   Pomoc
                 </Button>
               </div>
-            </Card.Text>
+
           </Form>
         </Card.Body>
       </Card>

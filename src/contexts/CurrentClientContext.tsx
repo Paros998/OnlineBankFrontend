@@ -12,8 +12,13 @@ interface CurrentUserProviderProps {
 
 const CurrentUserProvider: FC<CurrentUserProviderProps> = ({ children }) => {
   const data = useFetchCurrentClient();
+  const handleLogout = () => {
+    localStorage.removeItem('JWT_USER_TOKEN');
+    data.setCurrentUser(undefined);
+  };
+
   return (
-    <CurrentClientContext.Provider value={{ ...data }}>
+    <CurrentClientContext.Provider value={{ ...data, handleLogout }}>
       {children}
     </CurrentClientContext.Provider>
   );
