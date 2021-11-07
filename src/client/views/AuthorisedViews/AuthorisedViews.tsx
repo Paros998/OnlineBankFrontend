@@ -1,18 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import LoggedHomePage from "./Home/LoggedHomePage";
+import AuthorisedNavbar from "../../../components/AuthorisedNavbar/AuthorisedNavbar";
 
 const AuthorisedViews = () => {
   return (
-    <Router>
-      <Switch>
-        <Route
-          path='/client/home'
-          component={LoggedHomePage}
-        />
-      </Switch>
-    </Router>
+    <>
+      <AuthorisedNavbar/>
+      <Router>
+        <Switch>
+          <Route
+            path='/client/home'
+            component={LoggedHomePage}
+          />
+        </Switch>
+      </Router>
+    </>
   );
 };
 
