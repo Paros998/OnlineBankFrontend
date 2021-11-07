@@ -1,8 +1,8 @@
 import { ClientModel } from "./ClientModel";
-import { TokenData } from "./TokenData";
-
 
 export interface CurrentClientContextModel {
   currentUser?: ClientModel;
-  fetchUser: (tokenData?: TokenData) => void;
+  fetchUser: () => void;
+  isPending: boolean;
+  handleLogout: () => void;
 }

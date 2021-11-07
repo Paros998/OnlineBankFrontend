@@ -1,10 +1,12 @@
 import React from 'react';
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import { useCurrentUser } from "../../contexts/CurrentClientContext";
 
 const AuthorisedNavbar = () => {
   // TODO delete sandbox path when user context will be created
+  const { handleLogout } = useCurrentUser();
   return (
     <Navbar bg="primary-dark" className='sticky-top'>
       <Container>
@@ -27,7 +29,13 @@ const AuthorisedNavbar = () => {
         <Navbar.Collapse id="nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to='/client/home'>
-              <span className='text-white'>Strona główna</span>
+              <Button
+                variant='light'
+                className='text-primary rounded-3'
+                onClick={handleLogout}
+              >
+                Wyloguj
+              </Button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
