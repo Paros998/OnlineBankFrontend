@@ -45,9 +45,8 @@ const Login = () => {
           toast.success("👍 Success");
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
-          await fetchUser({ userId, role });
           history.push('/employee/home');
-          window.location.reload();
+          await fetchUser();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
           history.push('/client');

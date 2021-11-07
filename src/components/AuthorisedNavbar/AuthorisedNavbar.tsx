@@ -34,7 +34,7 @@ const AuthorisedNavbar = (props: AuthorisedNavbarProps) => {
           <Nav className="ms-auto">
             {
               props.type === 'employee'
-                ? <Nav.Link as={Link} to='/employee/login' className='me-2 '>
+                ? <Nav.Link as={Link} to='/employee/login' className='me-2 p-0'>
                   <Button
                     variant='light'
                     type='button'
@@ -45,11 +45,11 @@ const AuthorisedNavbar = (props: AuthorisedNavbarProps) => {
                   </Button>
                 </Nav.Link>
 
-                : <Nav.Link as={Link} to='/client/login' className='me-2'>
+                : <Nav.Link as={Link} to='/client/login' className='me-2 p-0'>
                   <Button
                     variant='light'
                     type='button'
-                    className='text-primary btn-outline-dark rounded-pill'
+                    className='text-primary btn-outline-dark rounded-pill '
                     onClick={handleLogout}
                   >
                     Wyloguj
