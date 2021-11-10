@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Login from "./Login/Login";
-import NotFound404 from "../../../components/NotFound404/NotFound404";
+import NotFound404 from "../../../../components/NotFound404/NotFound404";
 import HomePage from "./HomePage/HomePage";
 import NewVisit from "./NewVisit/NewVisit";
 import Home from "../AuthorisedViews/Home/Home";
-import RoleRouting from "../../../home/RoleRouting";
+import RoleRouting from "../../../../home/RoleRouting";
 import Employee from "../../../employee/Employee";
 
 const UnauthorisedViews = () => {

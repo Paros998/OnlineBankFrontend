@@ -1,8 +1,8 @@
 import React from 'react';
 import UnauthorisedViews from "./views/UnauthorisedViews/UnauthorisedViews";
-import { useCurrentUser } from "../contexts/CurrentClientContext";
+import { useCurrentUser } from "../../contexts/CurrentClientContext";
 import AuthorisedViews from "./views/AuthorisedViews/AuthorisedViews";
-import Pending from "../components/Pending/Pending";
+import Pending from "../../components/Pending/Pending";
 
 const Client = () => {
   const { currentUser, isPending } = useCurrentUser();

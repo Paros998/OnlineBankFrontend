@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import LoggedHomePage from "./Home/LoggedHomePage";
-import AuthorisedNavbar from "../../../components/AuthorisedNavbar/AuthorisedNavbar";
+import AuthorisedNavbar from "../../../../components/AuthorisedNavbar/AuthorisedNavbar";
 
 const AuthorisedViews = () => {
   return (

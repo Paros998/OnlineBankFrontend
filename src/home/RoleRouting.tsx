@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route,BrowserRouter as Router, Switch} from "react-router-dom";
 import RoleHome from "./views/RoleHome";
-import Employee from "../employee/Employee";
-import Client from "../client/Client";
+import Employee from "../roles/employee/Employee";
+import Client from "../roles/client/Client";
 const RoleRouting = () => {
 
   return (

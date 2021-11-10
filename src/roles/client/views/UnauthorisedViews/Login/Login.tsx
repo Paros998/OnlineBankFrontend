@@ -1,20 +1,21 @@
-import React, {useState} from 'react';
-import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
-import Footer from "../../../../components/Footer/Footer";
-import LoginHelpOffCanvas from "../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
-import {Link, useHistory} from "react-router-dom";
-
-import {LoginFormikValues} from "../../../../interfaces/LoginFormikValues";
-import LoginForm from "../../../../components/LoginForm/LoginForm";
-import {Formik} from "formik";
-import {useCurrentUser} from "../../../../contexts/CurrentClientContext";
-import {appendUrlSearchParams} from "../../../../utils/appendUrlSearchParams";
+import React, { useState} from 'react';
+import { Formik } from 'formik';
+import {Button, Image} from "react-bootstrap";
+import UnauthorisedNavbar from "../../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
+import bgLogin2 from '../../../../../assets/images/bg-client-login2.jpg';
+import bgLogin1 from '../../../../../assets/images/bg-client-login1.jpeg';
+import LoginForm from "../../../../../components/LoginForm/LoginForm";
+import { LoginFormikValues } from "../../../../../interfaces/LoginFormikValues";
+import Footer from "../../../../../components/Footer/Footer";
+import LoginHelpOffCanvas from "../../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
 import axios from "axios";
-import {User} from "../../../../interfaces/User";
-import jwtDecode from "jwt-decode";
-import {Roles} from "../../../../enums/Roles";
+import {Link, useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
-import {Button} from "react-bootstrap";
+import jwtDecode from "jwt-decode";
+import {User} from "../../../../../interfaces/User";
+import { appendUrlSearchParams } from "../../../../../utils/appendUrlSearchParams";
+import { Roles } from "../../../../../enums/Roles";
+import { useCurrentUser } from "../../../../../contexts/CurrentClientContext";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -23,7 +24,6 @@ const formikValues: LoginFormikValues = {
 
 const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
-
   const history = useHistory();
   const { fetchUser } = useCurrentUser();
 
@@ -37,19 +37,17 @@ const Login = () => {
       if (response.status === 200) {
         const token = response.headers["authorization"];
         const user: User = jwtDecode(token);
-
-        const userId = user.userId;
         const role = user.authorities[0].authority;
 
-        if (role === Roles.RoleAdmin || role === Roles.RoleEmployee) {
+        if (role === Roles.RoleClient) {
           toast.success("👍 Success");
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
-          history.push('/employee/home');
+          history.push('/client/home');
           await fetchUser();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
-          history.push('/client');
+          history.push('/employee');
         }
       }
     } catch (e: any) {
@@ -60,9 +58,19 @@ const Login = () => {
   return (
     <>
       <UnauthorisedNavbar
-        type='employee'
+        type='client'
       />
-      <div className='vh-100 bg-employee-login'>
+      <div className='position-relative vh-100'>
+        <Image
+          src={bgLogin1}
+          className='start-50 w-50 min-vh-100 position-absolute top-left-0'
+        />
+
+        <Image
+          src={bgLogin2}
+          className='w-50 h-100 position-absolute top-left-0'
+        />
+
         <Formik<LoginFormikValues>
           initialValues={formikValues}
           onSubmit={handleSubmit}
@@ -70,16 +78,9 @@ const Login = () => {
           <LoginForm
             className='d-flex h-75 justify-content-center align-items-center'
             handleHelpCanvas={handleHelpCanvas}
-            type='employee'
+            type='client'
           />
         </Formik>
-        <div className='w-100 d-flex justify-content-center'>
-          <Link to={'/home'} className='text-decoration-none font-color-light'>
-            <Button variant='dark' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
-              Powrót
-            </Button>
-          </Link>
-        </div>
       </div>
 
       <Footer />
@@ -87,7 +88,7 @@ const Login = () => {
       <LoginHelpOffCanvas
         showHelpCanvas={showHelpCanvas}
         handleHelpCanvas={handleHelpCanvas}
-        type='employee'
+        type='client'
       />
     </>
   );
