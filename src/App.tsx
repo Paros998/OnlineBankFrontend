@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import Client from "./client/Client";
+import Client from "./roles/client/Client";
 import { initAxios } from "./utils/initAxios";
 import CurrentUserProvider from "./contexts/CurrentClientContext";
-import Employee from "./employee/Employee";
+import Employee from "./roles/employee/Employee";
 import RoleRouting from "./home/RoleRouting";
+import CurrentEmployeeProvider from "./contexts/CurrentEmployeeContext";
 
 initAxios();
 //TODO better routing
@@ -23,9 +24,9 @@ function App() {
         </Route>
 
         <Route path='/employee'>
-          <CurrentUserProvider>
+          <CurrentEmployeeProvider>
             <Employee/>
-          </CurrentUserProvider>
+          </CurrentEmployeeProvider>
         </Route>
 
         <Route path='*'>

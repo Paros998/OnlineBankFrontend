@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Client from "../../../client/Client";
-import RoleRouting from "../../../home/RoleRouting";
-import NotFound404 from "../../../components/NotFound404/NotFound404";
+import RoleRouting from "../../../../home/RoleRouting";
+import NotFound404 from "../../../../components/NotFound404/NotFound404";
 import Employee from "../../Employee";
 import HomePage from "./Home/HomePage";
 

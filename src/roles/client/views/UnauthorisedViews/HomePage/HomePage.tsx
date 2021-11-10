@@ -1,14 +1,14 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
-import bankLogo from '../../../../assets/images/logo.png'
+import bankLogo from '../../../../../assets/images/logo.png'
 // @ts-ignore
-import bankHomeVideo from "../../../../assets/videos/bankHomePage.mp4";
+import bankHomeVideo from "../../../../../assets/videos/bankHomePage.mp4";
 
 import NewClient from "./NewClient";
 import BackgroundVideo from "./BackgroundVideo";
-import Footer from "../../../../components/Footer/Footer";
+import Footer from "../../../../../components/Footer/Footer";
 import {Link} from "react-router-dom";
-import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
+import UnauthorisedNavbar from "../../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 
 const HomePage = () => {
   return (
