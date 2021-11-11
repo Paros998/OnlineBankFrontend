@@ -1,6 +1,7 @@
 export interface CurrentUserContextModel<T> {
   currentUser?: T;
-  fetchUser: () => void;
+  fetchUser: <T>() => Promise<void>;
   isPending: boolean;
   handleLogout: () => void;
+  role: string;
 }

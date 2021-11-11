@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {Form, FormSelectProps, InputGroup} from "react-bootstrap";
-import {ErrorMessage, useField} from "formik";
+import React, { FC, ReactNode } from 'react';
+import { Form, FormSelectProps, InputGroup } from "react-bootstrap";
+import { ErrorMessage, useField } from "formik";
 
-type option = { value: any ,key: any}
+type option = { value: any, key: any }
 
 interface SelectInputProps extends FormSelectProps {
   label?: string;
@@ -11,23 +11,28 @@ interface SelectInputProps extends FormSelectProps {
   containerClass?: string;
   options: option[];
   placeholder: string;
-  iconClass: string;
+  iconComponent: ReactNode;
 }
 
-const SelectInput: FC<SelectInputProps> = ({ label, containerClass, labelClassName,iconClass, ...props }) => {
+const SelectInput: FC<SelectInputProps> = ({ label, containerClass, labelClassName, iconComponent, ...props }) => {
   const [ field ] = useField(props.name);
   return (
     <Form.Group className={containerClass}>
-      <Form.Label className={labelClassName}>{label}</Form.Label>
+      <Form.Label className={labelClassName}>
+        {label}
+      </Form.Label>
+
       <InputGroup>
-        <Form.Select {...field} {...props} bsPrefix='form-select select btn' className={iconClass}>
-          <option >{props.placeholder}  </option>
-          {
-            props.options.map( (item) => {
-              return <option key={item.key} value={item.value}>{item.value}</option>
-            })
-          }
+        <Form.Select {...field} {...props} bsPrefix='form-select select btn'>
+          <option>{props.placeholder} </option>
+          {props.options.map((item) => (
+            <option key={item.key} value={item.value}>{item.value}</option>
+          ))}
         </Form.Select>
+
+        <InputGroup.Text className='bg-white border-0'>
+          {iconComponent}
+        </InputGroup.Text>
       </InputGroup>
 
       <ErrorMessage name={field.name}>

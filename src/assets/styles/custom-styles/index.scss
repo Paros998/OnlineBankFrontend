@@ -28,7 +28,7 @@ hr:not([size]){
 //navs
 
 .bx-shadow-black{
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.61);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.61);
 }
 
 //backgrounds
@@ -119,48 +119,35 @@ hr:not([size]){
   background-color: $primary-light;
 }
 .select-establishment{
-  background-image: url('house.png');
 
 }
 .select-hour{
-  background-image: url('clock.png');
 
 }
 .select-date{
-  background-image: url('calendar.png');
+
+  height: 40px;
+}
+
+.select-date{
 
   height: 40px;
 }
 
 .custom-select{
   background-image: none;
-  background-color: #FFFFFF;
   -webkit-appearance: none;
   text-align: left;
-  height: 40px;
-
-}
-.select-date{
-  background-image: url('calendar.png');
-
-  height: 40px;
 }
 
-.custom-select {
-  background-image: none;
-}
-.custom-select{
-  background-image: none;
-  background-color: #FFFFFF;
-  -webkit-appearance: none;
-  text-align: left;
-  height: 40px;
-}
 //DatePicker
 .react-datepicker {
   border: none;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
   border-radius: 4px;
+}
+.react-datepicker-popper {
+  z-index: 3;
 }
 
 .react-datepicker__header {

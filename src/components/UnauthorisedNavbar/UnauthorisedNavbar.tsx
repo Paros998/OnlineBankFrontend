@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import logo from '../../assets/images/logo.png';
 import {Link} from "react-router-dom";
 
@@ -10,7 +10,7 @@ type UnauthorisedNavbarProps = {
 const UnauthorisedNavbar = (props: UnauthorisedNavbarProps) => (
   <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-black z-1000'>
     <Container className='pt-1 pb-1'>
-      <Navbar.Brand as={Link} to='/home'>
+      <Navbar.Brand as={Link} to='/'>
         <img
           alt=""
           src={logo}
@@ -30,7 +30,7 @@ const UnauthorisedNavbar = (props: UnauthorisedNavbarProps) => (
         <Nav className="ms-auto">
           {
             props.type === "client"
-              && <Nav.Link as={Link} to='/client/home' className='me-2'>
+              && <Nav.Link as={Link} to='/' className='me-2'>
               <span className='text-white'>Strona główna</span>
             </Nav.Link>
           }

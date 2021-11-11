@@ -1,15 +1,16 @@
 import React from 'react';
-import {useCurrentEmployee} from "../../../contexts/CurrentEmployeeContext";
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import user from "../../../assets/images/user.svg";
+import { useCurrentUser } from "../../../contexts/CurrentUserContext";
+import { EmployeeModel } from "../../../interfaces/EmployeeModel";
 
 const EmployeeNavbar = () => {
   const redirect = '/employee/profile';
   const redirectLogin = '/employee/login';
 
-  const {handleLogout, currentEmployee} = useCurrentEmployee();
+  const { handleLogout, currentUser } = useCurrentUser<EmployeeModel>();
   return (
     <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-black z-1000'>
       <Container className='pt-1 pb-1'>
@@ -34,7 +35,7 @@ const EmployeeNavbar = () => {
             <Nav.Link as={Link} to={redirect} className='me-5 p-0 d-flex text-white align-items-center w-250px '
                       style={{maxHeight: 64}}>
               <img alt='' src={user} width={32} height={32} className='me-3 '/>
-              <span className='fst-normal'>{currentEmployee?.fullName}</span>
+              <span className='fst-normal'>{currentUser?.fullName}</span>
             </Nav.Link>
 
             <Nav.Link as={Link} to={redirectLogin} className='me-2 p-0'>

@@ -1,39 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import Client from "./roles/client/Client";
 import { initAxios } from "./utils/initAxios";
-import CurrentUserProvider from "./contexts/CurrentClientContext";
-import Employee from "./roles/employee/Employee";
-import RoleRouting from "./home/RoleRouting";
-import CurrentEmployeeProvider from "./contexts/CurrentEmployeeContext";
+import CurrentUserProvider from "./contexts/CurrentUserContext";
+import Views from "./views/Views";
+import { ToastContainer } from "react-toastify";
+import { ToasterProps } from "./constants/ToasterProps";
 
 initAxios();
-//TODO better routing
+
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path='/home'>
-          <RoleRouting/>
-        </Route>
+    <>
+      <CurrentUserProvider>
+        <Views/>
+      </CurrentUserProvider>
 
-        <Route path='/client'>
-          <CurrentUserProvider>
-            <Client/>
-          </CurrentUserProvider>
-        </Route>
-
-        <Route path='/employee'>
-          <CurrentEmployeeProvider>
-            <Employee/>
-          </CurrentEmployeeProvider>
-        </Route>
-
-        <Route path='*'>
-          <Redirect to='/home'/>
-        </Route>
-      </Switch>
-    </Router>
+      <ToastContainer {...ToasterProps}/>
+    </>
   );
 }
 

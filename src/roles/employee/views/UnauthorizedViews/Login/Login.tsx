@@ -14,7 +14,6 @@ import jwtDecode from "jwt-decode";
 import {Roles} from "../../../../../enums/Roles";
 import {toast} from "react-toastify";
 import {Button} from "react-bootstrap";
-import {useCurrentEmployee} from "../../../../../contexts/CurrentEmployeeContext";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -25,7 +24,6 @@ const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
 
   const history = useHistory();
-  const { fetchEmployee } = useCurrentEmployee();
 
   const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
 
@@ -37,8 +35,7 @@ const Login = () => {
       if (response.status === 200) {
         const token = response.headers["authorization"];
         const user: User = jwtDecode(token);
-
-        const userId = user.userId;
+        
         const role = user.authorities[0].authority;
 
         if (role === Roles.RoleAdmin || role === Roles.RoleEmployee) {
@@ -46,7 +43,6 @@ const Login = () => {
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
           history.push('/employee/home');
-          await fetchEmployee();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
           history.push('/client');

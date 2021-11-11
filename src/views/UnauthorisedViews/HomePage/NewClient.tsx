@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
-import TextWithDiamond from "../../../../../components/TextWithDiamond/TextWithDiamond";
+import TextWithDiamond from "../../../components/TextWithDiamond/TextWithDiamond";
 import {BsArrowRight} from "react-icons/all";
 
 const NewClient = () => {
@@ -12,7 +12,7 @@ const NewClient = () => {
           <TextWithDiamond
           headerFontSize='fs-5'
           >
-            <span className='fs-5 '>
+            <span className='fs-6' style={{ fontWeight: 500 }}>
               Nie jesteś klientem naszego banku?
             </span>
           </TextWithDiamond>
@@ -24,7 +24,7 @@ const NewClient = () => {
 
       <BsArrowRight size='80' className='text-primary w-75'/>
 
-      <Link to={'/client/new-visit'} className='text-decoration-none font-color-light'>
+      <Link to='/new-visit' className='text-decoration-none font-color-light'>
         <Button variant='primary' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
           Wizyta Czeka
         </Button>

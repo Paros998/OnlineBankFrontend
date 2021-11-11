@@ -1,14 +1,13 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
-import bankLogo from '../../../../../assets/images/logo.png'
+import bankLogo from '../../../assets/images/logo.png'
 // @ts-ignore
-import bankHomeVideo from "../../../../../assets/videos/bankHomePage.mp4";
+import bankHomeVideo from "../../../assets/videos/bankHomePage.mp4";
 
 import NewClient from "./NewClient";
 import BackgroundVideo from "./BackgroundVideo";
-import Footer from "../../../../../components/Footer/Footer";
+import Footer from "../../../components/Footer/Footer";
 import {Link} from "react-router-dom";
-import UnauthorisedNavbar from "../../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 
 const HomePage = () => {
   return (
@@ -22,7 +21,7 @@ const HomePage = () => {
             Witaj w Przyszłości w naszym Banku
           </div>
 
-          <Link to={'/client/login'} className='text-decoration-none font-color-light'>
+          <Link to='/login' className='text-decoration-none font-color-light'>
             <Button variant='primary' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
               Logowanie
             </Button>
@@ -56,13 +55,6 @@ const HomePage = () => {
         </div>
 
         <NewClient/>
-        <div className='w-100 d-flex justify-content-center'>
-          <Link to={'/home'} className='text-decoration-none font-color-light'>
-            <Button variant='dark' size={"lg"} className='rounded-pill mh-50px w-250px btn-primary-hover'>
-              Powrót
-            </Button>
-          </Link>
-        </div>
       </div>
       <Footer positionClass={'fixed-bottom'}/>
     </>
