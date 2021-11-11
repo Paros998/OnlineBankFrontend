@@ -16,6 +16,8 @@ import {User} from "../../../../interfaces/User";
 import { appendUrlSearchParams } from "../../../../utils/appendUrlSearchParams";
 import { Roles } from "../../../../enums/Roles";
 import { useCurrentUser } from "../../../../contexts/CurrentClientContext";
+import { CurrentUserContextModel } from "../../../../interfaces/CurrentUserContextModel";
+import { ClientModel } from "../../../../interfaces/ClientModel";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -25,7 +27,7 @@ const formikValues: LoginFormikValues = {
 const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
   const history = useHistory();
-  const { fetchUser } = useCurrentUser();
+  const { fetchUser } = useCurrentUser<CurrentUserContextModel<ClientModel>>();
 
   const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
 

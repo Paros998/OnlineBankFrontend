@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { ClientModel } from "../interfaces/ClientModel";
 import jwtDecode from "jwt-decode";
 import { User } from "../interfaces/User";
 
-export const useFetchCurrentClient = () => {
-  const [ currentUser, setCurrentUser ] = useState<ClientModel>();
+export function useFetchCurrentUser<T>() {
+  const [ currentUser, setCurrentUser ] = useState<T>();
   const [isPending, setIsPending] = useState(false);
 
   const fetchUser = useCallback(async () => {
@@ -16,7 +15,7 @@ export const useFetchCurrentClient = () => {
 
     try {
       setIsPending(true);
-      const { data } = await axios.get<ClientModel>(`/clients/${tokenData?.userId}`);
+      const { data } = await axios.get<T>(`/clients/${tokenData?.userId}`);
       setCurrentUser(data);
     } catch (e) {
       console.error(e);
@@ -30,4 +29,4 @@ export const useFetchCurrentClient = () => {
   }, []);
 
   return { currentUser, setCurrentUser, isPending, setIsPending, fetchUser };
-};
+}
