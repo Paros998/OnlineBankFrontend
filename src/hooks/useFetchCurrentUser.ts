@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { ClientModel } from "../interfaces/ClientModel";
 import jwtDecode from "jwt-decode";
 import { User } from "../interfaces/User";
+import { Roles } from "../enums/Roles";
 
-export const useFetchCurrentClient = () => {
-  const [ currentUser, setCurrentUser ] = useState<ClientModel>();
+export function useFetchCurrentUser<T>() {
+  const [ currentUser, setCurrentUser ] = useState<T>();
+  const [role, setRole] = useState('');
   const [isPending, setIsPending] = useState(false);
 
   const fetchUser = useCallback(async () => {
@@ -13,11 +14,16 @@ export const useFetchCurrentClient = () => {
     if (!token) return;
 
     const tokenData: User = jwtDecode(token);
+    const role = tokenData?.authorities[0].authority;
+    const endpoint = role === Roles.RoleClient
+      ? `/clients/${tokenData?.userId}`
+      : `/employees/${tokenData?.userId}`;
 
     try {
       setIsPending(true);
-      const { data } = await axios.get<ClientModel>(`/clients/${tokenData?.userId}`);
+      const { data } = await axios.get<T>(endpoint);
       setCurrentUser(data);
+      setRole(role);
     } catch (e) {
       console.error(e);
     } finally {
@@ -29,5 +35,5 @@ export const useFetchCurrentClient = () => {
     fetchUser().catch();
   }, []);
 
-  return { currentUser, setCurrentUser, isPending, setIsPending, fetchUser };
-};
+  return { currentUser, setCurrentUser, isPending, setIsPending, fetchUser, role };
+}

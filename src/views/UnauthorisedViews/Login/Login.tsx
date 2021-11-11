@@ -1,21 +1,22 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
-import {Button, Image} from "react-bootstrap";
-import UnauthorisedNavbar from "../../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
-import bgLogin2 from '../../../../../assets/images/bg-client-login2.jpg';
-import bgLogin1 from '../../../../../assets/images/bg-client-login1.jpeg';
-import LoginForm from "../../../../../components/LoginForm/LoginForm";
-import { LoginFormikValues } from "../../../../../interfaces/LoginFormikValues";
-import Footer from "../../../../../components/Footer/Footer";
-import LoginHelpOffCanvas from "../../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
+import { Image } from "react-bootstrap";
+import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
+import bgLogin2 from '../../../assets/images/bg-client-login2.jpg';
+import bgLogin1 from '../../../assets/images/bg-client-login1.jpeg';
+import LoginForm from "../../../components/LoginForm/LoginForm";
+import { LoginFormikValues } from "../../../interfaces/LoginFormikValues";
+import Footer from "../../../components/Footer/Footer";
+import LoginHelpOffCanvas from "../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
 import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
-import {toast} from "react-toastify";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import jwtDecode from "jwt-decode";
-import {User} from "../../../../../interfaces/User";
-import { appendUrlSearchParams } from "../../../../../utils/appendUrlSearchParams";
-import { Roles } from "../../../../../enums/Roles";
-import { useCurrentUser } from "../../../../../contexts/CurrentClientContext";
+import { User } from "../../../interfaces/User";
+import { appendUrlSearchParams } from "../../../utils/appendUrlSearchParams";
+import { Roles } from "../../../enums/Roles";
+import { useCurrentUser } from "../../../contexts/CurrentUserContext";
+import { CurrentUserContextModel } from "../../../interfaces/CurrentUserContextModel";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -25,7 +26,7 @@ const formikValues: LoginFormikValues = {
 const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
   const history = useHistory();
-  const { fetchUser } = useCurrentUser();
+  const currentUser = useCurrentUser<CurrentUserContextModel<unknown>>();
 
   const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
 
@@ -39,16 +40,16 @@ const Login = () => {
         const user: User = jwtDecode(token);
         const role = user.authorities[0].authority;
 
+        toast.success("👍 Success");
+        axios.defaults.headers.common['Authorization'] = token;
+        localStorage.setItem("JWT_USER_TOKEN", token);
+
         if (role === Roles.RoleClient) {
-          toast.success("👍 Success");
-          axios.defaults.headers.common['Authorization'] = token;
-          localStorage.setItem("JWT_USER_TOKEN", token);
           history.push('/client/home');
-          await fetchUser();
         } else {
-          toast.info(`👀 Redirecting to the right login site!`);
-          history.push('/employee');
+          history.push('/employee/home');
         }
+        await currentUser?.fetchUser();
       }
     } catch (e: any) {
       toast.error(`👎 Nie udało się zalogować \n${e?.response?.data?.message}`);
@@ -83,7 +84,7 @@ const Login = () => {
         </Formik>
       </div>
 
-      <Footer />
+      <Footer/>
 
       <LoginHelpOffCanvas
         showHelpCanvas={showHelpCanvas}
