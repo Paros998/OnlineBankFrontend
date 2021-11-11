@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
-import TextWithDiamond from "../../../../components/TextWithDiamond/TextWithDiamond";
+import TextWithDiamond from "../../../../../components/TextWithDiamond/TextWithDiamond";
 import {BsArrowRight} from "react-icons/all";
 
 const NewClient = () => {

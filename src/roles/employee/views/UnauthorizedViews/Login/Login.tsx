@@ -1,20 +1,20 @@
 import React, {useState} from 'react';
-import UnauthorisedNavbar from "../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
-import Footer from "../../../../components/Footer/Footer";
-import LoginHelpOffCanvas from "../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
+import UnauthorisedNavbar from "../../../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
+import Footer from "../../../../../components/Footer/Footer";
+import LoginHelpOffCanvas from "../../../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
 import {Link, useHistory} from "react-router-dom";
 
-import {LoginFormikValues} from "../../../../interfaces/LoginFormikValues";
-import LoginForm from "../../../../components/LoginForm/LoginForm";
+import {LoginFormikValues} from "../../../../../interfaces/LoginFormikValues";
+import LoginForm from "../../../../../components/LoginForm/LoginForm";
 import {Formik} from "formik";
-import {useCurrentUser} from "../../../../contexts/CurrentClientContext";
-import {appendUrlSearchParams} from "../../../../utils/appendUrlSearchParams";
+import {appendUrlSearchParams} from "../../../../../utils/appendUrlSearchParams";
 import axios from "axios";
-import {User} from "../../../../interfaces/User";
+import {User} from "../../../../../interfaces/User";
 import jwtDecode from "jwt-decode";
-import {Roles} from "../../../../enums/Roles";
+import {Roles} from "../../../../../enums/Roles";
 import {toast} from "react-toastify";
 import {Button} from "react-bootstrap";
+import {useCurrentEmployee} from "../../../../../contexts/CurrentEmployeeContext";
 
 const formikValues: LoginFormikValues = {
   username: '',
@@ -25,7 +25,7 @@ const Login = () => {
   const [ showHelpCanvas, setShowHelpCanvas ] = useState(false);
 
   const history = useHistory();
-  const { fetchUser } = useCurrentUser();
+  const { fetchEmployee } = useCurrentEmployee();
 
   const handleHelpCanvas = (isShown: boolean) => setShowHelpCanvas(isShown);
 
@@ -46,7 +46,7 @@ const Login = () => {
           axios.defaults.headers.common['Authorization'] = token;
           localStorage.setItem("JWT_USER_TOKEN", token);
           history.push('/employee/home');
-          await fetchUser();
+          await fetchEmployee();
         } else {
           toast.info(`👀 Redirecting to the right login site!`);
           history.push('/client');

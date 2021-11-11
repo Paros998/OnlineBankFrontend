@@ -1,13 +1,18 @@
 import React from 'react';
 import UnauthorizedViews from "./views/UnauthorizedViews/UnauthorizedViews";
-import {useCurrentUser} from "../contexts/CurrentClientContext";
 import AuthorizedViews from "./views/AuthorizedViews/AuthorizedViews";
+import {useCurrentEmployee} from "../../contexts/CurrentEmployeeContext";
+import Pending from "../../components/Pending/Pending";
 
 
 const Employee = () => {
-  const { currentUser } = useCurrentUser();
+  const { currentEmployee, isPending } = useCurrentEmployee();
 
-  if (currentUser) {
+  if (isPending) {
+    return <Pending />;
+  }
+
+  if (currentEmployee) {
     return <AuthorizedViews />;
   }
   return <UnauthorizedViews />;
