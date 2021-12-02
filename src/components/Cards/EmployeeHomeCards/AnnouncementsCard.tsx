@@ -13,7 +13,7 @@ const AnnouncementsCard: FC<AnnouncementsProps> = ({className}) => {
 
   return (
     <CardTemplate header={'Ogłoszenia'}
-                  className={`text-light fst-normal bg-dark border-light bg-opacity-75 ${className}`}
+                  className={`text-light fst-normal bg-dark border-success bg-opacity-75 ${className}`}
                   headerClassName='text-success'
                   bodyClassName='thumb-success'
                   headerDiamondClassName='text-success'

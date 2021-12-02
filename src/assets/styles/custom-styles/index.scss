@@ -3,13 +3,14 @@
 @import '~react-datepicker/dist/react-datepicker.min.css';
 @import '~react-toastify/dist/ReactToastify.css';
 
-body{
+body,html{
   margin: 0;
   padding: 0;
   overflow: auto;
   overflow-x: hidden;
   overflow-y: scroll;
   overflow: overlay ;
+  height: 100%;
 }
 
 hr:not([size]){
@@ -101,6 +102,43 @@ hr:not([size]){
 //heights
 .mh-50px{
   max-height: 50px;
+}
+.mh-500px{
+  max-height: 500px;
+}
+.mh-300px{
+  max-height: 300px;
+}
+.mh-200px{
+  max-height: 200px;
+}
+.mh-400px{
+  max-height: 400px;
+}
+.mh-600px{
+  max-height: 600px;
+}
+
+.mnh-50px{
+  min-height: 50px;
+}
+.mnh-100px{
+  min-height: 100px;
+}
+.mnh-500px{
+  min-height: 500px;
+}
+.mnh-300px{
+  min-height: 300px;
+}
+.mnh-200px{
+  min-height: 200px;
+}
+.mnh-400px{
+  min-height: 400px;
+}
+.mnh-600px{
+  min-height: 600px;
 }
 
 .h-60px{

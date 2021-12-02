@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { Button, Card } from "react-bootstrap";
 import { Form, useFormikContext } from "formik";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
@@ -6,8 +6,10 @@ import SelectInput from "../Inputs/SelectInput/SelectInput";
 import DateInput from "../Inputs/DateInput/DateInput";
 import { NewVisitFormikValues } from "../../interfaces/NewVisitFormikValues";
 import { Bank2, Clock } from "react-bootstrap-icons";
-//TODO add key-values to dictionary on backend server
-
+import {NewVisitSelectData} from "../../interfaces/NewVisitSelectData";
+import {arrayMapperToOption} from "../../utils/arrayMapperToOption";
+//TODO make hook and get tables form rest service
+type option = { value: any, key: any }
 const establishmentOptions = [
   { value: 'Kielce', key: 1 },
   { value: 'Warszawa', key: 2 },
@@ -31,7 +33,17 @@ const visitTimeOptions = [
   { value: '15.am', key: 9 }
 ]
 
-const NewVisitForm = ({ ...props }) => {
+type NewVisitFormProps = {
+  Establishments?: string[],
+  Hours?: string[],
+  className: string
+}
+
+const NewVisitForm = (props:NewVisitFormProps) => {
+
+  //const establishmentOptions = props.Establishments && arrayMapperToOption(props.Establishments);
+  //const hoursOptions = props.Hours && arrayMapperToOption(props.Hours);
+
   const { setFieldValue } = useFormikContext<NewVisitFormikValues>();
   return (
     <div {...props}>

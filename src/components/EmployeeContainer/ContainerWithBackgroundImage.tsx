@@ -14,7 +14,7 @@ const ContainerWithBackgroundImage: FC<ContainerWithBackgroundImageProps> = ({sr
       backgroundSize:"cover",
       backgroundRepeat:"no-repeat"
     }}>
-      <Container className='vh-100 w-100 me-1 ml-250 '>
+      <Container className='w-80 me-1 ml-250 ' fluid={true}>
         {children}
       </Container>
     </div>
