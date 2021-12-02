@@ -8,13 +8,13 @@ interface ContainerWithBackgroundImageProps {
 
 const ContainerWithBackgroundImage: FC<ContainerWithBackgroundImageProps> = ({src,children}) => {
   return (
-    <div className='vh-100' style={{
+    <div className='min-vh-100 pt-5 ' style={{
       backgroundImage:`url(${src})`,
       backgroundAttachment:"fixed",
       backgroundSize:"cover",
       backgroundRepeat:"no-repeat"
     }}>
-      <Container>
+      <Container className='vh-100 w-100 me-1 ml-250 '>
         {children}
       </Container>
     </div>

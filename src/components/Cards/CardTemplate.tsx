@@ -8,25 +8,34 @@ interface CardTemplateProps {
   img?: string;
   children: ReactNode;
   className?:string;
+  headerClassName?:string;
+  bodyClassName?:string;
+  headerDiamondClassName?:string;
 }
 
-const CardTemplate: FC<CardTemplateProps> = ({header, text, img, children,className}) => {
+const CardTemplate: FC<CardTemplateProps> = ({header,
+                                               text,
+                                               img,
+                                               children,
+                                               className,
+                                               headerClassName,
+                                               bodyClassName,
+                                               headerDiamondClassName}) => {
   return (
-    <Card style={{width: '18rem'}} className={className}>
+    <Card style={{width: '18rem'}} className={`rounded-card-10 pe-2 ps-2 m-2 me-0 ${className}`}>
       {
         img && <Card.Img variant="top" src={`${img}`}/>
       }
-      <Card.Header>
-        <Card.Title>
+      <div className={`pt-3 ${headerClassName}`}>
           <TextWithDiamond
-            headerFontSize='fs-5'
+            diamondClassName={headerDiamondClassName}
           >
             <h5>{header}</h5>
           </TextWithDiamond>
-        </Card.Title>
-      </Card.Header>
+          <hr/>
+      </div>
 
-      <Card.Body>
+      <Card.Body className={`overflow-scroll transparent-scrollbar ${bodyClassName}`}>
         {
           text && <Card.Text>{text}</Card.Text>
         }

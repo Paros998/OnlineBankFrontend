@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import OnLogout from "../../components/OnLogout/OnLogout";
+import AuthorisedNavbar from "../../components/AuthorisedNavbar/AuthorisedNavbar";
+import SideNavbar from "../../components/SideNavbar/SideNavbar";
+
 
 const ClientAuthorisedViews = () => {
 
@@ -9,7 +12,8 @@ const ClientAuthorisedViews = () => {
       <Router>
         <Switch>
           <Route path='/client/home'>
-            chujów sto
+            <AuthorisedNavbar/>
+            <SideNavbar/>
           </Route>
 
           <Route path='*'>

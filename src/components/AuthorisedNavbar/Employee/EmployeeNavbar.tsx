@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Container, Nav, Navbar} from "react-bootstrap";
+import {Button, Container, Nav, Navbar, Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import user from "../../../assets/images/user.svg";
@@ -8,11 +8,13 @@ import { EmployeeModel } from "../../../interfaces/EmployeeModel";
 
 const EmployeeNavbar = () => {
   const redirect = '/employee/profile';
-  const redirectLogin = '/employee/login';
+  const redirectLogin = '/login';
 
   const { handleLogout, currentUser } = useCurrentUser<EmployeeModel>();
+
+  console.log(currentUser);
   return (
-    <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-black z-1000'>
+    <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-dark z-1000'>
       <Container className='pt-1 pb-1'>
         <Navbar.Brand as={Link} to='/home'>
           <img
@@ -35,14 +37,21 @@ const EmployeeNavbar = () => {
             <Nav.Link as={Link} to={redirect} className='me-5 p-0 d-flex text-white align-items-center w-250px '
                       style={{maxHeight: 64}}>
               <img alt='' src={user} width={32} height={32} className='me-3 '/>
-              <span className='fst-normal'>{currentUser?.fullName}</span>
+              {
+                currentUser ?
+                  <span className='fst-normal'>
+                    {currentUser?.fullName}
+                  </span>
+                  : <Spinner animation={"border"} variant={"dark"}/>
+              }
+
             </Nav.Link>
 
             <Nav.Link as={Link} to={redirectLogin} className='me-2 p-0'>
               <Button
                 variant='light'
                 type='button'
-                className='text-primary btn-outline-dark rounded-pill '
+                className='text-primary rounded-card-10 '
                 onClick={handleLogout}
               >
                 Wyloguj
