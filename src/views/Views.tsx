@@ -21,7 +21,7 @@ const Views = () => {
     return <ClientAuthorisedViews />;
   }
 
-  if (user?.currentUser && isEmployee || isAdmin) {
+  if (user?.currentUser && (isEmployee || isAdmin)) {
     return <EmployeeAuthorisedViews />;
   }
 

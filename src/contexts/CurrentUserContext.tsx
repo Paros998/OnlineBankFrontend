@@ -1,6 +1,7 @@
 import { Context, createContext, ReactNode, useContext } from "react";
 import { CurrentUserContextModel } from "../interfaces/CurrentUserContextModel";
 import { useFetchCurrentUser } from "../hooks/useFetchCurrentUser";
+import {toast} from "react-toastify";
 
 const CurrentUserContext = createContext<any>(undefined);
 
@@ -18,6 +19,7 @@ function CurrentUserProvider({ children }: CurrentUserProviderProps) {
   const handleLogout = () => {
     localStorage.removeItem('JWT_USER_TOKEN');
     data.setCurrentUser(undefined);
+    toast.info("Dziękujemy za skorzystanie z naszych usług");
   };
 
   return (

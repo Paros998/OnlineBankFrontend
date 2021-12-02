@@ -40,7 +40,7 @@ const Login = () => {
         const user: User = jwtDecode(token);
         const role = user.authorities[0].authority;
 
-        toast.success("👍 Success");
+        toast.success("👍 Zalogowano");
         axios.defaults.headers.common['Authorization'] = token;
         localStorage.setItem("JWT_USER_TOKEN", token);
 
