@@ -12,6 +12,7 @@ import bgHappy1 from "../../../assets/images/bg-happy2.jpeg"
 import Footer from "../../../components/Footer/Footer";
 import { NewVisitFormikValues } from "../../../interfaces/NewVisitFormikValues";
 import NewVisitForm from "../../../components/NewVisitForm/NewVisitForm";
+import {useFetchVisitsOptions} from "../../../hooks/useFetchVisitsOptions";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
@@ -27,7 +28,7 @@ const initDateWithDayJs = (date: Date) => dayjs(date).format('DD.MM.YYYY');
 
 const NewVisit = () => {
   const history = useHistory();
-
+  const options = useFetchVisitsOptions();
   const handleSubmit = async ({ visitDate, ...values }: NewVisitFormikValues) => {
     const initialisedDate = initDateWithDayJs(visitDate);
 
@@ -72,6 +73,8 @@ const NewVisit = () => {
           onSubmit={handleSubmit}
         >
           <NewVisitForm
+            //Establishments={options?.Establishments}
+            //Hours={options?.Hours}
             className='d-flex h-75 justify-content-center align-items-center'
           />
         </Formik>
