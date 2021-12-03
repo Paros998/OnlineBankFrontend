@@ -1,6 +1,6 @@
-import { Context, createContext, ReactNode, useContext } from "react";
-import { CurrentUserContextModel } from "../interfaces/CurrentUserContextModel";
-import { useFetchCurrentUser } from "../hooks/useFetchCurrentUser";
+import {Context, createContext, ReactNode, useContext} from "react";
+import {CurrentUserContextModel} from "../interfaces/CurrentUserContextModel";
+import {useFetchCurrentUser} from "../hooks/useFetchCurrentUser";
 import {toast} from "react-toastify";
 
 const CurrentUserContext = createContext<any>(undefined);

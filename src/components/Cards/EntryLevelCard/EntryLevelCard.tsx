@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import CardTemplate from "../CardTemplate";
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";

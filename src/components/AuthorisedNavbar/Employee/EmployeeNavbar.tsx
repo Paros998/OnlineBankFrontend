@@ -3,8 +3,8 @@ import {Button, Container, Nav, Navbar, Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import user from "../../../assets/images/user.svg";
-import { useCurrentUser } from "../../../contexts/CurrentUserContext";
-import { EmployeeModel } from "../../../interfaces/EmployeeModel";
+import {useCurrentUser} from "../../../contexts/CurrentUserContext";
+import {EmployeeModel} from "../../../interfaces/DatabaseModels/EmployeeModel";
 
 const EmployeeNavbar = () => {
   const redirect = '/employee/profile';
@@ -12,7 +12,6 @@ const EmployeeNavbar = () => {
 
   const { handleLogout, currentUser } = useCurrentUser<EmployeeModel>();
 
-  console.log(currentUser);
   return (
     <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-dark z-1000'>
       <Container className='pt-1 pb-1'>

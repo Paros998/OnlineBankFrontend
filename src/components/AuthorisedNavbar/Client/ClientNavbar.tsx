@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useCurrentUser} from "../../../contexts/CurrentUserContext";
-import { Button, Container, Nav, Navbar, Spinner } from "react-bootstrap";
+import {Button, Container, Nav, Navbar, Spinner} from "react-bootstrap";
 import logo from "../../../assets/images/logo.png";
 import user from "../../../assets/images/user.svg";
-import { ClientModel } from "../../../interfaces/ClientModel";
+import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 
 const ClientNavbar = () => {
   const redirect = '/client/profile';

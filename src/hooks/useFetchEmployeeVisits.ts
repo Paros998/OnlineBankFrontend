@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
-import {VisitModel} from "../interfaces/VisitModel";
+import {VisitModel} from "../interfaces/DatabaseModels/VisitModel";
 import {User} from "../interfaces/User";
 import jwtDecode from "jwt-decode";
 import {Roles} from "../enums/Roles";
 import axios from "axios";
 import {toast} from "react-toastify";
 import {useFetchCurrentUser} from "./useFetchCurrentUser";
-import {EmployeeModel} from "../interfaces/EmployeeModel";
+import {EmployeeModel} from "../interfaces/DatabaseModels/EmployeeModel";
 
 export function useFetchEmployeeVisits(){
   const [data,setData] = useState<VisitModel[]>();
@@ -34,7 +34,8 @@ export function useFetchEmployeeVisits(){
     };
 
     fetchMyVisits().catch();
-  },[setData])
+
+  },[setData,currentUser])
 
   return data;
 

@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
-import { Image } from "react-bootstrap";
+import React, {useState} from 'react';
+import {Formik} from 'formik';
+import {Image} from "react-bootstrap";
 import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import bgLogin2 from '../../../assets/images/bg-client-login2.jpg';
 import bgLogin1 from '../../../assets/images/bg-client-login1.jpeg';
 import LoginForm from "../../../components/LoginForm/LoginForm";
-import { LoginFormikValues } from "../../../interfaces/LoginFormikValues";
+import {LoginFormikValues} from "../../../interfaces/LoginFormikValues";
 import Footer from "../../../components/Footer/Footer";
 import LoginHelpOffCanvas from "../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
+import {useHistory} from "react-router-dom";
+import {toast} from "react-toastify";
 import jwtDecode from "jwt-decode";
-import { User } from "../../../interfaces/User";
-import { appendUrlSearchParams } from "../../../utils/appendUrlSearchParams";
-import { Roles } from "../../../enums/Roles";
-import { useCurrentUser } from "../../../contexts/CurrentUserContext";
-import { CurrentUserContextModel } from "../../../interfaces/CurrentUserContextModel";
+import {User} from "../../../interfaces/User";
+import {appendUrlSearchParams} from "../../../utils/appendUrlSearchParams";
+import {Roles} from "../../../enums/Roles";
+import {useCurrentUser} from "../../../contexts/CurrentUserContext";
+import {CurrentUserContextModel} from "../../../interfaces/CurrentUserContextModel";
 
 const formikValues: LoginFormikValues = {
   username: '',

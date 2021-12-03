@@ -1,4 +1,4 @@
-import { ToastContainerProps } from "react-toastify";
+import {ToastContainerProps} from "react-toastify";
 
 export const ToasterProps: ToastContainerProps = {
   position: "bottom-right",

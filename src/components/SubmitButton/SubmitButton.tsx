@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { Button, ButtonProps, Spinner } from "react-bootstrap";
-import { useFormikContext } from "formik";
+import React, {FC} from 'react';
+import {Button, ButtonProps, Spinner} from "react-bootstrap";
+import {useFormikContext} from "formik";
 
 const SubmitButton: FC<ButtonProps> = ({ children, ...props }) => {
   const { isSubmitting } = useFormikContext();

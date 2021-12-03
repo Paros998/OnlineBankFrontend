@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import {useEffect} from 'react';
+import {useCurrentUser} from "../../contexts/CurrentUserContext";
 
 const OnLogout = () => {
   const { fetchUser, handleLogout } = useCurrentUser();
@@ -14,7 +14,7 @@ const OnLogout = () => {
       }
     };
     logout().catch();
-  }, []);
+  }, [fetchUser,handleLogout]);
 
   return null;
 };

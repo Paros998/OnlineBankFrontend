@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {useCurrentUser} from "../../contexts/CurrentUserContext";
 import {Roles} from "../../enums/Roles";
 import ClientSideNavbar from "./Client/ClientSideNavbar";
