@@ -20,7 +20,8 @@ const AnnouncementsCard: FC<AnnouncementsProps> = ({className}) => {
     >
         {
           announcements ? (
-                announcements.map(value => (
+            announcements.length === 0 ? <p className='text-info'>Nie znaleziono ogłoszeń</p>
+                  : announcements.map(value => (
                   <p>{value.announcement}</p>
                 ))
           ) : (

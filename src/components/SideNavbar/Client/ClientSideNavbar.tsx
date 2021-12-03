@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Navbar, NavLink} from "react-bootstrap";
+import {Navbar, NavLink} from "react-bootstrap";
 import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear";
 import {Link} from "react-router-dom";
@@ -11,15 +11,10 @@ const ClientSideNavbar = () => {
   const currentDate = dayjs().format('DD/MM/YYYY');
   const dayOfWeek = dayjs().format('dddd').toLocaleUpperCase();
   return (
-    <Navbar className='bg-primary-dark text-light position-fixed vh-100 w-180px border-end flex-column p-0 justify-content-between'>
+    <Navbar
+      className='bg-primary-dark text-light position-fixed vh-100 w-180px border-end flex-column p-0 justify-content-between'>
 
       <div className='flex-column p-0 pt-1 '>
-
-
-
-
-
-
 
 
         <hr className='text-light w-90 mx-auto'/>
@@ -37,8 +32,8 @@ const ClientSideNavbar = () => {
 
         <div className='w-100 text-center pb-2 d-flex flex-column'>
           <hr className='text-light w-90 mx-auto mb-1'/>
-          <span >{dayOfWeek}</span>
-          <span >{currentDate}</span>
+          <span>{dayOfWeek}</span>
+          <span>{currentDate}</span>
         </div>
 
       </div>

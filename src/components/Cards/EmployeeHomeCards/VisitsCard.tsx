@@ -21,7 +21,9 @@ const VisitsCard: FC<VisitsCardProps> = ({children,className}) => {
       {children}
       {
         Visits ? (
-          Visits.map(({visit_id,visitTime,visitDate,isActive,
+
+          Visits.length === 0 ? <p className='text-info'>Nie masz żadnych zaplanowanych spotkań.</p>
+          : Visits.map(({visit_id,visitTime,visitDate,isActive,
                         establishment,employee}) => (
             <MyVisits
               visit_id={visit_id}

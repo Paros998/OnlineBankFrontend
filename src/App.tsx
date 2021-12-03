@@ -1,9 +1,9 @@
 import React from 'react';
-import { initAxios } from "./utils/initAxios";
+import {initAxios} from "./utils/initAxios";
 import CurrentUserProvider from "./contexts/CurrentUserContext";
 import Views from "./views/Views";
-import { ToastContainer } from "react-toastify";
-import { ToasterProps } from "./constants/ToasterProps";
+import {ToastContainer} from "react-toastify";
+import {ToasterProps} from "./constants/ToasterProps";
 
 initAxios();
 

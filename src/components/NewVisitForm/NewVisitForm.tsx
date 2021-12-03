@@ -1,15 +1,13 @@
-import React, {FC} from 'react';
-import { Button, Card } from "react-bootstrap";
-import { Form, useFormikContext } from "formik";
+import React from 'react';
+import {Button, Card} from "react-bootstrap";
+import {Form, useFormikContext} from "formik";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../Inputs/SelectInput/SelectInput";
 import DateInput from "../Inputs/DateInput/DateInput";
-import { NewVisitFormikValues } from "../../interfaces/NewVisitFormikValues";
-import { Bank2, Clock } from "react-bootstrap-icons";
-import {NewVisitSelectData} from "../../interfaces/NewVisitSelectData";
-import {arrayMapperToOption} from "../../utils/arrayMapperToOption";
+import {NewVisitFormikValues} from "../../interfaces/NewVisitFormikValues";
+import {Bank2, Clock} from "react-bootstrap-icons";
 //TODO make hook and get tables form rest service
-type option = { value: any, key: any }
+//type option = { value: any, key: any }
 const establishmentOptions = [
   { value: 'Kielce', key: 1 },
   { value: 'Warszawa', key: 2 },

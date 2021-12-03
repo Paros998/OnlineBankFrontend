@@ -4,7 +4,7 @@ import ContainerWithBackgroundImage from "../../../components/EmployeeContainer/
 import homeBg from "../../../assets/images/bg-employee-home.jpg"
 import AnnouncementsCard from "../../../components/Cards/EmployeeHomeCards/AnnouncementsCard";
 import VisitsCard from "../../../components/Cards/EmployeeHomeCards/VisitsCard";
-import PriorityOrdersNotAssigned from "../../../components/Cards/EmployeeHomeCards/PriorityOrdersNotAssigned";
+import PriorityOrdersNotAssignedCard from "../../../components/Cards/EmployeeHomeCards/PriorityOrdersNotAssignedCard";
 import SideNavbar from "../../../components/SideNavbar/SideNavbar";
 import NotAssignedVisitsCard from "../../../components/Cards/EmployeeHomeCards/NotAssignedVisitsCard";
 
@@ -19,11 +19,9 @@ const HomePage = () => {
           <VisitsCard className='w-50'/>
         </div>
         <div className='d-flex w-100 mh-500px mnh-300px justify-content-between'>
-          <PriorityOrdersNotAssigned className='w-100'>
-
-          </PriorityOrdersNotAssigned>
+          <PriorityOrdersNotAssignedCard className='w-100'/>
         </div>
-        <div className='d-flex w-100 mh-400px mnh-200px justify-content-between'>
+        <div className='d-flex w-100 mh-400px mnh-200px justify-content-between pb-5'>
           <NotAssignedVisitsCard className='w-100'/>
         </div>
       </ContainerWithBackgroundImage>

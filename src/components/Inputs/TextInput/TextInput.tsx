@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { Form, FormControlProps } from "react-bootstrap";
-import { ErrorMessage, useField } from "formik";
+import React, {FC} from 'react';
+import {Form, FormControlProps} from "react-bootstrap";
+import {ErrorMessage, useField} from "formik";
 
 interface TextInputProps extends FormControlProps {
   label?: string;

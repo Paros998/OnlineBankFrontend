@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {VisitModel} from "../../interfaces/VisitModel";
+import {VisitModel} from "../../interfaces/DatabaseModels/VisitModel";
 
 const NotAssignedVisits:FC<VisitModel> = ({visit_id,
                                             visitDate,

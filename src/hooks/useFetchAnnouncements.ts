@@ -4,7 +4,7 @@ import jwtDecode from "jwt-decode";
 import {Roles} from "../enums/Roles";
 import {toast} from "react-toastify";
 import axios from "axios";
-import {AnnouncementsResponseData} from "../interfaces/AnnouncementsResponseData";
+import {AnnouncementsResponseData} from "../interfaces/DatabaseModels/AnnouncementsResponseData";
 
 export function useFetchAnnouncements(){
   const [announcements,setAnnouncements] =  useState<AnnouncementsResponseData[]>()

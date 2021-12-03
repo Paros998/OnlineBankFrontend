@@ -1,16 +1,16 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Image } from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import axios from "axios";
-import { Formik } from "formik";
-import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
+import {Formik} from "formik";
+import {useHistory} from "react-router-dom";
+import {toast} from "react-toastify";
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import 'dayjs/locale/pl';
 import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import bgHappy1 from "../../../assets/images/bg-happy2.jpeg"
 import Footer from "../../../components/Footer/Footer";
-import { NewVisitFormikValues } from "../../../interfaces/NewVisitFormikValues";
+import {NewVisitFormikValues} from "../../../interfaces/NewVisitFormikValues";
 import NewVisitForm from "../../../components/NewVisitForm/NewVisitForm";
 import {useFetchVisitsOptions} from "../../../hooks/useFetchVisitsOptions";
 

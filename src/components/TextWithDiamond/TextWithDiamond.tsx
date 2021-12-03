@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { DiamondFill } from "react-bootstrap-icons";
+import React, {FC} from 'react';
+import {DiamondFill} from "react-bootstrap-icons";
 
 interface HeaderWithDiamondProps {
   headerFontSize?:string;

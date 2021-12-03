@@ -20,7 +20,8 @@ const NotAssignedVisitsCard:FC<NotAssignedVisitsCardProps> = ({className}) => {
     >
       {
         Visits ? (
-          Visits.map(({visit_id,visitTime,visitDate,isActive,
+          Visits.length === 0 ? <p className='text-info'>Nie ma żadnych wizyt klientów wymagających przypisania.</p>
+          : Visits.map(({visit_id,visitTime,visitDate,isActive,
                         establishment,employee}) => (
             <NotAssignedVisits
               visit_id={visit_id}

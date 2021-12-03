@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmojiFrown } from "react-bootstrap-icons";
+import {EmojiFrown} from "react-bootstrap-icons";
 
 const NotFound404 = () => {
   return (

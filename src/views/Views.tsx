@@ -1,6 +1,6 @@
 import React from 'react';
-import { useCurrentUser } from "../contexts/CurrentUserContext";
-import { Roles } from "../enums/Roles";
+import {useCurrentUser} from "../contexts/CurrentUserContext";
+import {Roles} from "../enums/Roles";
 import ClientAuthorisedViews from "./ClientAuthorisedViews/ClientAuthorisedViews";
 import EmployeeAuthorisedViews from "./EmployeeAuthorisedViews/EmployeeAuthorisedViews";
 import UnauthorisedViews from "./UnauthorisedViews/UnauthorisedViews";

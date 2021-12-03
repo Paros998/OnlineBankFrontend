@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
 
-import {VisitModel} from "../interfaces/VisitModel";
+import {VisitModel} from "../interfaces/DatabaseModels/VisitModel";
 import {User} from "../interfaces/User";
 import jwtDecode from "jwt-decode";
 import {Roles} from "../enums/Roles";

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {VisitModel} from "../../interfaces/VisitModel";
+import React from 'react';
+import {VisitModel} from "../../interfaces/DatabaseModels/VisitModel";
 import dayjs from "dayjs";
 
 interface MyVisitsProps {

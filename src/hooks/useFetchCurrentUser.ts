@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { User } from "../interfaces/User";
-import { Roles } from "../enums/Roles";
+import {User} from "../interfaces/User";
+import {Roles} from "../enums/Roles";
 
 export function useFetchCurrentUser<T>() {
   const [ currentUser, setCurrentUser ] = useState<T>();
@@ -33,7 +33,7 @@ export function useFetchCurrentUser<T>() {
 
   useEffect(() => {
     fetchUser().catch();
-  }, []);
+  }, [fetchUser]);
 
   return { currentUser, setCurrentUser, isPending, setIsPending, fetchUser, role };
 }
