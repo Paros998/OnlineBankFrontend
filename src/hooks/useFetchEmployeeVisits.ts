@@ -34,6 +34,7 @@ export function useFetchEmployeeVisits(){
     };
 
     fetchMyVisits().catch();
+
   },[setData,currentUser])
 
   return data;

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import {Form, useFormikContext} from "formik";
@@ -8,6 +9,7 @@ import {NewVisitFormikValues} from "../../interfaces/NewVisitFormikValues";
 import {Bank2, Clock} from "react-bootstrap-icons";
 //TODO make hook and get tables form rest service
 //type option = { value: any, key: any }
+
 const establishmentOptions = [
   { value: 'Kielce', key: 1 },
   { value: 'Warszawa', key: 2 },

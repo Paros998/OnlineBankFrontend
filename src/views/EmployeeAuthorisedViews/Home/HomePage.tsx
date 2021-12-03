@@ -24,6 +24,9 @@ const HomePage = () => {
         <div className='d-flex w-100 mh-400px mnh-200px justify-content-between pb-5'>
           <NotAssignedVisitsCard className='w-100'/>
         </div>
+        <div className='d-flex w-100 mh-400px mnh-200px justify-content-between'>
+          <NotAssignedVisitsCard className='w-100'/>
+        </div>
       </ContainerWithBackgroundImage>
     </>
   );
