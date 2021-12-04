@@ -1,27 +1,60 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import React, { CSSProperties } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import OnLogout from "../../components/OnLogout/OnLogout";
-import AuthorisedNavbar from "../../components/AuthorisedNavbar/AuthorisedNavbar";
-import SideNavbar from "../../components/SideNavbar/SideNavbar";
+import ClientSideNavbar from "../../components/SideNavbar/Client/ClientSideNavbar";
+import ClientNavbar from "../../components/AuthorisedNavbar/Client/ClientNavbar";
+import Home from "./Home/Home";
+import CyclicalTransfers from "./CyclicalTransfers/CyclicalTransfers";
+import History from "./History/History";
+import Account from "./Account/Account";
+import Transfer from "./Transfer/Transfer";
 
+const containerStyle: CSSProperties = {
+  paddingLeft: '220px',
+  paddingTop: '20px',
+  paddingRight: '50px'
+};
 
 const ClientAuthorisedViews = () => {
-
   return (
-    <>
-      <Router>
+    <Router>
+      <ClientNavbar/>
+
+      <ClientSideNavbar/>
+
+      <Container
+        className='bg-secondary-light h-100'
+        style={containerStyle}
+        fluid
+      >
         <Switch>
           <Route path='/client/home'>
-            <AuthorisedNavbar/>
-            <SideNavbar/>
+            <Home/>
+          </Route>
+
+          <Route path='/client/transfer'>
+            <Transfer />
+          </Route>
+
+          <Route path='/client/account'>
+            <Account />
+          </Route>
+
+          <Route path='/client/history'>
+            <History />
+          </Route>
+
+          <Route path='/client/cyclical-transfers'>
+            <CyclicalTransfers />
           </Route>
 
           <Route path='*'>
-            <OnLogout />
+            <OnLogout/>
           </Route>
         </Switch>
-      </Router>
-    </>
+      </Container>
+    </Router>
   );
 };
 

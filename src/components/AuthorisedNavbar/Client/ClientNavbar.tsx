@@ -25,31 +25,36 @@ const ClientNavbar = () => {
           />
 
           <span className='text-white ms-3'>
-          Future Bank - Z nami wyruszysz w pewną przyszłość.
-        </span>
+            Future Bank - Z nami wyruszysz w pewną przyszłość.
+          </span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="nav"/>
 
         <Navbar.Collapse id="nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to={redirect} className='me-5 p-0 d-flex text-white align-items-center w-250px ' style={{maxHeight: 64}}>
-              <img alt='' src={user} width={32} height={32} className='me-3 '/>
+            <Nav.Link
+              as={Link}
+              to={redirect}
+              className='me-5 p-0 d-flex text-white align-items-center w-250px'
+              style={{ maxHeight: 64 }}
+            >
+              <img alt='' src={user} width={32} height={32} className='me-3'/>
+
               {currentUser ? (
                 <span className='fst-normal'>
                   {currentUser?.fullName}
                 </span>
               ) : (
-                <Spinner animation='border' variant='light' />
+                <Spinner animation='border' variant='light'/>
               )}
-
             </Nav.Link>
 
             <Nav.Link as={Link} to={redirectLogin} className='me-2 p-0'>
               <Button
                 variant='light'
                 type='button'
-                className='text-primary rounded-card-10 '
+                className='text-primary rounded-card-10'
                 onClick={handleLogout}
               >
                 Wyloguj
