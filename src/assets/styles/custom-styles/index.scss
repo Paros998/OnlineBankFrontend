@@ -2,6 +2,7 @@
 @import "src/assets/styles/custom-variables";
 @import '~react-datepicker/dist/react-datepicker.min.css';
 @import '~react-toastify/dist/ReactToastify.css';
+@import "client-side-navbar";
 
 body,html{
   margin: 0;
@@ -9,7 +10,7 @@ body,html{
   overflow: auto;
   overflow-x: hidden;
   overflow-y: scroll;
-  overflow: overlay ;
+  overflow: overlay;
   height: 100%;
 }
 
