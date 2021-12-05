@@ -100,6 +100,9 @@ hr:not([size]){
 }
 
 //heights
+.mh-25px{
+  max-height: 25px;
+}
 .mh-50px{
   max-height: 50px;
 }
@@ -119,8 +122,22 @@ hr:not([size]){
   max-height: 600px;
 }
 
+.mh-700px{
+  max-height: 700px;
+}
+
+.mh-800px{
+  max-height: 800px;
+}
+
 .mnh-50px{
   min-height: 50px;
+}
+.mnh-44px{
+  min-height: 44px;
+}
+.mnh-35px{
+  min-height: 35px;
 }
 .mnh-100px{
   min-height: 100px;
@@ -403,4 +420,36 @@ hr:not([size]){
   color: $light;
   background-color: $secondary;
   opacity: 1;
+}
+
+//imitating button
+.btn-pointer{
+  cursor: pointer;
+}
+
+//number input
+.primary-number-input::-webkit-inner-spin-button,.primary-number-input::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+}
+
+
+//records
+.client:hover{
+  background-color: $primary !important;
+  color: $dark !important;
+  font-weight: bold;
+}
+
+.latest-client:hover{
+  background-color: $light !important;
+  color: $dark !important;
+}
+
+.visitNotAssigned:hover{
+  background-color: $dark !important;
+}
+
+.announcement:hover{
+  background-color: $dark !important;
+  color: $light !important;
 }
