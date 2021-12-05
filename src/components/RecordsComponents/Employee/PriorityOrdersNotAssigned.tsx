@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {OrderModel} from "../../interfaces/DatabaseModels/OrderModel";
+import {OrderModel} from "../../../interfaces/DatabaseModels/OrderModel";
 import dayjs from "dayjs";
 
 interface PriorityOrdersProps {
@@ -14,22 +14,22 @@ const PriorityOrdersNotAssigned: FC<PriorityOrdersProps> = ({className,order}) =
   const timePassedSinceOrderCreated = dayjs(date.diff(createdDate)).format("DD.HH.mm.ss")
   return (
     <div
-      className={`d-flex rounded-card-10 m-1 mb-2 p-1 text-light w-100 justify-content-between align-items-center ${className}`}>
-      <span className='ms-2'>
+      className={`row d-flex rounded-card-10 m-1 mb-2 p-1 text-light w-100  align-items-start ${className}`}>
+      <div className='col ms-2 text-truncate'>
         {order_Id}
-      </span>
-      <span className='ms-2'>
+      </div>
+      <div className='col ms-2 text-truncate'>
         {client && client.clientId}
-      </span>
-      <span className='ms-2'>
+      </div>
+      <div className='col ms-2 text-truncate'>
         {orderType}
-      </span>
-      <span className='ms-2'>
+      </div>
+      <div className='col ms-2 text-truncate'>
         {createDate.toLocaleDateString()}
-      </span>
-      <span className='ms-2 me-2'>
+      </div>
+      <div className='col ms-2 me-2 text-truncate'>
         {timePassedSinceOrderCreated}
-      </span>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, {FC, ReactNode} from 'react';
 import CardTemplate from "../CardTemplate";
 import {useFetchEmployeeVisits} from "../../../hooks/useFetchEmployeeVisits";
 import {Spinner} from "react-bootstrap";
-import MyVisits from "../../RecordsComponents/MyVisits";
+import MyVisits from "../../RecordsComponents/Employee/MyVisits";
 
 interface VisitsCardProps{
   children?:ReactNode;
@@ -18,26 +18,22 @@ const VisitsCard: FC<VisitsCardProps> = ({children,className}) => {
                   bodyClassName='thumb-info'
                   headerDiamondClassName='text-info'
     >
-      {children}
-      {
-        Visits ? (
-          Visits.length === 0 ? <p className='text-info'>Nie masz żadnych zaplanowanych spotkań.</p>
-          : Visits.map(({visit_id,visitTime,visitDate,isActive,
-                        establishment,employee}) => (
-            <MyVisits
-              visit_id={visit_id}
-              visitDate={visitDate}
-              visitTime={visitTime}
-              establishment={establishment}
-              isActive={isActive}
-              employee={employee}
-            />
-          ))
-        ) : (
-          <Spinner animation={"border"} variant={"info"}/>
-        )
+      <div className='container-fluid w-100 '>
+        {children}
+        {
+          Visits ? (
+            Visits.length === 0 ? <p className='text-info fw-bold'>Nie masz żadnych zaplanowanych spotkań.</p>
+            : Visits.map((value) => (
+              <MyVisits
+                visit={value}
+              />
+            ))
+          ) : (
+            <Spinner animation={"border"} variant={"info"}/>
+          )
 
-      }
+        }
+      </div>
     </CardTemplate>
   );
 };

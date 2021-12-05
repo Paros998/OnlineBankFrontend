@@ -2,13 +2,14 @@ import React, {FC, ReactNode} from 'react';
 import {Container} from "react-bootstrap";
 
 interface ContainerWithBackgroundImageProps {
-  src: string;
-  children:ReactNode;
+  src?: string;
+  className?: string;
+  children?:ReactNode;
 }
 
-const ContainerWithBackgroundImage: FC<ContainerWithBackgroundImageProps> = ({src,children}) => {
+const ContainerWithBackgroundImage: FC<ContainerWithBackgroundImageProps> = ({src,className,children}) => {
   return (
-    <div className='min-vh-100 pt-5 ' style={{
+    <div className={`min-vh-100 pt-5 ${className}`} style={{
       backgroundImage:`url(${src})`,
       backgroundAttachment:"fixed",
       backgroundSize:"cover",

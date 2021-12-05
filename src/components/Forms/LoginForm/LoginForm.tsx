@@ -2,9 +2,9 @@ import React, {FC, HTMLAttributes} from 'react';
 import {Button, Card} from "react-bootstrap";
 import {ArrowRight} from 'react-bootstrap-icons';
 import {Form} from "formik";
-import TextInput from "../Inputs/TextInput/TextInput";
-import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
-import SubmitButton from "../SubmitButton/SubmitButton";
+import TextInput from "../../Inputs/TextInput/TextInput";
+import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
+import SubmitButton from "../../SubmitButton/SubmitButton";
 
 
 interface LoginFormProps extends HTMLAttributes<any> {
