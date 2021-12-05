@@ -1,17 +1,15 @@
 import React, {FC, ReactNode} from 'react';
 import CardTemplate from "../CardTemplate";
 import {useFetchPriorityOrders} from "../../../hooks/useFetchPriorityOrders";
-import MyVisits from "../../RecordsComponents/MyVisits";
 import {Spinner} from "react-bootstrap";
-import PriorityOrdersNotAssigned from "../../RecordsComponents/PriorityOrdersNotAssigned";
-import dayjs from "dayjs";
+import PriorityOrdersNotAssigned from "../../RecordsComponents/Employee/PriorityOrdersNotAssigned";
 
 interface OrdersProps {
   className?: string;
   children?: ReactNode;
 }
 
-const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({children, className}) => {
+const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({ className}) => {
   const Orders = useFetchPriorityOrders();
 
 
@@ -22,29 +20,31 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({children, className}) =
                   bodyClassName='thumb-primary'
                   headerDiamondClassName='text-primary'
                   headerLabel={
-                    <div
-                      className={`d-flex ps-3 pe-3 rounded-card-10 text-primary-dark w-100 justify-content-between align-items-center`}>
-                      <span className='ms-2'>
-                        ID Zlecenia
-                      </span>
-                      <span className='ms-1'>
-                        ID Klienta
-                      </span>
-                      <span className='ms-2'>
-                        Typ Zlecenia
-                      </span>
-                      <span className='ms-2'>
-                        Data
-                      </span>
-                      <span className='ms-2'>
-                        Czas Oczekiwania(D.H.M.S)
-                      </span>
+                    <div className='container-fluid w-100 '>
+                      <div
+                        className={`row align-items-start ps-3 pe-3 rounded-card-10 text-primary-dark w-100 `}>
+                        <div className='col ms-2'>
+                          ID Zlecenia
+                        </div>
+                        <div className='col ms-1'>
+                          ID Klienta
+                        </div>
+                        <div className='col ms-2'>
+                          Typ Zlecenia
+                        </div>
+                        <div className='col ms-2'>
+                          Data
+                        </div>
+                        <div className='col ms-2'>
+                          Czas Oczekiwania(D.H.M.S)
+                        </div>
+                      </div>
                     </div>}
     >
-
+      <div className='container-fluid w-100 '>
       {
         Orders ? (
-          Orders.length === 0 ? <p className='text-info'>Nie ma żadnych nagłych zleceń do wykonania.</p>
+          Orders.length === 0 ? <p className='text-primary-dark fw-bold'>Nie ma żadnych nagłych zleceń do wykonania.</p>
             : Orders.map((item, key) => (
               <PriorityOrdersNotAssigned
                 order={item}
@@ -55,7 +55,7 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({children, className}) =
           <Spinner animation={"border"} variant={"primary"}/>
         )
       }
-
+      </div>
     </CardTemplate>
   );
 };

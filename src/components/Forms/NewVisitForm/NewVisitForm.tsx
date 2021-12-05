@@ -2,10 +2,10 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import {Form, useFormikContext} from "formik";
-import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
-import SelectInput from "../Inputs/SelectInput/SelectInput";
-import DateInput from "../Inputs/DateInput/DateInput";
-import {NewVisitFormikValues} from "../../interfaces/NewVisitFormikValues";
+import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
+import SelectInput from "../../Inputs/SelectInput/SelectInput";
+import DateInput from "../../Inputs/DateInput/DateInput";
+import {NewVisitFormikValues} from "../../../interfaces/FormValues/NewVisitFormikValues";
 import {Bank2, Clock} from "react-bootstrap-icons";
 //TODO make hook and get tables form rest service
 //type option = { value: any, key: any }

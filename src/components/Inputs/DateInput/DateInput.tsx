@@ -18,10 +18,12 @@ const DateInput: FC<DateInputProps> = ({ label, containerClass, labelClassName,.
       <Form.Label className={labelClassName}>{label}</Form.Label>
 
       <ReactDatePicker
-        selected={new Date(field.value)}
+        selected={field.value && new Date(field.value)}
         dateFormat='dd.MM.yyyy'
         customInput={<CustomCalendarInput name={props.name} />}
+        autoComplete='off'
         showPopperArrow={false}
+
         {...props}
       />
     </Form.Group>

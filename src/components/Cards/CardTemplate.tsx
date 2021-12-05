@@ -8,6 +8,7 @@ interface CardTemplateProps {
   img?: string;
   children: ReactNode;
   headerLabel?: ReactNode;
+  headerBody?: ReactNode;
   className?: string;
   headerClassName?: string;
   bodyClassName?: string;
@@ -20,6 +21,7 @@ const CardTemplate: FC<CardTemplateProps> = ({
                                                img,
                                                children,
                                                headerLabel,
+                                               headerBody,
                                                className,
                                                headerClassName,
                                                bodyClassName,
@@ -36,6 +38,7 @@ const CardTemplate: FC<CardTemplateProps> = ({
         >
           <h5>{header}</h5>
         </TextWithDiamond>
+        {headerBody}
         {headerLabel}
         <hr/>
       </div>

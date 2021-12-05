@@ -10,8 +10,8 @@ import 'dayjs/locale/pl';
 import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import bgHappy1 from "../../../assets/images/bg-happy2.jpeg"
 import Footer from "../../../components/Footer/Footer";
-import {NewVisitFormikValues} from "../../../interfaces/NewVisitFormikValues";
-import NewVisitForm from "../../../components/NewVisitForm/NewVisitForm";
+import {NewVisitFormikValues} from "../../../interfaces/FormValues/NewVisitFormikValues";
+import NewVisitForm from "../../../components/Forms/NewVisitForm/NewVisitForm";
 import {useFetchVisitsOptions} from "../../../hooks/useFetchVisitsOptions";
 
 dayjs.extend(isLeapYear);

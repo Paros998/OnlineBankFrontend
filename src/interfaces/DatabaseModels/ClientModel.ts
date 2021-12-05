@@ -14,4 +14,5 @@ export interface ClientModel {
   secCity: string;
   secPostalCode: string;
   numberOfCreditsCards: number;
+  dateOfCreation: string;
 }
