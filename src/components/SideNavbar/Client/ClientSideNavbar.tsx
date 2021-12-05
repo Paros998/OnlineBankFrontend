@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, NavLink } from "react-bootstrap";
+import { Container, Navbar, Row } from "react-bootstrap";
 import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear";
 import { Link } from "react-router-dom";
@@ -27,25 +27,35 @@ const ClientSideNavbar = () => {
         float-start
         '
       >
-        <CollapseOptions />
+        <CollapseOptions/>
 
-        <div className='mb-5 w-100'>
-          <div className='flex-column text-center'>
-            <NavLink className='text-light' as={Link} to='/#procedures'>
-              Regulamin
-            </NavLink>
+        <section className='mb-5 w-75'>
+          <Container className='text-center p-0'>
+            <Row>
+              <Link className='text-light text-decoration-none' to='#'>
+                <div className='side-navbar-option'>Regulamin</div>
+              </Link>
+            </Row>
 
-            <NavLink className='text-light' as={Link} to='/#faq'>
-              FAQ
-            </NavLink>
-          </div>
+            <Row>
+              <Link className='text-light text-decoration-none' to='#'>
+                <div className='side-navbar-option'>FAQ</div>
+              </Link>
+            </Row>
 
-          <div className='w-100 text-center pb-2 d-flex flex-column'>
-            <hr className='text-light w-90 mx-auto mb-1'/>
-            <span>{dayOfWeek}</span>
-            <span>{currentDate}</span>
-          </div>
-        </div>
+            <Row>
+              <hr className='text-light w-100 mt-1 mb-2'/>
+            </Row>
+
+            <Row className='justify-content-center'>
+              {dayOfWeek}
+            </Row>
+
+            <Row className='justify-content-center'>
+              {currentDate}
+            </Row>
+          </Container>
+        </section>
       </Navbar>
     </>
   );
