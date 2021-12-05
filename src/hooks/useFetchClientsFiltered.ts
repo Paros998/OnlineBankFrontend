@@ -35,7 +35,7 @@ export function useFetchClientsFiltered() {
 
   useEffect(()=> {
     fetchClients().catch();
-  },[setClients])
+  },[setClients,fetchClients])
 
   return {clients,fetchClients};
 }

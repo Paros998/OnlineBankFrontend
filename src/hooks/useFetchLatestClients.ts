@@ -22,7 +22,7 @@ export function useFetchLatestClients() {
 
   useEffect(()=> {
     fetchLatestClients().catch();
-  },[setClients])
+  },[setClients,fetchLatestClients])
 
   return {clients,fetchLatestClients};
 }
