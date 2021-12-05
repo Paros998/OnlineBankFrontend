@@ -7,6 +7,8 @@ import { CyclicalTransferModel } from "../../../interfaces/DatabaseModels/Cyclic
 import { useCurrentUser } from "../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../interfaces/DatabaseModels/ClientModel";
 import CenteredSpinner from "../../CenteredSpinner/CenteredSpinner";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
@@ -44,6 +46,20 @@ const ClientComingPaymentsCard = () => {
               <hr className='text-secondary'/>
             </div>
           ))
+        }
+
+        {
+          cyclicalTransfers?.length === 0 && (
+            <div className='text-center'>
+              <Button
+                as={Link as any}
+                to='/client/cyclical-transfers'
+                className='fw-bold'
+              >
+                Dodaj nowy przelew cykliczny
+              </Button>
+            </div>
+          )
         }
 
         <CenteredSpinner isPending={isPending}/>
