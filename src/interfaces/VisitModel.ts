@@ -1,4 +1,5 @@
-import {EmployeeModel} from "./EmployeeModel";
+import { EmployeeModel } from "./DatabaseModels/EmployeeModel";
+
 
 export interface VisitModel{
   visit_id: number;
