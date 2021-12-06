@@ -23,22 +23,19 @@ const ClientComingPaymentsCard = () => {
     <CardTemplate
       header='Nadchodzące płatności'
       headerDiamondClassName='fs-6'
-      className='mt-3 w-100 m-0 ms-0'
+      className='mt-4 w-100 ms-0 h-100 border-secondary'
+      bodyClassName='d-flex flex-column justify-content-between'
     >
       <>
         {
-          cyclicalTransfers?.map((transfer, index) => (
-            <div
-              className='text-secondary-dark'
-              // tricky way
-              style={{ marginBottom: index < cyclicalTransfers.length - 1 ? '62px' : '' }}
-            >
+          cyclicalTransfers?.map((transfer) => (
+            <div className='text-secondary-dark fw-bold'>
               {dayjs(transfer.reTransferDate).format('DD.MM.YYYY')}
 
               <div className='d-flex justify-content-between'>
                 {transfer.title}
 
-                <span className='text-end fw-bold text-black'>
+                <span className='text-end text-black'>
                   {transfer.amount} PLN
                 </span>
               </div>

@@ -13,7 +13,7 @@ import Transfer from "./Transfer/Transfer";
 const containerStyle: CSSProperties = {
   paddingLeft: '220px',
   paddingTop: '20px',
-  paddingRight: '50px'
+  paddingRight: '50px',
 };
 
 const ClientAuthorisedViews = () => {
@@ -34,19 +34,19 @@ const ClientAuthorisedViews = () => {
           </Route>
 
           <Route path='/client/transfer'>
-            <Transfer />
+            <Transfer/>
           </Route>
 
           <Route path='/client/account'>
-            <Account />
+            <Account/>
           </Route>
 
           <Route path='/client/history'>
-            <History />
+            <History/>
           </Route>
 
           <Route path='/client/cyclical-transfers'>
-            <CyclicalTransfers />
+            <CyclicalTransfers/>
           </Route>
 
           <Route path='*'>
