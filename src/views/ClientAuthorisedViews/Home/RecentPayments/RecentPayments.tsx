@@ -15,51 +15,49 @@ dayjs.locale('pl');
 
 const RecentPayments = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
-  const { rawData: transfers } = useFetchRawData<TransferModel[]>(
+  const { rawData: transfers, isPending } = useFetchRawData<TransferModel[]>(
     `/transfers/recent/client/${currentUser?.clientId}`
   );
 
-  if (currentUser && transfers) {
-    return (
-      <>
-        {
-          transfers.map((transfer) => (
-            <Card className='mt-3 pe-4 ps-4 border-secondary'>
-              <Container className='m-0 p-0 text-start text-nowrap'>
-                <Row>
-                  <Col xs={3}>
-                    <span className='fw-bold'>
-                      {dayjs(transfer.transferDate).format('DD.MM.YYYY')}
-                    </span>
-                  </Col>
+  return (
+    <>
+      {
+        transfers?.map((transfer) => (
+          <Card className='mt-3 pe-4 ps-4 border-secondary'>
+            <Container className='m-0 p-0 text-start text-nowrap'>
+              <Row>
+                <Col xs={3}>
+                  <span className='fw-bold'>
+                    {dayjs(transfer.transferDate).format('DD.MM.YYYY')}
+                  </span>
+                </Col>
 
-                  <Col xs={3}>
-                    <span className={`fw-bold ${paymentCategories[transfer.category]}`}>
+                <Col xs={3}>
+                  <span className={`fw-bold ${paymentCategories[transfer.category]}`}>
                       {transfer.category}
-                    </span>
-                  </Col>
+                  </span>
+                </Col>
 
-                  <Col xs={3}>
-                    <span className='fw-bold'>
-                      {transfer.receiver_sender}
-                    </span>
-                  </Col>
+                <Col xs={3}>
+                  <span className='fw-bold'>
+                    {transfer.receiver_sender}
+                  </span>
+                </Col>
 
-                  <Col xs={3} className='text-end'>
-                    <span className={`fw-bold ${getColorOfCash(transfer.type)}`}>
-                      {transfer.amount} PLN
-                    </span>
-                  </Col>
-                </Row>
-              </Container>
-            </Card>
-          ))
-        }
-      </>
-    );
-  }
+                <Col xs={3} className='text-end'>
+                  <span className={`fw-bold ${getColorOfCash(transfer.type)}`}>
+                    {transfer.amount} PLN
+                  </span>
+                </Col>
+              </Row>
+            </Container>
+          </Card>
+        ))
+      }
 
-  return <RecentPaymentsLoadingPlaceholder />;
+      <RecentPaymentsLoadingPlaceholder isPending={isPending} />
+    </>
+  );
 };
 
 export default RecentPayments;
