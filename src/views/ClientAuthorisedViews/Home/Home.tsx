@@ -29,14 +29,14 @@ const Home = () => {
         </Col>
       </Row>
 
-      <Row>
+      <Row className='pb-5'>
         <Col xs={8}>
           <RecentPayments/>
 
           <Advertisements />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={4} className='mb-4'>
           <ClientComingPaymentsCard />
         </Col>
       </Row>
