@@ -9,6 +9,8 @@ import { paymentCategories } from "../../../../constants/PaymentCategories";
 import { useFetchRawData } from "../../../../hooks/useFetchRawData";
 import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
 import RecentPaymentsLoadingPlaceholder from "./RecentPaymentsLoadingPlaceholder/RecentPaymentsLoadingPlaceholder";
+import { useModalState } from "../../../../hooks/useModalState";
+import RecentPaymentModal from "./RecentPaymentModal/RecentPaymentModal";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
@@ -18,12 +20,16 @@ const RecentPayments = () => {
   const { rawData: transfers, isPending } = useFetchRawData<TransferModel[]>(
     `/transfers/recent/client/${currentUser?.clientId}`
   );
+  const { showModal, toggleVisibility, entity } = useModalState<TransferModel>();
 
   return (
     <>
       {
         transfers?.map((transfer) => (
-          <Card className='mt-3 pe-4 ps-4 border-secondary'>
+          <Card
+            className='mt-3 pe-4 ps-4 border-secondary'
+            onClick={() => toggleVisibility(transfer)}
+          >
             <Container className='m-0 p-0 text-start text-nowrap'>
               <Row>
                 <Col xs={3}>
@@ -34,7 +40,7 @@ const RecentPayments = () => {
 
                 <Col xs={3}>
                   <span className={`fw-bold ${paymentCategories[transfer.category]}`}>
-                      {transfer.category}
+                    {transfer.category}
                   </span>
                 </Col>
 
@@ -55,7 +61,13 @@ const RecentPayments = () => {
         ))
       }
 
-      <RecentPaymentsLoadingPlaceholder isPending={isPending} />
+      <RecentPaymentModal
+        transferData={entity}
+        showModal={showModal}
+        toggleVisibility={toggleVisibility}
+      />
+
+      <RecentPaymentsLoadingPlaceholder isPending={isPending}/>
     </>
   );
 };
