@@ -10,6 +10,8 @@ const InfoCard: FC<HTMLAttributes<unknown>> = ({ children, className, ...props }
         text-center
         d-flex
         text-white
+        fs-5
+        p-4
         justify-content-center
         align-items-center
         ${className}
