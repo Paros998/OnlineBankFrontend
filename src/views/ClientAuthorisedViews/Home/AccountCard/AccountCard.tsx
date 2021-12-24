@@ -35,7 +35,7 @@ const AccountCard = () => {
           <div className='mt-3'>
             <Button
               as={Link as any}
-              to='/client/transfer'
+              to='/client/new-transfer'
               className='rounded-pill me-3 fw-bold'
             >
               Przelew

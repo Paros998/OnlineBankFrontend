@@ -53,7 +53,7 @@ const CollapseOptions = () => {
         <Collapse in={paymentsCollapse}>
           <Container className='text-center p-0'>
             <Row className='mt-3'>
-              <Link className='text-light text-decoration-none' to='/client/transfer'>
+              <Link className='text-light text-decoration-none' to='/client/new-transfer'>
                 <div className='side-navbar-option'>Wykonaj przelew</div>
               </Link>
             </Row>
