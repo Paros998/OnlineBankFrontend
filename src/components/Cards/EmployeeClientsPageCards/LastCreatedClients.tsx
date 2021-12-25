@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {Spinner} from "react-bootstrap";
 import CardTemplate from "../CardTemplate";
 import {Formik} from "formik";
-import {LatestClientsFormikValues} from "../../../interfaces/FormValues/LatestClientsFormikValues";
+import {LatestClientsFormikValues} from "../../../interfaces/formik/LatestClientsFormikValues";
 import {toast} from "react-toastify";
 import LatestClientsForm from "../../Forms/LatestClientsForm/LatestClientsForm";
 import {useFetchLatestClients} from "../../../hooks/useFetchLatestClients";

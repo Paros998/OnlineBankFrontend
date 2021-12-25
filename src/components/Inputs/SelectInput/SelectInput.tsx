@@ -10,8 +10,8 @@ interface SelectInputProps extends FormSelectProps {
   name: string;
   containerClass?: string;
   options: option[];
-  placeholder: string;
-  iconComponent: ReactNode;
+  placeholder?: string;
+  iconComponent?: ReactNode;
 }
 
 const SelectInput: FC<SelectInputProps> = ({ label, containerClass, labelClassName, iconComponent, ...props }) => {
@@ -22,22 +22,26 @@ const SelectInput: FC<SelectInputProps> = ({ label, containerClass, labelClassNa
         {label}
       </Form.Label>
 
-      <InputGroup>
-        <Form.Select {...field} {...props} bsPrefix='form-select select btn'>
-          <option>{props.placeholder} </option>
+      <InputGroup className='is-invalid'>
+        <Form.Select {...field} {...props} bsPrefix='select btn'>
+          <option key={0} value=''>{props.placeholder}</option>
           {props.options.map((item) => (
             <option key={item.key} value={item.value}>{item.value}</option>
           ))}
         </Form.Select>
 
-        <InputGroup.Text className='bg-white border-0'>
-          {iconComponent}
-        </InputGroup.Text>
+        {
+          iconComponent && (
+            <InputGroup.Text className='bg-white border-0'>
+              {iconComponent}
+            </InputGroup.Text>
+          )
+        }
       </InputGroup>
 
       <ErrorMessage name={field.name}>
         {(errorMessage) => (
-          <Form.Control.Feedback type='invalid'>
+          <Form.Control.Feedback type='invalid' className='d-block'>
             {errorMessage}
           </Form.Control.Feedback>
         )}

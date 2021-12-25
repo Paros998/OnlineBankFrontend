@@ -10,9 +10,10 @@ import 'dayjs/locale/pl';
 import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import bgHappy1 from "../../../assets/images/bg-happy2.jpeg"
 import Footer from "../../../components/Footer/Footer";
-import {NewVisitFormikValues} from "../../../interfaces/FormValues/NewVisitFormikValues";
+import {NewVisitFormikValues} from "../../../interfaces/formik/NewVisitFormikValues";
 import NewVisitForm from "../../../components/Forms/NewVisitForm/NewVisitForm";
 import {useFetchVisitsOptions} from "../../../hooks/useFetchVisitsOptions";
+import { formatDateWithDayJs } from "../../../utils/formatDateWithDayJs";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
@@ -24,13 +25,11 @@ const formikValues: NewVisitFormikValues = {
   isActive: true
 };
 
-const initDateWithDayJs = (date: Date) => dayjs(date).format('DD.MM.YYYY');
-
 const NewVisit = () => {
   const history = useHistory();
   const options = useFetchVisitsOptions();
   const handleSubmit = async ({ visitDate, ...values }: NewVisitFormikValues) => {
-    const initialisedDate = initDateWithDayJs(visitDate);
+    const initialisedDate = formatDateWithDayJs(visitDate);
 
     if (values.establishment === '') {
       toast.info("Wartość w wyborze Placówki jest niepoprawna 🔒");

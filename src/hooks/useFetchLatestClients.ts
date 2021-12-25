@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from "react";
 import {ClientModel} from "../interfaces/DatabaseModels/ClientModel";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {LatestClientsFormikValues} from "../interfaces/FormValues/LatestClientsFormikValues";
+import {LatestClientsFormikValues} from "../interfaces/formik/LatestClientsFormikValues";
 
 export function useFetchLatestClients() {
   const [clients,setClients] = useState<ClientModel[]>();
