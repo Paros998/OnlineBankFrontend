@@ -11,6 +11,7 @@ import FormBlob from "../../../../components/FormBlob/FormBlob";
 import { useSelectOptions } from "../../../../hooks/useSelectOptions";
 import ActionButtons from "./ActionButtons/ActionButtons";
 import NumberFormatTextInput from "../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput";
+import { AccountNumberFormat } from "../../../../constants/AccountNumberFormat";
 
 const colProps: ColProps = {
   xs: 4,
@@ -48,7 +49,7 @@ const NewTransferForm = () => {
             type='text'
             labelClassName='fw-bold'
             placeholder='Wpisz numer rachunku odbiorcy'
-            format='## #### #### #### #### #### #####'
+            format={AccountNumberFormat}
             readonly={isReadonly}
           />
         </Col>

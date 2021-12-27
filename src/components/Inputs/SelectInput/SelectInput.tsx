@@ -27,7 +27,7 @@ const SelectInput: FC<SelectInputProps> = ({ label, containerClass, readonly, la
         </Form.Label>
 
         <InputGroup className='is-invalid'>
-          <Form.Select {...field} {...props} bsPrefix='select btn'>
+          <Form.Select {...field} {...props} bsPrefix='form-select select btn'>
             <option key={0} value=''>{props.placeholder}</option>
             {props.options.map((item) => (
               <option key={item.key} value={item.value}>{item.value}</option>
