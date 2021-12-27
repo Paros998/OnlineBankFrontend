@@ -3,6 +3,8 @@
 @import '~react-datepicker/dist/react-datepicker.min.css';
 @import '~react-toastify/dist/ReactToastify.css';
 @import "client-side-navbar";
+@import "main-container";
+@import "new-transfer-form";
 
 body,html{
   margin: 0;
@@ -308,7 +310,7 @@ hr:not([size]){
   border-radius: 4px;
 }
 .react-datepicker-popper {
-  z-index: 3;
+  z-index: 2000;
 }
 
 .react-datepicker__header {

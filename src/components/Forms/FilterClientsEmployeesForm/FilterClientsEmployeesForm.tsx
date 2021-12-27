@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, useFormikContext} from "formik";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import DateInput from "../../Inputs/DateInput/DateInput";
-import {FilterClientsEmployeesFormikValues} from "../../../interfaces/FormValues/FilterClientsEmployeesFormikValues";
+import {FilterClientsEmployeesFormikValues} from "../../../interfaces/formik/FilterClientsEmployeesFormikValues";
 import dayjs from "dayjs";
 
 const FilterClientsEmployeesForm = () => {

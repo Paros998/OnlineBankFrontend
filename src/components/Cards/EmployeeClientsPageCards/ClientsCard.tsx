@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import CardTemplate from "../CardTemplate";
 import {Formik} from "formik";
-import {FilterClientsEmployeesFormikValues} from "../../../interfaces/FormValues/FilterClientsEmployeesFormikValues";
+import {FilterClientsEmployeesFormikValues} from "../../../interfaces/formik/FilterClientsEmployeesFormikValues";
 import FilterClientsEmployeesForm from "../../Forms/FilterClientsEmployeesForm/FilterClientsEmployeesForm";
 import dayjs from "dayjs";
 import {useFetchClientsFiltered} from "../../../hooks/useFetchClientsFiltered";

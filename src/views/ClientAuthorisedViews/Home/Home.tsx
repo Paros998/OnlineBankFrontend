@@ -1,5 +1,4 @@
 import React from 'react';
-import { LocationHeaders } from "../../../enums/LocationHeaders";
 import { Col, Row } from "react-bootstrap";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import AccountCard from "./AccountCard/AccountCard";
@@ -10,8 +9,6 @@ import ClientComingPaymentsCard from "../../../components/Cards/ClientComingPaym
 const Home = () => {
   return (
     <>
-      <h1>{LocationHeaders.Home}</h1>
-
       <Row>
         <Col xs={8}>
           <AccountCard/>

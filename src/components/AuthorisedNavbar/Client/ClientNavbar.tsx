@@ -10,7 +10,7 @@ const ClientNavbar = () => {
   const { handleLogout, currentUser } = useCurrentUser<ClientModel>();
 
   return (
-    <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-dark z-1000'>
+    <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-dark z-2000'>
       <Container className='pt-1 pb-1 ms-xxl-5 me-xxl-5 justify-content-between'>
         <Navbar.Brand as={Link} to='/home'>
           <img

@@ -2,7 +2,11 @@ import React, {FC} from 'react';
 import {Button, ButtonProps, Spinner} from "react-bootstrap";
 import {useFormikContext} from "formik";
 
-const SubmitButton: FC<ButtonProps> = ({ children, ...props }) => {
+interface SubmitButtonProps extends ButtonProps {
+  to?: string;
+}
+
+const SubmitButton: FC<SubmitButtonProps> = ({ children, ...props }) => {
   const { isSubmitting } = useFormikContext();
   return (
     <Button

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import OnLogout from "../../components/OnLogout/OnLogout";
@@ -10,12 +10,6 @@ import History from "./History/History";
 import Account from "./Account/Account";
 import Transfer from "./Transfer/Transfer";
 
-const containerStyle: CSSProperties = {
-  paddingLeft: '220px',
-  paddingTop: '20px',
-  paddingRight: '50px',
-};
-
 const ClientAuthorisedViews = () => {
   return (
     <Router>
@@ -24,8 +18,7 @@ const ClientAuthorisedViews = () => {
       <ClientSideNavbar/>
 
       <Container
-        className='bg-secondary-light h-100'
-        style={containerStyle}
+        className='bg-secondary-light h-100 pb-3 main-container'
         fluid
       >
         <Switch>
@@ -33,7 +26,7 @@ const ClientAuthorisedViews = () => {
             <Home/>
           </Route>
 
-          <Route path='/client/transfer'>
+          <Route path='/client/new-transfer'>
             <Transfer/>
           </Route>
 

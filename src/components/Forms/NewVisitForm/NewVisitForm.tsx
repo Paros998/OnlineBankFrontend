@@ -5,7 +5,7 @@ import {Form, useFormikContext} from "formik";
 import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../../Inputs/SelectInput/SelectInput";
 import DateInput from "../../Inputs/DateInput/DateInput";
-import {NewVisitFormikValues} from "../../../interfaces/FormValues/NewVisitFormikValues";
+import {NewVisitFormikValues} from "../../../interfaces/formik/NewVisitFormikValues";
 import {Bank2, Clock} from "react-bootstrap-icons";
 //TODO make hook and get tables form rest service
 //type option = { value: any, key: any }
@@ -76,6 +76,7 @@ const NewVisitForm = (props:NewVisitFormProps) => {
                   name='visitDate'
                   label='Data'
                   labelClassName='text-white'
+                  className='border-0'
                   onChange={(date: Date) => {
                     setFieldValue("visitDate", date);
                   }}
