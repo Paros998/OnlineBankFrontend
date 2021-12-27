@@ -10,5 +10,5 @@ export const TransferValidationSchema = Yup.object().shape({
   category: Yup.string().required('Podaj kategorię przelewu.'),
   receiver_sender: Yup.string().required('Podaj odbiorcę przelewu.'),
   title: Yup.string().required('Podaj tytuł przelewu.'),
-  toAccountNumber: Yup.string().required('Podaj numer konta odbiorcy.'),
+  toAccountNumber: Yup.string().required('Podaj numer konta odbiorcy.').min(26, 'Niepoprawny numer konta odbiorcy'),
 });

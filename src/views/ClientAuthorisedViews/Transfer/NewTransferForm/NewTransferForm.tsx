@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import moment from "moment";
 import { Form, useFormikContext } from "formik";
-import { Button, Col, Collapse, ColProps, Row } from "react-bootstrap";
+import { Col, Collapse, ColProps, Row } from "react-bootstrap";
 import TextInput from "../../../../components/Inputs/TextInput/TextInput";
 import SelectInput from "../../../../components/Inputs/SelectInput/SelectInput";
 import CheckboxInput from "../../../../components/Inputs/CheckboxInput/CheckboxInput";
 import { TransferFormikValues } from "../../../../interfaces/formik/TransferFormikValues";
 import DateInput from "../../../../components/Inputs/DateInput/DateInput";
-import { formatDateWithDayJs } from "../../../../utils/formatDateWithDayJs";
 import FormBlob from "../../../../components/FormBlob/FormBlob";
 import { useSelectOptions } from "../../../../hooks/useSelectOptions";
+import ActionButtons from "./ActionButtons/ActionButtons";
+import NumberFormatTextInput from "../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput";
 
 const colProps: ColProps = {
   xs: 4,
@@ -18,9 +20,10 @@ const colProps: ColProps = {
 const NewTransferForm = () => {
   const { values, handleChange, setFieldValue } = useFormikContext<TransferFormikValues>();
   const transferCategories = useSelectOptions<string>('/rest/transfers/categories');
+  const [isReadonly, setIsReadonly] = useState(false);
 
   return (
-    <Form className='position-relative mt-4'>
+    <Form className='position-relative mt-4' noValidate>
       <FormBlob style={{ zIndex: 1 }}/>
 
       <Row>
@@ -31,18 +34,22 @@ const NewTransferForm = () => {
             type='text'
             labelClassName='fw-bold'
             placeholder='Wpisz nazwę odbiorcy'
+            readOnly={isReadonly}
+            maxLength={20}
           />
         </Col>
       </Row>
 
       <Row className='mt-5'>
         <Col {...colProps}>
-          <TextInput
+          <NumberFormatTextInput
             name='toAccountNumber'
             label='Na rachunek'
             type='text'
             labelClassName='fw-bold'
             placeholder='Wpisz numer rachunku odbiorcy'
+            format='## #### #### #### #### #### #####'
+            readonly={isReadonly}
           />
         </Col>
       </Row>
@@ -59,10 +66,12 @@ const NewTransferForm = () => {
             name='amount'
             label='Kwota'
             type='number'
-            className='border-end-0'
+            className='rounded-0 rounded-start float-start'
             labelClassName='fw-bold'
             placeholder='Wpisz numer rachunku odbiorcy'
             hasInputText
+            readOnly={isReadonly}
+            readonlyAdditionalValueContent='PLN'
           />
         </Col>
       </Row>
@@ -76,6 +85,7 @@ const NewTransferForm = () => {
             placeholder='Wybierz kategorię'
             labelClassName='fw-bold'
             options={transferCategories || []}
+            readonly={isReadonly}
           />
         </Col>
       </Row>
@@ -94,32 +104,39 @@ const NewTransferForm = () => {
             type='text'
             labelClassName='fw-bold'
             placeholder='Wpisz tytuł przelewu'
+            readOnly={isReadonly}
+            maxLength={30}
           />
         </Col>
       </Row>
 
-      <Row className='mt-4'>
-        <Col {...colProps}>
-          <CheckboxInput
-            name='isCyclicalTransfer'
-            label='Przelew cykliczny'
-            id='cyclical-transfer-checkbox'
-            checked={values.isCyclicalTransfer}
-            onChange={handleChange}
-          />
-        </Col>
-      </Row>
+      {
+        !isReadonly && (
+          <Row className='mt-4'>
+            <Col {...colProps}>
+              <CheckboxInput
+                name='isCyclicalTransfer'
+                label='Przelew cykliczny'
+                id='cyclical-transfer-checkbox'
+                checked={values.isCyclicalTransfer}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+        )
+      }
 
       <Row className='mt-3'>
-        <Collapse in={values.isCyclicalTransfer}>
+        <Collapse in={values.isCyclicalTransfer || isReadonly}>
           <Col {...colProps}>
             <DateInput
-              label='Data przelewu cyklicznego'
+              label={values.isCyclicalTransfer ? 'Data przelewu cyklicznego' : 'Data przelewu'}
               labelClassName='fw-bold'
               name='transferDate'
               placeholderText='DD.MM.YYYY'
+              readOnly={isReadonly}
               onChange={(date: Date) => {
-                const formattedDate = formatDateWithDayJs(date);
+                const formattedDate = moment(date).format('DD.MM.YYYY');
                 setFieldValue('transferDate', formattedDate);
               }}
             />
@@ -133,11 +150,9 @@ const NewTransferForm = () => {
         </Col>
       </Row>
 
-      <Row className='mt-3 mb-4'>
+      <Row className='mt-3 mb-4 text-end'>
         <Col {...colProps}>
-          <Button className='rounded-pill fw-bold w-25' type='submit'>
-            Dalej
-          </Button>
+          <ActionButtons readonly={isReadonly} setReadonly={setIsReadonly} />
         </Col>
       </Row>
     </Form>

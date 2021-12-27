@@ -1,6 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Form, FormControlProps, InputGroup } from "react-bootstrap";
 import { ErrorMessage, useField } from "formik";
+import ReadonlyInput from "../ReadonlyInput/ReadonlyInput";
 
 interface TextInputProps extends FormControlProps {
   label?: string;
@@ -8,41 +9,53 @@ interface TextInputProps extends FormControlProps {
   name: string;
   containerClass?: string;
   hasInputText?: boolean;
+  maxLength?: number;
+  readonlyAdditionalValueContent?: string;
 }
 
-const TextInput: FC<TextInputProps> = ({ label, hasInputText, containerClass, labelClassName, ...props }) => {
+const TextInput: FC<TextInputProps> = ({ label, hasInputText, readOnly, readonlyAdditionalValueContent, containerClass, labelClassName, ...props }) => {
   const [field] = useField(props);
-  const [textInputClass, setTextInputClass] = useState('border-secondary-light');
+
+  if (!readOnly) {
+    return (
+      <Form.Group className={containerClass}>
+        <Form.Label className={labelClassName}>{label}</Form.Label>
+
+        <InputGroup className='has-validation'>
+          <Form.Control
+            {...field}
+            {...props}
+            autoComplete='off'
+          />
+
+          {
+            hasInputText && (
+              <InputGroup.Text className='bg-white'>
+                PLN
+              </InputGroup.Text>
+            )
+          }
+        </InputGroup>
+
+        <ErrorMessage name={field.name}>
+          {
+            (errorMessage) => (
+              <Form.Control.Feedback type='invalid' className='d-block'>
+                {errorMessage}
+              </Form.Control.Feedback>
+            )
+          }
+        </ErrorMessage>
+      </Form.Group>
+    );
+  }
 
   return (
-    <Form.Group className={containerClass}>
-      <Form.Label className={labelClassName}>{label}</Form.Label>
-
-      <InputGroup>
-        <Form.Control
-          {...field}
-          {...props}
-          onFocus={() => hasInputText && setTextInputClass('border-danger')}
-          onBlur={() => hasInputText && setTextInputClass('border-secondary-light')}
-        />
-
-        {
-          hasInputText && (
-            <InputGroup.Text className={`bg-white border-start-0 z-1000 ${textInputClass}`}>
-              PLN
-            </InputGroup.Text>
-          )
-        }
-      </InputGroup>
-
-      <ErrorMessage name={field.name}>
-        {(errorMessage) => (
-          <Form.Control.Feedback type='invalid' className='d-block'>
-            {errorMessage}
-          </Form.Control.Feedback>
-        )}
-      </ErrorMessage>
-    </Form.Group>
+    <ReadonlyInput
+      value={field.value}
+      label={label}
+      additionalContent={readonlyAdditionalValueContent}
+    />
   );
 };
 
