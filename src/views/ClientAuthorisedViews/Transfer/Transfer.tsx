@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import axios from "axios";
 import { Formik } from 'formik';
 import { useHistory } from "react-router-dom";
-import ClientMainLayout from "../../../components/ClientMainLayout/ClientMainLayout";
+import ClientCardLayout from "../../../components/ClientCardLayout/ClientCardLayout";
 import { LocationHeaders } from "../../../enums/LocationHeaders";
 import { TransferFormikValues } from "../../../interfaces/formik/TransferFormikValues";
 import { useCurrentUser } from "../../../contexts/CurrentUserContext";
@@ -59,7 +59,7 @@ const Transfer: FC = () => {
   };
 
   return (
-    <ClientMainLayout location={LocationHeaders.Transfer}>
+    <ClientCardLayout location={LocationHeaders.Transfer}>
       <Formik
         initialValues={formikInitialValues}
         onSubmit={handleSubmit}
@@ -67,7 +67,7 @@ const Transfer: FC = () => {
       >
         <NewTransferForm/>
       </Formik>
-    </ClientMainLayout>
+    </ClientCardLayout>
   );
 };
 

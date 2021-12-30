@@ -30,7 +30,7 @@ const SelectInput: FC<SelectInputProps> = ({ label, containerClass, readonly, la
           <Form.Select {...field} {...props} bsPrefix='form-select select btn'>
             <option key={0} value=''>{props.placeholder}</option>
             {props.options.map((item) => (
-              <option key={item.key} value={item.value}>{item.value}</option>
+              <option key={item.key} value={item.value}>{item.key}</option>
             ))}
           </Form.Select>
 
