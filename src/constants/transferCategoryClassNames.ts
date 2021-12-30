@@ -1,4 +1,4 @@
-export const paymentCategories: any = {
+export const transferCategoryClassNames: any = {
   'Rachunki': 'text-purpel',
   'Zarobki': 'text-success',
   'Rozrywka': 'text-warning',

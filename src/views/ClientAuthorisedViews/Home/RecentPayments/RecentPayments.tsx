@@ -4,13 +4,13 @@ import isLeapYear from "dayjs/plugin/isLeapYear";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
-import { getColorOfCash } from "../../../../utils/getColorOfCash";
-import { paymentCategories } from "../../../../constants/PaymentCategories";
 import { useFetchRawData } from "../../../../hooks/useFetchRawData";
 import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
 import RecentPaymentsLoadingPlaceholder from "./RecentPaymentsLoadingPlaceholder/RecentPaymentsLoadingPlaceholder";
 import { useModalState } from "../../../../hooks/useModalState";
-import RecentPaymentModal from "./RecentPaymentModal/RecentPaymentModal";
+import { transferCategoryClassNames } from "../../../../constants/transferCategoryClassNames";
+import { amountColor } from "../../../../constants/amountColor";
+import TransferDetailsModal from "../../../../components/Modal/TransferDetailsModal/TransferDetailsModal";
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
@@ -27,10 +27,11 @@ const RecentPayments = () => {
       {
         transfers?.map((transfer) => (
           <Card
-            className='mt-3 pe-4 ps-4 border-secondary'
+            className='mt-3 pe-4 ps-4 border-secondary recent-payment'
             onClick={() => toggleVisibility(transfer)}
+            key={transfer.transferId}
           >
-            <Container className='m-0 p-0 text-start text-nowrap'>
+            <Container className='m-0 p-0 text-start text-nowrap w-100'>
               <Row>
                 <Col xs={3}>
                   <span className='fw-bold'>
@@ -39,7 +40,7 @@ const RecentPayments = () => {
                 </Col>
 
                 <Col xs={3}>
-                  <span className={`fw-bold ${paymentCategories[transfer.category]}`}>
+                  <span className={`fw-bold ${transferCategoryClassNames[transfer.category]}`}>
                     {transfer.category}
                   </span>
                 </Col>
@@ -51,7 +52,7 @@ const RecentPayments = () => {
                 </Col>
 
                 <Col xs={3} className='text-end'>
-                  <span className={`fw-bold ${getColorOfCash(transfer.type)}`}>
+                  <span className={`fw-bold ${amountColor[transfer.type]}`}>
                     {transfer.amount} PLN
                   </span>
                 </Col>
@@ -61,10 +62,10 @@ const RecentPayments = () => {
         ))
       }
 
-      <RecentPaymentModal
-        transferData={entity}
+      <TransferDetailsModal
         showModal={showModal}
         toggleVisibility={toggleVisibility}
+        data={entity || {} as TransferModel}
       />
 
       <RecentPaymentsLoadingPlaceholder isPending={isPending}/>

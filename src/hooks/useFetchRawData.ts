@@ -8,7 +8,7 @@ export const useFetchRawData = <T extends unknown>(endpoint: string, params?: an
   const fetchData = useCallback(async () => {
     setIsPending(true);
     try {
-      const { data } = await axios.get<T>(endpoint, params);
+      const { data } = await axios.get<T>(endpoint, { params });
       setRawData(data);
     } catch (e) {
       console.error(e);

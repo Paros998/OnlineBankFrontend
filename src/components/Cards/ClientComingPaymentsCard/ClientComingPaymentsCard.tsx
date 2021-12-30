@@ -29,7 +29,7 @@ const ClientComingPaymentsCard = () => {
       <>
         {
           cyclicalTransfers?.map((transfer) => (
-            <div className='text-secondary-dark fw-bold'>
+            <div key={transfer.transferId} className='text-secondary-dark fw-bold'>
               {dayjs(transfer.reTransferDate).format('DD.MM.YYYY')}
 
               <div className='d-flex justify-content-between'>
@@ -46,7 +46,7 @@ const ClientComingPaymentsCard = () => {
         }
 
         {
-          cyclicalTransfers?.length === 0 && (
+          !cyclicalTransfers?.length && (
             <div className='text-center'>
               <Button
                 as={Link as any}

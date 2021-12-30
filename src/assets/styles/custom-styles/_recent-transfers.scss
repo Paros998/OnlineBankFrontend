@@ -1,0 +1,9 @@
+.recent-payment {
+  transition: ease-in-out 0.3s;
+  background-color: white;
+}
+
+.recent-payment:hover {
+  cursor: pointer;
+  background-color: $secondary-light;
+}

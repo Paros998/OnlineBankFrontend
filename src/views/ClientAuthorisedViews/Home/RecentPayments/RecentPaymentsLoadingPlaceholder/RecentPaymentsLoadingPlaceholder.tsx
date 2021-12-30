@@ -10,8 +10,8 @@ const RecentPaymentsLoadingPlaceholder: FC<RecentPaymentsLoadingPlaceholderProps
     return (
       <>
         {
-          Array(3).fill(0).map(() => (
-            <Placeholder as='p' animation='glow' className='mt-3'>
+          Array(3).fill(0).map((value, index) => (
+            <Placeholder as='p' animation='glow' className='mt-3' key={index}>
               <Placeholder xs={12}/>
             </Placeholder>
           ))

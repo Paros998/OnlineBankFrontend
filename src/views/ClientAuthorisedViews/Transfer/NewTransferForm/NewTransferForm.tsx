@@ -136,6 +136,8 @@ const NewTransferForm = () => {
               name='transferDate'
               placeholderText='DD.MM.YYYY'
               readOnly={isReadonly}
+              hasIcon
+              valueFormat='DD.MM.YYYY'
               onChange={(date: Date) => {
                 const formattedDate = moment(date).format('DD.MM.YYYY');
                 setFieldValue('transferDate', formattedDate);

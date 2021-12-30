@@ -5,7 +5,7 @@ import { CalendarDay } from "react-bootstrap-icons";
 import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
 import { Link } from "react-router-dom";
-import ClientMainLayout from "../../../../components/ClientMainLayout/ClientMainLayout";
+import ClientCardLayout from "../../../../components/ClientCardLayout/ClientCardLayout";
 import { LocationHeaders } from "../../../../enums/LocationHeaders";
 import NumberFormat from "react-number-format";
 import { AccountNumberFormat } from "../../../../constants/AccountNumberFormat";
@@ -14,7 +14,7 @@ const AccountCard = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
 
   return (
-    <ClientMainLayout location={LocationHeaders.Home}>
+    <ClientCardLayout location={LocationHeaders.Home}>
       <h6 className='text-end'>Dostępne środki</h6>
 
       <div className='d-flex justify-content-between'>
@@ -70,7 +70,7 @@ const AccountCard = () => {
           </Col>
 
           <Col xs={3}>
-            <p>Odbiorca | Nadawca</p>
+            <p>Odbiorca / Nadawca</p>
           </Col>
 
           <Col xs={3} className='text-end'>
@@ -78,7 +78,7 @@ const AccountCard = () => {
           </Col>
         </Row>
       </Container>
-    </ClientMainLayout>
+    </ClientCardLayout>
   );
 };
 

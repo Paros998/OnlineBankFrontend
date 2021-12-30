@@ -16,12 +16,14 @@ interface DateInputProps extends ReactDatePickerProps {
   labelClassName?: string;
   name: string;
   containerClass?: string;
+  hasIcon?: boolean;
+  valueFormat?: string;
 }
 
-const DateInput: FC<DateInputProps> = ({ name, label, containerClass, readOnly, labelClassName, ...props }) => {
+const DateInput: FC<DateInputProps> = ({ name, label, containerClass, readOnly, labelClassName, valueFormat, ...props }) => {
   const [field] = useField(name);
 
-  const formattedSelectedDate = moment(field.value, 'DD.MM.YYYY').toDate();
+  const formattedSelectedDate = moment(field.value, valueFormat).toDate();
 
   if (!readOnly) {
     return (
@@ -35,6 +37,7 @@ const DateInput: FC<DateInputProps> = ({ name, label, containerClass, readOnly, 
             <CustomCalendarInput
               name={name}
               className={`${props.className} `}
+              hasIcon={props.hasIcon}
               inputTextClassName={props.className}
             />
           }

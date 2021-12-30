@@ -6,9 +6,10 @@ import { useField } from "formik";
 interface CustomCalendarInputProps extends FormControlProps {
   name: string;
   inputTextClassName?: string;
+  hasIcon?: boolean;
 }
 
-const CustomCalendarInput = forwardRef(({inputTextClassName, name, ...props}: CustomCalendarInputProps, ref) => {
+const CustomCalendarInput = forwardRef(({inputTextClassName, name, hasIcon, ...props}: CustomCalendarInputProps, ref) => {
   const [field] = useField(name);
 
   return (
@@ -19,9 +20,13 @@ const CustomCalendarInput = forwardRef(({inputTextClassName, name, ...props}: Cu
         ref={ref}
       />
 
-      <InputGroup.Text className={`bg-white fs-4 ${inputTextClassName}`}>
-        <CalendarDate />
-      </InputGroup.Text>
+      {
+        hasIcon && (
+          <InputGroup.Text className={`bg-white fs-4 ${inputTextClassName}`}>
+            <CalendarDate />
+          </InputGroup.Text>
+        )
+      }
     </InputGroup>
   );
 });
