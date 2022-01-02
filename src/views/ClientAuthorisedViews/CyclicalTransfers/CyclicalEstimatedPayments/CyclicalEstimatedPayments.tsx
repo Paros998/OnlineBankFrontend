@@ -1,39 +1,21 @@
-import React, { FC } from 'react';
-import CardTemplate from "../../../../components/Cards/CardTemplate";
-import LabeledProgressBar from "../../../../components/LabeledProgressBar/LabeledProgressBar";
-import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
-
-interface HistoryEstimatedPaymentsProps {
-  transfers: TransferDisplayModel[];
-}
+import React from 'react';
+import LabeledProgressBar from '../../../../components/LabeledProgressBar/LabeledProgressBar';
+import CardTemplate from '../../../../components/Cards/CardTemplate';
 
 // TODO Connect with BE
 
-const HistoryEstimatedPayments: FC<HistoryEstimatedPaymentsProps> = () => {
+const CyclicalEstimatedPayments = () => {
   return (
     <CardTemplate
-      header='Ostatnie 30 dni'
+      header='Prognoza 30 dni'
       headerClassName='fs-2'
       headerDiamondClassName='fs-6'
       className='mt-4 w-100 ms-0 border-secondary h-75'
     >
-      <div className='d-flex justify-content-between'>
-        <h5 className='fw-bold'>Suma wydatków</h5>
-        <h5 className='fw-bold'>Suma przychodów</h5>
+      <div className='d-flex justify-content-between mt-4'>
+        <h5 className='fw-bold'>Suma wydatków:</h5>
+        <h5 className='fw-bold'>2314,30 PLN</h5>
       </div>
-
-      <div className='d-flex justify-content-between'>
-        <h5 className='text-warning fw-bold'>0 PLN</h5>
-        <h5 className='text-success fw-bold'>0 PLN</h5>
-      </div>
-
-      <LabeledProgressBar
-        wrapperProps={{ className: 'mt-3' }}
-        startLabel={{ startLabelName: 'Wydatki', className: 'text-warning fw-bold' }}
-        endLabel={{ endLabelName: 'Przychody', className: 'text-success fw-bold'  }}
-        startProgressBarProps={{ now: 90, label: '90%', variant: 'warning' }}
-        endProgressBarProps={{ now: 10, label: '10%', variant: 'success' }}
-      />
 
       <hr className='text-secondary mt-5 mb-5'/>
 
@@ -75,4 +57,4 @@ const HistoryEstimatedPayments: FC<HistoryEstimatedPaymentsProps> = () => {
   );
 };
 
-export default HistoryEstimatedPayments;
+export default CyclicalEstimatedPayments;

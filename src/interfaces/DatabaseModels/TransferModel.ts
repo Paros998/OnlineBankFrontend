@@ -2,7 +2,7 @@ import { ClientModel } from "./ClientModel";
 
 export interface TransferModel {
   transferId: number;
-  amount: number | string;
+  amount: number;
   transferDate: string;
   category: string;
   type: string;

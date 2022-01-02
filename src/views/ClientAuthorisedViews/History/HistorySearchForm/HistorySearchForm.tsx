@@ -5,6 +5,7 @@ import SelectInput from "../../../../components/Inputs/SelectInput/SelectInput";
 import { useSelectOptions } from "../../../../hooks/useSelectOptions";
 import DateRangePicker from "../../../../components/DateRangePicker/DateRangePicker";
 import { HistorySearchFormikValues } from "../../../../interfaces/formik/HistorySearchFormikValues";
+import { searchFormSelectClassName } from '../../../../constants/searchFormSelectClassName';
 
 interface HistorySearchFormProps {
   setHistoryParams: Dispatch<SetStateAction<HistorySearchFormikValues>>;
@@ -16,8 +17,6 @@ const initialFormikValues: HistorySearchFormikValues = {
   dateTo: '',
   transferType: '',
 };
-
-const selectClassName = 'custom-select w-100 border-secondary-light rounded text-center fw-bold';
 
 const HistorySearchForm: FC<HistorySearchFormProps> = ({ setHistoryParams }) => {
   const transferCategories = useSelectOptions<string>('/rest/transfers/categories');
@@ -45,7 +44,7 @@ const HistorySearchForm: FC<HistorySearchFormProps> = ({ setHistoryParams }) => 
                 name='transferCategory'
                 options={transferCategories || []}
                 placeholder='Wybierz kategorię przelewu'
-                className={selectClassName}
+                className={searchFormSelectClassName}
                 onChange={(e) => {
                   setFieldValue('transferCategory', e.target.value);
                   handleSubmit();
@@ -58,7 +57,7 @@ const HistorySearchForm: FC<HistorySearchFormProps> = ({ setHistoryParams }) => 
                 name='transferType'
                 options={[{ key: 'Wydatki', value: 'OUTGOING' }, { key: 'Przychody', value: 'INCOMING' }]}
                 placeholder='Wybierz typ przelewu'
-                className={selectClassName}
+                className={searchFormSelectClassName}
                 onChange={(e) => {
                   setFieldValue('transferType', e.target.value);
                   handleSubmit();

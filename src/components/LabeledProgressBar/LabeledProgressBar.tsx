@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react';
-import { ProgressBar, ProgressBarProps } from "react-bootstrap";
+import { ProgressBar, ProgressBarProps } from 'react-bootstrap';
 
 interface LabeledProgressBarProps {
   startLabel: HTMLAttributes<unknown> & { startLabelName: string };
@@ -9,13 +9,21 @@ interface LabeledProgressBarProps {
   wrapperProps?: HTMLAttributes<unknown>;
 }
 
-const LabeledProgressBar: FC<LabeledProgressBarProps> = ({ startLabel, endLabel, wrapperProps, startProgressBarProps, endProgressBarProps }) => {
+const LabeledProgressBar: FC<LabeledProgressBarProps> = (props) => {
+  const {
+    endProgressBarProps,
+    startProgressBarProps,
+    startLabel,
+    endLabel,
+    wrapperProps,
+  } = props;
+
   const { startLabelName, ...startLabelProps } = startLabel;
   const { endLabelName, ...endLabelProps } = endLabel;
 
   return (
     <div {...wrapperProps}>
-      <div className='d-flex justify-content-between'>
+      <div className="d-flex justify-content-between">
         <span {...startLabelProps}>{startLabelName}</span>
         <span {...endLabelProps}>{endLabelName}</span>
       </div>

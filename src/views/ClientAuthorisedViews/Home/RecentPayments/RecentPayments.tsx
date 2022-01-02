@@ -2,25 +2,20 @@ import React from 'react';
 import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
-import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
-import { useFetchRawData } from "../../../../hooks/useFetchRawData";
-import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
 import RecentPaymentsLoadingPlaceholder from "./RecentPaymentsLoadingPlaceholder/RecentPaymentsLoadingPlaceholder";
 import { useModalState } from "../../../../hooks/useModalState";
 import { transferCategoryClassNames } from "../../../../constants/transferCategoryClassNames";
 import { amountColor } from "../../../../constants/amountColor";
 import TransferDetailsModal from "../../../../components/Modal/TransferDetailsModal/TransferDetailsModal";
+import { useTransfers } from '../../History/hooks/useTransfers';
+import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
 
 const RecentPayments = () => {
-  const { currentUser } = useCurrentUser<ClientModel>();
-  const { rawData: transfers, isPending } = useFetchRawData<TransferModel[]>(
-    `/transfers/recent/client/${currentUser?.clientId}`
-  );
-  const { showModal, toggleVisibility, entity } = useModalState<TransferModel>();
+  const { formattedTransfers: transfers, isPending } = useTransfers(undefined, true);
+  const { showModal, toggleVisibility, entity } = useModalState<TransferDisplayModel>();
 
   return (
     <>
@@ -65,7 +60,7 @@ const RecentPayments = () => {
       <TransferDetailsModal
         showModal={showModal}
         toggleVisibility={toggleVisibility}
-        data={entity || {} as TransferModel}
+        data={entity || {} as TransferDisplayModel}
       />
 
       <RecentPaymentsLoadingPlaceholder isPending={isPending}/>

@@ -15,6 +15,10 @@ tr {
   table-layout: fixed;
 }
 
+.row-transition {
+  transition: ease-in-out 0.1s;
+}
+
 tbody > tr:hover {
   cursor: pointer;
 }
@@ -22,8 +26,8 @@ tbody > tr:hover {
 tbody {
   overflow-y: scroll;
   height: 39.5rem;
-  color: white;
   position: absolute;
   width: 96%;
+  color: white;
   text-align: center;
 }

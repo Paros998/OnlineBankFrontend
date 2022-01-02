@@ -7,21 +7,21 @@ import { HistorySearchFormikValues } from "../../../interfaces/formik/HistorySea
 import HistorySearchForm from "./HistorySearchForm/HistorySearchForm";
 import { useTableProps } from "../../../hooks/useTableProps";
 import { useModalState } from "../../../hooks/useModalState";
-import { TransferModel } from "../../../interfaces/DatabaseModels/TransferModel";
 import TransferDetailsModal from "../../../components/Modal/TransferDetailsModal/TransferDetailsModal";
 import { Col, Row } from "react-bootstrap";
 import Advertisements from "../../../components/Advertisements/Advertisements";
 import HistoryEstimatedPayments from "./HistoryEstimatedPayments/HistoryEstimatedPayments";
+import { TransferDisplayModel } from '../../../interfaces/TransferDisplayModel';
 
 const History = () => {
   const [historyParams, setHistoryParams] = useState<HistorySearchFormikValues>({} as HistorySearchFormikValues);
   const { formattedTransfers: transfers, isPending } = useTransfers(historyParams);
-  const { toggleVisibility, showModal, entity } = useModalState<TransferModel>();
-  const tableProps = useTableProps<TransferModel>(
+  const { toggleVisibility, showModal, entity } = useModalState<TransferDisplayModel>();
+  const tableProps = useTableProps<TransferDisplayModel>(
     { data: transfers || [], isPending },
-    (e: any, row: TransferModel) => toggleVisibility(row),
     'transferId',
-    { initialSortBy: 'transferDate' }
+    { initialSortBy: 'displayTransferDate' },
+    (e: any, row: TransferDisplayModel) => toggleVisibility(row),
   );
 
   return (
@@ -35,7 +35,7 @@ const History = () => {
           <TransferDetailsModal
             showModal={showModal}
             toggleVisibility={toggleVisibility}
-            data={entity || {} as TransferModel}
+            data={entity || {} as TransferDisplayModel}
           />
         </ClientCardLayout>
       </Col>

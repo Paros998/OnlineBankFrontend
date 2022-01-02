@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 import BootstrapTable, { BootstrapTableProps } from "react-bootstrap-table-next";
-import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
 import { transferCategoryClassNames } from "../../../../constants/transferCategoryClassNames";
 import { getDefaultRowStyle } from "../../../../utils/getDefaultRowStyle";
 import { defaultColumnStyle } from "../../../../constants/defaultColumnStyle";
+import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
 
 interface HistoryTableProps {
-  tableProps: BootstrapTableProps<TransferModel>;
+  tableProps: BootstrapTableProps<TransferDisplayModel>;
 }
 
 const columns = [
   {
     ...defaultColumnStyle,
-    dataField: 'transferDate',
+    dataField: 'displayTransferDate',
     text: 'Data',
     sort: true,
   },
@@ -20,7 +20,7 @@ const columns = [
     ...defaultColumnStyle,
     dataField: 'category',
     text: 'Kategoria',
-    classes: (cell: any, row: TransferModel, rowIndex: number) => {
+    classes: (cell: any, row: TransferDisplayModel, rowIndex: number) => {
       return `${getDefaultRowStyle(rowIndex)} ${transferCategoryClassNames[cell]}`;
     },
   },
@@ -31,7 +31,7 @@ const columns = [
   },
   {
     ...defaultColumnStyle,
-    dataField: 'amount',
+    dataField: 'displayAmount',
     text: 'Kwota',
   },
 ];

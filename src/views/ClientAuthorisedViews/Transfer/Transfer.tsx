@@ -29,8 +29,6 @@ const Transfer: FC = () => {
   };
 
   const handleSubmit = async ({ isCyclicalTransfer, ...values }: TransferFormikValues) => {
-    // TODO (BE) need to refactor fields in cyclical controller. There is no point reinitializing values before posting...
-
     try {
       if (isCyclicalTransfer) {
         const cyclicalTransferPostValues = {

@@ -3,29 +3,35 @@ import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
 import { useFetchRawData } from "../../../../hooks/useFetchRawData";
 import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
-import { getFormattedTransferDate } from "../HistoryTable/utils/getFormattedTransferDate";
-import { getFormattedAmount } from "../HistoryTable/utils/getFormattedAmount";
+import { getFormattedTransferDate } from "../utils/getFormattedTransferDate";
+import { getFormattedAmount } from "../utils/getFormattedAmount";
 import { TransferTypes } from "../../../../enums/TransferTypes";
 import { HistorySearchFormikValues } from "../../../../interfaces/formik/HistorySearchFormikValues";
+import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
 
-export const useTransfers = (params?: HistorySearchFormikValues) => {
+export const useTransfers = (params?: HistorySearchFormikValues, areRecentTransfers?: boolean) => {
   const { currentUser } = useCurrentUser<ClientModel>();
+
+  const endpoint = areRecentTransfers
+    ? `/transfers/recent/client/${currentUser?.clientId}`
+    : `/transfers/client/${currentUser?.clientId}`;
+
   const {
     rawData: transfers,
     isPending,
     fetchData
-  } = useFetchRawData<TransferModel[]>(`/transfers/client/${currentUser?.clientId}`, params);
+  } = useFetchRawData<TransferModel[]>(endpoint, params);
 
-  const formattedTransfers = useMemo(() =>
+  const formattedTransfers: TransferDisplayModel[] = useMemo(() =>
     transfers?.map((transfer) =>
       (
         {
           ...transfer,
-          amount: getFormattedAmount(transfer.amount as number, transfer.type as TransferTypes),
-          transferDate: getFormattedTransferDate(transfer.transferDate),
+          displayAmount: getFormattedAmount(transfer.amount as number, transfer.type as TransferTypes),
+          displayTransferDate: getFormattedTransferDate(transfer.transferDate),
         }
       )
-    ), [transfers, getFormattedTransferDate]) as TransferModel[];
+    ) || [], [transfers, getFormattedTransferDate]);
 
   return { formattedTransfers: formattedTransfers, isPending, fetchTransfers: fetchData };
 };
