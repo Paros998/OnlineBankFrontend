@@ -19,9 +19,9 @@ const History = () => {
   const { toggleVisibility, showModal, entity } = useModalState<TransferModel>();
   const tableProps = useTableProps<TransferModel>(
     { data: transfers || [], isPending },
-    (e: any, row: TransferModel) => toggleVisibility(row),
     'transferId',
-    { initialSortBy: 'transferDate' }
+    { initialSortBy: 'transferDate' },
+    (e: any, row: TransferModel) => toggleVisibility(row),
   );
 
   return (

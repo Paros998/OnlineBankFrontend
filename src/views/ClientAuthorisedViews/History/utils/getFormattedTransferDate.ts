@@ -1,5 +1,5 @@
 import moment from "moment";
-import { getTodayDate } from "../../../../../utils/getTodayDate";
+import { getTodayDate } from "../../../../utils/getTodayDate";
 
 export const getFormattedTransferDate = (date: string) => {
   const momentDate = moment(date).format('DD.MM.YYYY');

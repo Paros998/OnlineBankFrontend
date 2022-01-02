@@ -1,8 +1,8 @@
-import { ClientModel } from "./ClientModel";
+import { ClientModel } from '../DatabaseModels/ClientModel';
 
-export interface CyclicalTransferModel {
+export interface EditCyclicalTransferFormikValues {
   transferId: number;
-  amount: number | string;
+  amount: number;
   reTransferDate: string;
   category: string;
   receiver: string;

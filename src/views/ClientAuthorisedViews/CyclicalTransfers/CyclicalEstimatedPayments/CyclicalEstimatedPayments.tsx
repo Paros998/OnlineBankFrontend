@@ -1,30 +1,18 @@
-import React, { FC } from 'react';
-import CardTemplate from "../../../../components/Cards/CardTemplate";
-import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
-import LabeledProgressBar from "../../../../components/LabeledProgressBar/LabeledProgressBar";
+import React from 'react';
+import LabeledProgressBar from '../../../../components/LabeledProgressBar/LabeledProgressBar';
+import CardTemplate from '../../../../components/Cards/CardTemplate';
 
-interface HistoryEstimatedPaymentsProps {
-  transfers: TransferModel[];
-}
-
-// TODO Connect with BE
-
-const HistoryEstimatedPayments: FC<HistoryEstimatedPaymentsProps> = () => {
+const CyclicalEstimatedPayments = () => {
   return (
     <CardTemplate
-      header='Ostatnie 30 dni'
+      header='Prognoza 30 dni'
       headerClassName='fs-2'
       headerDiamondClassName='fs-6'
       className='mt-4 w-100 ms-0 border-secondary h-75'
     >
       <div className='d-flex justify-content-between'>
-        <span className='fw-bold'>Suma wydatków</span>
-        <span className='fw-bold'>Suma przychodów</span>
-      </div>
-
-      <div className='d-flex justify-content-between'>
-        <span className='text-warning fw-bold'>0 PLN</span>
-        <span className='text-success fw-bold'>0 PLN</span>
+        <span className='fw-bold'>Suma wydatków:</span>
+        <span className='fw-bold'>2314,30 PLN</span>
       </div>
 
       <hr className='text-secondary mt-5'/>
@@ -75,4 +63,4 @@ const HistoryEstimatedPayments: FC<HistoryEstimatedPaymentsProps> = () => {
   );
 };
 
-export default HistoryEstimatedPayments;
+export default CyclicalEstimatedPayments;

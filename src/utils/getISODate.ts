@@ -1,3 +1,6 @@
 import moment from "moment";
 
-export const getISODate = (date: string | Date) => moment(date, 'DD.MM.YYYY HH:mm:ss').toISOString();
+export const getISODate = (date: string | Date, format?: string) => {
+  const defaultFormat = 'DD.MM.YYYY HH:mm:ss';
+  return moment(date, format || defaultFormat).toISOString();
+};

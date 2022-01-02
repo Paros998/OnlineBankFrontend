@@ -3,8 +3,8 @@ import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
 import { useFetchRawData } from "../../../../hooks/useFetchRawData";
 import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
-import { getFormattedTransferDate } from "../HistoryTable/utils/getFormattedTransferDate";
-import { getFormattedAmount } from "../HistoryTable/utils/getFormattedAmount";
+import { getFormattedTransferDate } from "../utils/getFormattedTransferDate";
+import { getFormattedAmount } from "../utils/getFormattedAmount";
 import { TransferTypes } from "../../../../enums/TransferTypes";
 import { HistorySearchFormikValues } from "../../../../interfaces/formik/HistorySearchFormikValues";
 

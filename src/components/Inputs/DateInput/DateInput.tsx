@@ -23,7 +23,7 @@ interface DateInputProps extends ReactDatePickerProps {
 const DateInput: FC<DateInputProps> = ({ name, label, containerClass, readOnly, labelClassName, valueFormat, ...props }) => {
   const [field] = useField(name);
 
-  const formattedSelectedDate = moment(field.value, valueFormat).toDate();
+  const formattedSelectedDate = moment(field.value).toDate();
 
   if (!readOnly) {
     return (
