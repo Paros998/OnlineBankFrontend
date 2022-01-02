@@ -3,7 +3,7 @@ import { TransferModel } from '../../../../../interfaces/DatabaseModels/Transfer
 import { getDefaultRowStyle } from '../../../../../utils/getDefaultRowStyle';
 import { transferCategoryClassNames } from '../../../../../constants/transferCategoryClassNames';
 import { ColumnDescription } from 'react-bootstrap-table-next';
-import { CyclicalTransferDisplayModel } from '../../../../../interfaces/formik/CyclicalTransferDisplayModel';
+import { CyclicalTransferDisplayModel } from '../../../../../interfaces/CyclicalTransferDisplayModel';
 
 export const getColumns = (
   deleteButton: (cell: string, row: CyclicalTransferDisplayModel) => JSX.Element,

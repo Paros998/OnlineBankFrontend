@@ -9,7 +9,7 @@ import { useTableProps } from '../../../hooks/useTableProps';
 import { useCyclicalTransfers } from './hooks/useCyclicalTransfers';
 import { CyclicalTransferSearchFormikValues } from '../../../interfaces/formik/CyclicalTransferSearchFormikValues';
 import CyclicalTransferSearchForm from './CyclicalTransferSearchForm/CyclicalTransferSearchForm';
-import { CyclicalTransferDisplayModel } from '../../../interfaces/formik/CyclicalTransferDisplayModel';
+import { CyclicalTransferDisplayModel } from '../../../interfaces/CyclicalTransferDisplayModel';
 
 const CyclicalTransfers = () => {
   const [

@@ -6,7 +6,7 @@ import { CyclicalTransferModel } from '../../../../interfaces/DatabaseModels/Cyc
 import { useModalState } from '../../../../hooks/useModalState';
 import EditCyclicalTransferModal from './EditCyclicalTransferModal/EditCyclicalTransferModal';
 import ConfirmationModal from '../../../../components/Modal/ConfirmationModal/ConfirmationModal';
-import { CyclicalTransferDisplayModel } from '../../../../interfaces/formik/CyclicalTransferDisplayModel';
+import { CyclicalTransferDisplayModel } from '../../../../interfaces/CyclicalTransferDisplayModel';
 import { getPreviousCyclicalTransferData } from './utils/getPreviousCyclicalTransferData';
 import { toast } from 'react-toastify';
 import { getColumns } from './utils/getColumns';

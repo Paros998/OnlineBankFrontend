@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import DetailsModal from "../DetailsModal/DetailsModal";
-import { TransferModel } from "../../../interfaces/DatabaseModels/TransferModel";
 import { AccountNumberFormat } from "../../../constants/AccountNumberFormat";
 import NumberFormat from "react-number-format";
 import { transferCategoryClassNames } from "../../../constants/transferCategoryClassNames";
 import { amountColor } from "../../../constants/amountColor";
+import { TransferDisplayModel } from '../../../interfaces/TransferDisplayModel';
 
 interface HistoryDetailsModalProps {
   showModal: boolean;
   toggleVisibility: () => void;
-  data: TransferModel;
+  data: TransferDisplayModel;
 }
 
 const dataWrapperClassName = 'd-flex justify-content-between';
@@ -23,7 +23,7 @@ const TransferDetailsModal: FC<HistoryDetailsModalProps> = ({ showModal, toggleV
     >
       <div className={dataWrapperClassName}>
         <p className='fw-bold'>Data:</p>
-        <p>{data.transferDate}</p>
+        <p>{data.displayTransferDate}</p>
       </div>
 
       <div className={dataWrapperClassName}>
@@ -41,7 +41,7 @@ const TransferDetailsModal: FC<HistoryDetailsModalProps> = ({ showModal, toggleV
       <div className={dataWrapperClassName}>
         <p className='fw-bold'>Kwota:</p>
         <p className={amountColor[data.type]}>
-          {data.amount}
+          {data.displayAmount}
         </p>
       </div>
 

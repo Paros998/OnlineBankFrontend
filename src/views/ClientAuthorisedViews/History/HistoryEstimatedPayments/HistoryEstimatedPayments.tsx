@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import CardTemplate from "../../../../components/Cards/CardTemplate";
-import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
 import LabeledProgressBar from "../../../../components/LabeledProgressBar/LabeledProgressBar";
+import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
 
 interface HistoryEstimatedPaymentsProps {
-  transfers: TransferModel[];
+  transfers: TransferDisplayModel[];
 }
 
 // TODO Connect with BE

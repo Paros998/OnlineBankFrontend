@@ -15,6 +15,8 @@ const DetailsModal: FC<DetailsModalProps> = ({ showModal, toggleVisibility, head
       onHide={toggleVisibility}
       centered
       size='lg'
+      className='z-3000'
+      backdropClassName='z-3000'
     >
       <Modal.Header className='justify-content-center'>
         <Modal.Title>

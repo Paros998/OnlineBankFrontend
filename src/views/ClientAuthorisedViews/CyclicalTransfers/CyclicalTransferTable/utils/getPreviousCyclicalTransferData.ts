@@ -1,4 +1,4 @@
-import { CyclicalTransferDisplayModel } from '../../../../../interfaces/formik/CyclicalTransferDisplayModel';
+import { CyclicalTransferDisplayModel } from '../../../../../interfaces/CyclicalTransferDisplayModel';
 import { CyclicalTransferModel } from '../../../../../interfaces/DatabaseModels/CyclicalTransferModel';
 
 export const getPreviousCyclicalTransferData = (displayData: CyclicalTransferDisplayModel) => {

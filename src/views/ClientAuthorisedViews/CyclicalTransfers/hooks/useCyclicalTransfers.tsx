@@ -6,7 +6,7 @@ import { getFormattedTransferDate } from '../../History/utils/getFormattedTransf
 import { CyclicalTransferSearchFormikValues } from '../../../../interfaces/formik/CyclicalTransferSearchFormikValues';
 import moment from 'moment';
 import { CyclicalTransferModel } from '../../../../interfaces/DatabaseModels/CyclicalTransferModel';
-import { CyclicalTransferDisplayModel } from '../../../../interfaces/formik/CyclicalTransferDisplayModel';
+import { CyclicalTransferDisplayModel } from '../../../../interfaces/CyclicalTransferDisplayModel';
 
 export const useCyclicalTransfers = (params?: CyclicalTransferSearchFormikValues) => {
   const { currentUser } = useCurrentUser<ClientModel>();
