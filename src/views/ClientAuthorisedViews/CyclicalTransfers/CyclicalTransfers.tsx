@@ -8,19 +8,27 @@ import CyclicalEstimatedPayments from './CyclicalEstimatedPayments/CyclicalEstim
 import { useTableProps } from '../../../hooks/useTableProps';
 import { useCyclicalTransfers } from './hooks/useCyclicalTransfers';
 import { CyclicalTransferSearchFormikValues } from '../../../interfaces/formik/CyclicalTransferSearchFormikValues';
-import { CyclicalTransferModel } from '../../../interfaces/DatabaseModels/CyclicalTransferModel';
 import CyclicalTransferSearchForm from './CyclicalTransferSearchForm/CyclicalTransferSearchForm';
+import { CyclicalTransferDisplayModel } from '../../../interfaces/formik/CyclicalTransferDisplayModel';
 
 const CyclicalTransfers = () => {
-  const [cyclicalTransferParams, setCyclicalTransferParams] = useState<CyclicalTransferSearchFormikValues>(
+  const [
+    cyclicalTransferParams,
+    setCyclicalTransferParams
+  ] = useState<CyclicalTransferSearchFormikValues>(
     {} as CyclicalTransferSearchFormikValues
   );
 
-  const { formattedCyclicalTransfers: cyclicalTransfers, isPending } = useCyclicalTransfers(cyclicalTransferParams);
-  const tableProps = useTableProps<CyclicalTransferModel>(
+  const {
+    formattedCyclicalTransfers: cyclicalTransfers,
+    isPending,
+    fetchCyclicalTransfers
+  } = useCyclicalTransfers(cyclicalTransferParams);
+
+  const tableProps = useTableProps<CyclicalTransferDisplayModel>(
     { data: cyclicalTransfers || [], isPending: isPending },
     'transferId',
-    { initialSortBy: 'reTransferDate' },
+    { initialSortBy: 'displayReTransferDate' },
   );
 
   return (
@@ -29,7 +37,7 @@ const CyclicalTransfers = () => {
         <ClientCardLayout location={LocationHeaders.CyclicalTransfers} style={{ height: '54rem' }}>
           <CyclicalTransferSearchForm setCyclicalTransferParams={setCyclicalTransferParams} />
 
-          <CyclicalTransferTable tableProps={tableProps}/>
+          <CyclicalTransferTable fetchCyclicalTransfer={fetchCyclicalTransfers} tableProps={tableProps}/>
         </ClientCardLayout>
       </Col>
 

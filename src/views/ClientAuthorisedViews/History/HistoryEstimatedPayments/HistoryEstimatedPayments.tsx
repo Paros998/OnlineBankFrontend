@@ -18,24 +18,24 @@ const HistoryEstimatedPayments: FC<HistoryEstimatedPaymentsProps> = () => {
       className='mt-4 w-100 ms-0 border-secondary h-75'
     >
       <div className='d-flex justify-content-between'>
-        <span className='fw-bold'>Suma wydatków</span>
-        <span className='fw-bold'>Suma przychodów</span>
+        <h5 className='fw-bold'>Suma wydatków</h5>
+        <h5 className='fw-bold'>Suma przychodów</h5>
       </div>
 
       <div className='d-flex justify-content-between'>
-        <span className='text-warning fw-bold'>0 PLN</span>
-        <span className='text-success fw-bold'>0 PLN</span>
+        <h5 className='text-warning fw-bold'>0 PLN</h5>
+        <h5 className='text-success fw-bold'>0 PLN</h5>
       </div>
 
-      <hr className='text-secondary mt-5'/>
-
       <LabeledProgressBar
-        wrapperProps={{ className: 'mt-5' }}
+        wrapperProps={{ className: 'mt-3' }}
         startLabel={{ startLabelName: 'Wydatki', className: 'text-warning fw-bold' }}
         endLabel={{ endLabelName: 'Przychody', className: 'text-success fw-bold'  }}
         startProgressBarProps={{ now: 90, label: '90%', variant: 'warning' }}
         endProgressBarProps={{ now: 10, label: '10%', variant: 'success' }}
       />
+
+      <hr className='text-secondary mt-5 mb-5'/>
 
       <LabeledProgressBar
         wrapperProps={{ className: 'mt-4' }}

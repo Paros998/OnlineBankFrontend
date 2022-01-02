@@ -1,46 +1,37 @@
 import { Form, Formik } from 'formik';
-import React, { FC, memo, useMemo } from 'react';
+import React, { FC, memo } from 'react';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Button, Modal } from 'react-bootstrap';
 import TextWithDiamond from '../../../../../components/TextWithDiamond/TextWithDiamond';
-import { ClientModel } from '../../../../../interfaces/DatabaseModels/ClientModel';
-import { useCurrentUser } from '../../../../../contexts/CurrentUserContext';
 import { CyclicalTransferModel } from '../../../../../interfaces/DatabaseModels/CyclicalTransferModel';
 import { EditCyclicalTransferFormikValues } from '../../../../../interfaces/formik/EditCyclicalTransferFormikValues';
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
 import EditCyclicalTransferForm from './EditCyclicalTransferForm/EditCyclicalTransferForm';
-import { getFormattedReTransferDate } from '../utils/getFormattedReTransferDate';
-import { getFormattedAmount } from '../utils/getFormattedAmount';
 
 interface EditCyclicalTransferModalProps {
   showModal: boolean;
   toggleVisibility: () => void;
+  fetchCyclicalTransfers: () => Promise<void>;
   selectedCyclicalTransfer: CyclicalTransferModel;
 }
 
 const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
- showModal,
- toggleVisibility,
- selectedCyclicalTransfer
+  showModal,
+  toggleVisibility,
+  selectedCyclicalTransfer,
+  fetchCyclicalTransfers,
 }) => {
-  const { currentUser } = useCurrentUser<ClientModel>();
-
-  console.count('Cyclical rerenders');
-
-  const formikInitialValues: EditCyclicalTransferFormikValues = useMemo(() => (
-    {
-      ...selectedCyclicalTransfer,
-      amount: getFormattedAmount(selectedCyclicalTransfer.amount),
-      reTransferDate: getFormattedReTransferDate(selectedCyclicalTransfer.reTransferDate),
-      client: currentUser || {} as ClientModel,
-    }
-  ), [selectedCyclicalTransfer, currentUser]);
-
   const handleSubmit = async (values: EditCyclicalTransferFormikValues) => {
+    const currentCyclicalTransferId = selectedCyclicalTransfer.transferId;
+
     try {
-      await axios.put(`/cyclical-transfers/client/${currentUser?.clientId}`, values);
-    } catch (e) {
-      console.error(e);
+      await axios.put(`/cyclical-transfers/${currentCyclicalTransferId}`, values);
+
+      toast.success('Przelew cykliczny został poprawnie zedytowany.');
+      await fetchCyclicalTransfers();
+    } catch {
+      toast.error('Edycja przelewu cyklicznego nie powiodła się.')
     } finally {
       toggleVisibility();
     }
@@ -53,6 +44,7 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
       centered
       size="lg"
       className="z-3000"
+      backdropClassName='z-3000'
     >
       <Modal.Header className="justify-content-center">
         <Modal.Title>
@@ -63,7 +55,7 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
       </Modal.Header>
 
       <Formik<EditCyclicalTransferFormikValues>
-        initialValues={formikInitialValues}
+        initialValues={selectedCyclicalTransfer}
         onSubmit={handleSubmit}
       >
         <Form className="mt-4" noValidate>

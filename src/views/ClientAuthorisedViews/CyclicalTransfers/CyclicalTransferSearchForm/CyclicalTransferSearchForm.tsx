@@ -1,5 +1,4 @@
 import React, { Dispatch, FC, SetStateAction } from 'react';
-import { HistorySearchFormikValues } from '../../../../interfaces/formik/HistorySearchFormikValues';
 import { Form, Formik } from 'formik';
 import { Col, Row } from 'react-bootstrap';
 import DateRangePicker from '../../../../components/DateRangePicker/DateRangePicker';

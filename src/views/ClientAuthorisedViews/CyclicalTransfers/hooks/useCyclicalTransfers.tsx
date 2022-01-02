@@ -6,25 +6,25 @@ import { getFormattedTransferDate } from '../../History/utils/getFormattedTransf
 import { CyclicalTransferSearchFormikValues } from '../../../../interfaces/formik/CyclicalTransferSearchFormikValues';
 import moment from 'moment';
 import { CyclicalTransferModel } from '../../../../interfaces/DatabaseModels/CyclicalTransferModel';
+import { CyclicalTransferDisplayModel } from '../../../../interfaces/formik/CyclicalTransferDisplayModel';
 
 export const useCyclicalTransfers = (params?: CyclicalTransferSearchFormikValues) => {
   const { currentUser } = useCurrentUser<ClientModel>();
   const {
     rawData: cyclicalTransfers,
     isPending,
-    fetchData
+    fetchData,
   } = useFetchRawData<CyclicalTransferModel[]>(`/cyclical-transfers/client/${currentUser?.clientId}`, params);
 
-  const formattedCyclicalTransfers = useMemo(() =>
-    cyclicalTransfers?.map(({ amount, reTransferDate, ...cyclicalTransfer }) =>
-      (
+  const formattedCyclicalTransfers: CyclicalTransferDisplayModel[] = useMemo(() =>
+    cyclicalTransfers?.map((cyclicalTransfer) => (
         {
           ...cyclicalTransfer,
-          amount: `${(amount as number * -1).toFixed(2)} PLN`,
-          reTransferDate: moment(reTransferDate).format('DD.MM'),
+          displayAmount: `${(cyclicalTransfer.amount * -1).toFixed(2)} PLN`,
+          displayReTransferDate: moment(cyclicalTransfer.reTransferDate).format('DD.MM'),
         }
-      )
-    ), [cyclicalTransfers, getFormattedTransferDate]) as CyclicalTransferModel[];
+      ),
+    ) || [], [cyclicalTransfers, getFormattedTransferDate]);
 
   return { formattedCyclicalTransfers, isPending, fetchCyclicalTransfers: fetchData };
 };

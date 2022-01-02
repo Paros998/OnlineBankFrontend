@@ -2,6 +2,8 @@ import React from 'react';
 import LabeledProgressBar from '../../../../components/LabeledProgressBar/LabeledProgressBar';
 import CardTemplate from '../../../../components/Cards/CardTemplate';
 
+// TODO Connect with BE
+
 const CyclicalEstimatedPayments = () => {
   return (
     <CardTemplate
@@ -10,20 +12,12 @@ const CyclicalEstimatedPayments = () => {
       headerDiamondClassName='fs-6'
       className='mt-4 w-100 ms-0 border-secondary h-75'
     >
-      <div className='d-flex justify-content-between'>
-        <span className='fw-bold'>Suma wydatków:</span>
-        <span className='fw-bold'>2314,30 PLN</span>
+      <div className='d-flex justify-content-between mt-4'>
+        <h5 className='fw-bold'>Suma wydatków:</h5>
+        <h5 className='fw-bold'>2314,30 PLN</h5>
       </div>
 
-      <hr className='text-secondary mt-5'/>
-
-      <LabeledProgressBar
-        wrapperProps={{ className: 'mt-5' }}
-        startLabel={{ startLabelName: 'Wydatki', className: 'text-warning fw-bold' }}
-        endLabel={{ endLabelName: 'Przychody', className: 'text-success fw-bold'  }}
-        startProgressBarProps={{ now: 90, label: '90%', variant: 'warning' }}
-        endProgressBarProps={{ now: 10, label: '10%', variant: 'success' }}
-      />
+      <hr className='text-secondary mt-5 mb-5'/>
 
       <LabeledProgressBar
         wrapperProps={{ className: 'mt-4' }}
