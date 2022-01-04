@@ -19,11 +19,10 @@ const EditClientData = () => {
       return;
     }
 
-    try {
-      const order = createOrder(OrderTypes.EditClient, currentUser || {} as ClientModel);
-      const params = { requestBody: values };
+    const orderBody = createOrder(OrderTypes.EditClient, currentUser || {} as ClientModel, values);
 
-      await axios.post('/orders', order, { params });
+    try {
+      await axios.post('/orders', orderBody);
       toast.info('Prośba o edycje danych osobowych została wysłana.');
     } catch {
       toast.error('Edycja danych klienta nie udała się.');
