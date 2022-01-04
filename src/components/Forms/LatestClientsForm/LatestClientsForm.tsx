@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Form, useFormikContext} from "formik";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
-import {LatestClientsFormikValues} from "../../../interfaces/FormValues/LatestClientsFormikValues";
+import {LatestClientsFormikValues} from "../../../interfaces/formik/LatestClientsFormikValues";
 import {BsArrowDownSquare, BsArrowUpSquare} from "react-icons/all";
 
 const LatestClientsForm = () => {

@@ -2,7 +2,12 @@
 @import "src/assets/styles/custom-variables";
 @import '~react-datepicker/dist/react-datepicker.min.css';
 @import '~react-toastify/dist/ReactToastify.css';
+@import "~react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 @import "client-side-navbar";
+@import "main-container";
+@import "new-transfer-form";
+@import "table";
+@import "recent-transfers";
 
 body,html{
   margin: 0;
@@ -11,6 +16,7 @@ body,html{
   overflow-x: hidden;
   overflow-y: scroll;
   overflow: overlay;
+  font-size: 18px;
   height: 100%;
 }
 
@@ -129,6 +135,9 @@ hr:not([size]){
 }
 .z-2000{
   z-index: 2000;
+}
+.z-3000{
+  z-index: 3000;
 }
 .bg-video{
   z-index: -1;
@@ -359,7 +368,7 @@ hr:not([size]){
   border-radius: 4px;
 }
 .react-datepicker-popper {
-  z-index: 3;
+  z-index: 2000;
 }
 
 .react-datepicker__header {

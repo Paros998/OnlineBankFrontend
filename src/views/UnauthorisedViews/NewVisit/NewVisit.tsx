@@ -1,36 +1,28 @@
 import React from 'react';
-import dayjs from 'dayjs';
+import moment from "moment";
 import {Image} from "react-bootstrap";
 import axios from "axios";
 import {Formik} from "formik";
 import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
-import isLeapYear from 'dayjs/plugin/isLeapYear';
-import 'dayjs/locale/pl';
 import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/UnauthorisedNavbar";
 import bgHappy1 from "../../../assets/images/bg-happy2.jpeg"
 import Footer from "../../../components/Footer/Footer";
-import {NewVisitFormikValues} from "../../../interfaces/FormValues/NewVisitFormikValues";
+import {NewVisitFormikValues} from "../../../interfaces/formik/NewVisitFormikValues";
 import NewVisitForm from "../../../components/Forms/NewVisitForm/NewVisitForm";
-import {useFetchVisitsOptions} from "../../../hooks/useFetchVisitsOptions";
-
-dayjs.extend(isLeapYear);
-dayjs.locale('pl');
 
 const formikValues: NewVisitFormikValues = {
   establishment: "",
-  visitDate: dayjs(new Date()).toDate(),
+  visitDate: moment(new Date()).toDate(),
   visitTime: '',
   isActive: true
 };
 
-const initDateWithDayJs = (date: Date) => dayjs(date).format('DD.MM.YYYY');
-
 const NewVisit = () => {
   const history = useHistory();
-  const options = useFetchVisitsOptions();
+  // TODO VISITS DON'T WORK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 403 FORBIDDEN
   const handleSubmit = async ({ visitDate, ...values }: NewVisitFormikValues) => {
-    const initialisedDate = initDateWithDayJs(visitDate);
+    const initialisedDate = moment(visitDate).format('DD.MM.YYYY');
 
     if (values.establishment === '') {
       toast.info("Wartość w wyborze Placówki jest niepoprawna 🔒");

@@ -5,7 +5,7 @@ import UnauthorisedNavbar from "../../../components/UnauthorisedNavbar/Unauthori
 import bgLogin2 from '../../../assets/images/bg-client-login2.jpg';
 import bgLogin1 from '../../../assets/images/bg-client-login1.jpeg';
 import LoginForm from "../../../components/Forms/LoginForm/LoginForm";
-import {LoginFormikValues} from "../../../interfaces/FormValues/LoginFormikValues";
+import {LoginFormikValues} from "../../../interfaces/formik/LoginFormikValues";
 import Footer from "../../../components/Footer/Footer";
 import LoginHelpOffCanvas from "../../../components/LoginHelpOffCanvas/LoginHelpOffCanvas";
 import axios from "axios";

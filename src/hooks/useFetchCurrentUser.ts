@@ -29,7 +29,7 @@ export function useFetchCurrentUser<T>() {
     } finally {
       setIsPending(false);
     }
-  }, []);
+  }, [setIsPending, setCurrentUser, setRole]);
 
   useEffect(() => {
     fetchUser().catch();

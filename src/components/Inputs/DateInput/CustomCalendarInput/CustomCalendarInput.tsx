@@ -1,23 +1,32 @@
-import React, {forwardRef} from 'react';
+import React, { forwardRef } from 'react';
 import {FormControl, FormControlProps, InputGroup} from "react-bootstrap";
 import {CalendarDate} from "react-bootstrap-icons";
+import { useField } from "formik";
 
 interface CustomCalendarInputProps extends FormControlProps {
   name: string;
+  inputTextClassName?: string;
+  hasIcon?: boolean;
 }
 
-const CustomCalendarInput = forwardRef((props: CustomCalendarInputProps, ref) => {
+const CustomCalendarInput = forwardRef(({inputTextClassName, name, hasIcon, ...props}: CustomCalendarInputProps, ref) => {
+  const [field] = useField(name);
+
   return (
-    <InputGroup>
+    <InputGroup className='is-invalid'>
       <FormControl
+        {...field}
         {...props}
         ref={ref}
-        className='border-0'
       />
 
-      <InputGroup.Text className='bg-white fs-4 border-0'>
-        <CalendarDate />
-      </InputGroup.Text>
+      {
+        hasIcon && (
+          <InputGroup.Text className={`bg-white fs-4 ${inputTextClassName}`}>
+            <CalendarDate />
+          </InputGroup.Text>
+        )
+      }
     </InputGroup>
   );
 });

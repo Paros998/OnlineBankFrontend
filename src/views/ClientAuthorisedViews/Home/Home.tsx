@@ -1,24 +1,21 @@
 import React from 'react';
-import { LocationHeaders } from "../../../enums/LocationHeaders";
 import { Col, Row } from "react-bootstrap";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import AccountCard from "./AccountCard/AccountCard";
 import RecentPayments from "./RecentPayments/RecentPayments";
-import Advertisements from "./Advertisements/Advertisements";
-import ClientComingPaymentsCard from "../../../components/Cards/Client/ClientComingPaymentsCard/ClientComingPaymentsCard";
+import Advertisements from "../../../components/Advertisements/Advertisements";
+import ClientComingPaymentsCard from "../../../components/Cards/ClientComingPaymentsCard/ClientComingPaymentsCard";
 
 const Home = () => {
   return (
     <>
-      <h1>{LocationHeaders.Home}</h1>
-
       <Row>
         <Col xs={8}>
           <AccountCard/>
         </Col>
 
-        <Col xs={4}>
-          <InfoCard className='bg-info'>
+        <Col xs={4} className='mt-5'>
+          <InfoCard className='bg-info mt-2'>
             <h3>
               Witamy w naszym serwisie Future Bank
             </h3>
@@ -33,10 +30,10 @@ const Home = () => {
         <Col xs={8}>
           <RecentPayments/>
 
-          <Advertisements />
+          <Advertisements wrapperClassName='mt-5' />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={4} className='mb-4'>
           <ClientComingPaymentsCard />
         </Col>
       </Row>
