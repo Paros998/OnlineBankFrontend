@@ -6,9 +6,10 @@ import isGivenDataEdited from 'lodash.isequal';
 import { useCurrentUser } from '../../../../../contexts/CurrentUserContext';
 import { ClientModel } from '../../../../../interfaces/DatabaseModels/ClientModel';
 import EditClientDataForm from './EditClientDataForm/EditClientDataForm';
-import { EditClientDataValidationSchema } from '../../../../../validation/EditClientDataValidationSchema';
+
 import { createOrder } from '../../../../../utils/createOrder';
 import { OrderTypes } from '../../../../../enums/OrderTypes';
+import {EditClientDataValidationSchema} from "../../../../../Validation/EditClientDataValidationSchema";
 
 const EditClientData = () => {
   const { currentUser } = useCurrentUser<ClientModel>();

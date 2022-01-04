@@ -16,10 +16,8 @@ import {mapValuesToClient} from "../../../../utils/mapValuesToClient";
 import {createOrder} from "../../../../utils/createOrder";
 import {OrderTypes} from "../../../../enums/OrderTypes";
 import {useHistory} from "react-router-dom";
-import {OrderModel} from "../../../../interfaces/DatabaseModels/OrderModel";
 import {NewClientFormikValues} from "../../../../interfaces/formik/NewClientFormikValues";
 import {OrderJsonBody} from "../../../../interfaces/DatabaseModels/OrderJsonBody";
-
 
 interface NewClientCardProps {
   className?: string;
@@ -53,14 +51,14 @@ const validationSchema = yup.object().shape({
   homeAddress: yup.string()
     .required("Adres jest wymagany").max(50, "Adres może zawierać 50 znaków maksymalnie"),
   postalCode: yup.string()
-    .required("Kod pocztowy jest wymagany").matches(/^([A-Z][a-zA-Z]*)+( )+([0-9]{2}-[0-9]{3}$)/, "To nie jest adres pocztowy"),
+    .required("Kod pocztowy jest wymagany").matches(/^([AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ][AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]*)+( )+([0-9]{2}-[0-9]{3}$)/, "To nie jest adres pocztowy"),
 
   secCity: yup.string()
     .optional().max(50, "Nazwa może zawierać 50 znaków maksymalnie").min(5, "Za mało znaków"),
   secHomeAddress: yup.string()
     .optional().max(50, "Adres może zawierać 50 znaków maksymalnie").min(5, "Za mało znaków"),
   secPostalCode: yup.string()
-    .optional().matches(/^([A-Z][a-zA-Z]*)+( )+([0-9]{2}-[0-9]{3}$)/, "To nie jest adres pocztowy"),
+    .optional().matches(/^([AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ][AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]*)+( )+([0-9]{2}-[0-9]{3}$)/, "To nie jest adres pocztowy"),
 
   username: yup.string()
     .required("Login jest wymagany").min(3, "Login musi zawierać co najmniej 3 znaki"),
@@ -131,9 +129,7 @@ const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
 
         const ClientUserBody = mapValuesToClient(values);
         try {
-          await axios.post("/clients/only-client",
-            ClientUserBody.client
-          );
+          await axios.post("/clients/only-client", ClientUserBody.client);
 
           toast.success("Pomyślnie utworzono nowego klienta.");
 
@@ -143,10 +139,9 @@ const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
         }
 
         const body: OrderJsonBody = createOrder(OrderTypes.CreateUser, employee , ClientUserBody.userCredentials);
-
         await axios.post("/orders", body);
 
-        toast.success("Pomyślnie utworzono zlecenie utworzenia użytkownika klienta.");
+        toast.info("Pomyślnie utworzono zlecenie utworzenia użytkownika klienta.");
 
       } catch (e: any) {
         toast.error(e.response.data.message);
