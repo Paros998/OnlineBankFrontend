@@ -42,7 +42,7 @@ const NumberFormatTextInput: FC<NumberFormatTextInputProps> = ({ label, readonly
   }
 
   return (
-    <>
+    <div className={containerClass}>
       <span className='fw-bold'>{label}</span>
       <div className='w-100 p-1' />
 
@@ -51,7 +51,7 @@ const NumberFormatTextInput: FC<NumberFormatTextInputProps> = ({ label, readonly
         value={field.value || '-'}
         displayType='text'
       />
-    </>
+    </div>
   );
 };
 

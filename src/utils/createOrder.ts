@@ -56,7 +56,7 @@ export const createOrder = (type: string,
 
   const body:OrderJsonBody = {
     order: order,
-    requestBody: values.toString()
+    requestBody: JSON.stringify(values)
   }
 
   return body;

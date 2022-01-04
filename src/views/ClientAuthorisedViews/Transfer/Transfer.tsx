@@ -10,7 +10,8 @@ import { ClientModel } from "../../../interfaces/DatabaseModels/ClientModel";
 import NewTransferForm from "./NewTransferForm/NewTransferForm";
 import { getTodayDate } from "../../../utils/getTodayDate";
 import { getISODate } from "../../../utils/getISODate";
-import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
+import { TransferValidationSchema } from '../../../validation/TransferValidationSchema';
+import { toast } from 'react-toastify';
 
 const Transfer: FC = () => {
   const { currentUser, fetchUser } = useCurrentUser<ClientModel>();
@@ -49,10 +50,12 @@ const Transfer: FC = () => {
         await axios.post('/transfers', transferPostValues);
       }
 
+      toast.success('Przelew został wykonany pomyślnie.');
       history.push('/client/home');
+
       await fetchUser();
-    } catch (e) {
-      console.error(e);
+    } catch {
+      toast.error('Nie udało się wykonać przelewu.');
     }
   };
 

@@ -8,12 +8,12 @@ interface ReadonlyInputProps {
 }
 
 const ReadonlyInput: FC<ReadonlyInputProps> = ({
-                                                 label,
-                                                 value,
-                                                 additionalContent,
-                                                 children,
-                                                 wrapperClassName,
-                                               }) => (
+  label,
+  value,
+  additionalContent,
+  children,
+  wrapperClassName,
+}) => (
   <section style={{ width: '95%' }} className={`text-break ${wrapperClassName}`}>
     <span className='fw-bold'>{label}</span>
     <div className='w-100 p-1'/>
