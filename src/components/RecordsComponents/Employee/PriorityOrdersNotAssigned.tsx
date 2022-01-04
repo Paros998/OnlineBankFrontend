@@ -10,7 +10,7 @@ interface PriorityOrdersProps {
 }
 
 const PriorityOrdersNotAssigned: FC<PriorityOrdersProps> = ({className,order,hideLastCol,setsFunctions}) => {
-  const {order_Id,orderType,client,createDate} = order;
+  const {order_Id,orderType,createDate} = order;
 
   const utc = require('dayjs/plugin/utc');
   dayjs.extend(utc);

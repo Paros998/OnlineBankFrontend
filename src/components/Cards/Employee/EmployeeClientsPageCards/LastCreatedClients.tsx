@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import CardTemplate from "../../CardTemplate";
 import {Formik} from "formik";
-import {LatestClientsFormikValues} from "../../../../interfaces/FormValues/LatestClientsFormikValues";
 import {toast} from "react-toastify";
 import LatestClientsForm from "../../../Forms/LatestClientsForm/LatestClientsForm";
 import LatestClientRecord from "../../../RecordsComponents/Employee/LatestClientRecord";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import {ClientModel} from "../../../../interfaces/DatabaseModels/ClientModel";
+import {LatestClientsFormikValues} from "../../../../interfaces/formik/LatestClientsFormikValues";
 
 interface LastCreatedClientsProps {
   className?: string;

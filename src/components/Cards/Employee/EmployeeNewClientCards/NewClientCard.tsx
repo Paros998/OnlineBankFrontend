@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
 import CardTemplate from "../../CardTemplate";
-import {Form, Formik} from "formik";
+import {Formik} from "formik";
 import NewClientForm from "../../../Forms/NewClientForm/NewClientForm";
-import {NewClientFormikValues} from "../../../../interfaces/FormValues/NewClientFormikValues";
+
 import * as yup from "yup";
 import dayjs from "dayjs";
 import {User} from "../../../../interfaces/User";
@@ -17,6 +17,7 @@ import {createOrder} from "../../../../utils/createOrder";
 import {OrderTypes} from "../../../../enums/OrderTypes";
 import {useHistory} from "react-router-dom";
 import {OrderModel} from "../../../../interfaces/DatabaseModels/OrderModel";
+import {NewClientFormikValues} from "../../../../interfaces/formik/NewClientFormikValues";
 
 interface NewClientCardProps {
   className?: string;
@@ -179,7 +180,3 @@ const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
 };
 
 export default NewClientCard;
-
-function Yup() {
-  throw new Error('Function not implemented.');
-}

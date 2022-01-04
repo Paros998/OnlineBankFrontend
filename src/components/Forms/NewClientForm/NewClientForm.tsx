@@ -4,7 +4,8 @@ import SubmitButton from "../../SubmitButton/SubmitButton";
 import {Button} from "react-bootstrap";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
-import {NewClientFormikValues} from "../../../interfaces/FormValues/NewClientFormikValues";
+import {NewClientFormikValues} from "../../../interfaces/formik/NewClientFormikValues";
+
 
 const NewClientForm = () => {
   const {errors} = useFormikContext<NewClientFormikValues>();

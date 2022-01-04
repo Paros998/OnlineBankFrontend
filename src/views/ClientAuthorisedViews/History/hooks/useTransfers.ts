@@ -31,7 +31,7 @@ export const useTransfers = (params?: HistorySearchFormikValues, areRecentTransf
           displayTransferDate: getFormattedTransferDate(transfer.transferDate),
         }
       )
-    ) || [], [transfers, getFormattedTransferDate]);
+    ) || [], [transfers]);
 
   return { formattedTransfers: formattedTransfers, isPending, fetchTransfers: fetchData };
 };

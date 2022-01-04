@@ -6,8 +6,6 @@ import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import SubmitButton from "../../SubmitButton/SubmitButton";
 import {toast} from "react-toastify";
-import {appendUrlSearchParams} from "../../../utils/appendUrlSearchParams";
-
 
 interface RemindLoginOrPasswordOffCanvasProps {
   showRemindLoginCanvas: boolean;

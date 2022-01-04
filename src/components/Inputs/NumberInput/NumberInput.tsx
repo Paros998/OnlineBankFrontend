@@ -7,7 +7,6 @@ interface NumberProps extends FormControlProps {
   labelClassName?: string;
   name: string;
   containerClass?: string;
-  floatingLabel?: string;
   floatingLabelClassName?: string;
   inputGroup?: string;
   isValid?: boolean | undefined;
@@ -18,7 +17,6 @@ const NumberInput: FC<NumberProps> = ({
                                         label,
                                         labelClassName,
                                         children,
-                                        floatingLabel,
                                         floatingLabelClassName,
                                         inputGroup,
                                         isValid,

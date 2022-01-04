@@ -127,7 +127,7 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({
               <PriorityOrdersNotAssigned
                 key={key}
                 order={item}
-                className={`${key === 1 && "bg-primary"} ${key === 2 && "bg-warning"} ${key > 2 && "bg-info"} text-dark order-primary`}
+                className={`bg-primary text-dark order-primary`}
                 setsFunctions={{setOrder,setShowModal}}
               />
             ))}

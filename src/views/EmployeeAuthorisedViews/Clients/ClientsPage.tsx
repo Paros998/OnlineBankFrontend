@@ -6,8 +6,6 @@ import clientsBg from "../../../assets/images/bg-employee-login.jpg"
 import ClientsCard from "../../../components/Cards/Employee/EmployeeClientsPageCards/ClientsCard";
 import LastCreatedClients from "../../../components/Cards/Employee/EmployeeClientsPageCards/LastCreatedClients";
 import {useFetchLatestClients} from "../../../hooks/useFetchLatestClients";
-import {useFetchRawData} from "../../../hooks/useFetchRawData";
-import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 import {useFetchClientsFiltered} from "../../../hooks/useFetchClientsFiltered";
 
 const ClientsPage = () => {

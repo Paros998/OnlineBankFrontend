@@ -2,9 +2,9 @@ import {useCallback, useEffect, useState} from "react";
 import {ClientModel} from "../interfaces/DatabaseModels/ClientModel";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {FilterClientsEmployeesFormikValues} from "../interfaces/FormValues/FilterClientsEmployeesFormikValues";
 import {FilterClientsEmployeesFormikInitialValues} from "../constants/FormikInitialValues/FilterClientsEmployeesFormikInitialValues";
 import {appendUrlSearchParams} from "../utils/appendUrlSearchParams";
+import {FilterClientsEmployeesFormikValues} from "../interfaces/formik/FilterClientsEmployeesFormikValues";
 
 export function useFetchClientsFiltered() {
   const [clients,setClients] = useState<ClientModel[]>();

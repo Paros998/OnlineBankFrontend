@@ -18,6 +18,7 @@ const EmployeeAuthorisedViews = () => {
           <Route path='/employee/new-client' component={NewClientPage}/>
           <Route path='/employee/orders' component={OrdersPage}/>
           <Route path='/employee/admin/users' component={UsersPage}/>
+          <Route path='*' component={HomePage}/>
         </Switch>
       </Router>
     </>

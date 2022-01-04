@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { ErrorMessage, useField } from "formik";
+import React, {FC} from 'react';
+import {ErrorMessage, useField} from "formik";
 import ReadonlyInput from "../ReadonlyInput/ReadonlyInput";
-import {Form, FormControl, FormControlProps, InputGroup} from "react-bootstrap";
+import {Form, FormControlProps, InputGroup} from "react-bootstrap";
 
 interface TextInputProps extends FormControlProps {
   label?: string;
@@ -14,6 +14,7 @@ interface TextInputProps extends FormControlProps {
   inputGroup?: string;
   isRequired?: boolean;
   isInvalid?: boolean | undefined;
+  readOnly?: boolean
 }
 
 const TextInput: FC<TextInputProps> = ({
@@ -26,42 +27,52 @@ const TextInput: FC<TextInputProps> = ({
                                          inputGroup,
                                          isRequired,
                                          isInvalid,
-
+                                         maxLength,
+                                         name,
                                          ...props
                                        }) => {
+  const [field] = useField(name);
   if (!readOnly) {
     return (
       <Form.Group className={containerClass}>
         <Form.Label className={labelClassName}>{label}</Form.Label>
 
-      <InputGroup hasValidation={true}>
-        {
-          inputGroup && <InputGroup.Text>{inputGroup}</InputGroup.Text>
-        }
-        <Form.Control
-          aria-required={isRequired}
-          isInvalid={isInvalid}
-          {...field}
-          {...props}
-          autoComplete='off'>
-        </Form.Control>
-        {
-          hasInputText && (
-            <InputGroup.Text className='bg-white'>
-              PLN
-            </InputGroup.Text>
-          )
-        }
-      <ErrorMessage name={field.name}>
-        {(errorMessage) => (
-          <Form.Control.Feedback type='invalid'>
-            {errorMessage}
-          </Form.Control.Feedback>
-        )}
-      </ErrorMessage>
-      </InputGroup>
-    </Form.Group>
+        <InputGroup hasValidation={true}>
+          {
+            inputGroup && <InputGroup.Text>{inputGroup}</InputGroup.Text>
+          }
+          <Form.Control
+            {...field}
+            {...props}
+            aria-required={isRequired}
+            isInvalid={isInvalid}
+            autoComplete='off'>
+          </Form.Control>
+          {
+            hasInputText && (
+              <InputGroup.Text className='bg-white'>
+                PLN
+              </InputGroup.Text>
+            )
+          }
+          <ErrorMessage name={field.name}>
+            {(errorMessage) => (
+              <Form.Control.Feedback type='invalid'>
+                {errorMessage}
+              </Form.Control.Feedback>
+            )}
+          </ErrorMessage>
+        </InputGroup>
+      </Form.Group>
+    );
+  }
+  return (
+    <ReadonlyInput
+      value={field.value}
+      label={label}
+      additionalContent={readonlyAdditionalValueContent}
+      wrapperClassName={containerClass}
+    />
   );
-};
-
+}
 export default TextInput;

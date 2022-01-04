@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import CardTemplate from "../../CardTemplate";
 import {Formik} from "formik";
-import {FilterClientsEmployeesFormikValues} from "../../../../interfaces/FormValues/FilterClientsEmployeesFormikValues";
 import FilterClientsEmployeesForm from "../../../Forms/FilterClientsEmployeesForm/FilterClientsEmployeesForm";
 import dayjs from "dayjs";
 import {toast} from "react-toastify";
@@ -9,6 +8,7 @@ import ClientRecord from "../../../RecordsComponents/Employee/ClientRecord";
 import {FilterClientsEmployeesFormikInitialValues} from "../../../../constants/FormikInitialValues/FilterClientsEmployeesFormikInitialValues";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import {ClientModel} from "../../../../interfaces/DatabaseModels/ClientModel";
+import {FilterClientsEmployeesFormikValues} from "../../../../interfaces/formik/FilterClientsEmployeesFormikValues";
 
 interface ClientsCardProps {
   className?: string;

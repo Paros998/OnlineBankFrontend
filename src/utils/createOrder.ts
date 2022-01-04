@@ -24,7 +24,7 @@ export const createOrder = (type: string, currentUser:
   switch (type) {
     case OrderTypes.EditEmployee:
     case OrderTypes.CreateUser: {
-      order.orderingEmployee = <EmployeeModel>currentUser;
+      order.orderingEmployee = currentUser as EmployeeModel;
       break;
     }
     case OrderTypes.LoanRequest:
@@ -33,13 +33,13 @@ export const createOrder = (type: string, currentUser:
     case OrderTypes.DeleteCreditCard:
     case OrderTypes.UnblockCreditCard:
     case OrderTypes.EditClient:{
-      order.client = <ClientModel>currentUser;
+      order.client = currentUser as ClientModel;
       break;
     }
     case OrderTypes.EditUser:{
       fromClient
-        ? order.client = <ClientModel> currentUser
-        : order.orderingEmployee = <EmployeeModel>currentUser;
+        ? order.client = currentUser as ClientModel
+        : order.orderingEmployee = currentUser as EmployeeModel;
       break;
     }
   }

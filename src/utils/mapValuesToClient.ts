@@ -1,7 +1,7 @@
 import {ClientModel} from "../interfaces/DatabaseModels/ClientModel";
-import {NewClientFormikValues} from "../interfaces/FormValues/NewClientFormikValues";
 import dayjs from "dayjs";
 import {UserCredentials} from "../interfaces/DatabaseModels/userCredentials";
+import {NewClientFormikValues} from "../interfaces/formik/NewClientFormikValues";
 
 export const mapValuesToClient = (values:NewClientFormikValues) => {
   const {accountNumber,personalNumber,identificationNumber,dateOfBirth,fullName,balance,city,secCity,secPostalCode,
