@@ -1,4 +1,4 @@
-export interface AnnouncementsResponseData {
+export interface AnnouncementsModel {
   announcementID: number;
   announcement: string;
 }
