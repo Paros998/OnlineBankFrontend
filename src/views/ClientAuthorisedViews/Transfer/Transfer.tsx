@@ -1,17 +1,16 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import axios from "axios";
-import { Formik } from 'formik';
-import { useHistory } from "react-router-dom";
+import {Formik} from 'formik';
+import {useHistory} from "react-router-dom";
 import ClientCardLayout from "../../../components/ClientCardLayout/ClientCardLayout";
-import { LocationHeaders } from "../../../enums/LocationHeaders";
-import { TransferFormikValues } from "../../../interfaces/formik/TransferFormikValues";
-import { useCurrentUser } from "../../../contexts/CurrentUserContext";
-import { ClientModel } from "../../../interfaces/DatabaseModels/ClientModel";
+import {LocationHeaders} from "../../../enums/LocationHeaders";
+import {TransferFormikValues} from "../../../interfaces/formik/TransferFormikValues";
+import {useCurrentUser} from "../../../contexts/CurrentUserContext";
+import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 import NewTransferForm from "./NewTransferForm/NewTransferForm";
-import { getTodayDate } from "../../../utils/getTodayDate";
-import { getISODate } from "../../../utils/getISODate";
-
-import { toast } from 'react-toastify';
+import {getTodayDate} from "../../../utils/getTodayDate";
+import {getISODate} from "../../../utils/getISODate";
+import {toast} from 'react-toastify';
 import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
 
 const Transfer: FC = () => {
