@@ -57,7 +57,7 @@ const TextInput: FC<TextInputProps> = ({
           }
           <ErrorMessage name={field.name}>
             {(errorMessage) => (
-              <Form.Control.Feedback type='invalid'>
+              <Form.Control.Feedback type='invalid' className='d-block'>
                 {errorMessage}
               </Form.Control.Feedback>
             )}

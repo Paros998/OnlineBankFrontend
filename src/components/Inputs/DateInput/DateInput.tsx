@@ -20,10 +20,18 @@ interface DateInputProps extends ReactDatePickerProps {
   valueFormat?: string;
 }
 
-const DateInput: FC<DateInputProps> = ({ name, label, containerClass, readOnly, labelClassName, valueFormat, ...props }) => {
+const DateInput: FC<DateInputProps> = ({
+  name,
+  label,
+  containerClass,
+  readOnly,
+  labelClassName,
+  valueFormat,
+  ...props
+}) => {
   const [field] = useField(name);
 
-  const formattedSelectedDate = moment(field.value).toDate();
+  const formattedSelectedDate = valueFormat ? moment(field.value, valueFormat).toDate() : moment(field.value).toDate();
 
   if (!readOnly) {
     return (
@@ -31,7 +39,7 @@ const DateInput: FC<DateInputProps> = ({ name, label, containerClass, readOnly, 
         <Form.Label className={labelClassName}>{label}</Form.Label>
 
         <ReactDatePicker
-          selected={field.value && formattedSelectedDate}
+          selected={(moment(formattedSelectedDate).isValid() ? formattedSelectedDate : new Date())}
           dateFormat='dd.MM.yyyy'
           customInput={
             <CustomCalendarInput

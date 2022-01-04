@@ -6,7 +6,7 @@ const InfoCard: FC<HTMLAttributes<unknown>> = ({ children, className, ...props }
     <Card
       className={`
         rounded-card-10
-        w-100 h-100
+        w-100
         text-center
         d-flex
         text-white

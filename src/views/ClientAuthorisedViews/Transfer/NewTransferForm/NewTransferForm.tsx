@@ -11,7 +11,7 @@ import FormBlob from "../../../../components/FormBlob/FormBlob";
 import { useSelectOptions } from "../../../../hooks/useSelectOptions";
 import ActionButtons from "./ActionButtons/ActionButtons";
 import NumberFormatTextInput from "../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput";
-import { AccountNumberFormat } from "../../../../constants/AccountNumberFormat";
+import { accountNumberFormat } from "../../../../constants/accountNumberFormat";
 
 const colProps: ColProps = {
   xs: 4,
@@ -49,7 +49,7 @@ const NewTransferForm = () => {
             type='text'
             labelClassName='fw-bold'
             placeholder='Wpisz numer rachunku odbiorcy'
-            format={AccountNumberFormat}
+            format={accountNumberFormat}
             readonly={isReadonly}
           />
         </Col>
@@ -153,7 +153,7 @@ const NewTransferForm = () => {
         </Col>
       </Row>
 
-      <Row className='mt-3 mb-4 text-end'>
+      <Row className='mt-3 text-end'>
         <Col {...colProps}>
           <ActionButtons readonly={isReadonly} setReadonly={setIsReadonly} />
         </Col>

@@ -5,7 +5,7 @@ import { useSelectOptions } from '../../../../../../hooks/useSelectOptions';
 import { Col, Row } from 'react-bootstrap';
 import TextInput from '../../../../../../components/Inputs/TextInput/TextInput';
 import NumberFormatTextInput from '../../../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput';
-import { AccountNumberFormat } from '../../../../../../constants/AccountNumberFormat';
+import { accountNumberFormat } from '../../../../../../constants/accountNumberFormat';
 import SelectInput from '../../../../../../components/Inputs/SelectInput/SelectInput';
 import DateInput from '../../../../../../components/Inputs/DateInput/DateInput';
 import { EditCyclicalTransferFormikValues } from '../../../../../../interfaces/formik/EditCyclicalTransferFormikValues';
@@ -37,7 +37,7 @@ const EditCyclicalTransferForm = () => {
             type="text"
             labelClassName="fw-bold"
             placeholder="Wpisz numer rachunku odbiorcy"
-            format={AccountNumberFormat}
+            format={accountNumberFormat}
           />
         </Col>
       </Row>

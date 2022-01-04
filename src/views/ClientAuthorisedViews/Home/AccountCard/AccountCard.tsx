@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import ClientCardLayout from "../../../../components/ClientCardLayout/ClientCardLayout";
 import { LocationHeaders } from "../../../../enums/LocationHeaders";
 import NumberFormat from "react-number-format";
-import { AccountNumberFormat } from "../../../../constants/AccountNumberFormat";
+import { accountNumberFormat } from '../../../../constants/accountNumberFormat';
 
 const AccountCard = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
@@ -31,7 +31,7 @@ const AccountCard = () => {
 
       <h6 className='text-secondary-dark'>
         Numer konta: <NumberFormat
-          format={AccountNumberFormat}
+          format={accountNumberFormat}
           displayType='text'
           value={currentUser?.accountNumber}
         />

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Image } from 'react-bootstrap';
 import { BootstrapTableProps } from 'react-bootstrap-table-next';
 import { ChevronUp, ChevronDown } from 'react-bootstrap-icons';
@@ -20,13 +20,13 @@ export const useTableProps = <T extends object>(
   const { initialSortBy, sortOrder } = config || {};
   const { data, isPending } = dataConfig;
 
-  const NoDataIndicator = () => {
+  const NoDataIndicator = useCallback(() => {
     if (isPending) {
       return <CenteredSpinner isPending={dataConfig.isPending}/>;
     }
 
     return <Image width='100%' height='690px' src={noDataFound} />
-  };
+  }, [isPending, dataConfig.isPending]);
 
   const tableProps: BootstrapTableProps<T> = useMemo(() => (
     {
@@ -46,7 +46,7 @@ export const useTableProps = <T extends object>(
           order === 'asc' ? <ChevronUp className="ms-2"/> : <ChevronDown className="ms-2"/>,
       },
     }
-  ), [initialSortBy, sortOrder, keyField,data,onRowClick]);
+  ), [initialSortBy, sortOrder, keyField, data, onRowClick, NoDataIndicator]);
 
   return tableProps;
 };

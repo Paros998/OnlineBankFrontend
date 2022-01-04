@@ -17,7 +17,7 @@ const Home = () => {
         </Col>
 
         <Col xs={4} className='mt-5'>
-          <InfoCard className='bg-info mt-2'>
+          <InfoCard className='bg-info mt-2 h-100'>
             <h3>
               Witamy w naszym serwisie Future Bank
             </h3>
