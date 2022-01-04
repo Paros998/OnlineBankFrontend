@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import DetailsModal from "../DetailsModal/DetailsModal";
-import { AccountNumberFormat } from "../../../constants/AccountNumberFormat";
+import { accountNumberFormat } from "../../../constants/accountNumberFormat";
 import NumberFormat from "react-number-format";
 import { transferCategoryClassNames } from "../../../constants/transferCategoryClassNames";
 import { amountColor } from "../../../constants/amountColor";
@@ -53,7 +53,7 @@ const TransferDetailsModal: FC<HistoryDetailsModalProps> = ({ showModal, toggleV
       <div className={dataWrapperClassName}>
         <p className='fw-bold'>Na numer konta:</p>
         <NumberFormat
-          format={AccountNumberFormat}
+          format={accountNumberFormat}
           displayType='text'
           value={data.toAccountNumber}
         />

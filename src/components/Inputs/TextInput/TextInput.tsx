@@ -55,6 +55,7 @@ const TextInput: FC<TextInputProps> = ({ label, hasInputText, readOnly, readonly
       value={field.value}
       label={label}
       additionalContent={readonlyAdditionalValueContent}
+      wrapperClassName={containerClass}
     />
   );
 };
