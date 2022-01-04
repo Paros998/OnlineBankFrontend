@@ -64,7 +64,7 @@ const ClientAccountDataCard: FC<ClientAccountDataCardProps> = ({className, clien
         <span>
            {postalCode}
         </span>
-        <span className='fw-bold'>
+        <span className='fw-bold' hidden={!secCity}>
           Adres Korespondencyjny
         </span>
         <span>

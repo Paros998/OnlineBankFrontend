@@ -72,7 +72,7 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
         <Button
           variant={closeButtonVariant ? closeButtonVariant : 'secondary-light'}
           onClick={handleClose}
-          className={`w-20 me-3 ${closeButtonClassName}`}
+          className={`w-20 me-3 rounded-pill ${closeButtonClassName}`}
         >
           Wróć
         </Button>
@@ -80,7 +80,7 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
           props={{
             variant: submitButtonVariant ? submitButtonVariant : 'primary',
             onClick: handleSubmit,
-            className: `w-20 ${submitButtonClassName}`
+            className: `w-20 rounded-pill ${submitButtonClassName}`
           }}
           isSubmitting={isSubmitting || false}
         >

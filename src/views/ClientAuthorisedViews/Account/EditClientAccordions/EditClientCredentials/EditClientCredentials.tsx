@@ -6,13 +6,14 @@ import { useCurrentUser } from '../../../../../contexts/CurrentUserContext';
 import { ClientModel } from '../../../../../interfaces/DatabaseModels/ClientModel';
 import { useFetchRawData } from '../../../../../hooks/useFetchRawData';
 import { AppUserModel } from '../../../../../interfaces/DatabaseModels/AppUserModel';
-import { EditClientCredentialsValidationSchema } from '../../../../../validation/EditClientCredentialsValidationSchema';
+
 import EditClientCredentialsForm from './EditClientCredentialsForm/EditClientCredentialsForm';
 import CenteredSpinner from '../../../../../components/CenteredSpinner/CenteredSpinner';
 import { createOrder } from '../../../../../utils/createOrder';
 import { OrderTypes } from '../../../../../enums/OrderTypes';
 import axios from 'axios';
 import { UserCredentials } from '../../../../../interfaces/DatabaseModels/userCredentials';
+import {EditClientCredentialsValidationSchema} from "../../../../../Validation/EditClientCredentialsValidationSchema";
 
 const EditClientCredentials = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
