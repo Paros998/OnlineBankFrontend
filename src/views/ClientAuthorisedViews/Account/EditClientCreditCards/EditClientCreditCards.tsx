@@ -23,7 +23,7 @@ const EditClientCreditCards = () => {
       <>
         {
           creditCards.map((card, index) => (
-            <CreditCard imgSrc={creditCardImageSources[index]}/>
+            <CreditCard key={card.cardId} imgSrc={creditCardImageSources[index]}/>
           ))
         }
       </>
