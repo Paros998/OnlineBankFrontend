@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Spinner } from "react-bootstrap";
 
 interface CenteredSpinnerProps {
-  isPending: unknown;
+  isPending?: unknown;
 }
 
 const CenteredSpinner: FC<CenteredSpinnerProps> = ({ isPending }) => {
@@ -15,6 +15,7 @@ const CenteredSpinner: FC<CenteredSpinnerProps> = ({ isPending }) => {
   }
 
   return null;
+
 };
 
 export default CenteredSpinner;

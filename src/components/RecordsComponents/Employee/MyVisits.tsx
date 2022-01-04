@@ -19,7 +19,7 @@ const MyVisits:FC<MyVisitsProps> = ({visit,className,children}) => {
         className={`row bg-dark rounded-card-10 d-flex m-1 mb-3 p-1 w-100 fw-bold fs-5  align-items-start
          ${className} ${today ? 'text-primary' : 'text-light'} ${!visit.isActive && 'd-none'}`}>
         <div className='col ms-1 text-truncate text-center'>
-          {visit.visitDate}
+          {dayjs(visit.visitDate).format('DD.MM.YYYY')}
         </div>
         <div className='col ms-1 text-truncate text-center'>
           {visit.visitTime}

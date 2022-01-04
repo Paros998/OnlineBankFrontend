@@ -1,12 +1,12 @@
 import React from 'react';
 import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear";
-import CardTemplate from "../CardTemplate";
-import { useFetchRawData } from "../../../hooks/useFetchRawData";
-import { CyclicalTransferModel } from "../../../interfaces/DatabaseModels/CyclicalTransferModel";
-import { useCurrentUser } from "../../../contexts/CurrentUserContext";
-import { ClientModel } from "../../../interfaces/DatabaseModels/ClientModel";
-import CenteredSpinner from "../../CenteredSpinner/CenteredSpinner";
+import CardTemplate from "../../CardTemplate";
+import { useFetchRawData } from "../../../../hooks/useFetchRawData";
+import { CyclicalTransferModel } from "../../../../interfaces/DatabaseModels/CyclicalTransferModel";
+import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
+import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
+import CenteredSpinner from "../../../CenteredSpinner/CenteredSpinner";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 

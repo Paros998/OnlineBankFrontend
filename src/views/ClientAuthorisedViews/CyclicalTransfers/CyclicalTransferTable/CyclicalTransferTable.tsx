@@ -75,7 +75,7 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
       setIsRequestPending(false);
       toggleDeleteModalVisibility();
     }
-  }, [selectedCyclicalTransferToDelete]);
+  }, [selectedCyclicalTransferToDelete,fetchCyclicalTransfer,toggleDeleteModalVisibility]);
 
   const columns = useMemo(() => {
     return getColumns(deleteButton, editButton);

@@ -4,7 +4,9 @@ import InfoCard from "../../../components/InfoCard/InfoCard";
 import AccountCard from "./AccountCard/AccountCard";
 import RecentPayments from "./RecentPayments/RecentPayments";
 import Advertisements from "../../../components/Advertisements/Advertisements";
-import ClientComingPaymentsCard from "../../../components/Cards/ClientComingPaymentsCard/ClientComingPaymentsCard";
+import ClientComingPaymentsCard
+  from "../../../components/Cards/Client/ClientComingPaymentsCard/ClientComingPaymentsCard";
+
 
 const Home = () => {
   return (

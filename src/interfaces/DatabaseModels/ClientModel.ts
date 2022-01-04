@@ -1,5 +1,5 @@
 export interface ClientModel {
-  clientId: number;
+  clientId?: number;
   email: string;
   fullName: string;
   accountNumber: string;
@@ -13,6 +13,6 @@ export interface ClientModel {
   secHomeAddress: string;
   secCity: string;
   secPostalCode: string;
-  numberOfCreditsCards: number;
-  dateOfCreation: string;
+  numberOfCreditsCards?: number;
+  dateOfCreation?: string;
 }

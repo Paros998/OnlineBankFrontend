@@ -14,6 +14,12 @@ $primary-light: #FAC9C9;
 $secondary-light: #D6D6D6;
 $secondary-dark: #474747;
 
+$magenta: #E05194;
+$salmon: #FF8D85;
+$taupe: #CCAC93;
+$teal: #158FAD;
+$berry-red: #B8255F;
+
 $theme-colors: () !default;
 $utilities: () !default;
 
@@ -31,6 +37,11 @@ $custom-theme-colors: (
         "primary-light": $primary-light,
         "secondary-light": $secondary-light,
         "secondary-dark": $secondary-dark,
+        "magenta": $magenta,
+        "salmon": $salmon,
+        "taupe": $taupe,
+        "teal": $teal,
+        "berry-red": $berry-red
 );
 
 $myUtilities: (
@@ -42,6 +53,7 @@ $myUtilities: (
                         20: 20%,
                         25: 25%,
                         30: 30%,
+                        35: 35%,
                         40: 40%,
                         50: 50%,
                         60: 60%,

@@ -13,9 +13,9 @@ const EmployeeSideNavbar = () => {
 
   const{pathname} = useLocation();
   return (
-    <Navbar className='bg-dark text-light position-fixed vh-100 w-180px border-end flex-column p-0 justify-content-between'>
+    <Navbar className='bg-dark text-light position-fixed vh-100 w-200px ps-1  border-end flex-column p-0 justify-content-between overflow-scroll'>
 
-      <div className='flex-column p-0 pt-1 '>
+      <div className='flex-column p-0 pt-1 mt-3 '>
         <NavLink as={Link} to='/employee/home' className='p-1' >
           <Button
             className='rounded-card-10 btn-light btn-light-hover w-160px h-50px'
