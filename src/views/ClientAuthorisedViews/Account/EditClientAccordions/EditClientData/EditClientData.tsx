@@ -20,7 +20,7 @@ const EditClientData = () => {
     }
 
     try {
-      const order = createOrder(OrderTypes.EditClient, currentUser || {} as ClientModel, true);
+      const order = createOrder(OrderTypes.EditClient, currentUser || {} as ClientModel);
       const params = { requestBody: values };
 
       await axios.post('/orders', order, { params });

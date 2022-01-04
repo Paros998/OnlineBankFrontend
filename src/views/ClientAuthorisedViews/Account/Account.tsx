@@ -18,6 +18,7 @@ const Account = () => {
             </Col>
 
             <Col xs={5}>
+              <h5 className="text-center mb-5">Dostępne karty płatnicze</h5>
               <EditClientCreditCards />
             </Col>
           </Row>
