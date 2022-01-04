@@ -1,12 +1,11 @@
-import { useCurrentUser } from '../../../../contexts/CurrentUserContext';
-import { ClientModel } from '../../../../interfaces/DatabaseModels/ClientModel';
-import { useFetchRawData } from '../../../../hooks/useFetchRawData';
-import { useMemo } from 'react';
-import { getFormattedTransferDate } from '../../History/utils/getFormattedTransferDate';
-import { CyclicalTransferSearchFormikValues } from '../../../../interfaces/formik/CyclicalTransferSearchFormikValues';
+import {useCurrentUser} from '../../../../contexts/CurrentUserContext';
+import {ClientModel} from '../../../../interfaces/DatabaseModels/ClientModel';
+import {useFetchRawData} from '../../../../hooks/useFetchRawData';
+import {useMemo} from 'react';
+import {CyclicalTransferSearchFormikValues} from '../../../../interfaces/formik/CyclicalTransferSearchFormikValues';
 import moment from 'moment';
-import { CyclicalTransferModel } from '../../../../interfaces/DatabaseModels/CyclicalTransferModel';
-import { CyclicalTransferDisplayModel } from '../../../../interfaces/CyclicalTransferDisplayModel';
+import {CyclicalTransferModel} from '../../../../interfaces/DatabaseModels/CyclicalTransferModel';
+import {CyclicalTransferDisplayModel} from '../../../../interfaces/CyclicalTransferDisplayModel';
 
 export const useCyclicalTransfers = (params?: CyclicalTransferSearchFormikValues) => {
   const { currentUser } = useCurrentUser<ClientModel>();
@@ -24,7 +23,7 @@ export const useCyclicalTransfers = (params?: CyclicalTransferSearchFormikValues
           displayReTransferDate: moment(cyclicalTransfer.reTransferDate).format('DD.MM'),
         }
       ),
-    ) || [], [cyclicalTransfers, getFormattedTransferDate]);
+    ) || [], [cyclicalTransfers]);
 
   return { formattedCyclicalTransfers, isPending, fetchCyclicalTransfers: fetchData };
 };

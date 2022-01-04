@@ -7,10 +7,10 @@ import { LocationHeaders } from "../../../enums/LocationHeaders";
 import { TransferFormikValues } from "../../../interfaces/formik/TransferFormikValues";
 import { useCurrentUser } from "../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../interfaces/DatabaseModels/ClientModel";
-import { TransferValidationSchema } from "../../../validation/TransferValidationSchema";
 import NewTransferForm from "./NewTransferForm/NewTransferForm";
 import { getTodayDate } from "../../../utils/getTodayDate";
 import { getISODate } from "../../../utils/getISODate";
+import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
 
 const Transfer: FC = () => {
   const { currentUser, fetchUser } = useCurrentUser<ClientModel>();

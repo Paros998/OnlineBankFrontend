@@ -46,7 +46,7 @@ export const useTableProps = <T extends object>(
           order === 'asc' ? <ChevronUp className="ms-2"/> : <ChevronDown className="ms-2"/>,
       },
     }
-  ), [initialSortBy, sortOrder, dataConfig, keyField]);
+  ), [initialSortBy, sortOrder, keyField,data,onRowClick]);
 
   return tableProps;
 };

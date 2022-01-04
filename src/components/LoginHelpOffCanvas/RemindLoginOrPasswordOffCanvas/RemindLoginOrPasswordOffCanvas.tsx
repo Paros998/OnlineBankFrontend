@@ -5,7 +5,7 @@ import {Button, Offcanvas} from "react-bootstrap";
 import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import SubmitButton from "../../SubmitButton/SubmitButton";
-
+import {toast} from "react-toastify";
 
 interface RemindLoginOrPasswordOffCanvasProps {
   showRemindLoginCanvas: boolean;
@@ -31,11 +31,13 @@ const RemindLoginOrPasswordOffCanvas:
                                              }) => {
   const handleSubmit = async ({email}: RemindLoginOrPasswordFormikValues) => {
     try {
-      await axios.patch(`users/${requestUrl}`, email);
+      await axios.patch(`users/${requestUrl}`, undefined,{params:{
+        email:email
+        }} );
       handleRemindLoginCanvas(false)
       handleHelpCanvas(false)
-    } catch (e) {
-      console.error(e);
+    } catch (e:any) {
+      toast.error(e?.response?.data?.message)
     }
   }
 
