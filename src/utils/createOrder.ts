@@ -3,12 +3,22 @@ import {EmployeeModel} from "../interfaces/DatabaseModels/EmployeeModel";
 import {OrderTypes} from "../enums/OrderTypes";
 import {OrderModel} from "../interfaces/DatabaseModels/OrderModel";
 import dayjs from "dayjs";
+import {CreditCardModel} from "../interfaces/DatabaseModels/CreditCardModel";
+import {UserCredentials} from "../interfaces/DatabaseModels/userCredentials";
+import {LoanModel} from "../interfaces/DatabaseModels/LoanModel";
+import {OrderJsonBody} from "../interfaces/DatabaseModels/OrderJsonBody";
 
-export const createOrder = (type: string, currentUser:
-                                    (ClientModel | null) |
-                                    (EmployeeModel | null),
-                                    fromClient?:boolean
-
+export const createOrder = (type: string,
+                            currentUser:
+                              (ClientModel | null) |
+                              (EmployeeModel | null),
+                            values:
+                              CreditCardModel |
+                              UserCredentials |
+                              ClientModel |
+                              EmployeeModel |
+                              LoanModel,
+                            fromClient?: boolean
 ) => {
   let order: OrderModel = {
     decision: "inProgress",
@@ -32,11 +42,11 @@ export const createOrder = (type: string, currentUser:
     case OrderTypes.BlockCreditCard:
     case OrderTypes.DeleteCreditCard:
     case OrderTypes.UnblockCreditCard:
-    case OrderTypes.EditClient:{
+    case OrderTypes.EditClient: {
       order.client = currentUser as ClientModel;
       break;
     }
-    case OrderTypes.EditUser:{
+    case OrderTypes.EditUser: {
       fromClient
         ? order.client = currentUser as ClientModel
         : order.orderingEmployee = currentUser as EmployeeModel;
@@ -44,5 +54,10 @@ export const createOrder = (type: string, currentUser:
     }
   }
 
-  return order;
+  const body:OrderJsonBody = {
+    order: order,
+    requestBody: values.toString()
+  }
+
+  return body;
 }
