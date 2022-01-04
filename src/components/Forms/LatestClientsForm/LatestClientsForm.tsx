@@ -21,7 +21,7 @@ const LatestClientsForm = () => {
                 name='days'
                 onChange={(e) => {
                   const num:number = +e.target.value;
-                  if(!(num < 1)){
+                  if(!(num < 1) && !(num > 99999)){
                     setInput(num);
                     handleChange(e);
                     handleSubmit();
@@ -33,8 +33,9 @@ const LatestClientsForm = () => {
               <BsArrowUpSquare
                 className='fs-5 text-primary w-100 m-0 p-0 btn-pointer'
                 onClick={()=>{
-                  if(input < 1)
+                  if(input < 1 )
                     setInput(1);
+
                   else{
                     const newVal = input + 1;
                     setInput(newVal);
@@ -46,7 +47,7 @@ const LatestClientsForm = () => {
               <BsArrowDownSquare
                 className='fs-5 text-primary w-100 m-0 p-0 btn-pointer'
                 onClick={()=>{
-                  if(input > 1){
+                  if(input > 1 ){
                     const newVal = input - 1;
                     setInput(newVal);
                     setFieldValue("days",newVal);

@@ -19,12 +19,9 @@ const LatestClientRecord:FC<ClientsProps> = ({client,className}) => {
   }
 
   return (
-    <div className={`row mnh-35px w-100 align-content-center align-items-start btn-pointer latest-client ${className} `} onClick={handleClick}>
+    <div className={`row mnh-35px p-2 w-100 align-content-center align-items-start btn-pointer latest-client ${className} `} onClick={handleClick}>
       <div className='col text-truncate text-start'>
-        {dayjs(dateOfCreation).format("DD.MM.YYYY")}
-      </div>
-      <div className='col text-truncate text-start'>
-        {dayjs(dateOfCreation).format("HH:mm:ss UTC")}
+        {dayjs(dateOfCreation).format("DD.MM.YYYY HH:mm:ss ")}
       </div>
       <div className='col text-truncate text-center'>
         {personalNumber}

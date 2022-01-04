@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {OrderModel} from "../../../interfaces/DatabaseModels/OrderModel";
-import dayjs from "dayjs";
+import moment from "moment";
 
 interface OrderDescriptionInModalProps{
   className?:string;
@@ -41,7 +41,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
           Data Utworzenia:
         </span>
         <span className={`col text-center  ${dataColor || 'text-light '} `}>
-          {dayjs(createDate).format("YYYY-MM-DD hh:mm:ss.SSS'Z'")}
+          {moment(createDate).format("yyyy-MM-DD HH:mm:ss.SSS'Z'")}
         </span>
       </div>
 
