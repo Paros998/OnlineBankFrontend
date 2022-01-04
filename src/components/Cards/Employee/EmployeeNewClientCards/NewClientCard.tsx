@@ -18,6 +18,8 @@ import {OrderTypes} from "../../../../enums/OrderTypes";
 import {useHistory} from "react-router-dom";
 import {OrderModel} from "../../../../interfaces/DatabaseModels/OrderModel";
 import {NewClientFormikValues} from "../../../../interfaces/formik/NewClientFormikValues";
+import {OrderJsonBody} from "../../../../interfaces/DatabaseModels/OrderJsonBody";
+
 
 interface NewClientCardProps {
   className?: string;
@@ -137,17 +139,12 @@ const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
 
         } catch (e: any) {
           toast.error(e.response.data.message);
+          return;
         }
 
-        const order: OrderModel = createOrder(OrderTypes.CreateUser, employee);
+        const body: OrderJsonBody = createOrder(OrderTypes.CreateUser, employee , ClientUserBody.userCredentials);
 
-        const requestBody = ClientUserBody.userCredentials
-
-        await axios.post("/orders", order, {
-          params: {
-            requestBody: requestBody
-          }
-        });
+        await axios.post("/orders", body);
 
         toast.success("Pomyślnie utworzono zlecenie utworzenia użytkownika klienta.");
 
