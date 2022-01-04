@@ -17,8 +17,6 @@ export function useFetchPriorityOrders(){
       const tokenData: User = jwtDecode(token);
       const role = tokenData?.authorities[0].authority;
 
-      if (role !== (Roles.RoleAdmin || Roles.RoleEmployee))
-        return;
 
       const requestUrl = role === Roles.RoleAdmin ? "priority" : "for-employees/priority";
 

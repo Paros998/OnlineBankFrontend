@@ -8,9 +8,11 @@ import {appendUrlSearchParams} from "../utils/appendUrlSearchParams";
 
 export function useFetchClientsFiltered() {
   const [clients,setClients] = useState<ClientModel[]>();
+  const [isPending,setIsPending] = useState(false);
 
   const fetchClients = useCallback(
     async (values?:FilterClientsEmployeesFormikValues)=>{
+      setIsPending(true);
       let body;
 
       body = values ? {
@@ -29,6 +31,7 @@ export function useFetchClientsFiltered() {
       }catch (e:any){
         toast.error(e.message)
       }
+      setIsPending(false);
     }
     ,[]
   );
@@ -37,5 +40,5 @@ export function useFetchClientsFiltered() {
     fetchClients().catch();
   },[setClients,fetchClients])
 
-  return {clients,fetchClients};
+  return {clients,fetchClients,isPending};
 }
