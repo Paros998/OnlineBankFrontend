@@ -1,15 +1,13 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import BootstrapTable, { BootstrapTableProps } from 'react-bootstrap-table-next';
-import { Button } from 'react-bootstrap';
 import { CyclicalTransferModel } from '../../../../interfaces/DatabaseModels/CyclicalTransferModel';
 import { useModalState } from '../../../../hooks/useModalState';
 import EditCyclicalTransferModal from './EditCyclicalTransferModal/EditCyclicalTransferModal';
 import ConfirmationModal from '../../../../components/Modal/ConfirmationModal/ConfirmationModal';
 import { CyclicalTransferDisplayModel } from '../../../../interfaces/CyclicalTransferDisplayModel';
-import { getPreviousCyclicalTransferData } from './utils/getPreviousCyclicalTransferData';
-import { toast } from 'react-toastify';
-import { getColumns } from './utils/getColumns';
+import { useColumns } from './hooks/useColumns';
 
 interface CyclicalTransferTableProps {
   tableProps: BootstrapTableProps<CyclicalTransferDisplayModel>;
@@ -29,31 +27,10 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
     entity: selectedCyclicalTransferToDelete,
   } = useModalState<CyclicalTransferModel>();
 
-  const editButton = useCallback((cell: any, row: CyclicalTransferDisplayModel) => (
-    <Button
-      variant="info"
-      className="text-white w-100"
-      onClick={() => {
-        const editCyclicalTransferData = getPreviousCyclicalTransferData(row);
-        toggleEditModalVisibility(editCyclicalTransferData);
-      }}
-    >
-      Edytuj
-    </Button>
-  ), [toggleEditModalVisibility]);
-
-  const deleteButton = useCallback((cell: any, row: CyclicalTransferDisplayModel) => (
-    <Button
-      variant="danger"
-      className="text-white w-100"
-      onClick={() => {
-        const deleteCyclicalTransferData = getPreviousCyclicalTransferData(row);
-        toggleDeleteModalVisibility(deleteCyclicalTransferData);
-      }}
-    >
-      Usuń
-    </Button>
-  ), [toggleDeleteModalVisibility]);
+  const columns = useColumns({
+    toggleDeleteModalVisibility,
+    toggleEditModalVisibility
+  });
 
   const [isRequestPending, setIsRequestPending] = useState(false);
 
@@ -75,11 +52,8 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
       setIsRequestPending(false);
       toggleDeleteModalVisibility();
     }
-  }, [selectedCyclicalTransferToDelete,fetchCyclicalTransfer,toggleDeleteModalVisibility]);
+  }, [selectedCyclicalTransferToDelete, fetchCyclicalTransfer, toggleDeleteModalVisibility]);
 
-  const columns = useMemo(() => {
-    return getColumns(deleteButton, editButton);
-  },[deleteButton, editButton]);
 
   return (
     <>
