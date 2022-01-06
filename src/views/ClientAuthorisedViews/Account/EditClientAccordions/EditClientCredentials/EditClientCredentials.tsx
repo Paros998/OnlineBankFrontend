@@ -35,7 +35,7 @@ const EditClientCredentials = () => {
       appUserRole: values.appUserRole
     };
 
-    const orderBody = createOrder(
+    const editClientCredentialsOrder = createOrder(
       OrderTypes.EditUser,
       currentUser || {} as ClientModel,
       formattedValues,
@@ -43,10 +43,10 @@ const EditClientCredentials = () => {
     );
 
     try {
-      await axios.post('/orders', orderBody);
+      await axios.post('/orders', editClientCredentialsOrder);
       toast.info('Prośba o edycje danych logowania została wysłana.');
     } catch {
-      toast.error('Edycja danych klienta nie udała się.');
+      toast.error('Nie udało się wysłać prośby o edycję danych logowania klienta');
     }
   };
 

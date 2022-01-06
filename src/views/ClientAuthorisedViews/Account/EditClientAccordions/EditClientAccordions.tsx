@@ -28,7 +28,7 @@ const EditClientAccordions = () => (
             Edycja danych logowania
           </Accordion.Header>
 
-          <Accordion.Body>
+          <Accordion.Body className='ps-1 pe-1'>
             <EditClientCredentials/>
           </Accordion.Body>
         </Accordion.Item>

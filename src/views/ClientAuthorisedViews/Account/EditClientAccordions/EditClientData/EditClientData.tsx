@@ -20,13 +20,13 @@ const EditClientData = () => {
       return;
     }
 
-    const orderBody = createOrder(OrderTypes.EditClient, currentUser || {} as ClientModel, values);
+    const editClientDataOrder = createOrder(OrderTypes.EditClient, currentUser || {} as ClientModel, values);
 
     try {
-      await axios.post('/orders', orderBody);
+      await axios.post('/orders', editClientDataOrder);
       toast.info('Prośba o edycje danych osobowych została wysłana.');
     } catch {
-      toast.error('Edycja danych klienta nie udała się.');
+      toast.error('Nie udało się wysłać prośby o edycję danych klienta');
     }
   };
 
