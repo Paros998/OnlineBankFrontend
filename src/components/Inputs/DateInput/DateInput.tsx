@@ -39,7 +39,7 @@ const DateInput: FC<DateInputProps> = ({
         <Form.Label className={labelClassName}>{label}</Form.Label>
 
         <ReactDatePicker
-          selected={(moment(formattedSelectedDate).isValid() ? formattedSelectedDate : new Date())}
+          selected={(moment(formattedSelectedDate).isValid() ? formattedSelectedDate : null)}
           dateFormat='dd.MM.yyyy'
           customInput={
             <CustomCalendarInput
@@ -69,7 +69,7 @@ const DateInput: FC<DateInputProps> = ({
 
   return (
     <ReadonlyInput
-      value={moment(field.value, 'DD.MM.YYYY').format('DD.MM.YYYY')}
+      value={moment(field.value, valueFormat || 'DD.MM.YYYY').format(valueFormat || 'DD.MM.YYYY')}
       label={label}
     />
   );

@@ -7,7 +7,6 @@ import { transferCategoryClassNames } from '../../../../constants/transferCatego
 const HistoryEstimatedPayments = () => {
   const { estimatedData } = useHistory();
   const { data: { income, outgo, values } } = estimatedData;
-  console.log(estimatedData);
 
   return (
     <CardTemplate
@@ -52,9 +51,7 @@ const HistoryEstimatedPayments = () => {
 
       {
         values?.map(({ category, amount, percent }, index) => {
-          const roundedPercent = Math.round(percent);
           const categoryClassName = transferCategoryClassNames[category];
-
           return (
             <LabeledProgressBar
               key={index}
@@ -68,8 +65,8 @@ const HistoryEstimatedPayments = () => {
                 className: 'fw-bold',
               }}
               startProgressBarProps={{
-                now: roundedPercent,
-                label: `${roundedPercent}%`,
+                now: percent,
+                label: `${percent}%`,
                 variant: categoryClassName.split('-')[1],
               }}
             />

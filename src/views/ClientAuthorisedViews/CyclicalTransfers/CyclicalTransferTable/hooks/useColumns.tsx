@@ -3,10 +3,9 @@ import { CyclicalTransferDisplayModel } from '../../../../../interfaces/Cyclical
 import { Button } from 'react-bootstrap';
 import { getPreviousCyclicalTransferData } from '../utils/getPreviousCyclicalTransferData';
 import { defaultColumnStyle } from '../../../../../constants/defaultColumnStyle';
-import { TransferModel } from '../../../../../interfaces/DatabaseModels/TransferModel';
-import { getDefaultRowStyle } from '../../../../../utils/getDefaultRowStyle';
-import { transferCategoryClassNames } from '../../../../../constants/transferCategoryClassNames';
 import { CyclicalTransferModel } from '../../../../../interfaces/DatabaseModels/CyclicalTransferModel';
+import { getCategoryCellStyle } from '../../../../../utils/getCategoryCellStyle';
+import { getAmountCellStyle } from '../../../../../utils/getAmountCellStyle';
 
 interface ModalTogglers {
   toggleEditModalVisibility: (cyclicalTransfer: CyclicalTransferModel) => void;
@@ -51,9 +50,7 @@ export const useColumns = ({ toggleDeleteModalVisibility, toggleEditModalVisibil
       ...defaultColumnStyle,
       dataField: 'category',
       text: 'Kategoria',
-      classes: (cell: any, row: TransferModel, rowIndex: number) => {
-        return `${getDefaultRowStyle(rowIndex)} ${transferCategoryClassNames[cell]}`;
-      },
+      classes: getCategoryCellStyle,
     },
     {
       ...defaultColumnStyle,
@@ -64,6 +61,7 @@ export const useColumns = ({ toggleDeleteModalVisibility, toggleEditModalVisibil
       ...defaultColumnStyle,
       dataField: 'displayAmount',
       text: 'Kwota',
+      classes: getAmountCellStyle,
     },
     {
       ...defaultColumnStyle,

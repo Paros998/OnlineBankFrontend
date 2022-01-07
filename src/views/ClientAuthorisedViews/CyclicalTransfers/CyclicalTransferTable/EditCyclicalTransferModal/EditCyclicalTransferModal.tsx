@@ -9,6 +9,7 @@ import { EditCyclicalTransferFormikValues } from '../../../../../interfaces/form
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
 import EditCyclicalTransferForm from './EditCyclicalTransferForm/EditCyclicalTransferForm';
 import { useCyclicalTransfers } from '../../../../../contexts/CyclicalTransferContext';
+import { EditCyclicalTransferValidationSchema } from '../../../../../validation/EditCyclicalTransferValidationSchema';
 
 interface EditCyclicalTransferModalProps {
   showModal: boolean;
@@ -62,6 +63,7 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
       <Formik<EditCyclicalTransferFormikValues>
         initialValues={selectedCyclicalTransfer}
         onSubmit={handleSubmit}
+        validationSchema={EditCyclicalTransferValidationSchema}
       >
         <Form className="mt-4" noValidate>
           <Modal.Body>

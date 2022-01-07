@@ -1,6 +1,5 @@
 import React from 'react';
-import dayjs from "dayjs";
-import isLeapYear from "dayjs/plugin/isLeapYear";
+import moment from 'moment';
 import { Card, Col, Container, Row } from "react-bootstrap";
 import RecentPaymentsLoadingPlaceholder from "./RecentPaymentsLoadingPlaceholder/RecentPaymentsLoadingPlaceholder";
 import { useModalState } from "../../../../hooks/useModalState";
@@ -9,9 +8,6 @@ import { amountColor } from "../../../../constants/amountColor";
 import TransferDetailsModal from "../../../../components/Modal/TransferDetailsModal/TransferDetailsModal";
 import { useTransfers } from '../../../../hooks/useTransfers';
 import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
-
-dayjs.extend(isLeapYear);
-dayjs.locale('pl');
 
 const RecentPayments = () => {
   const { data: transfers, isPending } = useTransfers(undefined, true);
@@ -30,7 +26,7 @@ const RecentPayments = () => {
               <Row>
                 <Col xs={3}>
                   <span className='fw-bold'>
-                    {dayjs(transfer.transferDate).format('DD.MM.YYYY')}
+                    {moment(transfer.transferDate).format('DD.MM.YYYY')}
                   </span>
                 </Col>
 

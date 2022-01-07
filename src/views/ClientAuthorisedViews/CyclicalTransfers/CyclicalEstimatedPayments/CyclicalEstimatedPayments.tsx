@@ -25,7 +25,6 @@ const CyclicalEstimatedPayments = () => {
       {
         values.map(({ category, amount, percent}, index) => {
           const categoryClassName = transferCategoryClassNames[category];
-          const roundedPercent = Math.round(percent);
           return (
             <LabeledProgressBar
               key={index}
@@ -39,8 +38,8 @@ const CyclicalEstimatedPayments = () => {
                 className: 'fw-bold',
               }}
               startProgressBarProps={{
-                now: roundedPercent,
-                label: `${roundedPercent}%`,
+                now: percent,
+                label: `${percent}%`,
                 variant: categoryClassName.split('-')[1],
               }}
             />

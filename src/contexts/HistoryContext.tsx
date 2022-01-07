@@ -30,7 +30,7 @@ const useHistoryEstimatedData = () => {
         return {
           amount: Number(data.value.value.toFixed(2)),
           category: data.key,
-          percent: data.value.percentValue,
+          percent: Math.round(data.value.percentValue),
         };
       })
       ?.filter((data) => {
