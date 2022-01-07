@@ -41,7 +41,10 @@ const DateRangePicker: FC<DateRangePickerProps> = ({ dateFromName, dateToName, v
 
           isStartDateHigher(momentEndDate) && setFieldValue(dateToName, momentEndDate);
           setFieldValue(dateFromName, momentStartDate);
-          handleSubmit();
+
+          if (ISOEndDate && momentStartDate) {
+            handleSubmit();
+          }
         }}
       />
 
@@ -57,7 +60,10 @@ const DateRangePicker: FC<DateRangePickerProps> = ({ dateFromName, dateToName, v
         onChange={(date: Date) => {
           const initEndDate = toISODate(date, true);
           setFieldValue(dateToName, initEndDate);
-          handleSubmit();
+
+          if (ISOStartDate && initEndDate) {
+            handleSubmit();
+          }
         }}
       />
     </InputGroup>
