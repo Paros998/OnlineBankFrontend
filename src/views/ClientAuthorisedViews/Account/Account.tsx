@@ -5,7 +5,7 @@ import { LocationHeaders } from '../../../enums/LocationHeaders';
 import Advertisements from '../../../components/Advertisements/Advertisements';
 import InfoCard from '../../../components/InfoCard/InfoCard';
 import EditClientAccordions from './EditClientAccordions/EditClientAccordions';
-import EditClientCreditCards from './EditClientCreditCards/EditClientCreditCards';
+import ManageClientCreditCards from './ManageClientCreditCards/ManageClientCreditCards';
 
 const Account = () => {
   return (
@@ -18,8 +18,8 @@ const Account = () => {
             </Col>
 
             <Col xs={5}>
-              <h5 className="text-center mb-5">Dostępne karty płatnicze</h5>
-              <EditClientCreditCards />
+              <h5 className="text-center">Dostępne karty płatnicze</h5>
+              <ManageClientCreditCards />
             </Col>
           </Row>
         </ClientCardLayout>

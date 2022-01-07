@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react';
+import React from 'react';
 import { Form, Formik } from 'formik';
 import { Col, Row } from 'react-bootstrap';
 import DateRangePicker from '../../../../components/DateRangePicker/DateRangePicker';
@@ -6,10 +6,7 @@ import SelectInput from '../../../../components/Inputs/SelectInput/SelectInput';
 import { searchFormSelectClassName } from '../../../../constants/searchFormSelectClassName';
 import { CyclicalTransferSearchFormikValues } from '../../../../interfaces/formik/CyclicalTransferSearchFormikValues';
 import { useSelectOptions } from '../../../../hooks/useSelectOptions';
-
-interface CyclicalTransferSearchFormProps {
-  setCyclicalTransferParams: Dispatch<SetStateAction<CyclicalTransferSearchFormikValues>>;
-}
+import { useCyclicalTransfers } from '../../../../contexts/CyclicalTransferContext';
 
 const initialFormikValues: CyclicalTransferSearchFormikValues = {
   transferCategory: '',
@@ -17,13 +14,19 @@ const initialFormikValues: CyclicalTransferSearchFormikValues = {
   dateTo: '',
 };
 
-const CyclicalTransferSearchForm: FC<CyclicalTransferSearchFormProps> = ({ setCyclicalTransferParams }) => {
+const CyclicalTransferSearchForm = () => {
   const transferCategories = useSelectOptions<string>('/rest/transfers/categories');
+
+  const { cyclicalTransfers } = useCyclicalTransfers();
+
+  const handleSubmit = async (values: CyclicalTransferSearchFormikValues) => {
+    await cyclicalTransfers.fetchData(values);
+  };
 
   return (
     <Formik<CyclicalTransferSearchFormikValues>
       initialValues={initialFormikValues}
-      onSubmit={(values: CyclicalTransferSearchFormikValues) => setCyclicalTransferParams(values)}
+      onSubmit={handleSubmit}
     >
       {({ setFieldValue, handleSubmit, values: { dateTo, dateFrom } }) => (
         <Form noValidate className='mb-5'>

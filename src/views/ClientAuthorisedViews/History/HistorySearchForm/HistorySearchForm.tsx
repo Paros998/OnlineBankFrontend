@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react';
+import React from 'react';
 import { Form, Formik } from "formik";
 import { Col, Row } from "react-bootstrap";
 import SelectInput from "../../../../components/Inputs/SelectInput/SelectInput";
@@ -6,10 +6,7 @@ import { useSelectOptions } from "../../../../hooks/useSelectOptions";
 import DateRangePicker from "../../../../components/DateRangePicker/DateRangePicker";
 import { HistorySearchFormikValues } from "../../../../interfaces/formik/HistorySearchFormikValues";
 import { searchFormSelectClassName } from '../../../../constants/searchFormSelectClassName';
-
-interface HistorySearchFormProps {
-  setHistoryParams: Dispatch<SetStateAction<HistorySearchFormikValues>>;
-}
+import { useHistory } from '../../../../contexts/HistoryContext';
 
 const initialFormikValues: HistorySearchFormikValues = {
   transferCategory: '',
@@ -18,13 +15,17 @@ const initialFormikValues: HistorySearchFormikValues = {
   transferType: '',
 };
 
-const HistorySearchForm: FC<HistorySearchFormProps> = ({ setHistoryParams }) => {
+const HistorySearchForm = () => {
   const transferCategories = useSelectOptions<string>('/rest/transfers/categories');
+
+  const { transfers: { fetchData } } = useHistory();
+
+  const handleSubmit = async (values: HistorySearchFormikValues) => await fetchData(values);
 
   return (
     <Formik<HistorySearchFormikValues>
       initialValues={initialFormikValues}
-      onSubmit={(values: HistorySearchFormikValues) => setHistoryParams(values)}
+      onSubmit={handleSubmit}
     >
       {({ setFieldValue, handleSubmit, values: { dateTo, dateFrom } }) => (
         <Form noValidate className='mb-5'>

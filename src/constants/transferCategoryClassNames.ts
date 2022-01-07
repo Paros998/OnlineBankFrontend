@@ -4,5 +4,5 @@ export const transferCategoryClassNames: any = {
   'Zdrowie': 'text-info',
   'Wynagrodzenie': 'text-success',
   'Wydatki Bieżące': 'text-primary',
-  'Inne': 'text-secondary-light'
+  'Inne': 'text-secondary-dark'
 };

@@ -1,3 +1,3 @@
 import moment from "moment";
 
-export const getTodayDate = () => moment(new Date(Date.now())).format('DD.MM.YYYY HH:mm:ss');
+export const getTodayDate = (format?: string) => moment(new Date(Date.now())).format(format || 'DD.MM.YYYY HH:mm:ss');

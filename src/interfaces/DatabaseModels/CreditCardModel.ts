@@ -4,6 +4,6 @@ export interface CreditCardModel {
   cardNumber: string;
   expireDate: string;
   cvvNumber: number;
-  pinNumber: number;
+  pinNumber: string;
   cardImage: string;
 }

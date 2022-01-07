@@ -3,10 +3,13 @@
 }
 
 .table {
-  --bs-table-hover-color: white;
   width: 100%;
   height: 10rem;
   display: -moz-groupbox;
+}
+
+.table > thead {
+  border-bottom: 2px solid;
 }
 
 tr {
@@ -23,11 +26,15 @@ tbody > tr:hover {
   cursor: pointer;
 }
 
+.table > :not(:first-child) {
+  border: none;
+}
+
 tbody {
   overflow-y: scroll;
   height: 39.5rem;
   position: absolute;
   width: 96%;
-  color: white;
+  font-weight: bold;
   text-align: center;
 }

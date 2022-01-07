@@ -105,7 +105,12 @@ const EditCyclicalTransferForm = () => {
             dateFormat='dd.MM'
             onChange={(date: Date) => {
               const formattedDate = moment(date).toISOString();
-              setFieldValue('reTransferDate', formattedDate);
+
+              if (formattedDate === 'Invalid date') {
+                setFieldValue('reTransferDate', '');
+              } else {
+                setFieldValue('reTransferDate', formattedDate);
+              }
             }}
           />
         </Col>
