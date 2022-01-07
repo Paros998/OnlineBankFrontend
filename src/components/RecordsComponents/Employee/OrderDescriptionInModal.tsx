@@ -41,7 +41,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
           Data Utworzenia:
         </span>
         <span className={`col text-center  ${dataColor || 'text-light '} `}>
-          {moment(createDate).format("yyyy-MM-DD HH:mm:ss.SSS'Z'")}
+          {moment.utc(createDate).format("yyyy-MM-DD HH:mm:ss")}
         </span>
       </div>
 

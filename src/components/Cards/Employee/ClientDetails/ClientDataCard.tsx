@@ -9,6 +9,7 @@ import {Form} from "formik";
 import SubmitButton from "../../../SubmitButton/SubmitButton";
 import {Button} from "react-bootstrap";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 interface ClientDataCardProps {
   className?: string;
@@ -25,10 +26,13 @@ const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
   const handleSubmit = async (cardId:number) => {
     setIsSubmitting(true);
 
-    const response = await axios.put(`credit-cards/${cardId}/active`);
-
-    if(response.status === 200)
-      await fetchData();
+    try {
+      await axios.put(`credit-cards/${cardId}/active`);
+    }catch (e:any){
+      toast.error(e?.response?.data?.message);
+    }
+    toast.success("Zaktualizowano kartę kredytową!");
+    await fetchData();
 
     setIsSubmitting(false);
   }
@@ -38,7 +42,7 @@ const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
       header='Szczegóły Konta'
       className={`text-secondary-light bg-danger fs-5 ${className}`}
       headerClassName='text-secondary-light'
-      bodyClassName='text-secondary-light thumb-secondary-light'
+      bodyClassName='text-secondary-light thumb-light'
       headerDiamondClassName='text-secondary-light'
     >
       <div className='vstack '>
@@ -95,7 +99,7 @@ const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
                   Pin: {pinNumber}
                 </span>
                   <Button
-                    variant='dark'
+                    variant={isActive ? "primary-dark" : "success"}
                     className='w-30 mx-auto rounded-pill'
                     onClick={()=>{
                       handleSubmit(cardId);

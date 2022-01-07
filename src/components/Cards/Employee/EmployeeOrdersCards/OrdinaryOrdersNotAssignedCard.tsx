@@ -9,6 +9,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import {useCurrentUser} from "../../../../contexts/CurrentUserContext";
 import {EmployeeModel} from "../../../../interfaces/DatabaseModels/EmployeeModel";
+import {useHistory} from "react-router-dom";
 
 interface OrdinaryOrdersNotAssignedCardProps {
   className?: string;
@@ -22,6 +23,9 @@ const OrdinaryOrdersNotAssignedCard: FC<OrdinaryOrdersNotAssignedCardProps> = ({
 
   const [showModal,setShowModal] = useState<boolean>(false)
   const [isSubmitting,setIsSubmitting] = useState<boolean>(false)
+  const [showAfterModal,setShowAfterModal] = useState<boolean>(false);
+  const history = useHistory();
+
   const {currentUser} = useCurrentUser<EmployeeModel>()
   const [order,setOrder] = useState<OrderModel>({
     client: undefined,
@@ -40,6 +44,7 @@ const OrdinaryOrdersNotAssignedCard: FC<OrdinaryOrdersNotAssignedCardProps> = ({
 
     try{
       await axios.put(`/orders/${order.order_Id}/assign-employee/${currentUser?.employeeId}`)
+      setShowAfterModal(true);
     }catch (e:any){
       toast.error(e.response.data.message)
     }
@@ -49,10 +54,41 @@ const OrdinaryOrdersNotAssignedCard: FC<OrdinaryOrdersNotAssignedCardProps> = ({
 
     await fetchOrdinary();
     await fetchMyOrders();
+
+  }
+
+  const handleRedirect = () => {
+    if(order.client)
+      history.push(`/employee/client/${order.client.clientId}/${order.order_Id}`);
+    if(order.orderingEmployee)
+      history.push(`admin/employee/${order.orderingEmployee.employeeId}/${order.order_Id}`);
   }
 
   return (
     <>
+      <ModalTemplate
+        setShow={setShowAfterModal}
+        show={showAfterModal}
+        handleSubmit={handleRedirect}
+        title={'Zlecenie numer: ' + order?.order_Id}
+        props={{
+          size: 'lg',
+          centered: true,
+          contentClassName: 'border-warning bg-dark text-light rounded-card-10 '
+        }}
+        headerDiamondClassName='text-warning '
+        headerClassName='justify-content-center'
+        footerClassName='justify-content-center'
+        bodyClassName='justify-content-center text-center'
+        submitButtonVariant='warning'
+        submitButtonTitle={'Przejdź'}
+        closeButtonTitle={"Zostań"}
+      >
+        <p className='fs-5 text-warning fw-bold'>
+          {'Czy chcesz przejść do szczegółów przypisanego zlecenia?'}
+        </p>
+      </ModalTemplate>
+
       <ModalTemplate
         setShow={setShowModal}
         show={showModal}

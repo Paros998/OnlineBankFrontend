@@ -14,7 +14,7 @@ const EmployeeAuthorisedViews = () => {
         <Switch>
           <Route path='/employee/home' component={HomePage}/>
           <Route path='/employee/clients' component={ClientsPage}/>
-          <Route path='/employee/client/:clientId' component={ClientDetailsPage} />
+          <Route path='/employee/client/:clientId/:orderId?' component={ClientDetailsPage} />
           <Route path='/employee/new-client' component={NewClientPage}/>
           <Route path='/employee/orders' component={OrdersPage}/>
           <Route path='/employee/admin/users' component={UsersPage}/>

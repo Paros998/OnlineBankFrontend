@@ -35,6 +35,7 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({
                                                         }) => {
 
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [showAfterModal, setShowAfterModal] = useState<boolean>(false)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const history = useHistory();
   const {currentUser} = useCurrentUser<EmployeeModel>()
@@ -52,9 +53,9 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-
     try {
       await axios.put(`/orders/${order.order_Id}/assign-employee/${currentUser?.employeeId}`)
+      setShowAfterModal(true);
     } catch (e: any) {
       toast.error(e.response.data.message)
     }
@@ -72,8 +73,38 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({
     }
   }
 
+  const handleRedirect = () => {
+    if(order.client)
+      history.push(`/employee/client/${order.client.clientId}/${order.order_Id}`);
+    if(order.orderingEmployee)
+      history.push(`admin/employee/${order.orderingEmployee.employeeId}/${order.order_Id}`);
+  }
+
   return (
     <>
+      <ModalTemplate
+        setShow={setShowAfterModal}
+        show={showAfterModal}
+        handleSubmit={handleRedirect}
+        title={'Zlecenie numer: ' + order?.order_Id}
+        props={{
+          size: 'lg',
+          centered: true,
+          contentClassName: 'border-primary bg-dark text-light rounded-card-10 '
+        }}
+        headerDiamondClassName='text-primary '
+        headerClassName='justify-content-center'
+        footerClassName='justify-content-center'
+        bodyClassName='justify-content-center text-center'
+        submitButtonVariant='primary'
+        submitButtonTitle={'Przejdź'}
+        closeButtonTitle={"Zostań"}
+      >
+        <p className='fs-5 text-primary fw-bold'>
+          {'Czy chcesz przejść do szczegółów przypisanego zlecenia?'}
+        </p>
+      </ModalTemplate>
+
       <ModalTemplate
         setShow={setShowModal}
         show={showModal}
@@ -108,13 +139,13 @@ const PriorityOrdersNotAssignedCard: FC<OrdersProps> = ({
                             <div className='col-1 ms-2 text-truncate'>
                                 ID Zlecenia
                             </div>
-                            <div className='col ms-2 text-truncate text-center'>
+                            <div className='col-4 ms-2 text-truncate text-center'>
                                 Typ Zlecenia
                             </div>
                             <div className='col ms-2 text-truncate text-center'>
                                 Data
                             </div>
-                            <div className='col ms-2 text-truncate text-center' hidden={hideLastLabel}>
+                            <div className='col ms-2 text-truncate text-end' hidden={hideLastLabel}>
                                 Czas Oczekiwania(D.H.M.S)
                             </div>
                         </div>

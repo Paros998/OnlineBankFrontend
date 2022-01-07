@@ -11,11 +11,8 @@ interface PriorityOrdersProps {
 }
 
 const PriorityOrdersNotAssigned: FC<PriorityOrdersProps> = ({className,order,hideLastCol,setsFunctions}) => {
-  const {order_Id,orderType,createDate} = order;
+  const {order_Id,orderType,createDate,waitingTime} = order;
 
-  const date = moment()
-  const createdDate = moment(createDate)
-  const timePassedSinceOrderCreated = moment(date.diff(createdDate)).format("DD.HH.mm.ss")
   return (
     <div
       onClick={()=>{
@@ -32,11 +29,11 @@ const PriorityOrdersNotAssigned: FC<PriorityOrdersProps> = ({className,order,hid
       <div className='col  text-truncate text-center'>
         {orderType}
       </div>
-      <div className='col-3 text-truncate text-center'>
-        {moment(createDate).format("yyyy-MM-DD HH:mm:ss.SSS'Z'")}
+      <div className='col text-truncate text-center'>
+        {moment.utc(createDate).format("yyyy-MM-DD HH:mm:ss")}
       </div>
       <div className='col-3 ms-2 me-2 text-truncate text-center' hidden={hideLastCol}>
-        {timePassedSinceOrderCreated}
+        {waitingTime}
       </div>
     </div>
   );
