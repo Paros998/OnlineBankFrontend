@@ -1,20 +1,17 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import BootstrapTable, { BootstrapTableProps } from 'react-bootstrap-table-next';
+import BootstrapTable from 'react-bootstrap-table-next';
 import { CyclicalTransferModel } from '../../../../interfaces/DatabaseModels/CyclicalTransferModel';
 import { useModalState } from '../../../../hooks/useModalState';
 import EditCyclicalTransferModal from './EditCyclicalTransferModal/EditCyclicalTransferModal';
 import ConfirmationModal from '../../../../components/Modal/ConfirmationModal/ConfirmationModal';
 import { CyclicalTransferDisplayModel } from '../../../../interfaces/CyclicalTransferDisplayModel';
 import { useColumns } from './hooks/useColumns';
+import { useTableProps } from '../../../../hooks/useTableProps';
+import { useCyclicalTransfers } from '../../../../contexts/CyclicalTransferContext';
 
-interface CyclicalTransferTableProps {
-  tableProps: BootstrapTableProps<CyclicalTransferDisplayModel>;
-  fetchCyclicalTransfer: () => Promise<void>;
-}
-
-const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fetchCyclicalTransfer }) => {
+const CyclicalTransferTable = () => {
   const {
     toggleVisibility: toggleEditModalVisibility,
     showModal: showEditModal,
@@ -27,9 +24,28 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
     entity: selectedCyclicalTransferToDelete,
   } = useModalState<CyclicalTransferModel>();
 
+  const { cyclicalTransfers, estimatedData } = useCyclicalTransfers();
+
+  const { fetchData: fetchEstimatedData } = estimatedData;
+
+  const {
+    data: cyclicalTransferData,
+    fetchData: fetchCyclicalTransfers,
+    isPending: areCyclicalTransfersPending,
+  } = cyclicalTransfers;
+
+  const tableProps = useTableProps<CyclicalTransferDisplayModel>(
+    {
+      data: cyclicalTransferData,
+      isPending: areCyclicalTransfersPending,
+    },
+    'transferId',
+    { initialSortBy: 'displayReTransferDate' },
+  );
+
   const columns = useColumns({
     toggleDeleteModalVisibility,
-    toggleEditModalVisibility
+    toggleEditModalVisibility,
   });
 
   const [isRequestPending, setIsRequestPending] = useState(false);
@@ -44,7 +60,8 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
     try {
       await axios.delete(`/cyclical-transfers/${currentCyclicalTransferId}`);
 
-      await fetchCyclicalTransfer();
+      await fetchCyclicalTransfers();
+      await fetchEstimatedData();
       toast.success('Przelew cykliczny został usunięty pomyślnie.');
     } catch {
       toast.error('Usunięcie przelewu cyklicznego nie powiodło się');
@@ -52,8 +69,7 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
       setIsRequestPending(false);
       toggleDeleteModalVisibility();
     }
-  }, [selectedCyclicalTransferToDelete, fetchCyclicalTransfer, toggleDeleteModalVisibility]);
-
+  }, [selectedCyclicalTransferToDelete, fetchEstimatedData, fetchCyclicalTransfers, toggleDeleteModalVisibility]);
 
   return (
     <>
@@ -69,13 +85,12 @@ const CyclicalTransferTable: FC<CyclicalTransferTableProps> = ({ tableProps, fet
         onConfirm={handleDeleteCyclicalTransfer}
         header={`Usunięcie przelewu cyklicznego: ${selectedCyclicalTransferToDelete?.title}`}
       >
-        <h5 className='text-center'>Czy na pewno chcesz usunąć ten przelew cykliczny?</h5>
+        <h5 className="text-center">Czy na pewno chcesz usunąć ten przelew cykliczny?</h5>
       </ConfirmationModal>
 
       <EditCyclicalTransferModal
         showModal={showEditModal}
         toggleVisibility={toggleEditModalVisibility}
-        fetchCyclicalTransfers={fetchCyclicalTransfer}
         selectedCyclicalTransfer={selectedCyclicalTransferToEdit || {} as CyclicalTransferModel}
       />
     </>
