@@ -25,8 +25,7 @@ const useCyclicalTransferData = () => {
       return {
         ...cyclicalTransfer,
         displayAmount: `${(cyclicalTransfer.amount * -1).toFixed(2)} PLN`,
-        displayReTransferDate: moment(cyclicalTransfer.reTransferDate)
-          .format('DD.MM'),
+        displayReTransferDate: moment(cyclicalTransfer.reTransferDate).format('DD.MM'),
       };
     }) || [], [cyclicalTransfers]);
 

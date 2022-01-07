@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
-import BootstrapTable, { BootstrapTableProps } from "react-bootstrap-table-next";
+import React from 'react';
+import BootstrapTable from "react-bootstrap-table-next";
 import { transferCategoryClassNames } from "../../../../constants/transferCategoryClassNames";
 import { getDefaultRowStyle } from "../../../../utils/getDefaultRowStyle";
 import { defaultColumnStyle } from "../../../../constants/defaultColumnStyle";
 import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
-
-interface HistoryTableProps {
-  tableProps: BootstrapTableProps<TransferDisplayModel>;
-}
+import { useModalState } from '../../../../hooks/useModalState';
+import { useTableProps } from '../../../../hooks/useTableProps';
+import { useHistory } from '../../../../contexts/HistoryContext';
+import TransferDetailsModal from '../../../../components/Modal/TransferDetailsModal/TransferDetailsModal';
 
 const columns = [
   {
@@ -36,12 +36,36 @@ const columns = [
   },
 ];
 
-const HistoryTable: FC<HistoryTableProps> = ({ tableProps }) => {
+const HistoryTable = () => {
+  const { transfers } = useHistory();
+  const { data, isPending } = transfers;
+
+  const {
+    toggleVisibility,
+    showModal,
+    entity,
+  } = useModalState<TransferDisplayModel>();
+
+  const tableProps = useTableProps<TransferDisplayModel>(
+    { data, isPending },
+    'transferId',
+    { initialSortBy: 'displayTransferDate' },
+    (e: any, row: TransferDisplayModel) => toggleVisibility(row),
+  );
+
   return (
-    <BootstrapTable
-      {...tableProps}
-      columns={columns}
-    />
+    <>
+      <BootstrapTable
+        {...tableProps}
+        columns={columns}
+      />
+
+      <TransferDetailsModal
+        showModal={showModal}
+        toggleVisibility={toggleVisibility}
+        data={entity || {} as TransferDisplayModel}
+      />
+    </>
   );
 };
 

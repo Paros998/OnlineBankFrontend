@@ -1,13 +1,13 @@
 import { useMemo } from "react";
-import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
-import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
-import { useFetchRawData } from "../../../../hooks/useFetchRawData";
-import { TransferModel } from "../../../../interfaces/DatabaseModels/TransferModel";
-import { getFormattedTransferDate } from "../utils/getFormattedTransferDate";
-import { getFormattedAmount } from "../utils/getFormattedAmount";
-import { TransferTypes } from "../../../../enums/TransferTypes";
-import { HistorySearchFormikValues } from "../../../../interfaces/formik/HistorySearchFormikValues";
-import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
+import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { ClientModel } from "../interfaces/DatabaseModels/ClientModel";
+import { useFetchRawData } from "./useFetchRawData";
+import { TransferModel } from "../interfaces/DatabaseModels/TransferModel";
+import { getFormattedTransferDate } from "../views/ClientAuthorisedViews/History/utils/getFormattedTransferDate";
+import { getFormattedAmount } from "../views/ClientAuthorisedViews/History/utils/getFormattedAmount";
+import { TransferTypes } from "../enums/TransferTypes";
+import { HistorySearchFormikValues } from "../interfaces/formik/HistorySearchFormikValues";
+import { TransferDisplayModel } from '../interfaces/TransferDisplayModel';
 
 export const useTransfers = (params?: HistorySearchFormikValues, areRecentTransfers?: boolean) => {
   const { currentUser } = useCurrentUser<ClientModel>();
@@ -33,5 +33,5 @@ export const useTransfers = (params?: HistorySearchFormikValues, areRecentTransf
       )
     ) || [], [transfers]);
 
-  return { formattedTransfers: formattedTransfers, isPending, fetchTransfers: fetchData };
+  return { data: formattedTransfers, isPending, fetchData };
 };

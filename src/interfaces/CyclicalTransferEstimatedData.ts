@@ -1,10 +1,6 @@
-export interface CyclicalTransferEstimatedValues {
-  category: string;
-  amount: number;
-  percent: number;
-}
+import { EstimatedValues } from './EstimatedValues';
 
 export interface CyclicalTransferEstimatedData {
-  values: CyclicalTransferEstimatedValues[];
+  values: EstimatedValues[];
   totalSum: number;
 }

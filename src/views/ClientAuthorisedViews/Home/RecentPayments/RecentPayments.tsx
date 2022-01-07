@@ -7,14 +7,14 @@ import { useModalState } from "../../../../hooks/useModalState";
 import { transferCategoryClassNames } from "../../../../constants/transferCategoryClassNames";
 import { amountColor } from "../../../../constants/amountColor";
 import TransferDetailsModal from "../../../../components/Modal/TransferDetailsModal/TransferDetailsModal";
-import { useTransfers } from '../../History/hooks/useTransfers';
+import { useTransfers } from '../../../../hooks/useTransfers';
 import { TransferDisplayModel } from '../../../../interfaces/TransferDisplayModel';
 
 dayjs.extend(isLeapYear);
 dayjs.locale('pl');
 
 const RecentPayments = () => {
-  const { formattedTransfers: transfers, isPending } = useTransfers(undefined, true);
+  const { data: transfers, isPending } = useTransfers(undefined, true);
   const { showModal, toggleVisibility, entity } = useModalState<TransferDisplayModel>();
 
   return (

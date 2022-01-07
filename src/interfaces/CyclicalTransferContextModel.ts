@@ -1,13 +1,8 @@
 import { CyclicalTransferDisplayModel } from './CyclicalTransferDisplayModel';
 import { CyclicalTransferEstimatedData } from './CyclicalTransferEstimatedData';
-
-interface CyclicalTransferReturnModel<T> {
-  data: T;
-  isPending: boolean;
-  fetchData: (params?: unknown) => Promise<void>;
-}
+import { ContextSubDataModel } from './ContextSubDataModel';
 
 export interface CyclicalTransferContextModel {
-  cyclicalTransfers: CyclicalTransferReturnModel<CyclicalTransferDisplayModel[]>;
-  estimatedData: CyclicalTransferReturnModel<CyclicalTransferEstimatedData>;
+  cyclicalTransfers: ContextSubDataModel<CyclicalTransferDisplayModel[]>;
+  estimatedData: ContextSubDataModel<CyclicalTransferEstimatedData>;
 }

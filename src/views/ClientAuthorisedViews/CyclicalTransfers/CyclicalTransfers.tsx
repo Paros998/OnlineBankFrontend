@@ -8,26 +8,24 @@ import CyclicalEstimatedPayments from './CyclicalEstimatedPayments/CyclicalEstim
 import CyclicalTransferSearchForm from './CyclicalTransferSearchForm/CyclicalTransferSearchForm';
 import CyclicalTransferProvider from '../../../contexts/CyclicalTransferContext';
 
-const CyclicalTransfers = () => {
-  return (
-    <CyclicalTransferProvider>
-      <Row>
-        <Col xs={8}>
-          <ClientCardLayout location={LocationHeaders.CyclicalTransfers} style={{ height: '54rem' }}>
-            <CyclicalTransferSearchForm/>
+const CyclicalTransfers = () => (
+  <CyclicalTransferProvider>
+    <Row>
+      <Col xs={8}>
+        <ClientCardLayout location={LocationHeaders.CyclicalTransfers} style={{ height: '54rem' }}>
+          <CyclicalTransferSearchForm/>
 
-            <CyclicalTransferTable />
-          </ClientCardLayout>
-        </Col>
+          <CyclicalTransferTable/>
+        </ClientCardLayout>
+      </Col>
 
-        <Col xs={4} className="mt-5">
-          <Advertisements wrapperClassName="mt-2"/>
+      <Col xs={4} className="mt-5">
+        <Advertisements wrapperClassName="mt-2"/>
 
-          <CyclicalEstimatedPayments />
-        </Col>
-      </Row>
-    </CyclicalTransferProvider>
-  );
-};
+        <CyclicalEstimatedPayments/>
+      </Col>
+    </Row>
+  </CyclicalTransferProvider>
+);
 
 export default CyclicalTransfers;
