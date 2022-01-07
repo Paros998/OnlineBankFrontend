@@ -19,7 +19,7 @@ const Transfer: FC = () => {
 
   const formikInitialValues: TransferFormikValues = {
     amount: 0,
-    transferDate: getTodayDate(),
+    transferDate: getTodayDate('DD.MM'),
     category: '',
     type: 'OUTGOING',
     receiver_sender: '',

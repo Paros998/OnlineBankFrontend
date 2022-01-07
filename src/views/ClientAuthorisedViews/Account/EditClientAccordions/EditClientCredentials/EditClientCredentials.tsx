@@ -5,8 +5,6 @@ import { Formik } from 'formik';
 import { useCurrentUser } from '../../../../../contexts/CurrentUserContext';
 import { ClientModel } from '../../../../../interfaces/DatabaseModels/ClientModel';
 import { useFetchRawData } from '../../../../../hooks/useFetchRawData';
-import { AppUserModel } from '../../../../../interfaces/DatabaseModels/AppUserModel';
-
 import EditClientCredentialsForm from './EditClientCredentialsForm/EditClientCredentialsForm';
 import CenteredSpinner from '../../../../../components/CenteredSpinner/CenteredSpinner';
 import { createOrder } from '../../../../../utils/createOrder';
@@ -18,7 +16,7 @@ import { EditClientCredentialsValidationSchema } from '../../../../../validation
 
 const EditClientCredentials = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
-  const { rawData: appUserData, isPending } = useFetchRawData<AppUserModel>(`/users/client/${currentUser?.clientId}`);
+  const { rawData: appUserData, isPending } = useFetchRawData<UserCredentials>(`/users/client/${currentUser?.clientId}`);
 
   const handleSubmit = async (values: UserCredentials) => {
     if (isGivenDataEdited(values, appUserData)) {
@@ -26,19 +24,10 @@ const EditClientCredentials = () => {
       return;
     }
 
-    // TODO Tricky way, form needs refactor
-
-    const formattedValues = {
-      username: values.username,
-      password: values.password,
-      email: values.email,
-      appUserRole: values.appUserRole
-    };
-
     const editClientCredentialsOrder = createOrder(
       OrderTypes.EditUser,
       currentUser || {} as ClientModel,
-      formattedValues,
+      { ...appUserData, ...values },
       true
     );
 

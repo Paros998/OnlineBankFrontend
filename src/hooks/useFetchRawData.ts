@@ -7,10 +7,10 @@ export const useFetchRawData = <T extends unknown>(endpoint: string, params?: an
   const [rawData, setRawData] = useState<T>();
   const [isPending, setIsPending] = useState(false);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (callbackParams?: any) => {
     setIsPending(true);
     try {
-      const { data } = await axios.get<T>(endpoint, { params });
+      const { data } = await axios.get<T>(endpoint, { params: callbackParams || params });
       setRawData(data);
     } catch (e) {
       toast.error(`Coś poszło nie tak przy pobieraniu danych: ${e}`);

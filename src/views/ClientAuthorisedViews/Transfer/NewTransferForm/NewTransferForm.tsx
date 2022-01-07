@@ -137,10 +137,16 @@ const NewTransferForm = () => {
               placeholderText='DD.MM.YYYY'
               readOnly={isReadonly}
               hasIcon
-              valueFormat='DD.MM.YYYY'
+              valueFormat='DD.MM'
+              dateFormat='dd.MM'
               onChange={(date: Date) => {
-                const formattedDate = moment(date).format('DD.MM.YYYY');
-                setFieldValue('transferDate', formattedDate);
+                const formattedDate = moment(date).format('DD.MM');
+
+                if (formattedDate === 'Invalid date') {
+                  setFieldValue('transferDate', '');
+                } else {
+                  setFieldValue('transferDate', formattedDate);
+                }
               }}
             />
           </Col>

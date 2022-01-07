@@ -8,11 +8,12 @@ import { CyclicalTransferModel } from '../../../../../interfaces/DatabaseModels/
 import { EditCyclicalTransferFormikValues } from '../../../../../interfaces/formik/EditCyclicalTransferFormikValues';
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
 import EditCyclicalTransferForm from './EditCyclicalTransferForm/EditCyclicalTransferForm';
+import { useCyclicalTransfers } from '../../../../../contexts/CyclicalTransferContext';
+import { EditCyclicalTransferValidationSchema } from '../../../../../validation/EditCyclicalTransferValidationSchema';
 
 interface EditCyclicalTransferModalProps {
   showModal: boolean;
   toggleVisibility: () => void;
-  fetchCyclicalTransfers: () => Promise<void>;
   selectedCyclicalTransfer: CyclicalTransferModel;
 }
 
@@ -20,8 +21,12 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
   showModal,
   toggleVisibility,
   selectedCyclicalTransfer,
-  fetchCyclicalTransfers,
 }) => {
+  const { cyclicalTransfers, estimatedData } = useCyclicalTransfers();
+
+  const { fetchData: fetchEstimatedData } = estimatedData;
+  const { fetchData: fetchCyclicalTransfers } = cyclicalTransfers;
+
   const handleSubmit = async (values: EditCyclicalTransferFormikValues) => {
     const currentCyclicalTransferId = selectedCyclicalTransfer.transferId;
 
@@ -30,6 +35,7 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
 
       toast.success('Przelew cykliczny został poprawnie zedytowany.');
       await fetchCyclicalTransfers();
+      await fetchEstimatedData();
     } catch {
       toast.error('Edycja przelewu cyklicznego nie powiodła się.')
     } finally {
@@ -57,6 +63,7 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
       <Formik<EditCyclicalTransferFormikValues>
         initialValues={selectedCyclicalTransfer}
         onSubmit={handleSubmit}
+        validationSchema={EditCyclicalTransferValidationSchema}
       >
         <Form className="mt-4" noValidate>
           <Modal.Body>

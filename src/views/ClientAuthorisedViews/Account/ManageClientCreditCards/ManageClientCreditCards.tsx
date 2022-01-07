@@ -27,7 +27,7 @@ const ManageClientCreditCards = () => {
   } = useFetchRawData<CreditCardModel[]>(`/credit-cards/client/${currentUser?.clientId}`);
 
   const {
-    toggleVisibility: toggleConfirmModalVisibility,
+    toggleVisibility: toggleEditCardModalVisibility,
     showModal: showConfirmModal,
     entity: confirmModalContent,
   } = useModalState<EditCardConfirmModalEntity>();
@@ -41,7 +41,10 @@ const ManageClientCreditCards = () => {
     isRequestPending,
     handleCreateCard,
     handleEditCard,
-  } = useCreditCardOperations(toggleConfirmModalVisibility, toggleCreateCardModalVisibility);
+  } = useCreditCardOperations({
+    toggleEditCardModalVisibility,
+    toggleCreateCardModalVisibility
+  });
 
   if (creditCards) {
     return (
@@ -64,7 +67,7 @@ const ManageClientCreditCards = () => {
             <CreditCard
               key={card.cardId}
               imgSrc={creditCardImageSources[index]}
-              toggleConfirmModalVisibility={toggleConfirmModalVisibility}
+              toggleConfirmModalVisibility={toggleEditCardModalVisibility}
               handleEditCard={handleEditCard}
               {...card}
             />
@@ -74,7 +77,7 @@ const ManageClientCreditCards = () => {
         <EditCreditCardModal
           modalContent={confirmModalContent}
           showModal={showConfirmModal}
-          toggleVisibility={toggleConfirmModalVisibility}
+          toggleVisibility={toggleEditCardModalVisibility}
           isRequestPending={isRequestPending}
         />
 

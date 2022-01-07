@@ -38,6 +38,7 @@ export const useTableProps = <T extends object>(
         onClick: onRowClick || (() => undefined),
       },
       hover: true,
+      striped: true,
       noDataIndication: NoDataIndicator,
       sort: {
         dataField: initialSortBy,

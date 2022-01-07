@@ -12,6 +12,11 @@ export interface ToastContent {
   successToastContent: string;
 }
 
+interface ModalTogglers {
+  toggleCreateCardModalVisibility: () => void;
+  toggleEditCardModalVisibility: () => void;
+}
+
 const creditCardEmptyObject: Partial<CreditCardModel> = {
   cardNumber: '',
   cardImage: '',
@@ -20,10 +25,10 @@ const creditCardEmptyObject: Partial<CreditCardModel> = {
   expireDate: '',
 };
 
-export const useCreditCardOperations = (
-  toggleEditCardModalVisibility: () => void,
-  toggleCreateCardModalVisibility: () => void
-) => {
+export const useCreditCardOperations = ({
+  toggleCreateCardModalVisibility,
+  toggleEditCardModalVisibility,
+}: ModalTogglers) => {
   const { currentUser } = useCurrentUser<ClientModel>();
   const [isRequestPending, setIsRequestPending] = useState(false);
 
