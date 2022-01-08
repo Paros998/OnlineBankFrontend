@@ -35,6 +35,7 @@ export const createOrder = (type: string,
     case OrderTypes.EditEmployee:
     case OrderTypes.CreateUser: {
       order.orderingEmployee = currentUser as EmployeeModel;
+      order.orderingEmployee.dateOfBirth = dayjs(order.orderingEmployee.dateOfBirth).toISOString().replaceAll('Z','');
       break;
     }
     case OrderTypes.LoanRequest:
@@ -44,20 +45,33 @@ export const createOrder = (type: string,
     case OrderTypes.UnblockCreditCard:
     case OrderTypes.EditClient: {
       order.client = currentUser as ClientModel;
+      order.client.dateOfBirth = dayjs(order.client.dateOfBirth).format("YYYY-MM-DD");
       break;
     }
     case OrderTypes.EditUser: {
-      fromClient
-        ? order.client = currentUser as ClientModel
-        : order.orderingEmployee = currentUser as EmployeeModel;
+      if(fromClient){
+        order.client = currentUser as ClientModel;
+        order.client.dateOfBirth = dayjs(order.client.dateOfBirth).format("YYYY-MM-DD");
+      }else {
+        order.orderingEmployee = currentUser as EmployeeModel;
+        order.orderingEmployee.dateOfBirth = dayjs(order.orderingEmployee.dateOfBirth).format("YYYY-MM-DD");
+      }
       break;
     }
   }
 
+  function localDateReplacer(name:any,value:any){
+    if(name === 'dateOfBirth')
+      return dayjs(value).format("YYYY-MM-DD");
+    else return value;
+  }
+
   const body:OrderJsonBody = {
     order: order,
-    requestBody: JSON.stringify(values)
+    requestBody: JSON.stringify(values,localDateReplacer)
   }
+
+  console.log(body);
 
   return body;
 }

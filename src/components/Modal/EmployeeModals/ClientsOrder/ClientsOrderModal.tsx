@@ -39,8 +39,8 @@ const ClientsOrderModal: FC<ClientsOrderModalProps> = ({
     else if (modalType === ClientsOrderModalTypes.USE)
       return <MyOrderModal setShowModal={setShowModal} showModal={showModal} order={order} fetchClient={fetchClient}
                            fetchOrders={fetchOrders}/>;
-  } else return <AssignOrderModal setShowModal={setShowModal} showModal={showModal} fetchOrders={fetchOrders}
-                                  isPending={isPending}/>;
+  }
+
   return null
 
 };

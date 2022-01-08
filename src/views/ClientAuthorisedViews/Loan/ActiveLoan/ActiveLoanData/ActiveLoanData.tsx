@@ -28,7 +28,7 @@ const ActiveLoanData = () => {
         </div>
 
         <div className={labelDataWrapperClassName}>
-          Termin spłaty następnej pożyczki:
+          Termin spłaty następnej raty pożyczki:
 
           <span className={dataClassName}>
             {moment(currentLoan.nextRatePayDay).format('DD.MM.YYYY')}

@@ -121,7 +121,7 @@ const NewEmployeeForm = () => {
           </div>
         </div>
         <div className='hstack justify-content-center'>
-          <div className='hstack justify-content-center my-auto w-100'>
+          <div className='hstack justify-content-center my-auto w-100 mt-4'>
             <SelectInput
               name='appUserRole'
               label='Rola'

@@ -44,16 +44,16 @@ const ClientDetailsPage = () => {
       <>
         <AuthorisedNavbar/>
         <SideNavbar/>
-        <ContainerWithBackgroundImage className='bg-secondary-dark w-100'>
-          <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-800px mnh-700px '>
+        <ContainerWithBackgroundImage className='bg-secondary-dark '>
+          <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-700px mnh-700px '>
             <ClientAccountDataCard className='w-25' client={client}/>
             <ClientDataCard className='w-40' client={client}/>
             <ClientOrdersCard className='w-35 me-2' clientId={ID} fetchClient={fetchData} orderId={orderId}/>
           </div>
-          <div className='w-100 pt-3 pe-4'>
+          <div className='w-90 pe-4 mnh-200px align-items-center d-flex'>
             <Button
-              className='w-25 rounded-pill position-relative left-40 '
-              variant='dark'
+              className='w-25 rounded-pill mx-auto my-auto'
+              variant='secondary'
               onClick={handleBackClick}
             >
               Wstecz
