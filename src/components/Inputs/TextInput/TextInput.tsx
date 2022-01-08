@@ -18,19 +18,18 @@ interface TextInputProps extends FormControlProps {
 }
 
 const TextInput: FC<TextInputProps> = ({
-                                         label,
-                                         hasInputText,
-                                         readOnly,
-                                         readonlyAdditionalValueContent,
-                                         containerClass,
-                                         labelClassName,
-                                         inputGroup,
-                                         isRequired,
-                                         isInvalid,
-                                         maxLength,
-                                         name,
-                                         ...props
-                                       }) => {
+  label,
+  hasInputText,
+  readOnly,
+  readonlyAdditionalValueContent,
+  containerClass,
+  labelClassName,
+  inputGroup,
+  isRequired,
+  isInvalid,
+  name,
+  ...props
+}) => {
   const [field] = useField(name);
   if (!readOnly) {
     return (
@@ -46,8 +45,8 @@ const TextInput: FC<TextInputProps> = ({
             {...props}
             aria-required={isRequired}
             isInvalid={isInvalid}
-            autoComplete='off'>
-          </Form.Control>
+            autoComplete='off'
+          />
           {
             hasInputText && (
               <InputGroup.Text className='bg-white'>

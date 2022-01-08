@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import axios from "axios";
 import {Formik} from 'formik';
+import {toast} from 'react-toastify';
 import {useHistory} from "react-router-dom";
 import ClientCardLayout from "../../../components/ClientCardLayout/ClientCardLayout";
 import {LocationHeaders} from "../../../enums/LocationHeaders";
@@ -10,8 +11,7 @@ import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 import NewTransferForm from "./NewTransferForm/NewTransferForm";
 import {getTodayDate} from "../../../utils/getTodayDate";
 import {getISODate} from "../../../utils/getISODate";
-import {toast} from 'react-toastify';
-import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
+import { TransferValidationSchema } from '../../../validation/TransferValidationSchema';
 
 
 const NewTransfer: FC = () => {
