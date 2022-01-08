@@ -14,7 +14,7 @@ const AccountCard = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
 
   return (
-    <ClientCardLayout location={LocationHeaders.Home}>
+    <ClientCardLayout location={LocationHeaders.Home} cardBodyClassName='pb-0'>
       <h6 className='text-end'>Dostępne środki</h6>
 
       <div className='d-flex justify-content-between'>

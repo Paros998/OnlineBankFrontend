@@ -20,11 +20,11 @@ const ActiveLoan = () => {
         <ActiveLoanData />
 
         {
-          currentLoan?.isActive && (
+          currentLoan.isActive && (
             <div className="text-center">
               <Button
                 onClick={handlePayLoanRate}
-                className="fw-bold"
+                className="fw-bold rounded-pill w-50"
               >
                 <Cash /> Zapłać ratę
               </Button>

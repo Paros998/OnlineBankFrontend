@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {LoanModel} from "../../../interfaces/DatabaseModels/LoanModel";
-import GeneratedLoanData from "../../../views/ClientAuthorisedViews/GeneratedLoan/GeneratedLoanData/GeneratedLoanData";
+import GeneratedLoanData from "../../GeneratedLoanData/GeneratedLoanData";
 
 interface ClientLoanProps{
   currentLoan:LoanModel;

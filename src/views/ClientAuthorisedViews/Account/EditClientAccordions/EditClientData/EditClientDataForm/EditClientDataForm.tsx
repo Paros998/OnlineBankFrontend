@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { Dispatch, FC, SetStateAction } from 'react';
 import { Form } from 'formik';
 import TextInput from '../../../../../../components/Inputs/TextInput/TextInput';
 import NumberFormatTextInput from '../../../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput';
 import EditClientFormActionButtons from '../../EditClientFormActionButtons/EditClientFormActionButtons';
 
-const EditClientDataForm = () => {
-  const [isReadonly, setIsReadonly] = useState(true);
+interface EditClientDataFormProps {
+  isReadonly: boolean;
+  setIsReadonly: Dispatch<SetStateAction<boolean>>;
+}
 
+const EditClientDataForm: FC<EditClientDataFormProps> = ({ setIsReadonly, isReadonly }) => {
   return (
     <Form noValidate>
       <TextInput

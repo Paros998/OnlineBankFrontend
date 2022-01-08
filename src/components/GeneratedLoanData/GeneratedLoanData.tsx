@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import moment from 'moment';
-import { LoanModel } from '../../../../interfaces/DatabaseModels/LoanModel';
+import { LoanModel } from '../../interfaces/DatabaseModels/LoanModel';
 
 const wrapperClassName = "w-50";
 const dataClassName = 'text-end fw-bold';

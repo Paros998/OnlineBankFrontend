@@ -4,14 +4,19 @@ import {useFormikContext} from "formik";
 
 interface SubmitButtonProps extends ButtonProps {
   to?: string;
+  isManualDisabled?: boolean;
 }
 
-const SubmitButton: FC<SubmitButtonProps> = ({ children, ...props }) => {
+const SubmitButton: FC<SubmitButtonProps> = ({
+  children,
+  isManualDisabled,
+  ...props
+}) => {
   const { isSubmitting } = useFormikContext();
   return (
     <Button
       {...props}
-      disabled={isSubmitting}
+      disabled={isSubmitting || isManualDisabled}
       type='submit'
     >
       {isSubmitting && (

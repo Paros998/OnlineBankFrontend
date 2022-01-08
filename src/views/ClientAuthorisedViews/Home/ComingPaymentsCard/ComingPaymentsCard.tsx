@@ -8,6 +8,7 @@ import { CyclicalTransferModel } from "../../../../interfaces/DatabaseModels/Cyc
 import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
 import CenteredSpinner from "../../../../components/CenteredSpinner/CenteredSpinner";
+import { ClockFill } from 'react-bootstrap-icons';
 
 const ComingPaymentsCard = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
@@ -17,19 +18,23 @@ const ComingPaymentsCard = () => {
 
   const cyclicalTransfers = rawData ?? [];
 
+  const isCCTLengthNotMax = cyclicalTransfers.length < 3 && cyclicalTransfers.length; // full name of variable is isComingCyclicalTransfersLengthNotMax
+
+  console.log(cyclicalTransfers);
+
   return (
     <CardTemplate
       header='Nadchodzące płatności'
       headerDiamondClassName='fs-6'
       className='mt-4 w-100 ms-0 h-100 border-secondary'
-      bodyClassName={`d-flex flex-column ${cyclicalTransfers?.length === 3 && 'justify-content-between'}`}
+      bodyClassName={`d-flex flex-column ${cyclicalTransfers.length === 3 && 'justify-content-between'}`}
     >
       <>
         <CenteredSpinner isPending={isPending}/>
 
         {
           cyclicalTransfers.map((transfer) => (
-            <div key={transfer.transferId} className='text-secondary-dark fw-bold'>
+            <div key={transfer.transferId} className={`text-secondary-dark fw-bold ${isCCTLengthNotMax && 'mb-5'}`}>
               {moment(transfer.reTransferDate).format('DD.MM')}
 
               <div className='d-flex justify-content-between'>
@@ -46,14 +51,14 @@ const ComingPaymentsCard = () => {
         }
 
         {
-          cyclicalTransfers.length < 3 && cyclicalTransfers.length && (
+          isCCTLengthNotMax && (
             <div className='text-center'>
               <Button
                 as={Link as any}
                 to='/client/new-transfer'
-                className='fw-bold'
+                className='fw-bold rounded-pill w-75'
               >
-                Dodaj nowy przelew cykliczny
+                <ClockFill className='mb-1' /> Dodaj nowy przelew cykliczny
               </Button>
             </div>
           )

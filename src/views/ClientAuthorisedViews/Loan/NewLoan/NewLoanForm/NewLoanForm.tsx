@@ -4,6 +4,7 @@ import { Col, ColProps, Row } from 'react-bootstrap';
 import FormBlob from '../../../../../components/FormBlob/FormBlob';
 import TextInput from '../../../../../components/Inputs/TextInput/TextInput';
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
+import { useLoan } from '../../../../../contexts/LoanContext';
 
 const colProps: ColProps = {
   xs: 6,
@@ -11,6 +12,7 @@ const colProps: ColProps = {
 };
 
 const NewLoanForm = () => {
+  const { currentLoan } = useLoan();
   return (
     <Form className='position-relative mt-4 h-100' noValidate>
       <FormBlob style={{ zIndex: 1, height: '96%' }}/>
@@ -24,6 +26,7 @@ const NewLoanForm = () => {
             className='rounded-0 rounded-start float-start'
             labelClassName='fw-bold'
             placeholder='Wpisz liczbę rat'
+            disabled={currentLoan.isActive}
           />
         </Col>
       </Row>
@@ -38,6 +41,7 @@ const NewLoanForm = () => {
             labelClassName='fw-bold'
             placeholder='Wpisz podstawową kwotę pożyczki'
             hasInputText
+            disabled={currentLoan.isActive}
           />
         </Col>
       </Row>
@@ -50,7 +54,10 @@ const NewLoanForm = () => {
 
       <Row className='mt-3 text-end'>
         <Col {...colProps}>
-          <SubmitButton className='ms-4 rounded-pill fw-bold w-25 text-white'>
+          <SubmitButton
+            className='ms-4 rounded-pill fw-bold w-25 text-white'
+            isManualDisabled={currentLoan.isActive}
+          >
             Dalej
           </SubmitButton>
         </Col>
