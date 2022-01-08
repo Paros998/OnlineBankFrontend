@@ -4,4 +4,6 @@ export enum LocationHeaders {
   History = 'Historia',
   CyclicalTransfers = 'Przelewy cykliczne',
   Account = 'Konto',
+  Loan = 'Pożyczka',
+  NewLoan = 'Nowa pożyczka',
 }

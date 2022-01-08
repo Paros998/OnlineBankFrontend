@@ -1,1 +1,1 @@
-export const accountNumberFormat = '## #### #### #### #### #### #####';
+export const accountNumberFormat = '## #### #### #### #### #### ####';

@@ -2,14 +2,14 @@ import React from 'react';
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from 'moment';
-import CardTemplate from "../../CardTemplate";
+import CardTemplate from "../../../../components/Cards/CardTemplate";
 import { useFetchRawData } from "../../../../hooks/useFetchRawData";
 import { CyclicalTransferModel } from "../../../../interfaces/DatabaseModels/CyclicalTransferModel";
 import { useCurrentUser } from "../../../../contexts/CurrentUserContext";
 import { ClientModel } from "../../../../interfaces/DatabaseModels/ClientModel";
-import CenteredSpinner from "../../../CenteredSpinner/CenteredSpinner";
+import CenteredSpinner from "../../../../components/CenteredSpinner/CenteredSpinner";
 
-const ClientComingPaymentsCard = () => {
+const ComingPaymentsCard = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
   const { rawData, isPending } = useFetchRawData<CyclicalTransferModel[]>(
     `cyclical-transfers/coming/client/${currentUser?.clientId}`
@@ -63,4 +63,4 @@ const ClientComingPaymentsCard = () => {
   );
 };
 
-export default ClientComingPaymentsCard;
+export default ComingPaymentsCard;
