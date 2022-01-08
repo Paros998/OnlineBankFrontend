@@ -2,9 +2,9 @@ import React, {Dispatch, FC, SetStateAction} from 'react';
 import {OrderModel} from "../../../../interfaces/DatabaseModels/OrderModel";
 import {ClientsOrderModalTypes} from "../../../../enums/ClientsOrderModalTypes";
 import AssignOrderModal from "./modals/AssignOrderModal";
-import FinishedOrderModal from './modals/FinishedOrderModal';
 import AssignedOrderModal from './modals/AssignedOrderModal';
 import MyOrderModal from "./modals/MyOrderModal";
+import FinishedOrderModal from "./modals/FinishedOrderModal";
 
 interface ClientsOrderModalProps {
   setShowModal: Dispatch<SetStateAction<boolean>>
@@ -27,21 +27,22 @@ const ClientsOrderModal: FC<ClientsOrderModalProps> = ({
                                                        }) => {
   if (!showModal)
     return null;
-  else {
-    if (order) {
-      if (modalType === ClientsOrderModalTypes.ASSIGN)
-        return <AssignOrderModal setShowModal={setShowModal} showModal={showModal} order={order} fetchOrders={fetchOrders}/>;
-      else if (modalType === ClientsOrderModalTypes.SHOW)
-        return <FinishedOrderModal setShowModal={setShowModal} showModal={showModal} order={order}/>;
-      else if (modalType === ClientsOrderModalTypes.SHOW_ASSIGNED)
-        return <AssignedOrderModal setShowModal={setShowModal} showModal={showModal} order={order}/>;
-      else if (modalType === ClientsOrderModalTypes.USE)
-        return <MyOrderModal setShowModal={setShowModal} showModal={showModal} order={order} fetchClient={fetchClient} fetchOrders={fetchOrders}/>;
-    }
-    else return <AssignOrderModal setShowModal={setShowModal} showModal={showModal} fetchOrders={fetchOrders} isPending={isPending}/>;
 
-    return null
-  }
+  if (order) {
+    if (modalType === ClientsOrderModalTypes.ASSIGN)
+      return <AssignOrderModal setShowModal={setShowModal} showModal={showModal} order={order}
+                               fetchOrders={fetchOrders}/>;
+    else if (modalType === ClientsOrderModalTypes.SHOW)
+      return <FinishedOrderModal setShowModal={setShowModal} showModal={showModal} order={order}/>;
+    else if (modalType === ClientsOrderModalTypes.SHOW_ASSIGNED)
+      return <AssignedOrderModal setShowModal={setShowModal} showModal={showModal} order={order}/>;
+    else if (modalType === ClientsOrderModalTypes.USE)
+      return <MyOrderModal setShowModal={setShowModal} showModal={showModal} order={order} fetchClient={fetchClient}
+                           fetchOrders={fetchOrders}/>;
+  } else return <AssignOrderModal setShowModal={setShowModal} showModal={showModal} fetchOrders={fetchOrders}
+                                  isPending={isPending}/>;
+  return null
+
 };
 
 export default ClientsOrderModal;

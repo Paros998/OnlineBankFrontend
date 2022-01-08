@@ -1,62 +1,98 @@
-import React, {FC, useState} from 'react';
+import React, {FC, memo, useEffect } from 'react';
 import {ClientCreditWorthinessModel} from "../../../interfaces/DatabaseModels/ClientCreditWorthinessModel";
 import {LoanModel} from "../../../interfaces/DatabaseModels/LoanModel";
 
-interface ClientCreditWorthinessProps{
+interface ClientCreditWorthinessProps {
   clientCreditWorthiness: ClientCreditWorthinessModel;
   clientLoan: LoanModel;
 }
 
-const ClientCreditWorthiness:FC<ClientCreditWorthinessProps> = ({clientCreditWorthiness,clientLoan}) => {
-  const {toRepaidOff,basicRateAmount} = clientLoan;
-  const {sumOfBalance,monthlyBalance,sumOfOutgoing,sumOfIncoming} = clientCreditWorthiness;
+interface decision {
+  label: string;
+  value: string;
+}
 
-  const [sumOfBalanceAssessment,setSumOfBalanceAssessment] = useState<string>('');
-  const [monthlyBalanceAssessment,setMonthlyBalanceAssessment] = useState<string>('');
+let sumOfBalanceAssessment = 'text-primary';
+let monthlyBalanceAssessment = 'text-primary';
 
-  const suggestedDecision = () =>{
-    if(sumOfBalance > toRepaidOff * 1.2)
-      setSumOfBalanceAssessment('text-success')
-    else if( sumOfBalance >= toRepaidOff)
-      setSumOfBalanceAssessment('text-warning')
-    else setSumOfBalanceAssessment('text-primary')
+let suggestedDecision:decision = {
+  label: 'text-success',
+  value: 'Zaakceptowanie Prośby'
+};
 
-    if(monthlyBalance > basicRateAmount * 1.2)
-      setMonthlyBalanceAssessment('text-success')
-    else if( monthlyBalance >= basicRateAmount)
-      setMonthlyBalanceAssessment('text-warning')
-    else setMonthlyBalanceAssessment('text-primary')
+const ClientCreditWorthiness: FC<ClientCreditWorthinessProps> = ({clientCreditWorthiness, clientLoan}) => {
+  const {toRepaidOff, basicRateAmount} = clientLoan;
+  const {sumOfBalance, monthlyBalance, sumOfOutgoing, sumOfIncoming} = clientCreditWorthiness;
 
-    if(sumOfBalanceAssessment || monthlyBalanceAssessment === 'text-primary')
-      return <span className='text-primary'>Odrzucenie Prośby</span>
-    else if(sumOfBalanceAssessment || monthlyBalanceAssessment === 'text-warning')
-      return <span className='text-warning'>Możliwa Akceptacja Prośby</span>
-    else return <span className='text-success'>Zaakceptowanie Prośby</span>
-  }
+
+  useEffect(() => {
+    if (sumOfBalance > toRepaidOff * 1.2)
+      sumOfBalanceAssessment = 'text-success';
+    else if (sumOfBalance >= toRepaidOff && sumOfBalance < toRepaidOff * 1.2)
+      sumOfBalanceAssessment = 'text-warning';
+
+    if (monthlyBalance > basicRateAmount * 1.2)
+      monthlyBalanceAssessment = 'text-success';
+    else if (monthlyBalance >= basicRateAmount && monthlyBalance < basicRateAmount * 1.2)
+      monthlyBalanceAssessment = 'text-warning';
+
+    if (sumOfBalanceAssessment && monthlyBalanceAssessment === 'text-primary')
+      suggestedDecision = {label: 'text-primary', value: 'Odrzucenie Prośby'};
+    else if (sumOfBalanceAssessment && monthlyBalanceAssessment === 'text-warning')
+      suggestedDecision = {label: 'text-warning', value: 'Możliwa Akceptacja Prośby'};
+
+  }, [basicRateAmount, monthlyBalance, sumOfBalance, toRepaidOff])
 
   return (
-    <section className='my-3 hstack'>
-      <div className='mx-1'>
-        Całkowite Przychody :{sumOfIncoming}
+    <section className='my-3 vstack text-info border-info border-1 border p-2 ms-2 rounded-card-10 fw-bold'>
+      <div className='mx-1 hstack justify-content-between'>
+        <span>
+          Całkowite Przychody:
+        </span>
+        <span>
+          {sumOfIncoming + "PLN"}
+        </span>
       </div>
 
-      <div className='mx-1'>
-        Całkowite Wydatki :{sumOfOutgoing}
+      <div className='mx-1 hstack justify-content-between'>
+        <span>
+          Całkowite Wydatki:
+        </span>
+        <span>
+          {sumOfOutgoing + "PLN"}
+        </span>
       </div>
 
-      <div className={`mx-1 ${sumOfBalanceAssessment}`}>
-        Całkowite Saldo :{sumOfBalance}
+      <div className={`mx-1 hstack justify-content-between ${sumOfBalanceAssessment}`}>
+        <span>
+          Całkowite Saldo:
+        </span>
+        <span>
+          {sumOfBalance + "PLN"}
+        </span>
       </div>
 
-      <div className={`mx-1 ${monthlyBalanceAssessment}`}>
-        Miesięczne Saldo :{monthlyBalance}
+      <div className={`mx-1 hstack justify-content-between ${monthlyBalanceAssessment}`}>
+        <span>
+          Miesięczne Saldo:
+        </span>
+        <span>
+          {monthlyBalance + "PLN"}
+        </span>
       </div>
 
-      <div className='mx-1'>
-        Sugerowana Decyzja :{suggestedDecision()}
+      <div className={`mx-1 hstack justify-content-between ${suggestedDecision.label}`}>
+        <span>
+          Sugerowana Decyzja:
+        </span>
+        <span
+          className={suggestedDecision.label}
+        >
+          {suggestedDecision.value}
+        </span>
       </div>
     </section>
   );
 };
 
-export default ClientCreditWorthiness;
+export default memo(ClientCreditWorthiness);

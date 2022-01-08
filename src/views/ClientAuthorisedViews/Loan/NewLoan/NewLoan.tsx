@@ -1,6 +1,5 @@
 import React, { memo, useMemo } from 'react';
 import { Formik } from 'formik';
-import { NewLoanValidationSchema } from '../../../../validation/NewLoanValidationSchema';
 import NewLoanForm from './NewLoanForm/NewLoanForm';
 import { useCurrentUser } from '../../../../contexts/CurrentUserContext';
 import { ClientModel } from '../../../../interfaces/DatabaseModels/ClientModel';
@@ -8,6 +7,7 @@ import { NewLoanFormikValues } from '../../../../interfaces/formik/NewLoanFormik
 import { getTodayDate } from '../../../../utils/getTodayDate';
 import { useQuery } from '../../../../hooks/useQuery';
 import { useLoan } from '../../../../contexts/LoanContext';
+import {NewLoanValidationSchema} from "../../../../Validation/NewLoanValidationSchema";
 
 const NewLoan = () => {
   const { currentUser } = useCurrentUser<ClientModel>();

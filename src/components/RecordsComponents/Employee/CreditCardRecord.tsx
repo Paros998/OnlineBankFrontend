@@ -47,12 +47,14 @@ const CreditCardRecord: FC<CreditCardRecordProps> = ({card, fetchData}) => {
         Numer Karty: {cardNumber}
       </span>
       <span>
-        Włączona: {isActive ? <CheckCircleFill className='text-success'/> : <XCircleFill className='text-primary'/>}
+        Włączona: {isActive ? <span className='bg-light rounded-circle pe-1 pb-1 ps-1'><CheckCircleFill className='text-success'/></span>
+        : <span className='bg-light rounded-circle pe-1 pb-1 ps-1'><XCircleFill className='text-primary'/></span>}
       </span>
       <span>
         Data wygaśnięcia: {dayjs(expireDate).format("MM/YY")}
       </span>
       <span
+        className='w-25'
         onMouseEnter={()=>{
           setCvvVisible(true);
         }}
@@ -63,6 +65,7 @@ const CreditCardRecord: FC<CreditCardRecordProps> = ({card, fetchData}) => {
         CVV: {cvvVisible ? cvvNumber : '***'}
       </span>
       <span
+        className='w-25'
         onMouseEnter={()=>{
           setPinVisible(true);
         }}
