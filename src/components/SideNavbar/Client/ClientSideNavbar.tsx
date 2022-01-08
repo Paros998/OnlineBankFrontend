@@ -1,17 +1,17 @@
 import React from 'react';
-import { Container, Navbar, Row } from "react-bootstrap";
-import dayjs from "dayjs";
-import isLeapYear from "dayjs/plugin/isLeapYear";
+import moment from 'moment';
 import { Link } from "react-router-dom";
+import { Container, Navbar, Row } from "react-bootstrap";
 import CollapseOptions from "./CollapseOptions/CollapseOptions";
+import { capitalize } from '../../../utils/capitalize';
 
-dayjs.extend(isLeapYear);
-dayjs.locale('pl');
+const localDateLang = require('moment/locale/pl.js');
+const localMoment = moment().locale(localDateLang.toString());
+
+const currentDate = localMoment.format('DD.MM.YYYY');
+const dayOfWeek = capitalize(localMoment.format('dddd'));
 
 const ClientSideNavbar = () => {
-  const currentDate = dayjs().format('DD/MM/YYYY');
-  const dayOfWeek = dayjs().format('dddd').toLocaleUpperCase();
-
   return (
     <>
       <Navbar
