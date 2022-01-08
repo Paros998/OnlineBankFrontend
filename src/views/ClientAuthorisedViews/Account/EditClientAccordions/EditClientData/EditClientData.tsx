@@ -9,7 +9,7 @@ import EditClientDataForm from './EditClientDataForm/EditClientDataForm';
 
 import { createOrder } from '../../../../../utils/createOrder';
 import { OrderTypes } from '../../../../../enums/OrderTypes';
-import {EditClientDataValidationSchema} from "../../../../../Validation/EditClientDataValidationSchema";
+import { EditClientDataValidationSchema } from '../../../../../validation/EditClientDataValidationSchema';
 
 
 const EditClientData = () => {
