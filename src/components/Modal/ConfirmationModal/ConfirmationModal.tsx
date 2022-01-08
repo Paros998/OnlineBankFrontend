@@ -1,7 +1,7 @@
 import React, { FC, memo, ReactNode } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import TextWithDiamond from '../../TextWithDiamond/TextWithDiamond';
-import ModalSubmitButton from '../../SubmitButton/ModalSubmitButton';
+import RequestSubmitButton from '../../SubmitButton/RequestSubmitButton';
 
 interface ConfirmationModalProps {
   showModal: boolean;
@@ -49,7 +49,7 @@ const ConfirmationModal: FC<ConfirmationModalProps> = ({
         Wróć
       </Button>
 
-      <ModalSubmitButton
+      <RequestSubmitButton
         isSubmitting={isRequestPending}
         props={{
           className: 'rounded-pill w-25 fw-bold',
@@ -57,7 +57,7 @@ const ConfirmationModal: FC<ConfirmationModalProps> = ({
         }}
       >
         Potwierdź
-      </ModalSubmitButton>
+      </RequestSubmitButton>
     </Modal.Footer>
   </Modal>
 );

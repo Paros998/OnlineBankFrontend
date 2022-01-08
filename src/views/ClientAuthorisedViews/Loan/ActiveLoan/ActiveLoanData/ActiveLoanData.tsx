@@ -2,16 +2,17 @@ import React from 'react';
 import moment from 'moment';
 import { useLoan } from '../../../../../contexts/LoanContext';
 
-const wrapperClassName = "text-black";
+const wrapperClassName = "text-black mb-4";
 const dataClassName = 'text-end text-black fw-bold';
-const labelDataWrapperClassName = 'd-flex justify-content-between mt-2';
+const labelDataWrapperClassName = 'd-flex justify-content-between mt-3';
 
 const ActiveLoanData = () => {
-  const { currentLoan } = useLoan();
+  const { currentLoan, isPending } = useLoan();
+
   if (currentLoan.isActive) {
     return (
       <section className={wrapperClassName}>
-        <div className={labelDataWrapperClassName}>
+        <div className='d-flex justify-content-between'>
           Data zawarcia:
 
           <span className={dataClassName}>
@@ -126,11 +127,15 @@ const ActiveLoanData = () => {
     );
   }
 
-  return (
-    <h5 className='h-90 d-flex justify-content-center align-items-center'>
-      Aktualnie nie masz żadnej pożyczki do spłaty
-    </h5>
-  );
+  if (!isPending && !currentLoan.isActive) {
+    return (
+      <h5 className='h-90 d-flex justify-content-center align-items-center'>
+        Aktualnie nie masz żadnej pożyczki do spłaty
+      </h5>
+    );
+  }
+
+  return null;
 };
 
 export default ActiveLoanData;
