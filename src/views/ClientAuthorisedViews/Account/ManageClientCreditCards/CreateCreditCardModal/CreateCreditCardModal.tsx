@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import React, {FC} from 'react';
+import {Button, Modal} from 'react-bootstrap';
 import TextWithDiamond from '../../../../../components/TextWithDiamond/TextWithDiamond';
-import { Form, Formik } from 'formik';
+import {Form, Formik} from 'formik';
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
 
 import NumberFormatTextInput from '../../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput';
-import { CreateCreditCardValidationSchema } from '../../../../../validation/CreateCreditCardValidationSchema';
+import {CreateCreditCardValidationSchema} from "../../../../../Validation/CreateCreditCardValidationSchema";
+
 
 interface CreateCreditCardModalProps {
   showModal: boolean;

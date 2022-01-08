@@ -11,7 +11,7 @@ import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 import NewTransferForm from "./NewTransferForm/NewTransferForm";
 import {getTodayDate} from "../../../utils/getTodayDate";
 import {getISODate} from "../../../utils/getISODate";
-import { TransferValidationSchema } from '../../../validation/TransferValidationSchema';
+import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
 
 
 const NewTransfer: FC = () => {

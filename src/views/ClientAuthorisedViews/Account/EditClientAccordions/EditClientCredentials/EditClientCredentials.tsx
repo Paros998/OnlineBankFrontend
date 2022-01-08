@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import isGivenDataEdited from 'lodash.isequal';
 import {toast} from 'react-toastify';
 import {Formik} from 'formik';
@@ -11,7 +11,7 @@ import {createOrder} from '../../../../../utils/createOrder';
 import {OrderTypes} from '../../../../../enums/OrderTypes';
 import axios from 'axios';
 import {UserCredentials} from '../../../../../interfaces/DatabaseModels/userCredentials';
-import { EditClientCredentialsValidationSchema } from '../../../../../validation/EditClientCredentialsValidationSchema';
+import {EditClientCredentialsValidationSchema} from "../../../../../Validation/EditClientCredentialsValidationSchema";
 
 
 const EditClientCredentials = () => {
