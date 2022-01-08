@@ -1,17 +1,14 @@
-import React, { FC } from 'react';
-import { LoanModel } from '../../../../../interfaces/DatabaseModels/LoanModel';
+import React from 'react';
 import moment from 'moment';
-
-interface ActiveLoanDataProps {
-  currentLoan?: LoanModel;
-}
+import { useLoan } from '../../../../../contexts/LoanContext';
 
 const wrapperClassName = "text-black";
 const dataClassName = 'text-end text-black fw-bold';
 const labelDataWrapperClassName = 'd-flex justify-content-between mt-2';
 
-const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
-  if (currentLoan) {
+const ActiveLoanData = () => {
+  const { currentLoan } = useLoan();
+  if (currentLoan.isActive) {
     return (
       <section className={wrapperClassName}>
         <div className={labelDataWrapperClassName}>
@@ -26,7 +23,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Przewidywana data spłaty pożyczki:
 
           <span className={dataClassName}>
-            {currentLoan.estimatedEndDate}
+            {moment(currentLoan.estimatedEndDate).format('DD.MM.YYYY')}
           </span>
         </div>
 
@@ -34,7 +31,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Termin spłaty następnej pożyczki:
 
           <span className={dataClassName}>
-            {currentLoan.nextRatePayDay}
+            {moment(currentLoan.nextRatePayDay).format('DD.MM.YYYY')}
           </span>
         </div>
 
@@ -50,7 +47,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Roczne oprocentowanie:
 
           <span className={dataClassName}>
-            {currentLoan.yearlyInterestPercent}
+            {currentLoan.yearlyInterestPercent}%
           </span>
         </div>
 
@@ -58,7 +55,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Aktualna kwota raty:
 
           <span className={dataClassName}>
-            {currentLoan.rateAmount}
+            {currentLoan.rateAmount.toFixed(2)} PLN
           </span>
         </div>
 
@@ -66,7 +63,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Podstawowa kwota raty:
 
           <span className={dataClassName}>
-            {currentLoan.basicRateAmount}
+            {currentLoan.basicRateAmount.toFixed(2)} PLN
           </span>
         </div>
 
@@ -74,7 +71,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Podstawowa kwota pożyczki:
 
           <span className={dataClassName}>
-            {currentLoan.basicLoanAmount}
+            {currentLoan.basicLoanAmount.toFixed(2)} PLN
           </span>
         </div>
 
@@ -82,7 +79,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Podstawowa prowizja:
 
           <span className={dataClassName}>
-            {currentLoan.commission}
+            {currentLoan.commission.toFixed(2)} PLN
           </span>
         </div>
 
@@ -90,7 +87,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Kwota oprocentowania:
 
           <span className={dataClassName}>
-            {currentLoan.interestAmount}
+            {currentLoan.interestAmount.toFixed(2)} PLN
           </span>
         </div>
 
@@ -98,7 +95,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Doliczona kwota karna:
 
           <span className={dataClassName}>
-            {currentLoan.penaltyAmount}
+            {currentLoan.penaltyAmount.toFixed(2)} PLN
           </span>
         </div>
 
@@ -106,7 +103,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Spłacono:
 
           <span className={dataClassName}>
-            {currentLoan.totalPaidOff}
+            {currentLoan.totalPaidOff.toFixed(2)} PLN
           </span>
         </div>
 
@@ -114,7 +111,7 @@ const ActiveLoanData: FC<ActiveLoanDataProps> = ({ currentLoan }) => {
           Zostało do zapłaty:
 
           <span className={dataClassName}>
-            {currentLoan.toRepaidOff}
+            {currentLoan.toRepaidOff.toFixed(2)} PLN
           </span>
         </div>
 

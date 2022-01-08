@@ -25,7 +25,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Przewidywana data spłaty pożyczki:
 
         <span className={dataClassName}>
-          {currentLoan.estimatedEndDate}
+          {moment(currentLoan.estimatedEndDate).format('DD.MM.YYYY')}
         </span>
       </div>
 
@@ -33,7 +33,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Termin spłaty następnej pożyczki:
 
         <span className={dataClassName}>
-          {currentLoan.nextRatePayDay}
+          {moment(currentLoan.nextRatePayDay).format('DD.MM.YYYY')}
         </span>
       </div>
 
@@ -49,7 +49,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Roczne oprocentowanie:
 
         <span className={dataClassName}>
-          {currentLoan.yearlyInterestPercent}
+          {currentLoan.yearlyInterestPercent}%
         </span>
       </div>
 
@@ -57,7 +57,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Aktualna kwota raty:
 
         <span className={dataClassName}>
-          {currentLoan.rateAmount}
+          {currentLoan.rateAmount.toFixed(2)} PLN
         </span>
       </div>
 
@@ -65,7 +65,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Podstawowa kwota raty:
 
         <span className={dataClassName}>
-          {currentLoan.basicRateAmount}
+          {currentLoan.basicRateAmount.toFixed(2)} PLN
         </span>
       </div>
 
@@ -73,7 +73,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Podstawowa kwota pożyczki:
 
         <span className={dataClassName}>
-          {currentLoan.basicLoanAmount}
+          {currentLoan.basicLoanAmount.toFixed(2)} PLN
         </span>
       </div>
 
@@ -81,7 +81,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Podstawowa prowizja:
 
         <span className={dataClassName}>
-          {currentLoan.commission}
+          {currentLoan.commission.toFixed(2)} PLN
         </span>
       </div>
 
@@ -89,7 +89,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
         Kwota oprocentowania:
 
         <span className={dataClassName}>
-          {currentLoan.interestAmount}
+          {currentLoan.interestAmount.toFixed(2)} PLN
         </span>
       </div>
     </section>

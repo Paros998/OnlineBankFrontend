@@ -25,7 +25,7 @@ const ActionButtons: FC<ActionButtonsProps> = ({ currentLoan }) => {
     );
 
     try {
-      // await axios.post('/orders', newLoanOrder);
+      await axios.post('/orders', newLoanOrder);
       toast.success('Potwierdzenie wzięcia pożyczki zostało wysłane');
       history.replace('/client/home');
     } catch {
