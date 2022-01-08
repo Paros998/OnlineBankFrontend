@@ -22,7 +22,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Typ Zlecenia:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
           {orderType}
         </span>
       </div>
@@ -31,7 +31,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Stan:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
           {isActive ? "Aktywny" : "Zakończony"}
         </span>
       </div>
@@ -40,8 +40,8 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Data Utworzenia:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
-          {moment(createDate).format("yyyy-MM-DD HH:mm:ss.SSS'Z'")}
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
+          {moment.utc(createDate).format("yyyy-MM-DD HH:mm:ss")}
         </span>
       </div>
 
@@ -49,7 +49,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Decyzja:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
           {decision}
         </span>
       </div>
@@ -58,7 +58,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Klient:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
           {client?.clientId + " " + client?.fullName + " " + client?.personalNumber}
         </span>
       </div>
@@ -67,7 +67,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Pracownik:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
           {orderingEmployee?.employeeId + " " + orderingEmployee?.fullName + " " + orderingEmployee?.personalNumber}
         </span>
       </div>
@@ -76,7 +76,7 @@ const OrderDescriptionInModal:FC<OrderDescriptionInModalProps> = ({className,
         <span className='col fw-bold text-start'>
           Pracownik Przypisany:
         </span>
-        <span className={`col text-center  ${dataColor || 'text-light '} `}>
+        <span className={`col text-end  ${dataColor || 'text-light '} `}>
           {employee?.employeeId + " " + employee?.fullName + " " + employee?.personalNumber}
         </span>
       </div>

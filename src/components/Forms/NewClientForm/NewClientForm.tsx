@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import {Form, useFormikContext} from "formik";
-import SubmitButton from "../../SubmitButton/SubmitButton";
 import {Button} from "react-bootstrap";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
 import {NewClientFormikValues} from "../../../interfaces/formik/NewClientFormikValues";
-
+import ModalSubmitButton from "../../SubmitButton/ModalSubmitButton";
 
 const NewClientForm = () => {
-  const {errors} = useFormikContext<NewClientFormikValues>();
+  const {errors,isSubmitting} = useFormikContext<NewClientFormikValues>();
   const [secondaryAddress, setSecondaryAddress] = useState<boolean>(false);
   const [initialBalance, setInitialBalance] = useState<boolean>(false);
   return (
@@ -100,7 +99,7 @@ const NewClientForm = () => {
             />
           </div>
 
-          <div className='col-sm-3 '>
+          <div className='col-sm-6 '>
             <NumberInput
               isInvalid={!!errors.accountNumber}
               label="Numer Rachunku"
@@ -111,9 +110,7 @@ const NewClientForm = () => {
               inputGroup='12 0600 1209'
             />
           </div>
-          <div className='col-sm-3 '>
 
-          </div>
         </div>
 
         <div className='row justify-content-start mt-3'>
@@ -235,11 +232,14 @@ const NewClientForm = () => {
             </Button>
           </div>
           <div className='col text-start'>
-            <SubmitButton
-              className='w-30'
+            <ModalSubmitButton
+              isSubmitting={isSubmitting}
+              props={{
+                className:'w-30'
+              }}
             >
               Stwórz
-            </SubmitButton>
+            </ModalSubmitButton>
           </div>
         </div>
       </div>

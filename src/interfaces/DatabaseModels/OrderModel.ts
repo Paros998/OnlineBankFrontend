@@ -6,6 +6,7 @@ export interface OrderModel{
   orderType:string;
   decision:string;
   createDate:string;
+  waitingTime?:string;
   isActive:boolean;
   requestBody:string | any;
   client?:ClientModel | null;

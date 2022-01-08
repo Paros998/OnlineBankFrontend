@@ -1,17 +1,18 @@
 import React from 'react';
-import moment from 'moment';
-import { Link } from "react-router-dom";
 import { Container, Navbar, Row } from "react-bootstrap";
+import dayjs from "dayjs";
+import isLeapYear from "dayjs/plugin/isLeapYear";
+import { Link } from "react-router-dom";
 import CollapseOptions from "./CollapseOptions/CollapseOptions";
-import { capitalize } from '../../../utils/capitalize';
-
-const localDateLang = require('moment/locale/pl.js');
-const localMoment = moment().locale(localDateLang.toString());
-
-const currentDate = localMoment.format('DD.MM.YYYY');
-const dayOfWeek = capitalize(localMoment.format('dddd'));
 
 const ClientSideNavbar = () => {
+  dayjs.extend(isLeapYear);
+  dayjs.locale('pl');
+  require('dayjs/locale/pl');
+
+  const currentDate = dayjs().format('DD/MM/YYYY');
+  const dayOfWeek = dayjs().format('dddd').toLocaleUpperCase();
+
   return (
     <>
       <Navbar
@@ -25,6 +26,7 @@ const ClientSideNavbar = () => {
         p-0
         justify-content-between
         float-start
+        z-1000
         '
       >
         <CollapseOptions/>

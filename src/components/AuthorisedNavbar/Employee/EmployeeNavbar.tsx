@@ -5,12 +5,13 @@ import logo from "../../../assets/images/logo.png";
 import user from "../../../assets/images/user.svg";
 import {useCurrentUser} from "../../../contexts/CurrentUserContext";
 import {EmployeeModel} from "../../../interfaces/DatabaseModels/EmployeeModel";
+import {Roles} from "../../../enums/Roles";
 
 const EmployeeNavbar = () => {
   const redirect = '/employee/profile';
   const redirectLogin = '/login';
 
-  const { handleLogout, currentUser } = useCurrentUser<EmployeeModel>();
+  const { handleLogout, currentUser,role } = useCurrentUser<EmployeeModel>();
 
   return (
     <Navbar bg="primary-dark" className='sticky-top pt-0 pb-0 bx-shadow-dark z-1000'>
@@ -61,7 +62,7 @@ const EmployeeNavbar = () => {
       </Container>
       <Container className='bg-dark w-25 h-100 pt-1 pb-1 me-0'>
         <span className='text-white mx-auto fs-3'>
-          Serwis Pracownika
+          {role === Roles.RoleEmployee ? "Serwis Pracownika" : "Serwis Administratora"}
         </span>
       </Container>
     </Navbar>

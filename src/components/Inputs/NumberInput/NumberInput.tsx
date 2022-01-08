@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {ErrorMessage, useField} from "formik";
-import {FloatingLabel, Form, FormControlProps, InputGroup} from "react-bootstrap";
+import {Form, FormControlProps, InputGroup} from "react-bootstrap";
 
 interface NumberProps extends FormControlProps {
   label?: string;

@@ -27,7 +27,7 @@ const NotAssignedVisitsCard: FC<NotAssignedVisitsCardProps> = ({className, emplo
 
   let employeeId = -1;
 
-  if (currentUser)
+  if (currentUser?.employeeId)
     employeeId = currentUser.employeeId;
 
 
@@ -87,9 +87,9 @@ const NotAssignedVisitsCard: FC<NotAssignedVisitsCardProps> = ({className, emplo
           {
             Visits.length === 0 ?
               <p className='text-dark fw-bold'>Nie ma żadnych wizyt klientów wymagających przypisania.</p>
-              : Visits.map((value) => (
+              : Visits.map((value,key) => (
 
-                <Button className='bg-transparent mb-3 p-2 rounded-pill border-0 w-100' onClick={() => {
+                <Button key={key} className='bg-transparent mb-3 p-2 rounded-pill border-0 w-100' onClick={() => {
                   setVisitId(value.visit_id);
                   setShowModal(true);
                 }}>

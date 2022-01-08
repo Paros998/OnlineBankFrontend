@@ -8,6 +8,7 @@ import LastCreatedClients from "../../../components/Cards/Employee/EmployeeClien
 import {useFetchLatestClients} from "../../../hooks/useFetchLatestClients";
 import {useFetchClientsFiltered} from "../../../hooks/useFetchClientsFiltered";
 
+
 const ClientsPage = () => {
   const {fetchLatestClients,clients:LatestClients,isPending:latestClientsPending} = useFetchLatestClients();
   const {fetchClients,clients,isPending} = useFetchClientsFiltered();
