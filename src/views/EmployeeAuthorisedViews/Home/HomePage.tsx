@@ -28,15 +28,15 @@ const HomePage = () => {
       <AuthorisedNavbar/>
       <SideNavbar/>
       <ContainerWithBackgroundImage src={homeBg}>
-        <div className='d-flex w-100 mh-300px mnh-100px justify-content-between'>
+        <div className='d-flex w-100 mh-500px mnh-100px justify-content-between'>
           <AnnouncementsCard className='w-50'/>
           <VisitsCard className='w-50' Visits={Visits || []} isPending={VisitsPending}/>
         </div>
-        <div className='d-flex w-100 mh-500px mnh-300px justify-content-between'>
+        <div className='d-flex w-100 mh-700px mnh-200px justify-content-between'>
           <PriorityOrdersNotAssignedCard className='w-100' showLabel Orders={PriorityOrders || []} isPending={PriorityOrdersPending}/>
         </div>
-        <div className='d-flex w-100 mh-400px mnh-200px justify-content-between pb-5'>
-          <NotAssignedVisitsCard className='w-100'
+        <div className='d-flex w-100 mh-700px mnh-200px justify-content-between pb-5 '>
+          <NotAssignedVisitsCard className='w-100 mb-5'
                                  employeeVisitsFetch={EmployeeVisitsFetch}
                                  notAssignedVisitsFetch={NotAssignedVisitsFetch}
                                  Visits={NotAssignedVisits || []} isPending={NAVisitsPending}/>

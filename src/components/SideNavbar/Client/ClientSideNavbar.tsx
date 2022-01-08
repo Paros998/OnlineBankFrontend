@@ -5,10 +5,11 @@ import isLeapYear from "dayjs/plugin/isLeapYear";
 import { Link } from "react-router-dom";
 import CollapseOptions from "./CollapseOptions/CollapseOptions";
 
-dayjs.extend(isLeapYear);
-dayjs.locale('pl');
-
 const ClientSideNavbar = () => {
+  dayjs.extend(isLeapYear);
+  dayjs.locale('pl');
+  require('dayjs/locale/pl');
+
   const currentDate = dayjs().format('DD/MM/YYYY');
   const dayOfWeek = dayjs().format('dddd').toLocaleUpperCase();
 
@@ -25,6 +26,7 @@ const ClientSideNavbar = () => {
         p-0
         justify-content-between
         float-start
+        z-1000
         '
       >
         <CollapseOptions/>

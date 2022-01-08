@@ -27,7 +27,7 @@ const NotAssignedVisitsCard: FC<NotAssignedVisitsCardProps> = ({className, emplo
 
   let employeeId = -1;
 
-  if (currentUser)
+  if (currentUser?.employeeId)
     employeeId = currentUser.employeeId;
 
 

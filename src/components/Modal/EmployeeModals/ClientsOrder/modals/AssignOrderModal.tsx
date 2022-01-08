@@ -7,6 +7,8 @@ import {toast} from "react-toastify";
 import {useCurrentUser} from "../../../../../contexts/CurrentUserContext";
 import {EmployeeModel} from "../../../../../interfaces/DatabaseModels/EmployeeModel";
 import CenteredSpinnerTemplate from "../../../../CenteredSpinner/CenteredSpinnerTemplate";
+import {Roles} from "../../../../../enums/Roles";
+import {OrderTypes} from "../../../../../enums/OrderTypes";
 
 interface AssignOrderModalProps {
   setShowModal: Dispatch<SetStateAction<boolean>>
@@ -17,8 +19,17 @@ interface AssignOrderModalProps {
 }
 
 const AssignOrderModal: FC<AssignOrderModalProps> = ({setShowModal, showModal, order, fetchOrders, isPending}) => {
-  const {currentUser} = useCurrentUser<EmployeeModel>();
+  const {currentUser,role} = useCurrentUser<EmployeeModel>();
   const [isSubmitting, setIsSubmitting] = useState<boolean>();
+
+  const havePrivileges = (order: OrderModel | undefined)=>{
+    if(role === Roles.RoleAdmin)
+      return true;
+    else{
+      return !(order?.orderType !== OrderTypes.EditUser || OrderTypes.CreateUser || OrderTypes.EditEmployee);
+    }
+  }
+
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
@@ -50,16 +61,16 @@ const AssignOrderModal: FC<AssignOrderModalProps> = ({setShowModal, showModal, o
       }}
       headerDiamondClassName='text-warning '
       headerClassName='justify-content-center'
-      footerClassName='justify-content-center'
+      footerClassName={`${havePrivileges(order) ? 'justify-content-center' : 'd-none'}`}
       bodyClassName='justify-content-center text-center'
     >
-      <CenteredSpinnerTemplate variant={'success'} isPending={isPending}/>
+      <CenteredSpinnerTemplate variant={'warning'} isPending={isPending}/>
       {
         order &&
         <>
             <OrderDescriptionInModal order={order} dataColor={'text-warning'}/>
             <p className='fs-5 text-warning'>
-              {'Czy chcesz przypisać to zlecenie do siebie?'}
+              {havePrivileges(order) ? 'Czy chcesz przypisać to zlecenie do siebie?' : 'Nie masz wystarczających uprawnień do tego zlecenia!'}
             </p>
         </>
       }

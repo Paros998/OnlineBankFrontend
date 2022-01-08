@@ -3,8 +3,9 @@ import { Button, Modal } from 'react-bootstrap';
 import TextWithDiamond from '../../../../../components/TextWithDiamond/TextWithDiamond';
 import { Form, Formik } from 'formik';
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
-import { CreateCreditCardValidationSchema } from '../../../../../validation/CreateCreditCardValidationSchema';
+
 import NumberFormatTextInput from '../../../../../components/Inputs/NumberFormatTextInput/NumberFormatTextInput';
+import {CreateCreditCardValidationSchema} from "../../../../../Validation/CreateCreditCardValidationSchema";
 
 interface CreateCreditCardModalProps {
   showModal: boolean;

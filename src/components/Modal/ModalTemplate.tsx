@@ -45,7 +45,8 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
                                                  hideFooter,
                                                  submitButtonTitle,
                                                  closeButtonTitle,
-                                                 footerChildren
+                                                 footerChildren,
+
                                                }) => {
   const {scrollable, fullscreen, animation, dialogClassName, contentClassName, centered, size, className} = props || {};
   const handleClose = () => setShow(false);

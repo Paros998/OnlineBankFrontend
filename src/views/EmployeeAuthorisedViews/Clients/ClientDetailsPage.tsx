@@ -45,7 +45,7 @@ const ClientDetailsPage = () => {
         <AuthorisedNavbar/>
         <SideNavbar/>
         <ContainerWithBackgroundImage className='bg-secondary-dark w-100'>
-          <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-700px mnh-700px '>
+          <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-800px mnh-700px '>
             <ClientAccountDataCard className='w-25' client={client}/>
             <ClientDataCard className='w-40' client={client}/>
             <ClientOrdersCard className='w-35 me-2' clientId={ID} fetchClient={fetchData} orderId={orderId}/>

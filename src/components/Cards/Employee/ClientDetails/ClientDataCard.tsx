@@ -1,15 +1,11 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import CardTemplate from "../../CardTemplate";
 import {ClientModel} from "../../../../interfaces/DatabaseModels/ClientModel";
 import dayjs from "dayjs";
 import {useFetchRawData} from "../../../../hooks/useFetchRawData";
 import {CreditCardModel} from "../../../../interfaces/DatabaseModels/CreditCardModel";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
-import {Form} from "formik";
-import SubmitButton from "../../../SubmitButton/SubmitButton";
-import {Button} from "react-bootstrap";
-import axios from "axios";
-import {toast} from "react-toastify";
+import CreditCardRecord from "../../../RecordsComponents/Employee/CreditCardRecord";
 
 interface ClientDataCardProps {
   className?: string;
@@ -17,25 +13,9 @@ interface ClientDataCardProps {
 }
 
 const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
-  const {accountNumber, numberOfCreditsCards, balance, dateOfCreation, clientId} = client;
+  const {accountNumber, numberOfCreditsCards, balance, dateOfCreation} = client;
 
   const {rawData,fetchData,isPending} = useFetchRawData<CreditCardModel[]>(`credit-cards/client/${client?.clientId}`);
-
-  const [isSubmitting,setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (cardId:number) => {
-    setIsSubmitting(true);
-
-    try {
-      await axios.put(`credit-cards/${cardId}/active`);
-    }catch (e:any){
-      toast.error(e?.response?.data?.message);
-    }
-    toast.success("Zaktualizowano kartę kredytową!");
-    await fetchData();
-
-    setIsSubmitting(false);
-  }
 
   return (
     <CardTemplate
@@ -78,37 +58,8 @@ const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
                 variant={'light'}
             />
         ):(<></>)}
-        {rawData && rawData.map(({cardImage,cardId,cardNumber,expireDate,pinNumber,cvvNumber,isActive}, key) => (
-              <div className='bg-secondary rounded-card-10 vstack mt-1 text-light p-2 ' key={key}>
-                <span>
-                  Id Karty: {cardId}
-                </span>
-                <span>
-                  Numer Karty: {cardNumber}
-                </span>
-                <span>
-                  Włączona: {isActive ? "TAK" : "NIE"}
-                </span>
-                <span>
-                  Data wygaśnięcia: {dayjs(expireDate).format("YYYY.MM.DD dd HH:mm:ss Z")}
-                </span>
-                <span>
-                  CVV: {cvvNumber}
-                </span>
-                <span>
-                  Pin: {pinNumber}
-                </span>
-                  <Button
-                    variant={isActive ? "primary-dark" : "success"}
-                    className='w-30 mx-auto rounded-pill'
-                    onClick={()=>{
-                      handleSubmit(cardId);
-                    }}
-                    disabled={isSubmitting}
-                  >
-                    {isActive ? "Zablokuj" : "Odblokuj"}
-                  </Button>
-              </div>
+        {rawData && rawData.map((card, key) => (
+              <CreditCardRecord card={card} key={key} fetchData={fetchData}/>
           )
         )
         }
