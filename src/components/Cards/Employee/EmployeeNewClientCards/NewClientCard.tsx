@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import CardTemplate from "../../CardTemplate";
 import {Formik} from "formik";
 import NewClientForm from "../../../Forms/NewClientForm/NewClientForm";
@@ -26,7 +26,7 @@ interface NewClientCardProps {
 const todayMinus18 = new Date();
 todayMinus18.setUTCFullYear(todayMinus18.getUTCFullYear() - 18);
 
-const validationSchema = yup.object().shape({
+export const clientValidationSchema = yup.object().shape({
   balance: yup.number()
     .optional().min(0, "Stan konta nie może być ujemny"),
   accountNumber: yup.string()
@@ -64,6 +64,7 @@ const validationSchema = yup.object().shape({
     .required("Login jest wymagany").min(3, "Login musi zawierać co najmniej 3 znaki"),
   password: yup.string()
     .required("Hasło jest wymagane").min(3, "Hasło musi zawierać co najmniej 3 znaki"),
+
 });
 
 const formikValues: NewClientFormikValues = {
@@ -91,17 +92,10 @@ const formikValues: NewClientFormikValues = {
 }
 
 const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const history = useHistory();
   const {currentUser} = useCurrentUser<EmployeeModel>();
 
-  let employeeId = -1;
-
-  if (currentUser)
-    employeeId = currentUser.employeeId;
-
   const handleSubmit = async (values: NewClientFormikValues) => {
-    setIsSubmitting(true);
     const token = localStorage.getItem('JWT_USER_TOKEN');
     if (!token) return;
 
@@ -142,12 +136,10 @@ const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
         await axios.post("/orders", body);
 
         toast.info("Pomyślnie utworzono zlecenie utworzenia użytkownika klienta.");
-
       } catch (e: any) {
         toast.error(e.response.data.message);
       }
     }
-    setIsSubmitting(false);
   }
 
   return (
@@ -162,7 +154,7 @@ const NewClientCard: FC<NewClientCardProps> = ({className, children}) => {
       <Formik<NewClientFormikValues>
         initialValues={formikValues}
         onSubmit={handleSubmit}
-        validationSchema={validationSchema}
+        validationSchema={clientValidationSchema}
       >
         <NewClientForm/>
       </Formik>

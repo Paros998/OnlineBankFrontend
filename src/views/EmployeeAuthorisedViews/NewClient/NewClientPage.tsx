@@ -11,7 +11,7 @@ const NewClientPage = () => {
       <AuthorisedNavbar/>
       <SideNavbar/>
       <ContainerWithBackgroundImage className='bg-secondary-dark' >
-          <div className='d-flex w-100 mh-800px mnh-750px justify-content-between '>
+          <div className='d-flex w-100 mh-900px mnh-750px justify-content-between '>
             <NewClientCard className='w-100'/>
           </div>
       </ContainerWithBackgroundImage>

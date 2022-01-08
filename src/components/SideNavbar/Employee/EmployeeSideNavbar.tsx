@@ -6,6 +6,7 @@ import isLeapYear from "dayjs/plugin/isLeapYear";
 
 const EmployeeSideNavbar = () => {
   dayjs.extend(isLeapYear);
+  require('dayjs/locale/pl');
   dayjs.locale('pl');
 
   const currentDate = dayjs().format('DD/MM/YYYY');
@@ -13,7 +14,7 @@ const EmployeeSideNavbar = () => {
 
   const{pathname} = useLocation();
   return (
-    <Navbar className='bg-dark text-light position-fixed vh-100 w-200px ps-1  border-end flex-column p-0 justify-content-between overflow-scroll'>
+    <Navbar className=' bg-dark text-light position-fixed vh-100 w-200px ps-1  border-end flex-column p-0 justify-content-between overflow-scroll z-1000'>
 
       <div className='flex-column p-0 pt-1 mt-3 '>
         <NavLink as={Link} to='/employee/home' className='p-1' >

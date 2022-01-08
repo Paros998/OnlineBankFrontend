@@ -8,13 +8,14 @@ import dayjs from "dayjs";
 const AdminSideNavbar = () => {
   dayjs.extend(isLeapYear);
   dayjs.locale('pl');
+  require('dayjs/locale/pl');
 
   const currentDate = dayjs().format('DD/MM/YYYY');
   const dayOfWeek = dayjs().format('dddd').toLocaleUpperCase();
   const {pathname} = useLocation();
 
   return (
-    <Navbar className='bg-dark text-light position-fixed vh-100 w-200px ps-1 border-end flex-column p-0 justify-content-between overflow-scroll'>
+    <Navbar className='z-1000 bg-dark text-light position-fixed vh-100 w-200px ps-1 border-end flex-column p-0 justify-content-between overflow-scroll'>
       <section>
 
         <div className='flex-column p-0 pt-1 mt-3'>
@@ -57,15 +58,6 @@ const AdminSideNavbar = () => {
         </div>
 
         <div className='flex-column p-0 pt-1 '>
-          <NavLink as={Link} to='/employee/admin/users' className='p-1'>
-            <Button
-              className='rounded-card-10 btn-light btn-light-hover w-160px h-50px'
-              disabled={pathname === '/employee/admin/users'}
-            >
-              Użytkownicy
-            </Button>
-          </NavLink>
-
           <NavLink as={Link} to='/employee/admin/employees' className='p-1'>
             <Button
               className='rounded-card-10 btn-light btn-light-hover w-160px h-50px'

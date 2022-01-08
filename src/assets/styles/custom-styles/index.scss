@@ -498,6 +498,10 @@ hr:not([size]){
   margin-right: 50px;
 }
 
+.pl-240{
+  padding-left: 240px;
+}
+
 //disabled button
 .rounded-card-10.btn-light.btn-light-hover.w-160px.h-50px:disabled {
   color: $light;
@@ -547,6 +551,11 @@ hr:not([size]){
   background-color: $dark !important;
   color: $primary!important;
 }
+.order-info:hover{
+  border: 1px solid $light !important;
+  background-color: $dark !important;
+  color: $info!important;
+}
 .order-success:hover{
   border: 1px solid $light !important;
   background-color: $dark !important;
@@ -561,6 +570,31 @@ hr:not([size]){
   border: 1px solid $light !important;
   background-color: $dark !important;
   color: $secondary!important;
+}
+
+.employee-dark:hover{
+  background-color: $light !important;
+  color: $dark!important;
+}
+.employee-secondary-dark:hover{
+  background-color: $light !important;
+  color: $secondary-dark!important;
+}
+.employee-primary:hover{
+  border: 1px solid $dark !important;
+  background-color: $primary !important;
+}
+
+.text-shadow-black{
+  text-shadow: black 2px 2px 2px;
+}
+
+.my-container{
+  width: 100vw !important;
+  height: 100% !important;
+  position: fixed !important;
+  z-index: 0;
+  overflow-y: scroll;
 }
 
 

@@ -11,11 +11,11 @@ import {useFetchRawData} from "../../../hooks/useFetchRawData";
 import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 
 const ClientDetailsPage = () => {
-  const {clientId}: { clientId: string } = useParams();
+  const {clientId,orderId}: { clientId: string,orderId: string} = useParams();
   const ID = parseInt(clientId);
   const history = useHistory();
 
-  const {rawData} = useFetchRawData<ClientModel>(`/clients/${ID}`);
+  const {rawData,fetchData} = useFetchRawData<ClientModel>(`/clients/${ID}`);
 
   const handleBackClick = () => {
     history.push("/employee/clients");
@@ -45,10 +45,10 @@ const ClientDetailsPage = () => {
         <AuthorisedNavbar/>
         <SideNavbar/>
         <ContainerWithBackgroundImage className='bg-secondary-dark w-100'>
-          <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-700px mnh-700px '>
+          <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-800px mnh-700px '>
             <ClientAccountDataCard className='w-25' client={client}/>
             <ClientDataCard className='w-40' client={client}/>
-            <ClientOrdersCard className='w-35 me-2' clientId={ID}/>
+            <ClientOrdersCard className='w-35 me-2' clientId={ID} fetchClient={fetchData} orderId={orderId}/>
           </div>
           <div className='w-100 pt-3 pe-4'>
             <Button

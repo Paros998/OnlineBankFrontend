@@ -15,7 +15,7 @@ const NotAssignedVisits:FC<NotAssignedVisitsProps> = ({visit,children}) => {
         ID: {visit_id}
       </div>
       <div className='col ms-2 text-truncate text-start'>
-        Data Wizyty: {dayjs(visitDate).format('DD.MM.YYYY')}
+        Data Wizyty: {dayjs(visitDate).format('YYYY-MM-DD')}
       </div>
       <div className='col ms-2 text-truncate text-start'>
         Czas Wizyty: {visitTime}

@@ -5,6 +5,7 @@ import PriorityOrdersNotAssigned from "../../../RecordsComponents/Employee/Prior
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import OrderDescriptionInModal from "../../../RecordsComponents/Employee/OrderDescriptionInModal";
 import ModalTemplate from "../../../Modal/ModalTemplate";
+import {useHistory} from "react-router-dom";
 
 
 interface MyOrdersNotFinishedCardProps {
@@ -16,6 +17,7 @@ interface MyOrdersNotFinishedCardProps {
 const MyOrdersNotFinishedCard: FC<MyOrdersNotFinishedCardProps> = ({Orders, className, isPending}) => {
 
   const [showModal,setShowModal] = useState<boolean>(false)
+  const history = useHistory();
   const [order,setOrder] = useState<OrderModel>({
     client: undefined,
     createDate: "",
@@ -28,11 +30,19 @@ const MyOrdersNotFinishedCard: FC<MyOrdersNotFinishedCardProps> = ({Orders, clas
     order_Id: -999
   })
 
+  const handleSubmit = () =>{
+    if(order.client)
+      history.push(`/employee/client/${order.client.clientId}/${order.order_Id}`);
+    if(order.orderingEmployee)
+      history.push(`admin/employee/${order.orderingEmployee.employeeId}/${order.order_Id}`);
+  }
+
   return (
   <>
     <ModalTemplate
       setShow={setShowModal}
       show={showModal}
+      handleSubmit={handleSubmit}
       title={'Zlecenie numer: ' + order?.order_Id}
       props={{
         size: 'lg',
@@ -41,8 +51,11 @@ const MyOrdersNotFinishedCard: FC<MyOrdersNotFinishedCardProps> = ({Orders, clas
       }}
       headerDiamondClassName='text-success '
       headerClassName='justify-content-center'
-      footerClassName='d-none'
+      footerClassName='justify-content-center'
       bodyClassName='justify-content-center text-center'
+      submitButtonVariant='success'
+      submitButtonTitle='Przejdź do szczegółów'
+      submitButtonClassName='w-30'
     >
       <OrderDescriptionInModal order={order} dataColor='text-success'/>
     </ModalTemplate>

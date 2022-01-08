@@ -20,7 +20,10 @@ interface ModalTemplateProps {
   submitButtonVariant?: string;
   closeButtonClassName?: string;
   submitButtonClassName?: string;
-  hideFooter?:boolean;
+  submitButtonTitle?: string;
+  closeButtonTitle?: string;
+  footerChildren?: ReactNode;
+  hideFooter?: boolean;
 }
 
 const ModalTemplate: FC<ModalTemplateProps> = ({
@@ -39,7 +42,11 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
                                                  submitButtonVariant,
                                                  closeButtonClassName,
                                                  submitButtonClassName,
-                                                 hideFooter
+                                                 hideFooter,
+                                                 submitButtonTitle,
+                                                 closeButtonTitle,
+                                                 footerChildren,
+
                                                }) => {
   const {scrollable, fullscreen, animation, dialogClassName, contentClassName, centered, size, className} = props || {};
   const handleClose = () => setShow(false);
@@ -74,18 +81,21 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
           onClick={handleClose}
           className={`w-20 me-3 rounded-pill ${closeButtonClassName}`}
         >
-          Wróć
+          {closeButtonTitle || "Wróć" }
         </Button>
-        <ModalSubmitButton
-          props={{
-            variant: submitButtonVariant ? submitButtonVariant : 'primary',
-            onClick: handleSubmit,
-            className: `w-20 rounded-pill ${submitButtonClassName}`
-          }}
-          isSubmitting={isSubmitting || false}
-        >
-          Potwierdź
-        </ModalSubmitButton>
+
+        {footerChildren ||
+          <ModalSubmitButton
+              props={{
+                variant: submitButtonVariant ? submitButtonVariant : 'primary',
+                onClick: handleSubmit,
+                className: `w-20 rounded-pill ${submitButtonClassName}`
+              }}
+              isSubmitting={isSubmitting || false}
+          >
+            {submitButtonTitle || "Potwierdź"}
+          </ModalSubmitButton>
+        }
       </Modal.Footer>
     </Modal>
   );
