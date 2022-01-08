@@ -9,9 +9,10 @@ interface PriorityOrdersProps {
   orders: OrderModel[];
   fetchOrders: () => Promise<void>;
   fetchClient: () => Promise<void>;
+  fetchCreditCards: ()=>Promise<void>;
 }
 
-const ClientOrders: FC<PriorityOrdersProps> = ({className, orders,fetchOrders,fetchClient}) => {
+const ClientOrders: FC<PriorityOrdersProps> = ({ orders,fetchOrders,fetchClient,fetchCreditCards}) => {
   const [sortType,setSortType] = useState<ClientsOrdersSort>(ClientsOrdersSort.All);
   return (
     <>
@@ -95,7 +96,7 @@ const ClientOrders: FC<PriorityOrdersProps> = ({className, orders,fetchOrders,fe
       <div>
         {
           orders.map((order, key) => (
-            <ClientsOrder order={order} key={key} fetchOrders={fetchOrders} fetchClient={fetchClient} sortType={sortType}/>
+            <ClientsOrder order={order} key={key} fetchOrders={fetchOrders} fetchClient={fetchClient} sortType={sortType} fetchCreditCards={fetchCreditCards}/>
           ))
         }
       </div>

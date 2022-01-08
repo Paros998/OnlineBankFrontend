@@ -2,20 +2,22 @@ import React, {FC} from 'react';
 import CardTemplate from "../../CardTemplate";
 import {ClientModel} from "../../../../interfaces/DatabaseModels/ClientModel";
 import dayjs from "dayjs";
-import {useFetchRawData} from "../../../../hooks/useFetchRawData";
-import {CreditCardModel} from "../../../../interfaces/DatabaseModels/CreditCardModel";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import CreditCardRecord from "../../../RecordsComponents/Employee/CreditCardRecord";
+import {CreditCardModel} from "../../../../interfaces/DatabaseModels/CreditCardModel";
 
 interface ClientDataCardProps {
   className?: string;
   client: ClientModel;
+  clientCreditCards: CreditCardModel[] | [];
+  isPending:boolean;
+  fetchCreditCards: ()=>Promise<void>;
 }
 
-const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
+const ClientDataCard: FC<ClientDataCardProps> = ({className, client,clientCreditCards,fetchCreditCards,isPending}) => {
   const {accountNumber, numberOfCreditsCards, balance, dateOfCreation} = client;
 
-  const {rawData,fetchData,isPending} = useFetchRawData<CreditCardModel[]>(`credit-cards/client/${client?.clientId}`);
+
 
   return (
     <CardTemplate
@@ -58,8 +60,8 @@ const ClientDataCard: FC<ClientDataCardProps> = ({className, client}) => {
                 variant={'light'}
             />
         ):(<></>)}
-        {rawData && rawData.map((card, key) => (
-              <CreditCardRecord card={card} key={key} fetchData={fetchData}/>
+        {clientCreditCards && clientCreditCards.map((card, key) => (
+              <CreditCardRecord card={card} key={key} fetchData={fetchCreditCards}/>
           )
         )
         }

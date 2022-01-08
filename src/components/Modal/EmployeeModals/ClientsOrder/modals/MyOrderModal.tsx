@@ -11,11 +11,12 @@ interface MyOrderModalProps {
   setShowModal: Dispatch<SetStateAction<boolean>>
   fetchClient: () => Promise<void>;
   fetchOrders: () => Promise<void>;
+  fetchCreditCards: ()=>Promise<void>;
   showModal: boolean;
   order: OrderModel;
 }
 
-const MyOrderModal: FC<MyOrderModalProps> = ({setShowModal, showModal, order, fetchOrders, fetchClient}) => {
+const MyOrderModal: FC<MyOrderModalProps> = ({setShowModal, showModal, order, fetchOrders, fetchClient,fetchCreditCards}) => {
   const [isSubmittingDenied, setIsSubmittingDenied] = useState<boolean>(false);
   const [isSubmittingAccepted, setIsSubmittingAccepted] = useState<boolean>(false);
 
@@ -36,6 +37,7 @@ const MyOrderModal: FC<MyOrderModalProps> = ({setShowModal, showModal, order, fe
     }
     await fetchClient();
     await fetchOrders();
+    await fetchCreditCards();
     decision === 'denied' ? setIsSubmittingDenied(false) : setIsSubmittingAccepted(false);
     setShowModal(false);
   }

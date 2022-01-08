@@ -9,9 +9,10 @@ interface ClientsOrdersWithoutModalProps {
   clientId: number;
   fetchClient: () => Promise<void>;
   className?:string;
+  fetchCreditCards: ()=>Promise<void>;
 }
 
-const ClientsOrdersWithoutModal:FC<ClientsOrdersWithoutModalProps> = ({fetchClient,clientId,className}) => {
+const ClientsOrdersWithoutModal:FC<ClientsOrdersWithoutModalProps> = ({fetchClient,clientId,className,fetchCreditCards}) => {
 
   const {rawData: Orders, isPending, fetchData: fetchOrders} = useFetchRawData<OrderModel[]>(`orders/client/${clientId}`)
 
@@ -32,6 +33,7 @@ const ClientsOrdersWithoutModal:FC<ClientsOrdersWithoutModalProps> = ({fetchClie
         orders={Orders || []}
         fetchOrders={fetchOrders}
         fetchClient={fetchClient}
+        fetchCreditCards={fetchCreditCards}
       />
 
     </CardTemplate>

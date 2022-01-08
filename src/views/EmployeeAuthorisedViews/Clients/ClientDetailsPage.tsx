@@ -9,13 +9,15 @@ import ClientOrdersCard from "../../../components/Cards/Employee/ClientDetails/C
 import {Button} from "react-bootstrap";
 import {useFetchRawData} from "../../../hooks/useFetchRawData";
 import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
+import {CreditCardModel} from "../../../interfaces/DatabaseModels/CreditCardModel";
 
 const ClientDetailsPage = () => {
   const {clientId,orderId}: { clientId: string,orderId: string} = useParams();
   const ID = parseInt(clientId);
   const history = useHistory();
 
-  const {rawData,fetchData} = useFetchRawData<ClientModel>(`/clients/${ID}`);
+  const {rawData:ClientData,fetchData:fetchClient} = useFetchRawData<ClientModel>(`/clients/${ID}`);
+  const {rawData:ClientCreditCards,fetchData:fetchCreditCards,isPending} = useFetchRawData<CreditCardModel[]>(`credit-cards/client/${clientId}`);
 
   const handleBackClick = () => {
     history.push("/employee/clients");
@@ -38,8 +40,11 @@ const ClientDetailsPage = () => {
 
   };
 
-  if (rawData) {
-    client = rawData;
+  let creditCards:CreditCardModel[] = [];
+
+  if (ClientData && ClientCreditCards) {
+    client = ClientData;
+    creditCards = ClientCreditCards
     return (
       <>
         <AuthorisedNavbar/>
@@ -47,8 +52,8 @@ const ClientDetailsPage = () => {
         <ContainerWithBackgroundImage className='bg-secondary-dark '>
           <div className='d-flex rounded-card-10 bg-dark w-100 text-dark mh-700px mnh-700px '>
             <ClientAccountDataCard className='w-25' client={client}/>
-            <ClientDataCard className='w-40' client={client}/>
-            <ClientOrdersCard className='w-35 me-2' clientId={ID} fetchClient={fetchData} orderId={orderId}/>
+            <ClientDataCard className='w-40' client={client} clientCreditCards={creditCards } fetchCreditCards={fetchCreditCards} isPending={isPending}/>
+            <ClientOrdersCard className='w-35 me-2' clientId={ID} fetchClient={fetchClient} orderId={orderId} fetchCreditCards={fetchCreditCards}/>
           </div>
           <div className='w-90 pe-4 mnh-200px align-items-center d-flex'>
             <Button

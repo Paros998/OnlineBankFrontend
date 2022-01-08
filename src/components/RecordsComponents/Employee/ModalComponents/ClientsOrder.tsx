@@ -12,9 +12,10 @@ interface ClientsOrderProps {
   fetchOrders: () => Promise<void>;
   fetchClient: () => Promise<void>;
   sortType: ClientsOrdersSort;
+  fetchCreditCards: ()=>Promise<void>;
 }
 
-const ClientsOrder: FC<ClientsOrderProps> = ({order,fetchOrders,fetchClient,sortType}) => {
+const ClientsOrder: FC<ClientsOrderProps> = ({order,fetchOrders,fetchClient,sortType,fetchCreditCards}) => {
   const {currentUser} = useCurrentUser<EmployeeModel>();
   const {isActive, employee, orderType, waitingTime} = order;
   const [showModal,setShowModal] = useState<boolean>(false);
@@ -72,6 +73,7 @@ const ClientsOrder: FC<ClientsOrderProps> = ({order,fetchOrders,fetchClient,sort
         showModal={showModal}
         modalType={modalType}
         fetchClient={fetchClient}
+        fetchCreditCards={fetchCreditCards}
       />
 
       <div

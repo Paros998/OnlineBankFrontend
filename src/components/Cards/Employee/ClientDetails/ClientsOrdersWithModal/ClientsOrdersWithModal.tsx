@@ -10,11 +10,12 @@ import {OrderModel} from "../../../../../interfaces/DatabaseModels/OrderModel";
 interface ClientsOrdersWithModalProps {
   clientId: number;
   fetchClient: () => Promise<void>;
+  fetchCreditCards: ()=>Promise<void>;
   className?:string;
   orderId: string;
 }
 
-const ClientsOrdersWithModal:FC<ClientsOrdersWithModalProps> = ({fetchClient,clientId,className,orderId}) => {
+const ClientsOrdersWithModal:FC<ClientsOrdersWithModalProps> = ({fetchClient,clientId,className,orderId,fetchCreditCards}) => {
 
   const {rawData: Orders, isPending, fetchData: fetchOrders} = useFetchRawData<OrderModel[]>(`orders/client/${clientId}`)
 
@@ -38,6 +39,7 @@ const ClientsOrdersWithModal:FC<ClientsOrdersWithModalProps> = ({fetchClient,cli
         fetchClient={fetchClient}
         modalType={ClientsOrderModalTypes.USE}
         isPending={isPendingOrder}
+        fetchCreditCards={fetchCreditCards}
       />
 
       <CenteredSpinnerTemplate
@@ -48,7 +50,9 @@ const ClientsOrdersWithModal:FC<ClientsOrdersWithModalProps> = ({fetchClient,cli
       <ClientOrders
         orders={Orders || []}
         fetchOrders={fetchOrders}
-        fetchClient={fetchClient}/>
+        fetchClient={fetchClient}
+        fetchCreditCards={fetchCreditCards}
+      />
 
     </CardTemplate>
   );

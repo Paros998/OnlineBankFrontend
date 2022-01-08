@@ -7,13 +7,14 @@ interface ClientOrdersCardProps {
   clientId: number;
   fetchClient: () => Promise<void>;
   orderId?: string;
+  fetchCreditCards: ()=>Promise<void>;
 }
 
-const ClientOrdersCard: FC<ClientOrdersCardProps> = ({className, clientId, fetchClient, orderId}) => {
+const ClientOrdersCard: FC<ClientOrdersCardProps> = ({className, clientId, fetchClient, orderId,fetchCreditCards}) => {
   if (orderId) {
-    return <ClientsOrdersWithModal fetchClient={fetchClient} clientId={clientId} orderId={orderId} className={className}/>
+    return <ClientsOrdersWithModal fetchClient={fetchClient} clientId={clientId} orderId={orderId} className={className} fetchCreditCards={fetchCreditCards}/>
   } else {
-    return <ClientsOrdersWithoutModal fetchClient={fetchClient} clientId={clientId} className={className}/>
+    return <ClientsOrdersWithoutModal fetchClient={fetchClient} clientId={clientId} className={className} fetchCreditCards={fetchCreditCards}/>
   }
 };
 

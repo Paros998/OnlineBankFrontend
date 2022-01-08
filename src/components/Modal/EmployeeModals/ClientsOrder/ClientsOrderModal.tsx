@@ -12,6 +12,7 @@ interface ClientsOrderModalProps {
   order?: OrderModel;
   fetchOrders: () => Promise<void>;
   fetchClient: () => Promise<void>;
+  fetchCreditCards: () => Promise<void>;
   modalType: ClientsOrderModalTypes;
   isPending?: boolean;
 }
@@ -23,7 +24,8 @@ const ClientsOrderModal: FC<ClientsOrderModalProps> = ({
                                                          modalType,
                                                          fetchOrders,
                                                          fetchClient,
-                                                         isPending
+                                                         fetchCreditCards
+
                                                        }) => {
   if (!showModal)
     return null;
@@ -38,7 +40,7 @@ const ClientsOrderModal: FC<ClientsOrderModalProps> = ({
       return <AssignedOrderModal setShowModal={setShowModal} showModal={showModal} order={order}/>;
     else if (modalType === ClientsOrderModalTypes.USE)
       return <MyOrderModal setShowModal={setShowModal} showModal={showModal} order={order} fetchClient={fetchClient}
-                           fetchOrders={fetchOrders}/>;
+                           fetchOrders={fetchOrders} fetchCreditCards={fetchCreditCards}/>;
   }
 
   return null
