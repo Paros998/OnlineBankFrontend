@@ -4,7 +4,7 @@ import {Button} from "react-bootstrap";
 import TextInput from "../../Inputs/TextInput/TextInput";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
 import {NewClientFormikValues} from "../../../interfaces/formik/NewClientFormikValues";
-import ModalSubmitButton from "../../SubmitButton/ModalSubmitButton";
+import RequestSubmitButton from "../../SubmitButton/RequestSubmitButton";
 
 const NewClientForm = () => {
   const {errors,isSubmitting} = useFormikContext<NewClientFormikValues>();
@@ -232,14 +232,14 @@ const NewClientForm = () => {
             </Button>
           </div>
           <div className='col text-start'>
-            <ModalSubmitButton
+            <RequestSubmitButton
               isSubmitting={isSubmitting}
               props={{
                 className:'w-30'
               }}
             >
               Stwórz
-            </ModalSubmitButton>
+            </RequestSubmitButton>
           </div>
         </div>
       </div>

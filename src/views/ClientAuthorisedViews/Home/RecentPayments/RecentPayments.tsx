@@ -44,7 +44,7 @@ const RecentPayments = () => {
 
                 <Col xs={3} className='text-end'>
                   <span className={`fw-bold ${amountColor[transfer.type]}`}>
-                    {transfer.amount} PLN
+                    {transfer.amount.toFixed(2)} PLN
                   </span>
                 </Col>
               </Row>

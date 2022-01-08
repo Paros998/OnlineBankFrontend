@@ -25,7 +25,7 @@ const AccountCard = () => {
         </h2>
 
         <div>
-          <h1>{currentUser?.balance} PLN</h1>
+          <h1>{currentUser?.balance.toFixed(2)} PLN</h1>
         </div>
       </div>
 
