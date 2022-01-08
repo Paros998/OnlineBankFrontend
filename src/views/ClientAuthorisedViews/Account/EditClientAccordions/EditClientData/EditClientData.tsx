@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Formik } from 'formik';
@@ -13,6 +13,7 @@ import { EditClientDataValidationSchema } from '../../../../../validation/EditCl
 
 const EditClientData = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
+  const [isReadonly, setIsReadonly] = useState(false);
 
   const handleSubmit = async (values: ClientModel) => {
     if (isGivenDataEdited(values, currentUser)) {
@@ -27,6 +28,8 @@ const EditClientData = () => {
       toast.info('Prośba o edycje danych osobowych została wysłana.');
     } catch {
       toast.error('Nie udało się wysłać prośby o edycję danych klienta');
+    } finally {
+      setIsReadonly(true);
     }
   };
 
@@ -36,7 +39,7 @@ const EditClientData = () => {
       onSubmit={handleSubmit}
       validationSchema={EditClientDataValidationSchema}
     >
-      <EditClientDataForm />
+      <EditClientDataForm setIsReadonly={setIsReadonly} isReadonly={isReadonly}/>
     </Formik>
   );
 };

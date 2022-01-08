@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
@@ -9,13 +9,10 @@ import { OrderTypes } from '../../../../enums/OrderTypes';
 import { useCurrentUser } from '../../../../contexts/CurrentUserContext';
 import { ClientModel } from '../../../../interfaces/DatabaseModels/ClientModel';
 
-interface ActionButtonsProps {
-  currentLoan: LoanModel;
-}
-
-const ActionButtons: FC<ActionButtonsProps> = ({ currentLoan }) => {
+const ActionButtons = () => {
   const history = useHistory();
   const { currentUser } = useCurrentUser<ClientModel>();
+  const { state: currentLoan } = useLocation<LoanModel>();
 
   const handleSubmitLoan = async () => {
     const newLoanOrder = createOrder(
@@ -26,10 +23,10 @@ const ActionButtons: FC<ActionButtonsProps> = ({ currentLoan }) => {
 
     try {
       await axios.post('/orders', newLoanOrder);
-      toast.success('Potwierdzenie wzięcia pożyczki zostało wysłane');
+      toast.success('Prośba o wzięcie pożyczki została wysłana.');
       history.replace('/client/home');
     } catch {
-      toast.error('Nie udało się wysłać formularzu dotyczącego potwierdzenia wzięcia pożyczki');
+      toast.error('Nie udało się wysłać formularzu dotyczącego potwierdzenia wzięcia pożyczki.');
     }
   };
 

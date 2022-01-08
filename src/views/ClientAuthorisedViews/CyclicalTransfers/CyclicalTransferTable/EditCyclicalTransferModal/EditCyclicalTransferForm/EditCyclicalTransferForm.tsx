@@ -56,7 +56,7 @@ const EditCyclicalTransferForm = () => {
             type="number"
             className="rounded-0 rounded-start float-start"
             labelClassName="fw-bold"
-            placeholder="Wpisz numer rachunku odbiorcy"
+            placeholder="Wpisz kwotę"
             hasInputText
           />
         </Col>

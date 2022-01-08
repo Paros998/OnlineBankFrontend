@@ -2,6 +2,7 @@ import { Form, Formik } from 'formik';
 import React, { FC, memo } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import isCTEdited from 'lodash.isequal';
 import { Button, Modal } from 'react-bootstrap';
 import TextWithDiamond from '../../../../../components/TextWithDiamond/TextWithDiamond';
 import { CyclicalTransferModel } from '../../../../../interfaces/DatabaseModels/CyclicalTransferModel';
@@ -28,12 +29,17 @@ const EditCyclicalTransferModal: FC<EditCyclicalTransferModalProps> = ({
   const { fetchData: fetchCyclicalTransfers } = cyclicalTransfers;
 
   const handleSubmit = async (values: EditCyclicalTransferFormikValues) => {
-    const currentCyclicalTransferId = selectedCyclicalTransfer.transferId;
+    const currentCTId = selectedCyclicalTransfer.transferId;
+
+    if (isCTEdited(values, selectedCyclicalTransfer)) {
+      toast.warning('Dane powinny być wcześniej zedytowane przed wysłaniem formularza.');
+      return;
+    }
 
     try {
-      await axios.put(`/cyclical-transfers/${currentCyclicalTransferId}`, values);
-
+      await axios.put(`/cyclical-transfers/${currentCTId}`, values);
       toast.success('Przelew cykliczny został poprawnie zedytowany.');
+
       await fetchCyclicalTransfers();
       await fetchEstimatedData();
     } catch {

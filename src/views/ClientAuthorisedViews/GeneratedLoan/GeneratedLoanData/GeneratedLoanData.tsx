@@ -1,16 +1,15 @@
-import React, { FC } from 'react';
+import React from 'react';
 import moment from 'moment';
 import { LoanModel } from '../../../../interfaces/DatabaseModels/LoanModel';
+import { useLocation } from 'react-router-dom';
 
 const wrapperClassName = "text-black w-50";
 const dataClassName = 'text-end text-black fw-bold';
 const labelDataWrapperClassName = 'd-flex justify-content-between mt-4';
 
-interface GeneratedLoanDataProps {
-  currentLoan: LoanModel;
-}
+const GeneratedLoanData = () => {
+  const { state: currentLoan } = useLocation<LoanModel>();
 
-const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan }) => {
   return (
     <section className={wrapperClassName}>
       <div className={labelDataWrapperClassName}>

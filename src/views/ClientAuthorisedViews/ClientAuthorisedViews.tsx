@@ -20,7 +20,7 @@ const ClientAuthorisedViews = () => {
       <ClientSideNavbar/>
 
       <Container
-        className='bg-secondary-light h-100 pb-3 main-container'
+        className='bg-secondary-light h-100 pb-4 pe-5 main-container'
         fluid
       >
         <Switch>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import isGivenDataEdited from 'lodash.isequal';
 import { toast } from 'react-toastify';
 import { Formik } from 'formik';
@@ -17,6 +17,7 @@ import { EditClientCredentialsValidationSchema } from '../../../../../validation
 const EditClientCredentials = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
   const { rawData: appUserData, isPending } = useFetchRawData<UserCredentials>(`/users/client/${currentUser?.clientId}`);
+  const [isReadonly, setIsReadonly] = useState(true);
 
   const handleSubmit = async (values: UserCredentials) => {
     if (isGivenDataEdited(values, appUserData)) {
@@ -36,6 +37,8 @@ const EditClientCredentials = () => {
       toast.info('Prośba o edycje danych logowania została wysłana.');
     } catch {
       toast.error('Nie udało się wysłać prośby o edycję danych logowania klienta');
+    } finally {
+      setIsReadonly(true);
     }
   };
 
@@ -49,7 +52,7 @@ const EditClientCredentials = () => {
       onSubmit={handleSubmit}
       validationSchema={EditClientCredentialsValidationSchema}
     >
-      <EditClientCredentialsForm />
+      <EditClientCredentialsForm isReadonly={isReadonly} setIsReadonly={setIsReadonly} />
     </Formik>
   );
 };

@@ -37,6 +37,12 @@ const CollapseOptions = () => {
                 <div className='side-navbar-option'>Historia</div>
               </Link>
             </Row>
+
+            <Row>
+              <Link className='text-light text-decoration-none' to='/client/loans'>
+                <div className='side-navbar-option'>Pożyczka</div>
+              </Link>
+            </Row>
           </Container>
         </Collapse>
       </section>
@@ -53,12 +59,6 @@ const CollapseOptions = () => {
         <Collapse in={paymentsCollapse}>
           <Container className='text-center p-0'>
             <Row className='mt-3'>
-              <Link className='text-light text-decoration-none' to='/client/loans'>
-                <div className='side-navbar-option'>Weź pożyczkę już teraz</div>
-              </Link>
-            </Row>
-
-            <Row>
               <Link className='text-light text-decoration-none' to='/client/new-transfer'>
                 <div className='side-navbar-option'>Wykonaj przelew</div>
               </Link>
