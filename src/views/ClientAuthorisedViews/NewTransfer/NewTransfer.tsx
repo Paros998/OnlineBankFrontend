@@ -14,7 +14,7 @@ import {toast} from 'react-toastify';
 import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
 
 
-const Transfer: FC = () => {
+const NewTransfer: FC = () => {
   const { currentUser, fetchUser } = useCurrentUser<ClientModel>();
   const history = useHistory();
 
@@ -73,4 +73,4 @@ const Transfer: FC = () => {
   );
 };
 
-export default Transfer;
+export default NewTransfer;

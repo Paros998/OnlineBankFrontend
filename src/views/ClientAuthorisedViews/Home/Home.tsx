@@ -4,8 +4,8 @@ import InfoCard from "../../../components/InfoCard/InfoCard";
 import AccountCard from "./AccountCard/AccountCard";
 import RecentPayments from "./RecentPayments/RecentPayments";
 import Advertisements from "../../../components/Advertisements/Advertisements";
-import ClientComingPaymentsCard
-  from "../../../components/Cards/Client/ClientComingPaymentsCard/ClientComingPaymentsCard";
+import ComingPaymentsCard
+  from "./ComingPaymentsCard/ComingPaymentsCard";
 
 
 const Home = () => {
@@ -36,7 +36,7 @@ const Home = () => {
         </Col>
 
         <Col xs={4} className='mb-4'>
-          <ClientComingPaymentsCard />
+          <ComingPaymentsCard />
         </Col>
       </Row>
     </>

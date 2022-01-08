@@ -8,7 +8,9 @@ import Home from "./Home/Home";
 import CyclicalTransfers from "./CyclicalTransfers/CyclicalTransfers";
 import History from "./History/History";
 import Account from "./Account/Account";
-import Transfer from "./Transfer/Transfer";
+import NewTransfer from "./NewTransfer/NewTransfer";
+import Loan from './Loan/Loan';
+import GeneratedLoan from './GeneratedLoan/GeneratedLoan';
 
 const ClientAuthorisedViews = () => {
   return (
@@ -27,7 +29,15 @@ const ClientAuthorisedViews = () => {
           </Route>
 
           <Route path='/client/new-transfer'>
-            <Transfer/>
+            <NewTransfer/>
+          </Route>
+
+          <Route path='/client/loans' exact>
+            <Loan />
+          </Route>
+
+          <Route path='/client/loans/new-loan'>
+            <GeneratedLoan />
           </Route>
 
           <Route path='/client/account'>

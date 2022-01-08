@@ -42,7 +42,7 @@ const HistoryEstimatedPayments = () => {
         }}
         endProgressBarProps={{
           now: income.percent,
-          label: `${outgo.percent}%`,
+          label: `${income.percent}%`,
           variant: 'success',
         }}
       />
