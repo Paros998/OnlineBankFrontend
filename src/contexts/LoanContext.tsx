@@ -21,10 +21,9 @@ const LoanProvider: FC<LoanProviderProps> = ({ children }) => {
   const { currentUser } = useCurrentUser<ClientModel>();
   const [isPayLoanPending, setIsPayLoanPending] = useState(false);
   const history = useHistory();
-  const { rawData, isPending } = useFetchRawData<LoanModel>(
+  const { rawData, isPending, fetchData: fetchActiveLoan } = useFetchRawData<LoanModel>(
     `loans/client/${currentUser?.clientId}`,
   );
-
 
   const currentLoan = rawData ?? {} as LoanModel;
 
@@ -32,6 +31,7 @@ const LoanProvider: FC<LoanProviderProps> = ({ children }) => {
     setIsPayLoanPending(true);
     try {
       await axios.patch(`/loans/pay-rate/${currentUser?.clientId}`);
+      await fetchActiveLoan();
       toast.success('Spłacenie raty zostało wykonane pomyślnie');
     } catch {
       toast.error('Wystąpił błąd podczas spłaty raty');

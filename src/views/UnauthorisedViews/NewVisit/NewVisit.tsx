@@ -20,7 +20,6 @@ const formikValues: NewVisitFormikValues = {
 
 const NewVisit = () => {
   const history = useHistory();
-  // TODO VISITS DON'T WORK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 403 FORBIDDEN
   const handleSubmit = async ({ visitDate, ...values }: NewVisitFormikValues) => {
     const initialisedDate = moment(visitDate).format('DD.MM.YYYY');
 
@@ -49,6 +48,7 @@ const NewVisit = () => {
       <UnauthorisedNavbar
         type='client'
       />
+
       <div className='position-relative vh-100'>
         <Image
           src={bgHappy1}
@@ -64,13 +64,8 @@ const NewVisit = () => {
           initialValues={formikValues}
           onSubmit={handleSubmit}
         >
-          <NewVisitForm
-            //Establishments={options?.Establishments}
-            //Hours={options?.Hours}
-            className='d-flex h-75 justify-content-center align-items-center'
-          />
+          <NewVisitForm className='d-flex h-75 justify-content-center align-items-center'/>
         </Formik>
-
       </div>
 
       <Footer/>

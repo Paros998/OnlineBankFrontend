@@ -9,125 +9,125 @@ const labelDataWrapperClassName = 'd-flex justify-content-between mt-3';
 const ActiveLoanData = () => {
   const { currentLoan, isPending } = useLoan();
 
-  if (currentLoan.isActive) {
-    return (
-      <section className={wrapperClassName}>
-        <div className='d-flex justify-content-between'>
-          Data zawarcia:
+  if (!isPending) {
+    if (currentLoan.isActive) {
+      return (
+        <section className={wrapperClassName}>
+          <div className='d-flex justify-content-between'>
+            Data zawarcia:
 
-          <span className={dataClassName}>
-            {moment(currentLoan.concludedDate).format('DD.MM.YYYY')}
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {moment(currentLoan.concludedDate).format('DD.MM.YYYY')}
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Przewidywana data spłaty pożyczki:
+          <div className={labelDataWrapperClassName}>
+            Przewidywana data spłaty pożyczki:
 
-          <span className={dataClassName}>
-            {moment(currentLoan.estimatedEndDate).format('DD.MM.YYYY')}
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {moment(currentLoan.estimatedEndDate).format('DD.MM.YYYY')}
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Termin spłaty następnej raty pożyczki:
+          <div className={labelDataWrapperClassName}>
+            Termin spłaty następnej raty pożyczki:
 
-          <span className={dataClassName}>
-            {moment(currentLoan.nextRatePayDay).format('DD.MM.YYYY')}
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {moment(currentLoan.nextRatePayDay).format('DD.MM.YYYY')}
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Ilość rat:
+          <div className={labelDataWrapperClassName}>
+            Ilość rat:
 
-          <span className={dataClassName}>
-            {currentLoan.numOfRates}
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.numOfRates}
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Roczne oprocentowanie:
+          <div className={labelDataWrapperClassName}>
+            Roczne oprocentowanie:
 
-          <span className={dataClassName}>
-            {currentLoan.yearlyInterestPercent}%
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.yearlyInterestPercent.toFixed(2)}%
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Aktualna kwota raty:
+          <div className={labelDataWrapperClassName}>
+            Aktualna kwota raty:
 
-          <span className={dataClassName}>
-            {currentLoan.rateAmount.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.rateAmount.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Podstawowa kwota raty:
+          <div className={labelDataWrapperClassName}>
+            Podstawowa kwota raty:
 
-          <span className={dataClassName}>
-            {currentLoan.basicRateAmount.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.basicRateAmount.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Podstawowa kwota pożyczki:
+          <div className={labelDataWrapperClassName}>
+            Podstawowa kwota pożyczki:
 
-          <span className={dataClassName}>
-            {currentLoan.basicLoanAmount.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.basicLoanAmount.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Podstawowa prowizja:
+          <div className={labelDataWrapperClassName}>
+            Podstawowa prowizja:
 
-          <span className={dataClassName}>
-            {currentLoan.commission.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.commission.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Kwota oprocentowania:
+          <div className={labelDataWrapperClassName}>
+            Kwota oprocentowania:
 
-          <span className={dataClassName}>
-            {currentLoan.interestAmount.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.interestAmount.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Doliczona kwota karna:
+          <div className={labelDataWrapperClassName}>
+            Doliczona kwota karna:
 
-          <span className={dataClassName}>
-            {currentLoan.penaltyAmount.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.penaltyAmount.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Spłacono:
+          <div className={labelDataWrapperClassName}>
+            Spłacono:
 
-          <span className={dataClassName}>
-            {currentLoan.totalPaidOff.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.totalPaidOff.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Zostało do zapłaty:
+          <div className={labelDataWrapperClassName}>
+            Zostało do zapłaty:
 
-          <span className={dataClassName}>
-            {currentLoan.toRepaidOff.toFixed(2)} PLN
-          </span>
-        </div>
+            <span className={dataClassName}>
+              {currentLoan.toRepaidOff.toFixed(2)} PLN
+            </span>
+          </div>
 
-        <div className={labelDataWrapperClassName}>
-          Ilość rat do spłaty:
+          <div className={labelDataWrapperClassName}>
+            Ilość rat do spłaty:
 
-          <span className={dataClassName}>
-            {currentLoan.ratesLeftToPay}
-          </span>
-        </div>
-      </section>
-    );
-  }
+            <span className={dataClassName}>
+              {currentLoan.ratesLeftToPay}
+            </span>
+          </div>
+        </section>
+      );
+    }
 
-  if (!isPending && !currentLoan.isActive) {
     return (
       <h5 className='h-90 d-flex justify-content-center align-items-center'>
         Aktualnie nie masz żadnej pożyczki do spłaty

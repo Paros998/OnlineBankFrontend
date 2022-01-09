@@ -52,7 +52,7 @@ const GeneratedLoanData: FC<GeneratedLoanDataProps> = ({ currentLoan,additionalD
         Roczne oprocentowanie:
 
         <span className={dataClassName + ' ' + additionalDataClassName}>
-          {currentLoan.yearlyInterestPercent}%
+          {currentLoan.yearlyInterestPercent.toFixed(2)}%
         </span>
       </div>
 

@@ -15,7 +15,7 @@ const NewLoanForm = () => {
   const { currentLoan } = useLoan();
   return (
     <Form className='position-relative mt-4 h-100' noValidate>
-      <FormBlob style={{ zIndex: 1, height: '96%' }}/>
+      <FormBlob style={{ zIndex: 1 }}/>
 
       <Row>
         <Col {...colProps}>
