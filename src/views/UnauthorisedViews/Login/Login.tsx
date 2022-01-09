@@ -55,7 +55,7 @@ const Login = () => {
       toast.error(`👎 Nie udało się zalogować \n${e?.response?.data?.message}`);
     }
   }
-//TODO fix background images
+
   return (
     <>
       <UnauthorisedNavbar

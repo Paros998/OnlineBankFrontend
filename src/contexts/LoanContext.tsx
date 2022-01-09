@@ -1,4 +1,4 @@
-import React, { createContext, FC, ReactNode, useContext } from 'react';
+import React, { createContext, FC, ReactNode, useContext, useState } from 'react';
 import { LoanModel } from '../interfaces/DatabaseModels/LoanModel';
 import { useCurrentUser } from './CurrentUserContext';
 import { ClientModel } from '../interfaces/DatabaseModels/ClientModel';
@@ -19,19 +19,24 @@ interface LoanProviderProps {
 
 const LoanProvider: FC<LoanProviderProps> = ({ children }) => {
   const { currentUser } = useCurrentUser<ClientModel>();
+  const [isPayLoanPending, setIsPayLoanPending] = useState(false);
   const history = useHistory();
-  const { rawData, isPending } = useFetchRawData<LoanModel>(
+  const { rawData, isPending, fetchData: fetchActiveLoan } = useFetchRawData<LoanModel>(
     `loans/client/${currentUser?.clientId}`,
   );
 
   const currentLoan = rawData ?? {} as LoanModel;
 
   const handlePayLoanRate = async () => {
+    setIsPayLoanPending(true);
     try {
       await axios.patch(`/loans/pay-rate/${currentUser?.clientId}`);
+      await fetchActiveLoan();
       toast.success('Spłacenie raty zostało wykonane pomyślnie');
     } catch {
       toast.error('Wystąpił błąd podczas spłaty raty');
+    } finally {
+      setIsPayLoanPending(false);
     }
   };
 
@@ -56,6 +61,7 @@ const LoanProvider: FC<LoanProviderProps> = ({ children }) => {
   const contextModel: LoanContextModel = {
     currentLoan,
     isPending,
+    isPayLoanPending,
     handlePayLoanRate,
     handleCheckCreditWorthiness,
   };

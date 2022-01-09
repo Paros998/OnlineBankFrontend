@@ -7,8 +7,7 @@ import { NewLoanFormikValues } from '../../../../interfaces/formik/NewLoanFormik
 import { getTodayDate } from '../../../../utils/getTodayDate';
 import { useQuery } from '../../../../hooks/useQuery';
 import { useLoan } from '../../../../contexts/LoanContext';
-import {NewLoanValidationSchema} from "../../../../Validation/NewLoanValidationSchema";
-
+import { NewLoanValidationSchema } from '../../../../validation/NewLoanValidationSchema';
 
 const NewLoan = () => {
   const { currentUser } = useCurrentUser<ClientModel>();

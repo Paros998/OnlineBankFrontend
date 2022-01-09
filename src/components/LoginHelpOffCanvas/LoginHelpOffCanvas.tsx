@@ -40,7 +40,7 @@ const LoginHelpOffCanvas: FC<LoginHelpOffCanvasProps> = ({handleHelpCanvas, show
 
             <h5>Nie pamiętam hasła</h5>
             <Button
-              className='w-50 fs-5'
+              className='w-50 fw-bold rounded-pill'
               onClick={() => handleRemindPasswordCanvas(true)}
             >
               Resetuj hasło
@@ -48,7 +48,7 @@ const LoginHelpOffCanvas: FC<LoginHelpOffCanvasProps> = ({handleHelpCanvas, show
 
             <h5 className='mt-5'>Nie pamiętam loginu</h5>
             <Button
-              className='w-50 fs-5'
+              className='w-50 fw-bold rounded-pill'
               onClick={() => handleRemindLoginCanvas(true)}
             >
               Przypomnij login
@@ -58,7 +58,7 @@ const LoginHelpOffCanvas: FC<LoginHelpOffCanvasProps> = ({handleHelpCanvas, show
           <section>
             <hr className='text-primary w-100'/>
             <Button
-              className='w-50 fs-5'
+              className='w-50 fw-bold rounded-pill'
               onClick={() => handleHelpCanvas(false)}
             >
               Wstecz

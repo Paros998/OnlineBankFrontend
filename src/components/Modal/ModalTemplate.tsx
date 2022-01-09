@@ -2,7 +2,7 @@ import React, {Dispatch, FC, ReactNode, SetStateAction} from 'react';
 import Modal, {ModalProps} from 'react-bootstrap/Modal'
 import {Button} from "react-bootstrap";
 import TextWithDiamond from "../TextWithDiamond/TextWithDiamond";
-import ModalSubmitButton from "../SubmitButton/ModalSubmitButton";
+import RequestSubmitButton from "../SubmitButton/RequestSubmitButton";
 
 interface ModalTemplateProps {
   props?: ModalProps;
@@ -85,7 +85,7 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
         </Button>
 
         {footerChildren ||
-          <ModalSubmitButton
+          <RequestSubmitButton
               props={{
                 variant: submitButtonVariant ? submitButtonVariant : 'primary',
                 onClick: handleSubmit,
@@ -94,7 +94,7 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
               isSubmitting={isSubmitting || false}
           >
             {submitButtonTitle || "Potwierdź"}
-          </ModalSubmitButton>
+          </RequestSubmitButton>
         }
       </Modal.Footer>
     </Modal>

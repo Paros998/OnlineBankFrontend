@@ -8,7 +8,7 @@ import {useFetchRawData} from "../../../../../../hooks/useFetchRawData";
 import {LoanModel} from "../../../../../../interfaces/DatabaseModels/LoanModel";
 import {ClientCreditWorthinessModel} from "../../../../../../interfaces/DatabaseModels/ClientCreditWorthinessModel";
 import CenteredSpinnerTemplate from "../../../../../CenteredSpinner/CenteredSpinnerTemplate";
-import ModalSubmitButton from "../../../../../SubmitButton/ModalSubmitButton";
+import RequestSubmitButton from "../../../../../SubmitButton/RequestSubmitButton";
 
 interface LoanFinishOrderModalProps {
   setShowModal: Dispatch<SetStateAction<boolean>>
@@ -81,7 +81,7 @@ const LoanFinishOrderModal: FC<LoanFinishOrderModalProps> = ({
       bodyClassName='justify-content-center thumb-success align-items-center'
       footerChildren={(
         <>
-          <ModalSubmitButton
+          <RequestSubmitButton
             props={{
               variant: 'primary',
               onClick: () => {
@@ -92,8 +92,8 @@ const LoanFinishOrderModal: FC<LoanFinishOrderModalProps> = ({
             isSubmitting={isSubmittingDenied}
           >
             Odrzuć
-          </ModalSubmitButton>
-          <ModalSubmitButton
+          </RequestSubmitButton>
+          <RequestSubmitButton
             props={{
               variant: 'success',
               onClick: () => {
@@ -104,7 +104,7 @@ const LoanFinishOrderModal: FC<LoanFinishOrderModalProps> = ({
             isSubmitting={isSubmittingAccepted}
           >
             Zaakceptuj
-          </ModalSubmitButton>
+          </RequestSubmitButton>
         </>
       )}
     >

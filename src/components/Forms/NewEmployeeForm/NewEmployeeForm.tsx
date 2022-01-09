@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, useFormikContext} from "formik";
 import TextInput from "../../Inputs/TextInput/TextInput";
-import ModalSubmitButton from "../../SubmitButton/ModalSubmitButton";
+import RequestSubmitButton from "../../SubmitButton/RequestSubmitButton";
 import {NewEmployeeFormikValues} from "../../../interfaces/formik/NewEmployeeFormikValues";
 import NumberInput from "../../Inputs/NumberInput/NumberInput";
 import {Button} from "react-bootstrap";
@@ -142,7 +142,7 @@ const NewEmployeeForm = () => {
           >
             Resetuj
           </Button>
-          <ModalSubmitButton
+          <RequestSubmitButton
             props={{
               variant: 'info',
               className: 'w-20 rounded-pill my-auto'
@@ -150,7 +150,7 @@ const NewEmployeeForm = () => {
             isSubmitting={isSubmitting}
           >
             Stwórz
-          </ModalSubmitButton>
+          </RequestSubmitButton>
         </div>
       </div>
     </Form>

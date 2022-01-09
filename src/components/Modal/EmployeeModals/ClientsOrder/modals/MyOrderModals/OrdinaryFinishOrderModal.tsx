@@ -2,7 +2,7 @@ import React, {Dispatch, FC, SetStateAction} from 'react';
 import ModalTemplate from "../../../../ModalTemplate";
 import OrderDescriptionInModal from "../../../../../RecordsComponents/Employee/OrderDescriptionInModal";
 import {OrderModel} from "../../../../../../interfaces/DatabaseModels/OrderModel";
-import ModalSubmitButton from "../../../../../SubmitButton/ModalSubmitButton";
+import RequestSubmitButton from "../../../../../SubmitButton/RequestSubmitButton";
 
 interface OrdinaryFinishOrderModalProps {
   setShowModal:Dispatch<SetStateAction<boolean>>
@@ -30,7 +30,7 @@ const OrdinaryFinishOrderModal:FC<OrdinaryFinishOrderModalProps> = ({setShowModa
       bodyClassName='justify-content-center text-center'
       footerChildren={(
         <>
-          <ModalSubmitButton
+          <RequestSubmitButton
             props={{
               variant: 'primary',
               onClick: () => {
@@ -41,8 +41,8 @@ const OrdinaryFinishOrderModal:FC<OrdinaryFinishOrderModalProps> = ({setShowModa
             isSubmitting={isSubmittingDenied}
           >
             Odrzuć
-          </ModalSubmitButton>
-          <ModalSubmitButton
+          </RequestSubmitButton>
+          <RequestSubmitButton
             props={{
               variant: 'success',
               onClick: () => {
@@ -53,7 +53,7 @@ const OrdinaryFinishOrderModal:FC<OrdinaryFinishOrderModalProps> = ({setShowModa
             isSubmitting={isSubmittingAccepted}
           >
             Zaakceptuj
-          </ModalSubmitButton>
+          </RequestSubmitButton>
         </>
       )}
     >

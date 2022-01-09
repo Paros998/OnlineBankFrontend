@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import {Form, useFormikContext} from "formik";
@@ -7,8 +6,6 @@ import SelectInput from "../../Inputs/SelectInput/SelectInput";
 import DateInput from "../../Inputs/DateInput/DateInput";
 import {NewVisitFormikValues} from "../../../interfaces/formik/NewVisitFormikValues";
 import {Bank2, Clock} from "react-bootstrap-icons";
-//TODO make hook and get tables form rest service
-//type option = { value: any, key: any }
 
 const establishmentOptions = [
   { value: 'Kielce', key: 1 },
@@ -40,10 +37,6 @@ type NewVisitFormProps = {
 }
 
 const NewVisitForm = (props:NewVisitFormProps) => {
-
-  //const establishmentOptions = props.Establishments && arrayMapperToOption(props.Establishments);
-  //const hoursOptions = props.Hours && arrayMapperToOption(props.Hours);
-
   const { setFieldValue } = useFormikContext<NewVisitFormikValues>();
   return (
     <div {...props}>

@@ -72,20 +72,20 @@ const RemindLoginOrPasswordOffCanvas:
               <TextInput
                 name='email'
                 label='Podaj adres e-mail'
-                labelClassName='fs-5'
-                className={`fs-5 ${type === 'employee' ? 'bg-dark text-white border-light ' : 'bg-light border-dark'}`}
+                labelClassName='fw-bold'
+                className={`${type === 'employee' ? 'bg-dark text-white border-light ' : 'bg-light border-dark'}`}
               />
             </section>
 
               <section>
-                <SubmitButton className='w-50 fs-5'>
+                <SubmitButton className='w-50 fw-bold rounded-pill'>
                   Wyslij
                 </SubmitButton>
 
                 <hr className='text-primary w-100'/>
 
               <Button
-                className='w-50 fs-5'
+                className='w-50 fw-bold rounded-pill'
                 onClick={() => handleRemindLoginCanvas(false)}
               >
                 Wstecz

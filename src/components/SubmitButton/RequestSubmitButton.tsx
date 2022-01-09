@@ -6,7 +6,7 @@ interface ModalSubmitButtonProps{
   isSubmitting: boolean;
 }
 
-const ModalSubmitButton: FC<ModalSubmitButtonProps> = ({ props ,isSubmitting,children}) => {
+const RequestSubmitButton: FC<ModalSubmitButtonProps> = ({ props ,isSubmitting,children}) => {
   const {...buttonProps} = props;
   return (
     <Button
@@ -29,4 +29,4 @@ const ModalSubmitButton: FC<ModalSubmitButtonProps> = ({ props ,isSubmitting,chi
   );
 };
 
-export default ModalSubmitButton;
+export default RequestSubmitButton;
