@@ -12,7 +12,7 @@ import { getCategoryCellStyle } from '../../../../utils/getCategoryCellStyle';
 const columns = [
   {
     ...defaultColumnStyle,
-    dataField: 'displayTransferDate',
+    dataField: 'transferDate',
     text: 'Data',
     sort: true,
   },
@@ -48,7 +48,7 @@ const HistoryTable = () => {
   const tableProps = useTableProps<TransferDisplayModel>(
     { data, isPending },
     'transferId',
-    { initialSortBy: 'displayTransferDate' },
+    { initialSortBy: 'transferDate' },
     (e: any, row: TransferDisplayModel) => toggleVisibility(row),
   );
 
