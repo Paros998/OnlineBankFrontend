@@ -29,7 +29,7 @@ const HistorySearchForm = () => {
     >
       {({ setFieldValue, handleSubmit, values: { dateTo, dateFrom } }) => (
         <Form noValidate className='mb-5'>
-          <h5 className='text-center fw-bold'>Filtorwanie</h5>
+          <h5 className='text-center fw-bold'>Filtrowanie</h5>
 
           <Row>
             <Col xs={4} className='mt-4'>
