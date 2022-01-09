@@ -41,7 +41,7 @@ const ComingPaymentsCard = () => {
                 {transfer.title}
 
                 <span className='text-end text-black'>
-                  {transfer.amount} PLN
+                  {transfer.amount.toFixed(2)} PLN
                 </span>
               </div>
 

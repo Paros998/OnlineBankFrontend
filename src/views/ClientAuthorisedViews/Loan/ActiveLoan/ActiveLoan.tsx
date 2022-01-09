@@ -21,7 +21,7 @@ const ActiveLoan = () => {
         <ActiveLoanData />
 
         {
-          currentLoan.isActive && (
+          currentLoan.isActive && !isPending && (
             <div className="text-center mt-3">
               <RequestSubmitButton
                 props={{ onClick: handlePayLoanRate, className: "fw-bold rounded-pill w-50" }}

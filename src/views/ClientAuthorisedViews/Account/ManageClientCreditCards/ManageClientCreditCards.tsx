@@ -50,9 +50,9 @@ const ManageClientCreditCards = () => {
     return (
       <section className="text-center mt-4">
         {
-          creditCards.length <= 3 && (
+          creditCards.length < 3 && (
             <Button
-              className="rounded-pill"
+              className="fw-bold rounded-pill"
               onClick={toggleCreateCardModalVisibility}
             >
               <Hammer/> Wyrób nową kartę płatniczą

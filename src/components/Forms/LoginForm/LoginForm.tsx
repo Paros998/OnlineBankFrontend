@@ -48,7 +48,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
             </div>
 
             <div className='vstack mx-auto col-md-5'>
-              <SubmitButton className='mt-3 rounded-pill fs-5'>
+              <SubmitButton className='mt-3 fw-bold rounded-pill'>
                 Zaloguj
               </SubmitButton>
             </div>
@@ -65,7 +65,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleHelpCanvas,type ,...props }) => {
               </TextWithDiamond>
 
                 <Button
-                  className='float-end rounded-pill fs-5'
+                  className='float-end fw-bold rounded-pill'
                   onClick={() => handleHelpCanvas(true)}
                 >
                   Pomoc
