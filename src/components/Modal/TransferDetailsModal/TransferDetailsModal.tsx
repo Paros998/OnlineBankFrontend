@@ -23,7 +23,7 @@ const TransferDetailsModal: FC<HistoryDetailsModalProps> = ({ showModal, toggleV
     >
       <div className={dataWrapperClassName}>
         <p className='fw-bold'>Data:</p>
-        <p>{data.displayTransferDate}</p>
+        <p>{data.transferDate}</p>
       </div>
 
       <div className={dataWrapperClassName}>
