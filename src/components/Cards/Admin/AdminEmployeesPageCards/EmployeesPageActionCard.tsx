@@ -48,7 +48,7 @@ const EmployeesPageActionCard: FC<EmployeesPageActionCardProps> = ({className,se
               <PersonDash size={30} className='my-auto me-2'/>
             </span>
             <span className='col text-end'>
-              Zablokuj konto pracownika
+              Zablokuj/Odblokuj konto pracownika
             </span>
           </Button>
 
@@ -64,7 +64,7 @@ const EmployeesPageActionCard: FC<EmployeesPageActionCardProps> = ({className,se
               <PersonDash size={30} className='my-auto me-2'/>
             </span>
             <span className='col text-end'>
-              Zablokuj konto klienta
+              Zablokuj/Odblokuj konto klienta
             </span>
           </Button>
 

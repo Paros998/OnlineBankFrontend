@@ -24,6 +24,7 @@ interface ModalTemplateProps {
   closeButtonTitle?: string;
   footerChildren?: ReactNode;
   hideFooter?: boolean;
+  isSubmitDisabled?: boolean;
 }
 
 const ModalTemplate: FC<ModalTemplateProps> = ({
@@ -46,6 +47,7 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
                                                  submitButtonTitle,
                                                  closeButtonTitle,
                                                  footerChildren,
+                                                 isSubmitDisabled
 
                                                }) => {
   const {scrollable, fullscreen, animation, dialogClassName, contentClassName, centered, size, className} = props || {};
@@ -89,7 +91,8 @@ const ModalTemplate: FC<ModalTemplateProps> = ({
               props={{
                 variant: submitButtonVariant ? submitButtonVariant : 'primary',
                 onClick: handleSubmit,
-                className: `w-20 rounded-pill ${submitButtonClassName}`
+                className: `w-20 rounded-pill ${submitButtonClassName} `,
+                disabled: isSubmitDisabled
               }}
               isSubmitting={isSubmitting || false}
           >

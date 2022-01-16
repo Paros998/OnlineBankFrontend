@@ -3,20 +3,9 @@ import {ClientCreditWorthinessModel} from "../../../interfaces/DatabaseModels/Cl
 
 interface ClientCreditWorthinessProps {
   clientCreditWorthiness: ClientCreditWorthinessModel;
-  suggestedDecision:decision;
-  sumOfBalanceAssessment:string;
-  monthlyBalanceAssessment:string;
 }
 
-interface decision {
-  label: string;
-  value: string;
-}
-
-const ClientCreditWorthiness: FC<ClientCreditWorthinessProps> = ({clientCreditWorthiness,
-                                                                   sumOfBalanceAssessment,
-                                                                   monthlyBalanceAssessment,
-                                                                   suggestedDecision}) => {
+const ClientCreditWorthiness: FC<ClientCreditWorthinessProps> = ({clientCreditWorthiness}) => {
   const {sumOfBalance, monthlyBalance, sumOfOutgoing, sumOfIncoming} = clientCreditWorthiness;
 
   return (
@@ -26,7 +15,7 @@ const ClientCreditWorthiness: FC<ClientCreditWorthinessProps> = ({clientCreditWo
           Całkowite Przychody:
         </span>
         <span>
-          {sumOfIncoming + "PLN"}
+          {sumOfIncoming.toFixed(2) + "PLN"}
         </span>
       </div>
 
@@ -35,38 +24,28 @@ const ClientCreditWorthiness: FC<ClientCreditWorthinessProps> = ({clientCreditWo
           Całkowite Wydatki:
         </span>
         <span>
-          {sumOfOutgoing + "PLN"}
+          {sumOfOutgoing.toFixed(2) + "PLN"}
         </span>
       </div>
 
-      <div className={`mx-1 hstack justify-content-between ${sumOfBalanceAssessment}`}>
+      <div className={`mx-1 hstack justify-content-between`}>
         <span>
           Całkowite Saldo:
         </span>
         <span>
-          {sumOfBalance + "PLN"}
+          {sumOfBalance.toFixed(2) + "PLN"}
         </span>
       </div>
 
-      <div className={`mx-1 hstack justify-content-between ${monthlyBalanceAssessment}`}>
+      <div className={`mx-1 hstack justify-content-between `}>
         <span>
           Miesięczne Saldo:
         </span>
         <span>
-          {monthlyBalance + "PLN"}
+          {monthlyBalance.toFixed(2) + "PLN"}
         </span>
       </div>
 
-      <div className={`mx-1 hstack justify-content-between ${suggestedDecision.label}`}>
-        <span>
-          Sugerowana Decyzja:
-        </span>
-        <span
-          className={suggestedDecision.label}
-        >
-          {suggestedDecision.value}
-        </span>
-      </div>
     </section>
   );
 };

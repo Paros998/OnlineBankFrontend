@@ -40,7 +40,6 @@ const CyclicalTransferTable = () => {
       isPending: areCyclicalTransfersPending,
     },
     'transferId',
-    { initialSortBy: 'displayReTransferDate' },
   );
 
   const columns = useColumns({
