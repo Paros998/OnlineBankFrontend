@@ -14,13 +14,13 @@ const columns = [
     ...defaultColumnStyle,
     dataField: 'transferDate',
     text: 'Data',
-    sort: true,
   },
   {
     ...defaultColumnStyle,
     dataField: 'category',
     text: 'Kategoria',
     classes: getCategoryCellStyle,
+
   },
   {
     ...defaultColumnStyle,
@@ -48,7 +48,7 @@ const HistoryTable = () => {
   const tableProps = useTableProps<TransferDisplayModel>(
     { data, isPending },
     'transferId',
-    { initialSortBy: 'transferDate' },
+    { initialSortBy: 'category' },
     (e: any, row: TransferDisplayModel) => toggleVisibility(row),
   );
 

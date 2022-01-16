@@ -44,7 +44,6 @@ export const useColumns = ({ toggleDeleteModalVisibility, toggleEditModalVisibil
       ...defaultColumnStyle,
       dataField: 'displayReTransferDate',
       text: 'Data',
-      sort: true,
     },
     {
       ...defaultColumnStyle,

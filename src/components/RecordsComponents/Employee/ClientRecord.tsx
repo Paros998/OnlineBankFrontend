@@ -7,20 +7,21 @@ interface ClientsProps{
   client:ClientModel;
   className?:string;
   hover?:string;
+  handleClick?:(clientId:number|undefined)=>void;
 }
 
-const ClientRecord:FC<ClientsProps> = ({client,className,hover,children}) => {
+const ClientRecord:FC<ClientsProps> = ({client,className,hover,handleClick}) => {
   const {personalNumber,fullName,accountNumber,dateOfBirth,clientId} = client;
-  const history = useHistory();
-
-  const handleClick = () => {
-    if(clientId){
-      history.push(`/employee/client/${clientId}`);
-    }
-  }
 
   return (
-    <div className={`row align-items-start mh-50px fs-5 pb-2 pt-2 btn-pointer client ${className} ${hover}`} onClick={handleClick}>
+    <div
+      className={`row align-items-start mh-50px fs-5 pb-2 pt-2 btn-pointer client ${className} ${hover}`}
+      onClick={()=>{
+        if (handleClick) {
+          handleClick(clientId)
+        }}
+      }
+    >
       <div className='col text-truncate'>
         {personalNumber}
       </div>

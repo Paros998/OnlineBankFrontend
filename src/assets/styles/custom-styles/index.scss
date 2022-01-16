@@ -597,4 +597,12 @@ hr:not([size]){
   overflow-y: scroll;
 }
 
+.client-active{
+  background-color: $warning !important;
+}
+
+.submit-disabled{
+  background-color: $secondary-dark !important;
+}
+
 

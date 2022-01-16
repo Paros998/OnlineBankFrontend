@@ -19,10 +19,6 @@ interface LoanFinishOrderModalProps {
   handleSubmit: (value: string) => Promise<void>;
 }
 
-interface decision {
-  label: string;
-  value: string;
-}
 
 const LoanFinishOrderModal: FC<LoanFinishOrderModalProps> = ({
                                                                setShowModal,
@@ -33,36 +29,10 @@ const LoanFinishOrderModal: FC<LoanFinishOrderModalProps> = ({
                                                                handleSubmit
                                                              }) => {
   const loan: LoanModel = JSON.parse(order.requestBody);
-  const {toRepaidOff,basicRateAmount} = loan;
 
   const {rawData: ClientWorthiness, isPending} =
     useFetchRawData<ClientCreditWorthinessModel>(`/clients/${order.client?.clientId}/credit-worthiness/${loan.initialRatesNumber}`);
 
-  let sumOfBalanceAssessment = 'text-primary';
-  let monthlyBalanceAssessment = 'text-primary';
-
-  let suggestedDecision: decision = {
-    label: 'text-success',
-    value: 'Zaakceptowanie Prośby'
-  };
-
-  if(ClientWorthiness){
-    const {sumOfBalance,monthlyBalance} = ClientWorthiness;
-    if (sumOfBalance > toRepaidOff * 1.2)
-      sumOfBalanceAssessment = 'text-success';
-    else if (sumOfBalance >= toRepaidOff && sumOfBalance < toRepaidOff * 1.2)
-      sumOfBalanceAssessment = 'text-warning';
-
-    if (monthlyBalance > basicRateAmount * 1.2)
-      monthlyBalanceAssessment = 'text-success';
-    else if (monthlyBalance >= basicRateAmount && monthlyBalance < basicRateAmount * 1.2)
-      monthlyBalanceAssessment = 'text-warning';
-
-    if (sumOfBalanceAssessment && monthlyBalanceAssessment === 'text-primary')
-      suggestedDecision = {label: 'text-primary', value: 'Odrzucenie Prośby'};
-    else if (sumOfBalanceAssessment && monthlyBalanceAssessment === 'text-warning')
-      suggestedDecision = {label: 'text-warning', value: 'Możliwa Akceptacja Prośby'};
-  }
 
   return (
     <ModalTemplate
@@ -116,13 +86,13 @@ const LoanFinishOrderModal: FC<LoanFinishOrderModalProps> = ({
         <div className='w-60'>
           <OrderDescriptionInModal order={order} dataColor='text-success'/>
           <ClientLoan currentLoan={loan}/>
+
           {!isPending &&
+          ClientWorthiness &&
           <ClientCreditWorthiness
               clientCreditWorthiness={ClientWorthiness || {} as ClientCreditWorthinessModel}
-              monthlyBalanceAssessment={monthlyBalanceAssessment}
-              suggestedDecision={suggestedDecision}
-              sumOfBalanceAssessment={sumOfBalanceAssessment}
           />}
+
         </div>
         <div className='w-20'>
 

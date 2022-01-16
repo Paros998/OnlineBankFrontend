@@ -9,6 +9,8 @@ import {FilterClientsEmployeesFormikInitialValues} from "../../../../constants/F
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import {ClientModel} from "../../../../interfaces/DatabaseModels/ClientModel";
 import {FilterClientsEmployeesFormikValues} from "../../../../interfaces/formik/FilterClientsEmployeesFormikValues";
+import {useHistory} from "react-router-dom";
+import ClientsRecords from "../../../RecordsComponents/Employee/ClientsRecords";
 
 interface ClientsCardProps {
   className?: string;
@@ -20,6 +22,7 @@ interface ClientsCardProps {
 const initDateWithDayJs = (date: Date | string) => dayjs(date).format('YYYY-MM-DD');
 
 const ClientsCard: FC<ClientsCardProps> = ({className, Clients, isPending,fetchClients}) => {
+  const history = useHistory();
 
   const handleSubmit = async (values: FilterClientsEmployeesFormikValues) => {
     values.birthDate = values.birthDate && initDateWithDayJs(values.birthDate);
@@ -27,6 +30,12 @@ const ClientsCard: FC<ClientsCardProps> = ({className, Clients, isPending,fetchC
       await fetchClients(values);
     } catch (e: any) {
       toast.error(`👎 Nie udało się pobrać klientów \n${e?.response?.data?.message}`);
+    }
+  }
+
+  const handleClick = (clientId:number|undefined) => {
+    if(clientId){
+      history.push(`/employee/client/${clientId}`);
     }
   }
 
@@ -63,17 +72,7 @@ const ClientsCard: FC<ClientsCardProps> = ({className, Clients, isPending,fetchC
                   }
     >
       <div className='container-fluid w-100 '>
-        {
-          isPending || (
-          Clients.length === 0 ? <p className='text-info fw-bold'>Nie znaleziono klientów</p>
-            : Clients.map((client, key) => (
-              <ClientRecord
-                key={key}
-                client={client}
-                className={key % 2 === 0 ? 'bg-dark' : 'bg-secondary-dark'}
-              />
-            )))
-        }
+        <ClientsRecords Clients={Clients || []} handleClick={handleClick}/>
         <CenteredSpinnerTemplate variant={"light"} isPending={isPending}/>
       </div>
     </CardTemplate>
