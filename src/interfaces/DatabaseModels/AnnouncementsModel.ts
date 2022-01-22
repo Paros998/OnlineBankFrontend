@@ -1,4 +1,4 @@
 export interface AnnouncementsModel {
-  announcementID: number;
+  announcementID?: number;
   announcement: string;
 }

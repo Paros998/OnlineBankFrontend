@@ -6,11 +6,11 @@ import {AdminActionsModalTypes} from "../../../../enums/AdminActionsModalTypes";
 
 interface EmployeesPageActionCardProps {
   className?: string;
-  setShowModal:Dispatch<React.SetStateAction<boolean>>;
-  setModalType:Dispatch<React.SetStateAction<AdminActionsModalTypes>>;
+  setShowModal: Dispatch<React.SetStateAction<boolean>>;
+  setModalType: Dispatch<React.SetStateAction<AdminActionsModalTypes>>;
 }
 
-const EmployeesPageActionCard: FC<EmployeesPageActionCardProps> = ({className,setModalType,setShowModal}) => {
+const EmployeesPageActionCard: FC<EmployeesPageActionCardProps> = ({className, setModalType, setShowModal}) => {
   return (
     <CardTemplate header={'Szybkie akcje'}
                   className={`text-light fst-normal bg-secondary-dark border-light bg-opacity-75 ${className}`}
@@ -22,98 +22,99 @@ const EmployeesPageActionCard: FC<EmployeesPageActionCardProps> = ({className,se
         <div className='vstack align-items-center'>
           <Button
             variant={'info'}
-            className='w-100 mb-2 rounded-pill fw-bold row align-items-start text-light'
-            onClick={()=>{
+            className='w-60 mb-2 rounded-pill fw-bold row justify-content-between text-light d-flex'
+            onClick={() => {
               setShowModal(true);
               setModalType(AdminActionsModalTypes.NEW_EMPLOYEE);
             }}
           >
-            <span className='col'>
-              <PencilSquare className='my-auto' size={24}/>
-            </span>
-            <span className='col text-end'>
+            <PencilSquare className='col-1 my-auto ' size={24}/>
+            <span className='col text-center'>
               Stwórz nowego pracownika
             </span>
+            <span className='col-1'> </span>
           </Button>
 
           <Button
             variant={'primary'}
-            className='w-100 mb-2 rounded-pill fw-bold row align-items-start'
-            onClick={()=>{
+            className='w-60 mb-2 rounded-pill fw-bold row justify-content-between text-light d-flex'
+            onClick={() => {
               setShowModal(true);
               setModalType(AdminActionsModalTypes.BLOCK_EMPLOYEE);
             }}
           >
-            <span className='col '>
-              <PersonDash size={30} className='my-auto me-2'/>
-            </span>
-            <span className='col text-end'>
+            <PersonDash size={30} className='col-1 my-auto me-2'/>
+            <span className='col text-center'>
               Zablokuj/Odblokuj konto pracownika
             </span>
+            <span className='col-1'> </span>
           </Button>
 
           <Button
             variant={'primary'}
-            className='w-100 mb-2 rounded-pill fw-bold row align-items-start'
-            onClick={()=>{
+            className='w-60 mb-2 rounded-pill fw-bold row justify-content-between text-light d-flex'
+            onClick={() => {
               setShowModal(true);
               setModalType(AdminActionsModalTypes.BLOCK_CLIENT);
             }}
           >
-            <span className='col'>
-              <PersonDash size={30} className='my-auto me-2'/>
-            </span>
-            <span className='col text-end'>
+
+            <PersonDash size={30} className='col-1 my-auto me-2'/>
+
+            <span className='col text-center'>
               Zablokuj/Odblokuj konto klienta
             </span>
+            <span className='col-1'> </span>
           </Button>
 
           <Button
             variant={'dark'}
-            className='w-100 mb-2 rounded-pill fw-bold row align-items-start'
-            onClick={()=>{
+            className='w-60 mb-2 rounded-pill fw-bold row justify-content-between text-light d-flex'
+            onClick={() => {
               setShowModal(true);
               setModalType(AdminActionsModalTypes.ASSIGN_EMPLOYEE);
             }}
           >
-            <span className='col'>
-              <PersonPlus size={30} className='col'/>
-            </span>
-            <span className='col text-end'>
+
+            <PersonPlus size={30} className='col-1 my-auto me-2'/>
+
+            <span className='col text-center'>
               Przypisz zlecenie pracownikowi
             </span>
+            <span className='col-1'> </span>
           </Button>
 
           <Button
             variant={'danger'}
-            className='w-100 mb-2 rounded-pill fw-bold row align-items-start text-light'
-            onClick={()=>{
+            className='w-60 mb-2 rounded-pill fw-bold row justify-content-between text-light d-flex'
+            onClick={() => {
               setShowModal(true);
               setModalType(AdminActionsModalTypes.DELETE_EMPLOYEE);
             }}
           >
-            <span className='col'>
-              <PersonX size={30} className='my-auto me-2'/>
-            </span>
-            <span className='col text-end'>
+
+            <PersonX size={30} className='col-1 my-auto me-2'/>
+            <span className='col text-center'>
               Usuń konto pracownika
             </span>
+            <span className='col-1'> </span>
           </Button>
 
           <Button
             variant={'danger'}
-            className='w-100 mb-2 rounded-pill fw-bold row align-items-start text-light'
-            onClick={()=>{
+            className='w-60 mb-2 rounded-pill fw-bold row justify-content-between text-light d-flex'
+            onClick={() => {
               setShowModal(true);
               setModalType(AdminActionsModalTypes.DELETE_CLIENT);
             }}
           >
-            <span className='col'>
-              <PersonX size={30} className='my-auto me-2'/>
-            </span>
-            <span className='col text-end'>
+
+            <PersonX size={30} className='col-1 my-auto me-2'/>
+
+            <span className='col text-center'>
               Usuń konto klienta
             </span>
+            <span className='col-1'> </span>
           </Button>
 
         </div>

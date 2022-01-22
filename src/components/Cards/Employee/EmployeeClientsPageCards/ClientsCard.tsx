@@ -72,7 +72,7 @@ const ClientsCard: FC<ClientsCardProps> = ({className, Clients, isPending,fetchC
                   }
     >
       <div className='container-fluid w-100 '>
-        <ClientsRecords Clients={Clients || []} handleClick={handleClick}/>
+        <ClientsRecords Clients={Clients || []} handleClick={handleClick} useKeyAsBg/>
         <CenteredSpinnerTemplate variant={"light"} isPending={isPending}/>
       </div>
     </CardTemplate>

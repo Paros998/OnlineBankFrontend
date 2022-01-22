@@ -6,11 +6,12 @@ interface ClientsRecordsProps{
   Clients: ClientModel[] | [];
   isPending?:boolean;
   handleClick?:(clientId:number|undefined)=>void;
-  className?:string;
   id?:number;
+  className?:string;
+  useKeyAsBg?:boolean;
 }
 
-const ClientsRecords:FC<ClientsRecordsProps> = ({Clients,isPending,handleClick,className,id}) => {
+const ClientsRecords:FC<ClientsRecordsProps> = ({Clients,isPending,handleClick,className,id,useKeyAsBg}) => {
   if(isPending)
     return null;
   if(Clients.length === 0)
@@ -21,7 +22,7 @@ const ClientsRecords:FC<ClientsRecordsProps> = ({Clients,isPending,handleClick,c
     <>
       {
         Clients.map((client, key) => {
-            return <ClientRecord key={key} client={client} className={`${className} ${key % 2 === 0 ?  'bg-dark' : 'bg-secondary-dark'} ${client.clientId === id && 'client-active' } `} handleClick={handleClick}/>
+            return <ClientRecord key={key} client={client} className={` ${useKeyAsBg && ( key % 2 === 0 ?  'bg-dark' : 'bg-secondary-dark' ) } ${client.clientId === id && 'client-active' } ${className} `}  handleClick={handleClick}/>
           })
       }
     </>

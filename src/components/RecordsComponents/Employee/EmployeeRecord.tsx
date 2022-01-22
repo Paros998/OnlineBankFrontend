@@ -7,17 +7,19 @@ import {useHistory} from "react-router-dom";
 interface EmployeeRecordProps{
   employee:EmployeeModel;
   className?:string;
+  handleClick?:(clientId:number|undefined)=>void;
+  id?:number;
 }
 
-const EmployeeRecord:FC<EmployeeRecordProps> = ({employee,className}) => {
+const EmployeeRecord:FC<EmployeeRecordProps> = ({employee,className,id,handleClick}) => {
   const {personalNumber,dateOfBirth,fullName,employeeId} = employee;
-  const history = useHistory();
   return (
     <div
       className={`btn-pointer employee-primary row align-items-start text-light p-2 rounded-pill my-1 ${className}`}
       onClick={()=>{
-        history.push(`/employee/admin/employees/${employeeId}`);
-      }}
+        if (handleClick) {
+          handleClick(employeeId)
+        }}}
     >
       <span className='col text-truncate'>
         {personalNumber}

@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import CardTemplate from "../../CardTemplate";
-import PriorityOrdersNotAssigned from "../../../RecordsComponents/Employee/PriorityOrdersNotAssigned";
+import PriorityOrderNotAssigned from "../../../RecordsComponents/Employee/PriorityOrderNotAssigned";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import {OrderModel} from "../../../../interfaces/DatabaseModels/OrderModel";
 import ModalTemplate from "../../../Modal/ModalTemplate";
@@ -140,7 +140,7 @@ const OrdinaryOrdersNotAssignedCard: FC<OrdinaryOrdersNotAssignedCardProps> = ({
           {
             Orders.length === 0 ? <p className='text-warning fw-bold'>Nie ma żadnych nagłych zleceń do wykonania.</p>
               : Orders.map((item, key) => (
-                <PriorityOrdersNotAssigned
+                <PriorityOrderNotAssigned
                   key={key}
                   order={item}
                   className='bg-warning text-dark align-items-center order-warning'

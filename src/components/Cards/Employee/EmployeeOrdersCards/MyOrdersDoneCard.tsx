@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import {OrderModel} from "../../../../interfaces/DatabaseModels/OrderModel";
 import CardTemplate from "../../CardTemplate";
-import PriorityOrdersNotAssigned from "../../../RecordsComponents/Employee/PriorityOrdersNotAssigned";
+import PriorityOrderNotAssigned from "../../../RecordsComponents/Employee/PriorityOrderNotAssigned";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import ModalTemplate from "../../../Modal/ModalTemplate";
 import OrderDescriptionInModal from "../../../RecordsComponents/Employee/OrderDescriptionInModal";
@@ -71,7 +71,7 @@ const MyOrdersDoneCard: FC<MyOrdersDoneCardProps> = ({Orders, className, isPendi
 
             Orders.length === 0 ? <p className='text-secondary fw-bold'>Brak historii zleceń!</p>
               : Orders.map((item, key) => (
-                <PriorityOrdersNotAssigned
+                <PriorityOrderNotAssigned
                   key={key}
                   order={item}
                   className='bg-secondary text-dark align-items-center order-secondary'
