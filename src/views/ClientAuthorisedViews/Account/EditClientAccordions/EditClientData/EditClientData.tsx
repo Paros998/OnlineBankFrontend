@@ -12,7 +12,7 @@ import { EditClientDataValidationSchema } from '../../../../../validation/EditCl
 
 const EditClientData = () => {
   const { currentUser } = useCurrentUser<ClientModel>();
-  const [isReadonly, setIsReadonly] = useState(false);
+  const [isReadonly, setIsReadonly] = useState(true);
 
   const handleSubmit = async (values: ClientModel, formikHelpers: FormikHelpers<ClientModel>) => {
     if (isGivenDataEdited(values, currentUser)) {
