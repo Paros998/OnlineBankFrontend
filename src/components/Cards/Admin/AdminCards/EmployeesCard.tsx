@@ -9,12 +9,15 @@ import {useFetchRawData} from "../../../../hooks/useFetchRawData";
 import {EmployeeModel} from "../../../../interfaces/DatabaseModels/EmployeeModel";
 import EmployeesRecords from "../../../RecordsComponents/Employee/EmployeesRecords";
 import moment from "moment";
+import {useHistory} from "react-router-dom";
 
 interface EmployeesCardProps{
   className?:string;
 }
 
 const EmployeesCard:FC<EmployeesCardProps> = ({className}) => {
+  const history = useHistory();
+
   const [values] = useState<FilterClientsEmployeesFormikValues>({
     birthDate: "",
     personalNumber_personName: ""
@@ -27,12 +30,16 @@ const EmployeesCard:FC<EmployeesCardProps> = ({className}) => {
     await fetchEmployees(values);
   }
 
+  const handleClick = (employeeId:number | undefined) =>{
+    history.push(`/employee/admin/employee/${employeeId}`)
+  }
+
   return (
     <CardTemplate header={'Filtrowanie'}
-                  className={`text-dark' fst-normal bg-primary-dark border-dark bg-opacity-75 ${className}`}
-                  headerClassName='text-dark'
-                  bodyClassName='thumb-dark'
-                  headerDiamondClassName='text-dark'
+                  className={`text-light' fst-normal bg-primary-dark border-dark bg-opacity-75 ${className}`}
+                  headerClassName='text-light'
+                  bodyClassName='thumb-light'
+                  headerDiamondClassName='text-light'
                   headerLabel={
                     <div className='container-fluid w-100 '>
                       <div className='row align-items-start ms-1'>
@@ -60,8 +67,8 @@ const EmployeesCard:FC<EmployeesCardProps> = ({className}) => {
                   }
     >
       <div className='container-fluid w-100 '>
-        <CenteredSpinnerTemplate variant={"dark"} isPending={isPending}/>
-        <EmployeesRecords Employees={Employees || []} isPending={isPending}/>
+        <CenteredSpinnerTemplate variant={"light"} isPending={isPending}/>
+        <EmployeesRecords Employees={Employees || []} isPending={isPending} useKeyAsBg handleClick={handleClick}/>
       </div>
     </CardTemplate>
   );

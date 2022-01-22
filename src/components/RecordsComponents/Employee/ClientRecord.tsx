@@ -25,10 +25,10 @@ const ClientRecord:FC<ClientsProps> = ({client,className,hover,handleClick}) => 
       <div className='col text-truncate'>
         {personalNumber}
       </div>
-      <div className='col text-truncate text-info ms-4'>
+      <div className='col text-truncate ms-4'>
         {fullName}
       </div>
-      <div className='col text-truncate text-info ms-4'>
+      <div className='col text-truncate ms-4'>
         {accountNumber}
       </div>
       <div className='col text-truncate ms-4 '>

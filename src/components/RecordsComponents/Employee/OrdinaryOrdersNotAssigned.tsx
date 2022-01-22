@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {OrderModel} from "../../../interfaces/DatabaseModels/OrderModel";
 import PriorityOrderNotAssigned from "./PriorityOrderNotAssigned";
 
-interface PriorityOrdersNotAssignedProps {
+interface OrdinaryOrdersNotAssignedProps {
   Orders: OrderModel[] | [];
   handleClick:(orderId:number|undefined)=>void;
   className?:string;
@@ -10,13 +10,13 @@ interface PriorityOrdersNotAssignedProps {
   orderID?:number | undefined;
 }
 
-const PriorityOrdersNotAssigned:FC<PriorityOrdersNotAssignedProps> = ({Orders,className,handleClick,isPending,orderID}) => {
+const OrdinaryOrdersNotAssigned:FC<OrdinaryOrdersNotAssignedProps> = ({Orders,orderID,handleClick,className,isPending}) => {
   if(isPending)
     return null;
 
   if(!isPending && Orders.length === 0)
     return (
-      <p className='text-primary fw-bold'>Nie znaleziono priorytetowych zleceń do przypisania</p>
+      <p className='text-warning fw-bold'>Nie znaleziono zwykłych zleceń do przypisania</p>
     );
 
   return (
@@ -26,7 +26,7 @@ const PriorityOrdersNotAssigned:FC<PriorityOrdersNotAssignedProps> = ({Orders,cl
           return <PriorityOrderNotAssigned
             key={key}
             order={item}
-            className={`order-primary ${className} ${ orderID === item.order_Id ? 'order-active' : ''}`}
+            className={`order-warning ${className} ${ orderID === item.order_Id ? 'order-active' : ''}`}
             handleClick={()=>{handleClick(item.order_Id)}}
           />
         })
@@ -36,4 +36,4 @@ const PriorityOrdersNotAssigned:FC<PriorityOrdersNotAssignedProps> = ({Orders,cl
 
 };
 
-export default PriorityOrdersNotAssigned;
+export default OrdinaryOrdersNotAssigned;

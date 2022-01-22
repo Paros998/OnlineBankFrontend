@@ -5,9 +5,13 @@ import EmployeeRecord from "./EmployeeRecord";
 interface EmployeesRecordsProps {
   Employees: EmployeeModel[] | [];
   isPending?:boolean;
+  handleClick?:(clientId:number|undefined)=>void;
+  id?:number;
+  className?:string;
+  useKeyAsBg?:boolean;
 }
 
-const EmployeesRecords: FC<EmployeesRecordsProps> = ({Employees,isPending}) => {
+const EmployeesRecords: FC<EmployeesRecordsProps> = ({Employees,isPending,id,handleClick,className,useKeyAsBg}) => {
   if(isPending)
     return null;
   if (Employees.length === 0)
@@ -18,7 +22,10 @@ const EmployeesRecords: FC<EmployeesRecordsProps> = ({Employees,isPending}) => {
     <>
       {
         Employees.map((employee, key) => {
-          return <EmployeeRecord employee={employee} key={key} className={key % 2 === 0 ? 'bg-dark' : 'bg-secondary-dark'}/>
+          return <EmployeeRecord employee={employee} key={key}
+                                 className={`${useKeyAsBg && ( key % 2 === 0 ? 'bg-dark' : 'bg-secondary-dark' )} ${employee.employeeId === id && 'client-active' } ${className} `}
+                                 id={id}
+                                 handleClick={handleClick}/>
         })
       }
     </>
