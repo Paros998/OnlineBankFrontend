@@ -1,7 +1,8 @@
 import {Context, createContext, ReactNode, useContext} from "react";
+import axios from 'axios';
+import {toast} from "react-toastify";
 import {CurrentUserContextModel} from "../interfaces/CurrentUserContextModel";
 import {useFetchCurrentUser} from "../hooks/useFetchCurrentUser";
-import {toast} from "react-toastify";
 
 const CurrentUserContext = createContext<any>(undefined);
 
@@ -19,6 +20,7 @@ function CurrentUserProvider({ children }: CurrentUserProviderProps) {
   const handleLogout = () => {
     localStorage.removeItem('JWT_USER_TOKEN');
     data.setCurrentUser(undefined);
+    delete axios.defaults.headers.common["Authorization"];
     toast.info("Dziękujemy za skorzystanie z naszych usług");
   };
 
