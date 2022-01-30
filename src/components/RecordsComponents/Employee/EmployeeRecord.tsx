@@ -1,8 +1,6 @@
 import React, {FC} from 'react';
 import {EmployeeModel} from "../../../interfaces/DatabaseModels/EmployeeModel";
 import dayjs from "dayjs";
-import {useHistory} from "react-router-dom";
-
 
 interface EmployeeRecordProps{
   employee:EmployeeModel;

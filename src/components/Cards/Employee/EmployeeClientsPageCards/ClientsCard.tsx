@@ -4,7 +4,6 @@ import {Formik} from "formik";
 import FilterClientsEmployeesForm from "../../../Forms/FilterClientsEmployeesForm/FilterClientsEmployeesForm";
 import dayjs from "dayjs";
 import {toast} from "react-toastify";
-import ClientRecord from "../../../RecordsComponents/Employee/ClientRecord";
 import {FilterClientsEmployeesFormikInitialValues} from "../../../../constants/FormikInitialValues/FilterClientsEmployeesFormikInitialValues";
 import CenteredSpinnerTemplate from "../../../CenteredSpinner/CenteredSpinnerTemplate";
 import {ClientModel} from "../../../../interfaces/DatabaseModels/ClientModel";

@@ -1,11 +1,10 @@
-import React, {Dispatch, FC, useState} from 'react';
+import React, {FC, useState} from 'react';
 import ModalTemplate from "../../../ModalTemplate";
 import {ModalBasicProps} from "../../../../../interfaces/ModalBasicProps";
 import {useFetchRawData} from "../../../../../hooks/useFetchRawData";
 import {ClientModel} from "../../../../../interfaces/DatabaseModels/ClientModel";
 import CenteredSpinnerTemplate from "../../../../CenteredSpinner/CenteredSpinnerTemplate";
 import ClientsRecords from "../../../../RecordsComponents/Employee/ClientsRecords";
-import {Roles} from "../../../../../enums/Roles";
 import axios from "axios";
 import {toast} from "react-toastify";
 

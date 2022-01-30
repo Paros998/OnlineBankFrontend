@@ -13,7 +13,7 @@ interface DeleteClientModalProps extends ModalBasicProps {
 
 const DeleteClientModal: FC<DeleteClientModalProps> = ({setShowModal, showModal}) => {
 
-  const {rawData: Clients, isPending: isPending, fetchData} = useFetchRawData<ClientModel[]>(`/dictionary/clients`);
+  const {rawData: Clients, isPending, fetchData} = useFetchRawData<ClientModel[]>(`/dictionary/clients`);
 
   const [id, setId] = useState<number>(-1);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
