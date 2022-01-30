@@ -15,13 +15,13 @@ interface OrdersForEmployeeProps {
 
 const OrdersForEmployee:FC<OrdersForEmployeeProps> = ({role,handleClick,orderID}) => {
 
-  const {rawData:PriorityOrders,isPending:priorityPending,fetchData:fetchPriorityOrders} = useFetchRawData<OrderModel[]>(
+  const {rawData:PriorityOrders,isPending:priorityPending} = useFetchRawData<OrderModel[]>(
     role.toString() === "ADMIN"
       ? `/dictionary/orders/priority`
       : `/dictionary/orders/for-employees/priority`
   );
 
-  const {rawData:Orders,isPending:normalPending,fetchData:fetchOrders} = useFetchRawData<OrderModel[]>(
+  const {rawData:Orders,isPending:normalPending} = useFetchRawData<OrderModel[]>(
     role.toString() === "ADMIN"
       ? `/dictionary/orders`
       : `/dictionary/orders/for-employees`

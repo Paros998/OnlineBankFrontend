@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 import dayjs from "dayjs";
-import {useHistory} from "react-router-dom";
 
 interface ClientsProps{
   client:ClientModel;

@@ -8,7 +8,8 @@ import { ClientModel } from '../../../../../interfaces/DatabaseModels/ClientMode
 import EditClientDataForm from './EditClientDataForm/EditClientDataForm';
 import { createOrder } from '../../../../../utils/createOrder';
 import { OrderTypes } from '../../../../../enums/OrderTypes';
-import { EditClientDataValidationSchema } from '../../../../../validation/EditClientDataValidationSchema';
+import {EditClientDataValidationSchema} from "../../../../../Validation/EditClientDataValidationSchema";
+
 
 const EditClientData = () => {
   const { currentUser } = useCurrentUser<ClientModel>();

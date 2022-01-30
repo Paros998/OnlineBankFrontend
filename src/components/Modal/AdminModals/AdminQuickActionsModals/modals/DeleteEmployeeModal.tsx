@@ -1,12 +1,10 @@
 import React, {FC, useState} from 'react';
 import {ModalBasicProps} from "../../../../../interfaces/ModalBasicProps";
 import {useFetchRawData} from "../../../../../hooks/useFetchRawData";
-import {ClientModel} from "../../../../../interfaces/DatabaseModels/ClientModel";
 import axios from "axios";
 import {toast} from "react-toastify";
 import ModalTemplate from "../../../ModalTemplate";
 import CenteredSpinnerTemplate from "../../../../CenteredSpinner/CenteredSpinnerTemplate";
-import ClientsRecords from "../../../../RecordsComponents/Employee/ClientsRecords";
 import {EmployeeModel} from "../../../../../interfaces/DatabaseModels/EmployeeModel";
 import EmployeesRecords from "../../../../RecordsComponents/Employee/EmployeesRecords";
 
@@ -15,7 +13,7 @@ interface DeleteEmployeeModalProps extends ModalBasicProps{
 }
 
 const DeleteEmployeeModal:FC<DeleteEmployeeModalProps> = ({setShowModal,showModal}) => {
-  const {rawData: Employees, isPending: isPending, fetchData} = useFetchRawData<EmployeeModel[]>(`/dictionary/employees`);
+  const {rawData: Employees, isPending, fetchData} = useFetchRawData<EmployeeModel[]>(`/dictionary/employees`);
 
   const [id, setId] = useState<number>(-1);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);

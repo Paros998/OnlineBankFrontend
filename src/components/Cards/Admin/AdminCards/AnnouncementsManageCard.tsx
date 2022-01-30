@@ -8,9 +8,6 @@ import {toast} from "react-toastify";
 import axios from "axios";
 import ModalTemplate from "../../../Modal/ModalTemplate";
 import TextInput from "../../../Inputs/TextInput/TextInput";
-import {NewEmployeeFormikValues} from "../../../../interfaces/formik/NewEmployeeFormikValues";
-import {NewEmployeeFormikInitialValues} from "../../../../constants/FormikInitialValues/NewEmployeeFormikInitialValues";
-import NewEmployeeForm from "../../../Forms/NewEmployeeForm/NewEmployeeForm";
 import {Form, Formik} from "formik";
 import {Button} from "react-bootstrap";
 
