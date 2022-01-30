@@ -11,8 +11,7 @@ import {createOrder} from '../../../../../utils/createOrder';
 import {OrderTypes} from '../../../../../enums/OrderTypes';
 import axios from 'axios';
 import {UserCredentials} from '../../../../../interfaces/DatabaseModels/userCredentials';
-import {EditClientCredentialsValidationSchema} from "../../../../../Validation/EditClientCredentialsValidationSchema";
-
+import { EditClientCredentialsValidationSchema } from '../../../../../validation/EditClientCredentialsValidationSchema';
 
 const EditClientCredentials = () => {
   const { currentUser } = useCurrentUser<ClientModel>();

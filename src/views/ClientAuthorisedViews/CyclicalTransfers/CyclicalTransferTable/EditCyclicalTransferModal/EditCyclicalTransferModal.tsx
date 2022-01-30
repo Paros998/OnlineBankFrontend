@@ -10,9 +10,7 @@ import { EditCyclicalTransferFormikValues } from '../../../../../interfaces/form
 import SubmitButton from '../../../../../components/SubmitButton/SubmitButton';
 import EditCyclicalTransferForm from './EditCyclicalTransferForm/EditCyclicalTransferForm';
 import { useCyclicalTransfers } from '../../../../../contexts/CyclicalTransferContext';
-import {EditCyclicalTransferValidationSchema} from "../../../../../Validation/EditCyclicalTransferValidationSchema";
-
-
+import { EditCyclicalTransferValidationSchema } from '../../../../../validation/EditCyclicalTransferValidationSchema';
 
 interface EditCyclicalTransferModalProps {
   showModal: boolean;

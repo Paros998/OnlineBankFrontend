@@ -11,8 +11,7 @@ import {ClientModel} from "../../../interfaces/DatabaseModels/ClientModel";
 import NewTransferForm from "./NewTransferForm/NewTransferForm";
 import {getTodayDate} from "../../../utils/getTodayDate";
 import {getISODate} from "../../../utils/getISODate";
-import {TransferValidationSchema} from "../../../Validation/TransferValidationSchema";
-
+import { TransferValidationSchema } from '../../../validation/TransferValidationSchema';
 
 const NewTransfer: FC = () => {
   const { currentUser, fetchUser } = useCurrentUser<ClientModel>();

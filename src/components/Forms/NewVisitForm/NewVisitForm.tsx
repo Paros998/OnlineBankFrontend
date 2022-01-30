@@ -1,33 +1,34 @@
 import React from 'react';
-import {Button, Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import {Form, useFormikContext} from "formik";
 import TextWithDiamond from "../../TextWithDiamond/TextWithDiamond";
 import SelectInput from "../../Inputs/SelectInput/SelectInput";
 import DateInput from "../../Inputs/DateInput/DateInput";
 import {NewVisitFormikValues} from "../../../interfaces/formik/NewVisitFormikValues";
 import {Bank2, Clock} from "react-bootstrap-icons";
+import SubmitButton from '../../SubmitButton/SubmitButton';
 
 const establishmentOptions = [
-  { value: 'Kielce', key: 1 },
-  { value: 'Warszawa', key: 2 },
-  { value: 'Kraków', key: 3 },
-  { value: 'Poznań', key: 4 },
-  { value: 'Wrocław', key: 5 },
-  { value: 'Rzeszów', key: 6 },
-  { value: 'Olsztyn', key: 7 },
-  { value: 'Gdańsk', key: 8 }
+  { value: 'Kielce', key: 'Kielce' },
+  { value: 'Warszawa', key: 'Warszawa' },
+  { value: 'Kraków', key: 'Kraków' },
+  { value: 'Poznań', key: 'Poznań' },
+  { value: 'Wrocław', key: 'Wrocław' },
+  { value: 'Rzeszów', key: 'Rzeszów' },
+  { value: 'Olsztyn', key: 'Olsztyn' },
+  { value: 'Gdańsk', key: 'Gdańsk' }
 ]
 
 const visitTimeOptions = [
-  { value: '7.am', key: 1 },
-  { value: '8.am', key: 2 },
-  { value: '9.am', key: 3 },
-  { value: '10.am', key: 4 },
-  { value: '11.am', key: 5 },
-  { value: '12.am', key: 6 },
-  { value: '13.am', key: 7 },
-  { value: '14.am', key: 8 },
-  { value: '15.am', key: 9 }
+  { value: '7.am', key: '7.am' },
+  { value: '8.am', key: '8.am' },
+  { value: '9.am', key: '9.am' },
+  { value: '10.am', key: '10.am' },
+  { value: '11.am', key: '11.am' },
+  { value: '12.am', key: '12.am' },
+  { value: '13.am', key: '13.am' },
+  { value: '14.am', key: '14.am' },
+  { value: '15.am', key: '15.am' }
 ]
 
 type NewVisitFormProps = {
@@ -93,12 +94,9 @@ const NewVisitForm = (props:NewVisitFormProps) => {
             <hr className='text-primary-dark w-100 '/>
 
             <div className='vstack mx-auto col-md-5'>
-              <Button
-                className='rounded-pill'
-                type='submit'
-              >
+              <SubmitButton className='rounded-pill'>
                 Wyślij
-              </Button>
+              </SubmitButton>
             </div>
           </Form>
         </Card.Body>
