@@ -53,7 +53,8 @@ const AssignEmployeeToOrderModal:FC<AssignEmployeeToOrderModalProps> = ({setShow
     }catch (e:any) {
       toast.error(e.message);
     }
-
+    await fetchRole();
+    setOrderID(-1);
     setIsSubmitting(false);
   }
 
