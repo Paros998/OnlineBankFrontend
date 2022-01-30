@@ -6,6 +6,7 @@ import { OrderTypes } from '../../../../../enums/OrderTypes';
 import { ClientModel } from '../../../../../interfaces/DatabaseModels/ClientModel';
 import { useCurrentUser } from '../../../../../contexts/CurrentUserContext';
 import { useState } from 'react';
+import moment from 'moment';
 
 export interface ToastContent {
   errorToastContent: string;
@@ -22,7 +23,7 @@ const creditCardEmptyObject: Partial<CreditCardModel> = {
   cardImage: '',
   isActive: true,
   cvvNumber: 0,
-  expireDate: '',
+  expireDate: moment().format('YYYY-MM-DD'),
 };
 
 export const useCreditCardOperations = ({

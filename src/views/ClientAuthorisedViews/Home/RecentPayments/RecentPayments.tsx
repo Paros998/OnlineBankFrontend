@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import { Card, Col, Container, Row } from "react-bootstrap";
 import RecentPaymentsLoadingPlaceholder from "./RecentPaymentsLoadingPlaceholder/RecentPaymentsLoadingPlaceholder";
 import { useModalState } from "../../../../hooks/useModalState";
@@ -26,7 +25,7 @@ const RecentPayments = () => {
               <Row>
                 <Col xs={3}>
                   <span className='fw-bold'>
-                    {moment(transfer.transferDate).format('DD.MM.YYYY')}
+                    {transfer.transferDate}
                   </span>
                 </Col>
 
