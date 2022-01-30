@@ -34,6 +34,7 @@ const RemindLoginOrPasswordOffCanvas:
       await axios.patch(`users/${requestUrl}`, undefined,{params:{
         email:email
         }} );
+      toast.success("Proszę sprawdzić skrzynkę pocztową, mail powinien już się tam znajdować.")
       handleRemindLoginCanvas(false)
       handleHelpCanvas(false)
     } catch (e:any) {

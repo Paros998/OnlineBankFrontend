@@ -14,7 +14,7 @@ export const mapValuesToClient = (values:NewClientFormikValues) => {
     balance: balance,
     city: city,
     dateOfBirth: dayjs(dateOfBirth).format("YYYY-MM-DD"),
-    dateOfCreation: dayjs(Date.now()).toISOString(),
+    dateOfCreation: dayjs(Date.now()).toISOString().replaceAll('Z',''),
     email: email,
     fullName: fullName,
     homeAddress: homeAddress,

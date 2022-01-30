@@ -55,7 +55,7 @@ const NewClientForm = () => {
               label='Data Urodzenia'
               labelClassName='text-light mb-0'
               name='dateOfBirth'
-              placeholder='DD.MM.YYYY'
+              placeholder='MM.DD.YYYY'
               type='text'
               className='bg-secondary-dark text-light'
             />
